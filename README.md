@@ -1,30 +1,38 @@
 
 
-I like webpack.  Let's intall a recent webpack.
-  Need to make/find a list of useful loaders and plugins.
+This is a template for setting up webpack, for use with babel and generally for use with React &c.
 
-Also Babel is good.
-  Need to make/find a list of useful presets/whatevers.
-
-I like React.  Does that matter to this?  What about various React libs?  Router?  Redux?
-
-Do I care about any CSS stuff?  Sass?  CSS framework?  At this time I do not.
-
-I might want a linter, and/or a test-runner.  I might want Typescript or Flow.
-
-I want a client and server dir, because many projects require that.  Though not all.
-  Either way, I want a webpack dev server setup.  With optional proxy through to the server-server.
+It assumes `yarn` rather than npm, though I suspect it doesn't really matter.
 
 
+== Currently Working
 
-Okay, my starting point should be to
-  * get webpack working
-    * with Babel
-      * with a few default presets
-    * with webpack-dev-server
-  * client directory only; later expand to worry about server (and thus proxy, etc)
-  * no prod version for now
+Webpack is currently working, and `yarn dev` will bring up the webpack-dev-server.
+
+Babel is configured in `.babelrc`.
+
+As a demo app, we currently edit the DOM two different ways: vanillajs and also React.  See `src/index.js`,
+`src/vanilla_dom_edit`, and `src/App.jsx`.
+
+It knows how to parse CSS/SCSS/SASS, as long as that is `require`d somewhere in the dependency tree.
+
+
+== Wishlist
+
+Linter
+
+Tet-runner, sample tests, etc.
+
+Might make sense to add a client dir and a server dir and have them separate.
+  If I did that, I'd want to proxy api/ws/etc requests through webpack-dev-server to the backend.
+
+Currently we can production-build with just `yarn run webpack`.  This is a bit primitive.
+  1) probably it should copy the public files as well, over to build
+  2) if I add a server directory with passthrough, the prod-build version of that will be quite different
 
 
 
+---
 
+
+With thanks to David VanDusen and Karl Jensen for their boilerplates.
