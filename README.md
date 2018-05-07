@@ -5,7 +5,7 @@ This is a template for setting up webpack, for use with babel and generally for 
 It assumes `yarn` rather than npm, though I suspect it doesn't really matter.
 
 
-== Currently Working
+## Currently Working
 
 Webpack is currently working, and `yarn dev` will bring up the webpack-dev-server.
 
@@ -17,7 +17,7 @@ As a demo app, we currently edit the DOM two different ways: vanillajs and also 
 It knows how to parse CSS/SCSS/SASS, as long as that is `require`d somewhere in the dependency tree.
 
 
-== Wishlist
+## Wishlist
 
 Linter
 
@@ -34,5 +34,9 @@ Currently we can production-build with just `yarn run webpack`.  This is a bit p
 
 ---
 
+Thanks to:
 
-With thanks to David VanDusen and Karl Jensen for their boilerplates.
+* [David VanDusen](https://github.com/davidvandusen/react-webpack-boilerplate)
+* Karl Jensen
+
+
