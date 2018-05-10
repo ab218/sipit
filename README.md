@@ -16,6 +16,8 @@ As a demo app, we currently edit the DOM two different ways: vanillajs and also 
 
 It knows how to parse CSS/SCSS/SASS, as long as that is `require`d somewhere in the dependency tree.
 
+There's the barest sketch of a server.js, and webpack-dev-server knows how to proxy `/api` to it.
+
 
 ## Wishlist
 
@@ -24,7 +26,6 @@ Linter
 Tet-runner, sample tests, etc.
 
 Might make sense to add a client dir and a server dir and have them separate.
-  If I did that, I'd want to proxy api/ws/etc requests through webpack-dev-server to the backend.
 
 Currently we can production-build with just `yarn run webpack`.  This is a bit primitive.
   1) probably it should copy the public files as well, over to build
