@@ -12,6 +12,6 @@ app.get('/api', (req, res) => {
   res.json({pretty: 'much', amazing: 'eh'});
 });
 
-app.listen(PORT, () => {console.log("API server is up");});
+app.listen(PORT, () => {console.log(`Server up`);});
 
 
