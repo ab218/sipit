@@ -21,9 +21,11 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "body-parser": "^1.18.3",
     "css-loader": "^0.28.11",
     "dotenv": "^4.0.0",
     "express": "^4.16.3",
+    "faker": "^4.1.0",
     "jquery": "^3.3.1",
     "knex": "^0.15.2",
     "lodash": "^4.17.10",
@@ -35,7 +37,8 @@
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.15"
+    "webpack-cli": "^2.0.15",
+    "yelp-fusion": "^2.0.3"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
