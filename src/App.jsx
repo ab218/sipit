@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import NavbarComponent from './Navbar.jsx';
+import CafeCard from './Cafe_card.jsx';
+
 
 require("./styles/first.css");
 require("./styles/second.sass");
@@ -13,6 +15,7 @@ export default class App extends Component {
   render() {
     return (<div>
       <NavbarComponent />
+      <CafeCard />
     </div>
     )
   }
