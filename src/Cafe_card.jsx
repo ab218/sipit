@@ -17,9 +17,10 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    maxWidth: 400
   },
   media: {
     height: 0,
@@ -74,7 +75,7 @@ class RecipeReviewCard extends React.Component {
           />
           <CardMedia
             className={classes.media}
-            image="/static/images/cards/paella.jpg"
+            image="./cafe.jpg"
             title="Contemplative Reptile"
           />
           <CardContent>

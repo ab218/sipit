@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
+
 class NavbarComponent extends Component {
     constructor(props) {
       super(props);
     }
+
   
     render() {
        return (
@@ -12,7 +14,7 @@ class NavbarComponent extends Component {
         <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#home"><i class="fas fa-coffee"></i> Sip-It</a>
+            <a href="#home"><i className="fas fa-coffee"></i> Sip-It</a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
