@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import NavbarComponent from './Navbar.jsx';
 import CafeCard from './Cafe_card.jsx';
 import axios from 'axios'
-
+import FooterComponent from './Footer.jsx';
+//import SearchBarComponent from './SearchBar.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class App extends Component {
     return (<div>
       <NavbarComponent />
       <CafeCard cafesList={this.state.cafesList}/>
+      <FooterComponent />
     </div>
     )
   }
