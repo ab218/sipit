@@ -7,7 +7,8 @@ const theme = createMuiTheme({
     typography: {
         // In Japanese the characters are usually larger.
         fontSize: 30,
-      },
+        fontFamily: 'Slabo 27px',
+    },
 });
 
 ReactDOM.render(
