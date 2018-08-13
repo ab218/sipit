@@ -3,13 +3,18 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: ["babel-polyfill", './src/index.js'],
 
   // https://webpack.js.org/configuration/output/
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
+  // node: {
+  //   fs: 'empty',
+  //   net: 'empty'
+  // },
+  // target: 'web',
 
   // https://webpack.js.org/configuration/devtool/#devtool
   devtool: 'source-map',

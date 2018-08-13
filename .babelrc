@@ -1,9 +1,19 @@
 {
-  'presets': ['env', 'stage-1', 'react'],
-  'plugins': [
-    'transform-decorators-legacy',
-    'transform-class-properties',
-    'transform-strict-mode',
-  ]
+  'presets': [
+    ['env', {
+    "targets": {
+      "browsers": [
+        ">0.25%",
+        "not ie 11",
+        "not op_mini all"
+      ]
+    }
+  }],
+  'stage-1',
+  'react'],
+'plugins': [
+  'transform-decorators-legacy',
+  'transform-class-properties',
+  'transform-strict-mode',
+]
 }
-
