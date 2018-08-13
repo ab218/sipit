@@ -43,6 +43,8 @@ app.get("/api/yelp", function (req, res) {
         return ({
           name: business.name,
           coords: business.coordinates,
+          rating: business.rating,
+          image_url: business.image_url
         })
       })))
     .catch(error => console.error(error))

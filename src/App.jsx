@@ -8,7 +8,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cafes: {}
+      cafesList: []
     }
   }
 
@@ -16,7 +16,7 @@ export default class App extends Component {
     axios
       .get('/api/yelp')
       .then(res => {
-        return this.setState({ cafes: res.data })
+        return this.setState({ cafesList: res.data })
       })
   }
 
@@ -24,7 +24,7 @@ export default class App extends Component {
 
     return (<div>
       <NavbarComponent />
-      <CafeCard />
+      <CafeCard cafesList={this.state.cafesList}/>
     </div>
     )
   }
