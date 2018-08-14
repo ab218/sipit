@@ -10,21 +10,33 @@ class Stars extends Component {
     };
   }
  
-  onStarClick(nextValue, prevValue, name) {
-    this.setState({rating: nextValue});
-  }
  
   render() {
-    const { rating } = this.state;
     
     return (                
-      <div>
-        <StarRatingComponent 
-          starCount={5}
-          value={this.props.starRating}
-          onStarClick={this.onStarClick.bind(this)}
-        />
-      </div>
+      <div style={{fontSize: 24}}>
+          <StarRatingComponent
+            name="app6"
+            starColor="#ffb400"
+            emptyStarColor="#ffb400"
+            value={this.props.starRating}
+            renderStarIcon={(index, value) => {
+              return (
+                <span>
+                  <i className={index <= value ? 'fas fa-star' : 'far fa-star'} />
+                </span>
+              );
+            }}
+            renderStarIconHalf={() => {
+              return (
+                <span>
+                  <span style={{position: 'absolute'}}><i className="far fa-star" /></span>
+                  <span><i className="fas fa-star-half" /></span>
+                </span>
+              );
+            }} />
+        </div>
+
     );
   }
 }

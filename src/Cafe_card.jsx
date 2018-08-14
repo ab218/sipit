@@ -61,11 +61,18 @@ handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
 
+// getCategories = () => {
+//     let catsArr = []
+//     for (let cats of this.props.cafesList.categories) {
+//         return catsArr.push(cats.title)
+//     }
+// }
+
 getCafes = () => {
     const { classes } = this.props;
     return this.props.cafesList
     .map((cafe, i) => (
-        <div className={classes.actions}>
+        <div key={i} className={classes.actions}>
         <Card className={classes.card}>
           <CardHeader
 
@@ -82,10 +89,15 @@ getCafes = () => {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <RatingStar starRating={this.props.cafesList[i].rating}/>
+            <RatingStar starRating={cafe.rating}/>
+
+            {this.props.cafesList.is_closed === 'true'
+            ? <h5 style={{float: 'right', color: 'red'}}>Closed</h5>
+            : <h5 style={{float: 'right', color: 'green'}}>Open</h5>
+            }
+
             <Typography component="p">
-              This impressive paella is a perfect party dish and a fun meal to cook together with
-              your guests.
+            asdf
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
