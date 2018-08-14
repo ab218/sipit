@@ -25,8 +25,10 @@ const api = axios.create({
 })
 
 const usersRoutes = require("./routes/Users.js");
+const reviewsRoutes = require("./routes/Reviews.js");
 
 app.use("/api/users", usersRoutes(knex));
+app.use("/api/reviews", reviewsRoutes(knex));
 
 app.get("/api/yelp", function (req, res) {
 
@@ -41,7 +43,7 @@ app.get("/api/yelp", function (req, res) {
     .then(reponse =>
       res.send(reponse.data.businesses.map(business => {
         const { name, coordinates, rating, image_url, categories } = business
-        
+
         return ({
           name,
           coordinates,
