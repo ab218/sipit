@@ -25,12 +25,11 @@ const api = axios.create({
 })
 
 const usersRoutes = require("./routes/Users.js");
-const reviewsRoutes = require("./routes/Reviews.js");
 
 app.use("/api/users", usersRoutes(knex));
-app.use("/api/reviews", reviewsRoutes(knex));
 
 app.get("/api/yelp", function (req, res) {
+let results = []
 
   return api
     .get('/businesses/search', {
@@ -40,19 +39,34 @@ app.get("/api/yelp", function (req, res) {
         location: 'vancouver'
       },
     })
-    .then(reponse =>
-      res.send(reponse.data.businesses.map(business => {
-        const { name, coordinates, rating, image_url, categories } = business
-
+    .then(reponse => {
+      results = reponse.data.businesses.map(business => {
+        const { name, coordinates, rating, image_url, id} = business
         return ({
           name,
           coordinates,
           rating,
           image_url,
-          categories,
+          id
         })
-      })))
-    .catch(error => console.error(error))
+      })
+      return results
+    })
+      .then(results =>
+        Promise.all(results.map((result, i) => {
+         return setTimeout( () => api.get(`/businesses/${result.id}/reviews`), i * 20)
+        }))
+      ).then(reviews => {
+        for (const [i, resu] of results.entries()) {
+          console.log(reviews[i])
+          if (reviews[i]) {
+            results[i] = { ...resu, ...reviews[i] }
+          }
+        }
+        res.send(results)
+      })
+    .catch(error => {res.status(500), console.log(error)
+    })
 })
 
 app.listen(PORT, () => {

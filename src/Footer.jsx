@@ -39,14 +39,14 @@ class FooterComponent extends Component {
 
     render() {
         return (
-            <div class="footer" style={footer} >
-                <section class="footer-content">
-                    <div class="footerTitle" style={footerTitle}>
+            <div className="footer" style={footer} >
+                <section className="footer-content">
+                    <div className="footerTitle" style={footerTitle}>
                         <span><h2 style={{ paddingBottom: 20 + 'px' }}>Sip-it</h2>
                             <p>Find your best coffee.</p>
                         </span>
                     </div>
-                    <ul class="list" style={listBox}>
+                    <ul className="list" style={listBox}>
                         <li style={listItem}>Home</li>
                         <li style={listItem}>Search</li>
                         <li style={listItem}>My Page</li>
