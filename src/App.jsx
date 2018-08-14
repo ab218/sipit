@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavbarComponent from './Navbar.jsx';
-import MapContainer from './Map_Container.jsx';
+// import MapContainer from './Map_Container.jsx';
 import CafeCard from './Cafe_card.jsx';
 import axios from 'axios'
 import FooterComponent from './Footer.jsx';

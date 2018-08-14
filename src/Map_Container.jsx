@@ -46,11 +46,7 @@ export class MapContainer extends Component {
                   lat: markers.coordinates.latitude,
                   lng: markers.coordinates.longitude
                 }}
-                icon={{
-                  url: markers.image_url,
-                  anchor: new google.maps.Point(32,32),
-                  scaledSize: new google.maps.Size(64,64)
-                }}
+                label={(i + 1).toString()}
               />
             )}
             <Marker onClick={this.onMarkerClick}

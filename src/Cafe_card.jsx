@@ -83,7 +83,7 @@ getCafes = () => {
                 <MoreVertIcon />
               </IconButton>
             }
-            title={cafe.name}
+            title={`${i + 1}. ${cafe.name}`}
           />
           <CardMedia
             className={classes.media}
