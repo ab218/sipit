@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import StarRatingComponent from 'react-star-rating-component';
  
 class Stars extends Component {
@@ -22,7 +21,7 @@ class Stars extends Component {
       <div>
         <StarRatingComponent 
           starCount={5}
-          value={rating}
+          value={this.props.starRating}
           onStarClick={this.onStarClick.bind(this)}
         />
       </div>

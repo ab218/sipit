@@ -8,7 +8,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
@@ -17,13 +16,13 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import RatingStar from './Rating_star.jsx';
-import cafepic from './cafe.jpg';
 
 
 const styles = theme => ({
   card: {
     maxWidth: 400,
-
+    marginRight: 20,
+    marginBottom: 20,
   },
   media: {
     height: 0,
@@ -57,16 +56,16 @@ class CafeCard extends React.Component {
             expanded: false
         }
     }
-
-  handleExpandClick = () => {
+    
+handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
 
 getCafes = () => {
     const { classes } = this.props;
     return this.props.cafesList
-    .map(cafe => (
-        <div>
+    .map((cafe, i) => (
+        <div className={classes.actions}>
         <Card className={classes.card}>
           <CardHeader
 
@@ -83,7 +82,7 @@ getCafes = () => {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <RatingStar />
+            <RatingStar starRating={this.props.cafesList[i].rating}/>
             <Typography component="p">
               This impressive paella is a perfect party dish and a fun meal to cook together with
               your guests.

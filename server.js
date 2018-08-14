@@ -38,8 +38,8 @@ app.get("/api/yelp", function (req, res) {
         location: 'vancouver'
       },
     })
-    .then(resp =>
-      res.send(resp.data.businesses.map(business => {
+    .then(reponse =>
+      res.send(reponse.data.businesses.map(business => {
         return ({
           name: business.name,
           coords: business.coordinates,
