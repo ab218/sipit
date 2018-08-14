@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import NavbarComponent from './Navbar.jsx';
+import MapContainer from './Map_Container.jsx';
 import CafeCard from './Cafe_card.jsx';
 import axios from 'axios'
 import FooterComponent from './Footer.jsx';
+import SideNav from './Side_Nav.jsx';
 import TextFieldMargins from './Textarea.jsx';
 
 //import SearchBarComponent from './SearchBar.jsx';
@@ -30,6 +32,7 @@ export default class App extends Component {
   render() {
 
     return (<div style={mainTheme}>
+      <SideNav />
       <NavbarComponent />
       <TextFieldMargins />
       <CafeCard cafesList={this.state.cafesList}/>

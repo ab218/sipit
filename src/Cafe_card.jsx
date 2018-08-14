@@ -25,6 +25,9 @@ const styles = theme => ({
     marginLeft: 20,
     marginBottom: 20,
   },
+  spacer: {
+      marginRight: '20%',
+  },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -110,8 +113,9 @@ getCafes = () => {
 }
 
   render() {
+      const { classes } = this.props
     return (
-        <div>
+        <div className={classes.spacer}>
             {this.getCafes()}
         </div>
     )
