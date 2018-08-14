@@ -35,8 +35,8 @@ app.get("/api/yelp", function (req, res) {
   return api
     .get('/businesses/search', {
       params: {
-        limit: 10,
-        categories: 'coffee,coffeeroasteries,coffeeshops',
+        limit:  50,
+        categories: 'gluten_free',
         location: 'vancouver'
       },
     })
