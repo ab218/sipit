@@ -14,14 +14,14 @@ class NavbarComponent extends Component {
         <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#home"><i className="fas fa-coffee"></i> Sip-It</a>
+            <i className="fas fa-coffee"></i> Sip-It
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem eventKey={1} >
+          <NavItem eventKey={1}>
             Home
           </NavItem>
-          <NavItem eventKey={2} >
+          <NavItem eventKey={2}>
             About
           </NavItem>
           <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
