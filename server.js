@@ -40,13 +40,13 @@ app.get("/api/yelp", function (req, res) {
     })
     .then(reponse =>
       res.send(reponse.data.businesses.map(business => {
-        const { name, coordinates, rating, image_url, is_closed, categories } = business
+        const { name, coordinates, rating, image_url, categories } = business
+        
         return ({
           name,
           coordinates,
           rating,
           image_url,
-          is_closed,
           categories,
         })
       })))
