@@ -21,7 +21,7 @@ class SideNav extends Component {
     render() {
         return (
             <div style={sideNav} >
-            <MapContainer />
+            <MapContainer cafesList={this.props.cafesList}/>
             </div>
         );
     }

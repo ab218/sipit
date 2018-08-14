@@ -32,7 +32,7 @@ export default class App extends Component {
   render() {
 
     return (<div style={mainTheme}>
-      <SideNav />
+      <SideNav cafesList={this.state.cafesList}/>
       <NavbarComponent />
       <TextFieldMargins />
       <CafeCard cafesList={this.state.cafesList}/>
