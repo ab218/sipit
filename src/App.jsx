@@ -10,7 +10,7 @@ import TextFieldMargins from './Textarea.jsx';
 //import SearchBarComponent from './SearchBar.jsx';
 
 const mainTheme = {
- backgroundColor: '#c1946a',
+ backgroundColor: 'brown',
 }
 
 export default class App extends Component {
