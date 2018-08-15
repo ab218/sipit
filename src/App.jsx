@@ -50,7 +50,7 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    this.getLocation();
+  
   }
 
   componentDidMount() {
@@ -60,6 +60,8 @@ export default class App extends Component {
       .then(res => {
         return this.setState({ cafesList: res.data })
       })
+      
+      this.getLocation();
 
   }
 
