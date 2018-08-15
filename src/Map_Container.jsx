@@ -33,6 +33,8 @@ export class MapContainer extends Component {
 
 
   render() {
+
+
     return (
       <div style={divStyle}>
         <div style={divStyle2}>
@@ -40,6 +42,10 @@ export class MapContainer extends Component {
             zoom={12}
             style={style}
             initialCenter={{
+              lat: 49.2827,
+              lng: -123.1207
+            }}
+            center={{
               lat: this.props.myLatLng.lat,
               lng: this.props.myLatLng.lng
             }}

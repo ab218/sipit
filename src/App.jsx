@@ -19,7 +19,7 @@ export default class App extends Component {
       cafesList: [],
       myLatLng: {
         lat: 49.2827,
-        lng: -123.1207
+        lng: 123.1207
       }
     }
   }
@@ -60,7 +60,7 @@ export default class App extends Component {
       .then(res => {
         return this.setState({ cafesList: res.data })
       })
-
+      
       this.getLocation();
 
   }
