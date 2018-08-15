@@ -12,8 +12,7 @@ const divStyle = {
   width: '100%',
   position: 'fixed',
   top: '10%',
-  zIndex: '10000',
-  left: '73%'
+  zIndex: '10000'
 }
 
 const divStyle2 = {
@@ -30,6 +29,7 @@ export class MapContainer extends Component {
     super(props);
     
 }
+
 
 
   render() {
