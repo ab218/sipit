@@ -36,8 +36,8 @@ app.get("/api/yelp", function (req, res) {
   return yelpApi
     .get('/businesses/search', {
       params: {
-        limit: 20,
-        categories: 'sushi',
+        limit: 10,
+        categories: 'bubbletea',
         location: 'vancouver'
       },
     })
