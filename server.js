@@ -17,12 +17,13 @@ app.use(bodyParser.json())
 const axios = require('axios')
 const settings = require('./settings.json')
 
-const api = axios.create({
+const yelpApi = axios.create({
   baseURL: 'https://api.yelp.com/v3',
   headers: {
     Authorization: `Bearer ${settings['YELP_API_KEY']}`,
   },
 })
+
 
 const usersRoutes = require("./routes/Users.js");
 const reviewsRoutes = require("./routes/Reviews.js");
@@ -32,11 +33,11 @@ app.use("/api/reviews", reviewsRoutes(knex));
 
 app.get("/api/yelp", function (req, res) {
 
-  return api
+  return yelpApi
     .get('/businesses/search', {
       params: {
-        limit:  50,
-        categories: 'gluten_free',
+        limit: 20,
+        categories: 'sushi',
         location: 'vancouver'
       },
     })

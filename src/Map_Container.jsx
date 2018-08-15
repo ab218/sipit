@@ -25,6 +25,11 @@ const divStyle2 = {
 
 
 export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    
+}
+
 
   render() {
     return (
@@ -34,8 +39,8 @@ export class MapContainer extends Component {
             zoom={12}
             style={style}
             initialCenter={{
-              lat: 49.2827,
-              lng: -123.1207
+              lat: this.props.myLatLng.lat,
+              lng: this.props.myLatLng.lng
             }}
           >
 
@@ -50,7 +55,8 @@ export class MapContainer extends Component {
               />
             )}
             <Marker onClick={this.onMarkerClick}
-              name={'Current location'} />
+              name={'Current location'}
+              label='' />
 
             <InfoWindow onClose={this.onInfoWindowClose}>
               <div>
