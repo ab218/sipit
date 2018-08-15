@@ -12,7 +12,8 @@ const divStyle = {
   width: '100%',
   position: 'fixed',
   top: '10%',
-  zIndex: '10000'
+  zIndex: '10000',
+  left: '73%'
 }
 
 const divStyle2 = {
