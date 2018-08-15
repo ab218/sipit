@@ -26,6 +26,11 @@ const divStyle2 = {
 
 
 export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    
+}
+
 
   render() {
     return (
@@ -35,8 +40,8 @@ export class MapContainer extends Component {
             zoom={12}
             style={style}
             initialCenter={{
-              lat: 49.2827,
-              lng: -123.1207
+              lat: this.props.myLatLng.lat,
+              lng: this.props.myLatLng.lng
             }}
           >
 
@@ -47,15 +52,12 @@ export class MapContainer extends Component {
                   lat: markers.coordinates.latitude,
                   lng: markers.coordinates.longitude
                 }}
-                icon={{
-                  url: markers.image_url,
-                  anchor: new google.maps.Point(32,32),
-                  scaledSize: new google.maps.Size(64,64)
-                }}
+                label={(i + 1).toString()}
               />
             )}
             <Marker onClick={this.onMarkerClick}
-              name={'Current location'} />
+              name={'Current location'}
+              label='' />
 
             <InfoWindow onClose={this.onInfoWindowClose}>
               <div>
