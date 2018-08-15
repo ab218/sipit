@@ -9,7 +9,7 @@ import TextFieldMargins from './Textarea.jsx';
 //import SearchBarComponent from './SearchBar.jsx';
 
 const mainTheme = {
-  backgroundColor: '#c1946a',
+ backgroundColor: 'brown',
 }
 
 export default class App extends Component {
@@ -54,7 +54,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    
+
     axios
       .get('/api/yelp')
       .then(res => {

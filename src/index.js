@@ -8,7 +8,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
     typography: {
         fontSize: 25,
-        fontFamily: 'Slabo 27px',
+        fontFamily: 'Do Hyeon 27px',
     },
 });
 

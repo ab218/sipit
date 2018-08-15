@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-console.log(TextField);
+console.log(React);
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -21,6 +21,7 @@ const styles = theme => ({
 
 const textFieldPadding = {
     padding: '100px',
+//    fontFamily: 'Karla', sans-serif;
 }
 
 const icon = {
@@ -37,7 +38,6 @@ const TextFieldMargins = props => {
       <TextField
         id="margin-normal"
         defaultValue="Enter Cafe name"
-        classes={{textField: classes.textField, input: classes.input}}
         margin="normal"
       />
       <i className="fas fa-search" style={icon}></i>

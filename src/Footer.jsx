@@ -15,6 +15,7 @@ const footerTitle = {
     paddingTop: '15px',
     borderBottom: '1px solid #FFFAF0',
     letterSpacing: '2px',
+    font: 'Karla',
 }
 
 const listBox = {
