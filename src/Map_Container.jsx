@@ -30,10 +30,6 @@ export class MapContainer extends Component {
     
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
   render() {
 
