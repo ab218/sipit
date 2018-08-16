@@ -9,7 +9,7 @@ import TextFieldMargins from './Textarea.jsx';
 //import SearchBarComponent from './SearchBar.jsx';
 
 const mainTheme = {
- backgroundColor: 'brown',
+  backgroundColor: 'brown',
 }
 
 export default class App extends Component {
@@ -17,55 +17,59 @@ export default class App extends Component {
     super(props);
     this.state = {
       cafesList: [],
+      yelpDataLoaded: false,
       myLatLng: {
-        lat: 49.2827,
-        lng: 123.1207
-      }
+
+      },
     }
   }
 
-
-
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.setState({
-          myLatLng: {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          }
-        }
-        );
-      })
-    } else {
-      //browser doesn't support geolocation, set as vancouver
+  loadPosition = async () => {
+    try {
+      const position = await this.getCurrentPosition();
       this.setState({
         myLatLng: {
-          lat: 49.8527,
-          lng: -123.1207
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
         }
-      }
-      );
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.getCafeCards()
     }
+  };
+
+  getCurrentPosition = (options = {}) => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+  };
+
+  getCafeCards() {
+    axios
+      .post('/api/yelp', {
+        location: this.state.myLatLng
+      })
+      .then(res => {
+        return this.setState({
+          ...this.state,
+          cafesList: res.data,
+          yelpDataLoaded: true,
+        })
+      })
   }
 
-  componentWillMount() {
-  
-  }
 
   componentDidMount() {
 
-    axios
-      .get('/api/yelp')
-      .then(res => {
-        return this.setState({ cafesList: res.data })
-      })
-      
-      this.getLocation();
+    this.loadPosition()
 
   }
 
   render() {
+    const { yelpDataLoaded } = this.state;
+
     return (<div style={mainTheme}>
       <SideNav
         cafesList={this.state.cafesList}
@@ -73,7 +77,10 @@ export default class App extends Component {
       />
       <NavbarComponent />
       <TextFieldMargins />
-      <CafeCard cafesList={this.state.cafesList} />
+      {yelpDataLoaded
+        ? <CafeCard cafesList={this.state.cafesList} />
+        : <h1>Loading</h1>
+      }
       <FooterComponent />
     </div>
     )

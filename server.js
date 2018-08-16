@@ -31,20 +31,19 @@ const reviewsRoutes = require("./routes/Reviews.js");
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/reviews", reviewsRoutes(knex));
 
-app.get("/api/yelp", function (req, res) {
-
+app.post("/api/yelp", function (req, res) {
   return yelpApi
     .get('/businesses/search', {
       params: {
         limit: 10,
         categories: 'bubbletea',
-        location: 'vancouver'
+        latitude: req.body.location.lat,
+        longitude: req.body.location.lng
       },
     })
     .then(reponse =>
       res.send(reponse.data.businesses.map(business => {
         const { name, coordinates, rating, image_url, categories } = business
-
         return ({
           name,
           coordinates,
