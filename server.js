@@ -35,8 +35,8 @@ app.post("/api/yelp", function (req, res) {
   return yelpApi
     .get('/businesses/search', {
       params: {
-        limit: 10,
-        categories: 'bubbletea',
+        limit: req.body.limit,
+        categories: req.body.category,
         latitude: req.body.location.lat,
         longitude: req.body.location.lng
       },

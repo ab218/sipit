@@ -18,8 +18,10 @@ export default class App extends Component {
     this.state = {
       cafesList: [],
       yelpDataLoaded: false,
+      //default LatLng set to Vancouver
       myLatLng: {
-
+        lat: 49.2827,
+        lng: -123.1207,
       },
     }
   }
@@ -36,7 +38,7 @@ export default class App extends Component {
     } catch (error) {
       console.log(error);
     } finally {
-      this.getCafeCards()
+      this.getCafeCards('bubbletea', 30)
     }
   };
 
@@ -46,10 +48,12 @@ export default class App extends Component {
     });
   };
 
-  getCafeCards() {
+  getCafeCards(category, limit) {
     axios
       .post('/api/yelp', {
-        location: this.state.myLatLng
+        location: this.state.myLatLng,
+        category: category,
+        limit: limit
       })
       .then(res => {
         return this.setState({
@@ -59,7 +63,6 @@ export default class App extends Component {
         })
       })
   }
-
 
   componentDidMount() {
 
@@ -79,7 +82,7 @@ export default class App extends Component {
       <TextFieldMargins />
       {yelpDataLoaded
         ? <CafeCard cafesList={this.state.cafesList} />
-        : <h1>Loading</h1>
+        : <h1 style={{color: 'white'}}>Loading results...</h1>
       }
       <FooterComponent />
     </div>
