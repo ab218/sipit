@@ -82,7 +82,7 @@ export default class App extends Component {
       <TextFieldMargins />
       {yelpDataLoaded
         ? <CafeCard cafesList={this.state.cafesList} />
-        : <h1 style={{color: 'white'}}>Loading results...</h1>
+        : <h1 style={{color: 'white'}}>Brewing results...</h1>
       }
       <FooterComponent />
     </div>

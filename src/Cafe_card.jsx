@@ -35,19 +35,6 @@ const styles = theme => ({
   actions: {
     display: 'inline-box',
   },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-    marginLeft: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: -8,
-    },
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
   avatar: {
     backgroundColor: red[500],
   },
@@ -57,19 +44,8 @@ class CafeCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            expanded: false
         }
     }
-    
-
-getCategories = () => {
-        for (let cats of cafe.categories) {
-            return <div>
-                {cats.title}
-                </div>
-    }
-}
-
 
 getCafes = () => {
     const { classes } = this.props;
