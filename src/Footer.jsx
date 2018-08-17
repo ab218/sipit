@@ -1,37 +1,39 @@
 import React, { Component } from 'react';
 //import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
-const footer = {
-    backgroundColor: '#405d27',
-    color: '#FFFAF0',
-    marginBottom: '1.25rem',
-    paddingBottom: '1.25rem',
-}
+const styles = {
+    footer : {
+        backgroundColor: '#405d27',
+        color: '#FFFAF0',
+        marginBottom: '1.25rem',
+        paddingBottom: '1.25rem',
+    },
 
-const footerTitle = {
-    width: '80rem',
-    marginLeft: '50px',
-    marginBottom: '20px',
-    paddingTop: '15px',
-    borderBottom: '1px solid #FFFAF0',
-    letterSpacing: '2px',
-    font: 'Karla',
-}
+    footerTitle : {
+        width: '80rem',
+        marginLeft: '50px',
+        marginBottom: '20px',
+        paddingTop: '15px',
+        borderBottom: '1px solid #FFFAF0',
+        letterSpacing: '2px',
+        font: 'Karla',
+    },
 
-const listBox = {
-    marginTop: '20px',
-    width: '30%',
-    paddingLeft: '20rem',
-    display: 'inline-box',
-}
+    listBox : {
+        marginTop: '20px',
+        width: '30%',
+        paddingLeft: '20rem',
+        display: 'inline-box',
+    },
 
-const listItem = {
-    display: 'block',
-    padding: '5px 0',
-    letterSpacing: '1px',
-    width: 'max-content',
-}
+    listItem : {
+        display: 'block',
+        padding: '5px 0',
+        letterSpacing: '1px',
+        width: 'max-content',
+    },
 
+}
 class FooterComponent extends Component {
     constructor(props) {
         super(props);
@@ -39,6 +41,7 @@ class FooterComponent extends Component {
 
 
     render() {
+    const {footer, footerTitle, listBox, listItem} = styles;
         return (
             <div className="footer" style={footer} >
                 <section className="footer-content">

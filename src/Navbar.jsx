@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 
 const styles ={
 
@@ -63,30 +63,33 @@ class NavbarComponent extends Component {
 
   
     render() {
+
+      const { navBar, navHead, navIcon, navItem, navBody, dropContent, dropItem, memberControl } = styles
+
        return (
-           <div className="navBar" style={styles.navBar}>
-        <div className="navHead" style={styles.navHead}>
+           <div className="navBar" style={navBar}>
+        <div className="navHead" style={navHead}>
           <div className="navBrand">
-            <i className="fas fa-coffee" style={styles.navIcon}></i> Sip-It
+            <i className="fas fa-coffee" style={navIcon}></i> Sip-It
           </div>
         </div>
-        <div className="navBody" style={styles.navBody}>
-          <div className="navItem" style={styles.navItem}>
+        <div className="navBody" style={navBody}>
+          <div className="navItem" style={navItem}>
             Home
           </div>
-          <div className="navItem" style={styles.navItem}>
+          <div className="navItem" style={navItem}>
             About
           </div>
-          <div className="navDropdown" className="navItem"style={styles.navItem}>Menu<i className="fas fa-caret-down"></i>
-            <div className="dropContent" style={styles.dropContent} onMouseOver={(e)=> {}}>
-            <a className="dropDownItem" style={styles.dropItem} href="#">Action</a>
-            <a className="dropDownItem" style={styles.dropItem} href="#">Action</a>
-            <a className="dropDownItem" style={styles.dropItem} href="#">Action</a>
-            <a className="dropDownItem" style={styles.dropItem} href="#">Action</a>
+          <div className="navDropdown" className="navItem"style={navItem}>Menu<i className="fas fa-caret-down"></i>
+            <div className="dropContent" style={dropContent} onMouseOver={(e)=> {}}>
+            <a className="dropDownItem" style={dropItem} href="#">Action</a>
+            <a className="dropDownItem" style={dropItem} href="#">Action</a>
+            <a className="dropDownItem" style={dropItem} href="#">Action</a>
+            <a className="dropDownItem" style={dropItem} href="#">Action</a>
             </div>
           </div>
         </div>
-        <div style={styles.memberControl}>
+        <div style={memberControl}>
         <span>Log In</span>
         <span>Sign Up</span>
         </div>
