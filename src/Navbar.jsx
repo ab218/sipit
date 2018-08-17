@@ -78,7 +78,7 @@ class NavbarComponent extends Component {
             About
           </div>
           <div className="navDropdown" className="navItem"style={styles.navItem}>Menu<i className="fas fa-caret-down"></i>
-            <div className="dropContent" style={styles.dropContent}>
+            <div className="dropContent" style={styles.dropContent} onMouseOver={(e)=> {}}>
             <a className="dropDownItem" style={styles.dropItem} href="#">Action</a>
             <a className="dropDownItem" style={styles.dropItem} href="#">Action</a>
             <a className="dropDownItem" style={styles.dropItem} href="#">Action</a>
