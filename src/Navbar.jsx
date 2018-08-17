@@ -32,8 +32,9 @@ navDropdown : {
 },
 
 dropContent: {
-//  display: 'none',
- display: 'grid',
+  display: 'none',
+// display: 'grid',
+ color: '#FFFF',
  position: 'absolute',
  minWidth: '160px',
  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
@@ -53,7 +54,28 @@ navItem :{
 memberControl : {
   textAlign: 'right',
   fontSize: '20px',
+//  marBotton: '20px',
 },
+
+logInBtn :{
+//  width: '200px',
+  backgroundColor: '#f26622',
+   border: '2px solid #f26622',
+   borderRadius: '15px',
+  color: '#FFFF',
+  margin: '0 10px 20px 10px',
+  padding: '5px 10px 5px 10px'
+},
+
+signUpBtn: {
+ backgroundColor: '#6196d2',
+   border: '2px solid #6196d2',
+   borderRadius: '15px',
+  color: '#FFFF',
+  margin: '0 15px 20px 15px',
+  padding: '5px'
+
+}
 
 }
 class NavbarComponent extends Component {
@@ -61,10 +83,22 @@ class NavbarComponent extends Component {
       super(props);
     }
 
+    //Menu mouse over effect
+    onMouseOver() {
+      this.showContent.style.removeProperty("display");
+      this.showContent.style.display = "inline-flex";
+    }
+
+    onMouseLeave(){
+      this.showContent.style.removeProperty("display");
+      this.showContent.style.display = "none";
+    
+    }
   
     render() {
 
-      const { navBar, navHead, navIcon, navItem, navBody, dropContent, dropItem, memberControl } = styles
+      const { navBar, navHead, navIcon, navItem, navBody, dropContent, dropItem, 
+        memberControl, logInBtn, signUpBtn } = styles
 
        return (
            <div className="navBar" style={navBar}>
@@ -80,8 +114,17 @@ class NavbarComponent extends Component {
           <div className="navItem" style={navItem}>
             About
           </div>
-          <div className="navDropdown" className="navItem"style={navItem}>Menu<i className="fas fa-caret-down"></i>
-            <div className="dropContent" style={dropContent} onMouseOver={(e)=> {}}>
+          <div className="navDropdown" 
+               className="navItem" 
+               style={navItem} 
+               onMouseOver={this.onMouseOver.bind(this)}
+               onMouseLeave={this.onMouseLeave.bind(this)}>
+           Menu
+           <i className="fas fa-caret-down"></i>
+            <div ref={div => {
+            this.showContent = div;
+            }}
+            className="dropContent" style={dropContent} >
             <a className="dropDownItem" style={dropItem} href="#">Action</a>
             <a className="dropDownItem" style={dropItem} href="#">Action</a>
             <a className="dropDownItem" style={dropItem} href="#">Action</a>
@@ -89,9 +132,9 @@ class NavbarComponent extends Component {
             </div>
           </div>
         </div>
-        <div style={memberControl}>
-        <span>Log In</span>
-        <span>Sign Up</span>
+        <div className="memberControl" style={memberControl}>
+          <span style={logInBtn}>Log In</span>
+          <span style={signUpBtn}>Sign Up</span>
         </div>
       </div>
         );
