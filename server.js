@@ -40,8 +40,8 @@ app.post("/api/yelp", function (req, res) {
         longitude: req.body.location.lng
       },
     })
-    .then(reponse =>
-      res.send(reponse.data.businesses.map(business => {
+    .then(response =>
+      res.send(response.data.businesses.map(business => {
         const { id, name, coordinates, rating, image_url, categories } = business
         return ({
           id,
@@ -55,25 +55,12 @@ app.post("/api/yelp", function (req, res) {
     .catch(error => console.error(error))
 })
 
-app.post("/api/:id/business", function (req, res) {
+app.get("/api/:id/business", function (req, res) {
   return yelpApi
-    .get(`/businesses/${req.body.id}`, {
-      params: {
-
-      },
+    .get(`/businesses/${req.params.id}`, {
     })
-    .then(reponse =>
-      res.send(reponse.data.businesses.map(business => {
-        const { id, name, photos, rating, image_url, categories } = business
-        return ({
-          id,
-          name,
-          photos,
-          rating,
-          image_url,
-          categories,
-        })
-      })))
+    .then(response =>
+      res.send(response.data))
     .catch(error => console.error(error))
 })
 

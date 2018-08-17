@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import BusinessDetails from './Business_Details.jsx'
 
 const mainTheme = {
     backgroundColor: '#5d4427',
@@ -9,18 +10,18 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            yelpDataLoaded: false,
         }
     }
 
-    getBusiness(id) {
+    getBusiness() {
         axios
-            .post(`/api/:id/business`, {
-                location: this.state.myLatLng,
-                id: id,
+            .get(`/api/${this.props.match.params.id}/business`, {
             })
             .then(res => {
                 return this.setState({
                     ...this.state,
+                    yelpDataLoaded: true,
                     cafeData: res.data,
                 })
             })
@@ -28,18 +29,18 @@ export default class Home extends Component {
 
     componentDidMount() {
 
+        this.getBusiness()
 
     }
 
     render() {
+        const { yelpDataLoaded, cafeData } = this.state
 
         return (<div style={mainTheme}>
-            <h1>
-            </h1>
-            {/* {yelpDataLoaded
-                ? <CafeCard cafesList={cafesList} />
+            {yelpDataLoaded
+                ? <BusinessDetails cafeData={cafeData} />
                 : <h1 style={{ color: 'white' }}>Brewing results...</h1>
-            } */}
+            }
         </div>
         )
     }
