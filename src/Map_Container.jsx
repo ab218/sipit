@@ -3,15 +3,15 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 const style = {
   position: 'absolute',
-  height: '50%',
-  width: '25%',
+  height: '30em',
+  width: '24em',
 }
 
 const divStyle = {
   height: '100%',
   width: '100%',
   position: 'fixed',
-  top: '10%',
+  top: '40%',
   zIndex: '10000'
 }
 
