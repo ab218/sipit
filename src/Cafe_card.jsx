@@ -68,10 +68,10 @@ getCafes = () => {
           <CardContent>
             <RatingStar starRating={cafe.rating}/>
 
-            <Typography component="div">
+            <Typography component="ul">
             { 
                 cafe.categories.map((sub, subindex) =>
-                    <span key={subindex}>{sub.title},&nbsp;</span>)
+                    <li key={subindex}>{sub.title}</li>)
             }
             </Typography>
           </CardContent>

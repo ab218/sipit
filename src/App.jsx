@@ -28,7 +28,9 @@ export default class App extends Component {
 
   loadPosition = async () => {
     try {
+      console.log(`trying to get geoposition...`)
       const position = await this.getCurrentPosition();
+      console.log(`got it! At: ${position.coords.latitude}, ${position.coords.longitude}`)
       this.setState({
         myLatLng: {
           lat: position.coords.latitude,
@@ -38,11 +40,11 @@ export default class App extends Component {
     } catch (error) {
       console.log(error);
     } finally {
-      this.getCafeCards('bubbletea', 30)
+      this.getCafeCards('korean', 30)
     }
   };
 
-  getCurrentPosition = (options = {}) => {
+  getCurrentPosition = (options = {timeout:10000}) => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });

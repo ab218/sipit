@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+const settings = require('../settings.json')
 
 const style = {
   position: 'absolute',
@@ -27,8 +28,8 @@ const divStyle2 = {
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
-    
-}
+
+  }
 
 
   render() {
@@ -60,13 +61,8 @@ export class MapContainer extends Component {
                 label={(i + 1).toString()}
               />
             )}
-            <Marker onClick={this.onMarkerClick}
-              name={'Current location'}
-              label='' />
-
             <InfoWindow onClose={this.onInfoWindowClose}>
               <div>
-
               </div>
             </InfoWindow>
           </Map>
@@ -77,31 +73,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyB7aANaU0tj9Bsf1Uzmhhgw-YhrNlp4trA'
+  apiKey: settings['GOOGLE_API_KEY']
 })(MapContainer)
-
-// import React, {Component} from 'react';
-// import Map from './Map.jsx';
-// import {GoogleApiWrapper} from 'google-maps-react';
-
-// export class Container extends Component {
-//     render() {
-
-//         const style = {
-//             width: '100vw',
-//             height: '100vh'
-//           }
-//       if (!this.props.loaded) {
-//         return <div>Loading...</div>
-//       }
-//       return (
-//         <div>
-//         <Map google={this.props.google} />
-//       </div>
-//       )
-//     }
-//   }
-
-//   export default GoogleApiWrapper({
-//     apiKey: 'AIzaSyB7aANaU0tj9Bsf1Uzmhhgw-YhrNlp4trA'
-//   })(Container)

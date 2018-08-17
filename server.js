@@ -24,7 +24,6 @@ const yelpApi = axios.create({
   },
 })
 
-
 const usersRoutes = require("./routes/Users.js");
 const reviewsRoutes = require("./routes/Reviews.js");
 
