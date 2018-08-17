@@ -30,15 +30,17 @@ export default class App extends Component {
     try {
       console.log(`trying to get geoposition...`)
       const position = await this.getCurrentPosition();
-      console.log(`got it! At: ${position.coords.latitude}, ${position.coords.longitude}`)
+      const latitude = position.coords.latitude
+      const longitude = position.coords.longitude
+      console.log(`got it! At: ${latitude}, ${longitude}`)
       this.setState({
         myLatLng: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lat: latitude,
+          lng: longitude
         }
       });
     } catch (error) {
-      console.log(error);
+      console.log('failed to get position.', error);
     } finally {
       this.getCafeCards('korean', 30)
     }
@@ -73,17 +75,17 @@ export default class App extends Component {
   }
 
   render() {
-    const { yelpDataLoaded } = this.state;
+    const { yelpDataLoaded, cafesList, myLatLng } = this.state;
 
     return (<div style={mainTheme}>
       <SideNav
-        cafesList={this.state.cafesList}
-        myLatLng={this.state.myLatLng}
+        cafesList={cafesList}
+        myLatLng={myLatLng}
       />
       <NavbarComponent />
       <TextFieldMargins />
       {yelpDataLoaded
-        ? <CafeCard cafesList={this.state.cafesList} />
+        ? <CafeCard cafesList={cafesList} />
         : <h1 style={{color: 'white'}}>Brewing results...</h1>
       }
       <FooterComponent />

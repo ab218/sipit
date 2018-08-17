@@ -34,20 +34,21 @@ export class MapContainer extends Component {
 
   render() {
 
+    const { myLatLng, google } = this.props
 
     return (
       <div style={divStyle}>
         <div style={divStyle2}>
-          <Map google={this.props.google}
+          <Map google={google}
             zoom={12}
             style={style}
             initialCenter={{
-              lat: this.props.myLatLng.lat,
-              lng: this.props.myLatLng.lng
+              lat: myLatLng.lat,
+              lng: myLatLng.lng
             }}
             center={{
-              lat: this.props.myLatLng.lat,
-              lng: this.props.myLatLng.lng
+              lat: myLatLng.lat,
+              lng: myLatLng.lng
             }}
           >
 
