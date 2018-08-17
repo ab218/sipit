@@ -14,6 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import RatingStar from './Rating_star.jsx';
+import { Link } from "react-router-dom";
 
 
 const styles = theme => ({
@@ -53,6 +54,7 @@ getCafes = () => {
     .map((cafe, i) => (
         <div key={i} className={classes.actions}>
         <Card className={classes.card}>
+        <Link to={`/${cafe.id}`}>
           <CardHeader
             action={
               <IconButton>
@@ -61,6 +63,7 @@ getCafes = () => {
             }
             title={`${i + 1}. ${cafe.name}`}
           />
+          </Link>
           <CardMedia
             className={classes.media}
             image={cafe.image_url}

@@ -42,10 +42,33 @@ app.post("/api/yelp", function (req, res) {
     })
     .then(reponse =>
       res.send(reponse.data.businesses.map(business => {
-        const { name, coordinates, rating, image_url, categories } = business
+        const { id, name, coordinates, rating, image_url, categories } = business
         return ({
+          id,
           name,
           coordinates,
+          rating,
+          image_url,
+          categories,
+        })
+      })))
+    .catch(error => console.error(error))
+})
+
+app.post("/api/:id/business", function (req, res) {
+  return yelpApi
+    .get(`/businesses/${req.body.id}`, {
+      params: {
+
+      },
+    })
+    .then(reponse =>
+      res.send(reponse.data.businesses.map(business => {
+        const { id, name, photos, rating, image_url, categories } = business
+        return ({
+          id,
+          name,
+          photos,
           rating,
           image_url,
           categories,
