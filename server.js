@@ -3,9 +3,11 @@ const knexConfig = require('./knexfile');
 const bodyParser = require('body-parser');
 const knex = require('knex')(knexConfig['development']);
 const PORT = process.env.API_PORT | 8081; // this port needs to match the port in the webapack.config.js -> devServer -> proxy
+const history = require('connect-history-api-fallback');
 
 const cors = require('cors')
 const app = express();
+app.use(history());
 
 app.use(cors())
 
@@ -13,6 +15,9 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(bodyParser.json())
+
+
+
 
 const axios = require('axios')
 const settings = require('./settings.json')

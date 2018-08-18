@@ -49,8 +49,8 @@ class CafeCard extends React.Component {
     }
 
 getCafes = () => {
-    const { classes } = this.props;
-    return this.props.cafesList
+    const { classes, cafesList } = this.props;
+    return cafesList
     .map((cafe, i) => (
         <div key={i} className={classes.actions}>
         <Card className={classes.card}>

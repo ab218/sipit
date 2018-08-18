@@ -1,4 +1,8 @@
 import React from 'react';
+import { Carousel } from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+
 
 
 class BusinessDetails extends React.Component {
@@ -17,10 +21,16 @@ class BusinessDetails extends React.Component {
                 <h1>
                     {cafeData.name}
                 </h1>
-                {
-                    cafeData.photos.map((sub, subindex) =>
-                        <img key={subindex} src={sub} />)
-                }
+                <Carousel>
+                    {
+                        cafeData.photos.map((sub, subindex) =>
+                            <div key={subindex}>
+                                <img src={sub} />
+                                <p className="legend">Picture {subindex + 1}</p>
+                            </div>
+                        )
+                    }
+                </Carousel>
                 {
                     cafeData.location.display_address.map((sub, subindex) =>
                         <h5 key={subindex}>{sub}</h5>)
