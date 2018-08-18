@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Home.jsx';
 import Business from './Business.jsx'
-
+import { Route, Switch } from 'react-router-dom'
 
 
 export default class Routes extends Component {
@@ -14,12 +13,10 @@ export default class Routes extends Component {
     }
     render() {
         return (
-            <Router>
                 <Switch>
                     <Route exact path="/" exact component={Home} />
                     <Route path="/:id" component={Business} />
                 </Switch>
-            </Router>
         )
     }
 }
