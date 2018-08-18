@@ -44,7 +44,7 @@ export default class Home extends Component {
     }
   };
 
-  getCurrentPosition = (options = {timeout:10000}) => {
+  getCurrentPosition = (options = {timeout:10000, maximumAge:600000}) => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
