@@ -9,12 +9,22 @@ class BusinessDetails extends React.Component {
     }
 
     render() {
+
+        const { cafeData } = this.props
+
         return (
             <div>
                 <h1>
-                    {this.props.cafeData.name}
+                    {cafeData.name}
                 </h1>
-                <img src={this.props.cafeData.image_url} />
+                {
+                    cafeData.photos.map((sub, subindex) =>
+                        <img key={subindex} src={sub} />)
+                }
+                {
+                    cafeData.location.display_address.map((sub, subindex) =>
+                        <h5 key={subindex}>{sub}</h5>)
+                }
             </div>
         )
     }
