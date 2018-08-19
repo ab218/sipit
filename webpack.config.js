@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
+
 module.exports = {
   mode: 'development',
   entry: ["babel-polyfill", './src/index.js'],
@@ -25,7 +26,9 @@ module.exports = {
     host: '0.0.0.0',
     proxy: {
       '/api': 'http://localhost:8081'
-    }
+    },
+    historyApiFallback: true
+  
   },
 
   module: {

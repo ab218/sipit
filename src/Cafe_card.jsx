@@ -13,7 +13,7 @@ import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import RatingStar from './Rating_star.jsx';
+import RatingStar from './Rating_Star.jsx';
 import { Link } from "react-router-dom";
 
 
@@ -49,8 +49,8 @@ class CafeCard extends React.Component {
     }
 
 getCafes = () => {
-    const { classes } = this.props;
-    return this.props.cafesList
+    const { classes, cafesList } = this.props;
+    return cafesList
     .map((cafe, i) => (
         <div key={i} className={classes.actions}>
         <Card className={classes.card}>
@@ -71,12 +71,12 @@ getCafes = () => {
           <CardContent>
             <RatingStar starRating={cafe.rating}/>
 
-            <Typography component="ul">
+            {/* <Typography component="ul">
             { 
                 cafe.categories.map((sub, subindex) =>
                     <li key={subindex}>{sub.title}</li>)
             }
-            </Typography>
+            </Typography> */}
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton aria-label="Add to favorites">
