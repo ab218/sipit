@@ -1,0 +1,305 @@
+[33mcommit d799928e3f0073d946bde3f79ce196ed35193ade[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Sat Aug 18 05:08:24 2018 +0900
+
+    login Btns
+
+[33mcommit 0b46dad61c0fc5f38f39ce5fe71a58d35a7f4f28[m
+Merge: 99055a2 9592254
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Fri Aug 17 13:58:36 2018 +0900
+
+    added distructuring variables
+
+[33mcommit 99055a201b1894416af2b1716624ff1afeea3bee[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Fri Aug 17 13:56:39 2018 +0900
+
+    still changing Navbar..
+
+[33mcommit 9592254b987e7a3c40a4bf4825420df4ca8e2cfb[m
+Author: A B <ab218@live.com>
+Date:   Thu Aug 16 21:54:52 2018 -0700
+
+    cleaning up code
+
+[33mcommit b1b69c3c489b59a1893c3179f4fd72ec0250a2ef[m
+Merge: 72dfe26 56c25b1
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Fri Aug 17 13:23:28 2018 +0900
+
+    merge conflict
+
+[33mcommit 72dfe26b543802e43d83457ad4f50d4d9184f644[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Fri Aug 17 13:21:59 2018 +0900
+
+    changed layouts for Map, Navbar
+
+[33mcommit 56c25b1c679a5cefb08cc406bee6b97a2bbbd7a7[m
+Author: A B <ab218@live.com>
+Date:   Thu Aug 16 21:19:08 2018 -0700
+
+    removing unused code
+
+[33mcommit 0b4c5eec569d97665e5bd46df31df3809b7ce77c[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 23:10:04 2018 -0700
+
+    deleting unused google map api files
+
+[33mcommit c1518a894cf6a8b117fee9a108a68643477a7a98[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 23:07:50 2018 -0700
+
+    removing unused code (expanded cafe cards)
+
+[33mcommit 2ecc42f532d5363da0a2e695e8789c536f5d48c2[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 22:27:24 2018 -0700
+
+    styled loading div
+
+[33mcommit 138a150ba144e414b973b13e1d6c28de6b533559[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 21:58:16 2018 -0700
+
+    fixed async api call
+
+[33mcommit 0eba3be9a0162155e27d9c94a7679fd5e5c7c9b5[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 14:01:29 2018 -0700
+
+    merge with master
+
+[33mcommit fa646e34f3d91d51f9e48a7a0e9631018bc63b1a[m
+Merge: a4775af 03b4e1f
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 14:00:09 2018 -0700
+
+    merge with master
+
+[33mcommit 03b4e1ff9d9c0f37f5a500c65ccf2a844dca4eed[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 13:56:56 2018 -0700
+
+    fixed geolocation center
+
+[33mcommit 773cde270abb0bb2f6cc416d3e796daffc289636[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 12:26:32 2018 -0700
+
+    fixing master
+
+[33mcommit 70a7589633945f6bc71b92b1f8b105be2bc1fd05[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 12:22:35 2018 -0700
+
+    fixing master
+
+[33mcommit a4d0734bdc51520d9fe8aae2d2fdb0f1d55c20dc[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 12:09:39 2018 -0700
+
+    fixing master
+
+[33mcommit a4775afa817cdc8f07d4fbe155294317096a9903[m
+Merge: 957aab5 b2b2ab1
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 12:06:25 2018 -0700
+
+    pushing to master
+
+[33mcommit 957aab52eaa6b514711fd7190c4f052caa8970eb[m
+Author: A B <ab218@live.com>
+Date:   Wed Aug 15 12:01:48 2018 -0700
+
+    reworking google map api
+
+[33mcommit b2b2ab112f2cdac4b23b22a7665e73b113164af6[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Thu Aug 16 04:00:23 2018 +0900
+
+    fixed minor errors
+
+[33mcommit ef9cceeb934caa54b598bb70f5e9434552ac49b2[m
+Author: A B <ab218@live.com>
+Date:   Tue Aug 14 15:50:16 2018 -0700
+
+    added numbers to markers and cafe titles
+
+[33mcommit 856b5e537765a169faebd93114c6e9bc027eb1bf[m
+Merge: 09376de baf1aff
+Author: A B <ab218@live.com>
+Date:   Tue Aug 14 15:29:06 2018 -0700
+
+    Merge branch 'master' of github.com:ab218/sipit
+
+[33mcommit baf1aff25990e1165d5db13f9a9b57f2fc4b365f[m
+Merge: 65be5e0 73843ad
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Wed Aug 15 07:18:04 2018 +0900
+
+    Merge branch 'master' of github.com:ab218/sipit
+
+[33mcommit 65be5e04bfafe5dce1b3c85c54c90b33fa19e336[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Wed Aug 15 07:17:18 2018 +0900
+
+    search bar
+
+[33mcommit 09376de4ca59b0d97e1bc4b4326346f2cc029504[m
+Author: A B <ab218@live.com>
+Date:   Tue Aug 14 15:15:53 2018 -0700
+
+    added markers
+
+[33mcommit 73843adb82dde696dbff4561f001c2039889625b[m
+Author: A B <ab218@live.com>
+Date:   Tue Aug 14 12:36:30 2018 -0700
+
+    working on map
+
+[33mcommit d0f2cae4da180b2ac4557b912d6f8f455c13bd5b[m
+Merge: 356021b 44a840f
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Tue Aug 14 16:24:28 2018 +0900
+
+    Merge branch 'master' of github.com:ab218/sipit
+
+[33mcommit 356021b6bdeb8e8ee58655e48893c422062528d1[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Tue Aug 14 16:23:30 2018 +0900
+
+    applied main theme color and added text area component
+
+[33mcommit 44a840f2c129a45008c4eac52d389dec444df80e[m
+Author: A B <ab218@live.com>
+Date:   Tue Aug 14 00:03:27 2018 -0700
+
+    cleaning up some unused code
+
+[33mcommit d62cc2f27690fbdf8be2dd9866c613d95e5e4e38[m
+Author: A B <ab218@live.com>
+Date:   Mon Aug 13 23:59:30 2018 -0700
+
+    added seed scripts and reviews api call
+
+[33mcommit 62602869c2ba04a3a6919ed60316072a4eb2afd4[m
+Author: A B <ab218@live.com>
+Date:   Mon Aug 13 23:32:08 2018 -0700
+
+    working on cards a bit. map inside of a map
+
+[33mcommit 78e9c8415c2712c178fb2f51c4247f9fe4ccb7b9[m
+Author: A B <ab218@live.com>
+Date:   Mon Aug 13 22:10:07 2018 -0700
+
+    fixed some minor dom errors, added closed/open
+
+[33mcommit c152cfe6208b76903e0e423eab8a32c10f2ad8e7[m
+Author: A B <ab218@live.com>
+Date:   Mon Aug 13 18:10:43 2018 -0700
+
+    rating stars properly mapped and fixed formatting
+
+[33mcommit bbfb5193614c4423f5d6ec48f3d536f0c4c7bd8f[m
+Merge: fb70da2 fc24b64
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Tue Aug 14 07:33:19 2018 +0900
+
+    Conflicts
+
+[33mcommit fb70da21be7977e69bf53b83e82b706ffc19ea59[m
+Merge: d02ff9c 12dd57c
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Tue Aug 14 07:28:15 2018 +0900
+
+    merge conflict
+
+[33mcommit fc24b642d8eabd5ef9c7557141adffacd4b119a7[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Tue Aug 14 07:18:11 2018 +0900
+
+    Footer component
+
+[33mcommit 12dd57c64fbca1b0761f1bba12770f385810c1bf[m
+Author: A B <ab218@live.com>
+Date:   Mon Aug 13 15:12:55 2018 -0700
+
+    mapping to cafecards component
+
+[33mcommit b7d3be2bdafe9767891019f3c468a410ecb9d487[m
+Author: A B <ab218@live.com>
+Date:   Mon Aug 13 13:22:01 2018 -0700
+
+    yelp api working (fetching data on backend and passing to client)
+
+[33mcommit b36430d7bd5e5a194021bc1189ad82b0d94303e7[m
+Author: A B <ab218@live.com>
+Date:   Sun Aug 12 16:02:18 2018 -0700
+
+    set up database/api calls, working on yelp fusion
+
+[33mcommit 89cd03c8cf9f427859281b9cb9f84aeb016dff31[m
+Author: A B <ab218@live.com>
+Date:   Sun Aug 12 00:09:26 2018 -0700
+
+    db created
+
+[33mcommit d02ff9c38388922f4038de7b6f9dd3975b64c2e9[m
+Merge: 07f0b9f 628ef2e
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Sun Aug 12 14:47:24 2018 +0900
+
+    Merge conflict
+
+[33mcommit 07f0b9fa83de20d27252f5a2bd0c956dd7bce39f[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Sun Aug 12 14:43:54 2018 +0900
+
+    added components
+
+[33mcommit 628ef2e3981a679d16e5f9e8ff209f2b51c3543a[m
+Merge: cb7f14d 7d1a13d
+Author: A B <ab218@live.com>
+Date:   Sat Aug 11 22:41:55 2018 -0700
+
+    Merge branch 'master' of github.com:ab218/sipit
+
+[33mcommit cb7f14d0841eb3ba4b568683aef9b3881688462b[m
+Author: A B <ab218@live.com>
+Date:   Sat Aug 11 22:41:36 2018 -0700
+
+    added card component and fixed font issues with material UI by creating a theme
+
+[33mcommit 7d1a13d94b229f389e4ce96e8764ac496252edff[m
+Merge: c041959 094544e
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Sat Aug 11 08:58:31 2018 +0900
+
+    Merge conflict
+
+[33mcommit c041959ce60e0810d6141ae02ebffd437befaa85[m
+Author: HyunJungOh <hjoh@selva-i.co.jp>
+Date:   Sat Aug 11 08:55:31 2018 +0900
+
+    fist commit-1
+
+[33mcommit 094544e5aedbd9ee85a54449eae2b3483fa0b403[m
+Author: A B <ab218@live.com>
+Date:   Fri Aug 10 16:34:15 2018 -0700
+
+    gitignore
+
+[33mcommit 5d4dfad9e45a500371df3db92c401663e16acbe9[m
+Author: A B <ab218@live.com>
+Date:   Fri Aug 10 16:26:49 2018 -0700
+
+    added navbar component
+
+[33mcommit 403832c6384701da4269c4d647d370f37b94dfe6[m
+Author: A B <ab218@live.com>
+Date:   Fri Aug 10 16:26:31 2018 -0700
+
+    added navbar 
