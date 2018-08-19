@@ -40,7 +40,7 @@ export default class Home extends Component {
     } catch (error) {
       console.log('failed to get position.', error);
     } finally {
-      this.getCafeCards('parks', 10)
+      this.getCafeCards('coffee', 10)
     }
   };
 
