@@ -14,6 +14,7 @@ const styles = {
   },
   input: {
     borderColor: '5px solid black',
+    color: 'white'
   }
 };
 
@@ -34,17 +35,20 @@ class TextFieldMargins extends Component {
   }
 
   render() {
-    const { container } = styles;
+    const { container, input } = styles;
     return (
       <div style={container} >
         <div style={textFieldPadding}></div>
-        <form onSubmit={this.props.searchCafes.bind(this)}>
+        <form onSubmit={this.props.searchCafes}>
           <TextField
             id="cafeSearch"
             name="cafeSearch"
             defaultValue="Enter Cafe name"
             margin="normal"
-            onChange={this.props.handleInputChange.bind(this)}
+            onChange={this.props.handleInputChange}
+            InputProps={{
+              style: input
+            }}
           />
           <i className="fas fa-search" style={icon}></i>
         </form>
