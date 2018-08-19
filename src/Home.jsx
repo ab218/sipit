@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import MapContainer from './Map_Container.jsx';
-import CafeCard from './Cafe_card.jsx';
+import CafeCard from './Cafe_Card.jsx';
 import axios from 'axios'
 import SideNav from './Side_Nav.jsx';
-import TextFieldMargins from './Textarea.jsx';
+import SearchBar from './Search_Bar.jsx';
 //import SearchBarComponent from './SearchBar.jsx';
 
 const mainTheme = {
@@ -96,7 +96,7 @@ export default class Home extends Component {
         cafesList={cafesList}
         myLatLng={myLatLng}
       />
-      <TextFieldMargins
+      <SearchBar
       searchCafes={this.searchCafes}
       handleInputChange={this.handleInputChange}
        />

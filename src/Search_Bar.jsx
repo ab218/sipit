@@ -43,7 +43,7 @@ class TextFieldMargins extends Component {
           <TextField
             id="cafeSearch"
             name="cafeSearch"
-            defaultValue="Enter Cafe name"
+            defaultValue="Enter Search Term"
             margin="normal"
             onChange={this.props.handleInputChange}
             InputProps={{
