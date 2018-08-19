@@ -44,17 +44,17 @@ export default class Home extends Component {
     }
   };
 
-  getCurrentPosition = (options = {timeout:10000, maximumAge:600000}) => {
+  getCurrentPosition = (options = {timeout:10000, maximumAge:3600000}) => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
   };
 
-  getCafeCards(category, limit) {
+  getCafeCards(term, limit) {
     axios
       .post('/api/yelp', {
         location: this.state.myLatLng,
-        category: category,
+        term: term,
         limit: limit
       })
       .then(res => {
@@ -65,6 +65,22 @@ export default class Home extends Component {
         })
       })
   }
+
+  searchCafes = (e) => {
+    e.preventDefault()
+    this.getCafeCards(this.state.cafeSearch, 10)
+  }
+
+  handleInputChange = (e) => {
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
 
   componentDidMount() {
 
@@ -80,7 +96,10 @@ export default class Home extends Component {
         cafesList={cafesList}
         myLatLng={myLatLng}
       />
-      <TextFieldMargins />
+      <TextFieldMargins
+      searchCafes={this.searchCafes}
+      handleInputChange={this.handleInputChange}
+       />
       {yelpDataLoaded
         ? <CafeCard cafesList={cafesList} />
         : <h1 style={{color: 'white'}}>Brewing results...</h1>

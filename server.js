@@ -40,7 +40,7 @@ app.post("/api/yelp", function (req, res) {
     .get('/businesses/search', {
       params: {
         limit: req.body.limit,
-        categories: req.body.category,
+        term: req.body.term,
         latitude: req.body.location.lat,
         longitude: req.body.location.lng
       },
