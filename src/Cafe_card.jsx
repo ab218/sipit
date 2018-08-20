@@ -22,14 +22,13 @@ const styles = theme => ({
     maxWidth: 300,
     minWidth: 300,
     maxHeight: 500,
-    marginRight: 20,
-    marginLeft: 20,
+    paddingRight: 20,
+    paddingLeft: 20,
     marginBottom: 20,
   },
   spacer: {
-      marginRight: '20%',
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));'
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));',
   },
   media: {
     height: 0,

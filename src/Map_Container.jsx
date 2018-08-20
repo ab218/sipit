@@ -4,16 +4,19 @@ const settings = require('../settings.json')
 
 const style = {
   position: 'absolute',
-  height: '30em',
-  width: '24em',
+  height: '15em',
+  width: '80%',
+  margin: 'auto',
 }
 
 const divStyle = {
   height: '100%',
   width: '100%',
-  position: 'fixed',
+  position: 'relative',
   top: '40%',
-  zIndex: '10000'
+  zIndex: '10000',
+  paddingBottom: '3em',
+  paddingTop: '8em'
 }
 
 const divStyle2 = {
