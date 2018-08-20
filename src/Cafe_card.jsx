@@ -28,6 +28,8 @@ const styles = theme => ({
   },
   spacer: {
       marginRight: '20%',
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));'
   },
   media: {
     height: 0,
