@@ -93,14 +93,14 @@ export default class Home extends Component {
     const { yelpDataLoaded, cafesList, myLatLng } = this.state;
 
     return (<div style={mainTheme}>
-      <MapContainer
-        cafesList={cafesList}
-        myLatLng={myLatLng}
-      />
       <SearchBar
       searchCafes={this.searchCafes}
       handleInputChange={this.handleInputChange}
        />
+      <MapContainer
+        cafesList={cafesList}
+        myLatLng={myLatLng}
+      />
       {yelpDataLoaded
         ? <CafeCard cafesList={cafesList} />
         : <h1 style={{color: 'white'}}>Brewing results...</h1>

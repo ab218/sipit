@@ -37,9 +37,9 @@ const styles = theme => ({
   actions: {
     display: 'inline-box',
   },
-  avatar: {
-    backgroundColor: red[500],
-  },
+  // avatar: {
+  //   backgroundColor: red[500],
+  // },
 });
 
 class CafeCard extends React.Component {
