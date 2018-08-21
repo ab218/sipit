@@ -8,6 +8,7 @@ const styles = {
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    position: 'relative',
   },
   textField: {
     width: 300,

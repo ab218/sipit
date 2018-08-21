@@ -6,9 +6,10 @@ import axios from 'axios'
 import SearchBar from './Search_Bar.jsx';
 //import SearchBarComponent from './SearchBar.jsx';
 import MapContainer from './Map_Container.jsx';
+import Dropdown from './Dropdown.jsx';
 
 const mainTheme = {
- backgroundColor: '#5d4427',
+  backgroundColor: '#5d4427',
 }
 
 export default class Home extends Component {
@@ -45,7 +46,7 @@ export default class Home extends Component {
     }
   };
 
-  getCurrentPosition = (options = {timeout:10000, maximumAge:3600000}) => {
+  getCurrentPosition = (options = { timeout: 10000, maximumAge: 3600000 }) => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
@@ -98,12 +99,13 @@ export default class Home extends Component {
         myLatLng={myLatLng}
       />
       <SearchBar
-      searchCafes={this.searchCafes}
-      handleInputChange={this.handleInputChange}
-       />
+        searchCafes={this.searchCafes}
+        handleInputChange={this.handleInputChange}
+      />
+      <Dropdown />
       {yelpDataLoaded
         ? <CafeCard cafesList={cafesList} />
-        : <h1 style={{color: 'white'}}>Brewing results...</h1>
+        : <h1 style={{ color: 'white' }}>Brewing results...</h1>
       }
     </div>
     )
