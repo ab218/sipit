@@ -51,7 +51,7 @@ class TextFieldMargins extends Component {
               style: input
             }}
           />
-          <span style={{backgroundColor: 'brown'}}><button onClick={this.props.searchCafes}><i className="fas fa-search"></i></button></span>
+        <span><button onClick={this.props.searchCafes}><i className="fas fa-search"></i></button></span>
         </form>
       </div>
     );

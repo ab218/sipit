@@ -84,10 +84,6 @@ export default class Home extends Component {
     });
   }
 
-  handleChangeResults = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
 
   componentDidMount() {
 
@@ -99,19 +95,19 @@ export default class Home extends Component {
     const { yelpDataLoaded, cafesList, myLatLng } = this.state;
 
     return (<div style={mainTheme}>
-    <div style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
-    <div >
-      <SearchBar
-        searchCafes={this.searchCafes}
-        handleInputChange={this.handleInputChange}
-      />
-      </div>
-      <div>
-      <Dropdown 
-      handleChangeResults={this.handleChangeResults}
-      results={this.state.results}
-      />
-      </div>
+      <div style={{ display: 'inline-flex' }}>
+        <div >
+          <SearchBar
+            searchCafes={this.searchCafes}
+            handleInputChange={this.handleInputChange}
+          />
+        </div>
+        <div>
+          <Dropdown
+            handleInputChange={this.handleInputChange}
+            results={this.state.results}
+          />
+        </div>
       </div>
       <MapContainer
         cafesList={cafesList}
