@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -13,7 +13,7 @@ const styles = theme => ({
   },
 });
 
-class ControlledOpenSelect extends React.Component {
+class Dropdown extends Component {
   state = {
     results: '',
     open: false,
@@ -34,16 +34,14 @@ class ControlledOpenSelect extends React.Component {
     return (
       <form autoComplete="off">
         <FormControl className={classes.formControl}>
-          <InputLabel style={{color: 'lightgreen'}}htmlFor="demo-controlled-open-select">{this.props.results}</InputLabel>
           <Select 
             open={this.state.open}
             onClose={this.handleClose}
             onOpen={this.handleOpen}
-            value={this.state.age}
+            value={this.props.results}
             onChange={this.props.handleInputChange}
             inputProps={{
               name: 'results',
-              id: 'demo-controlled-open-select',
             }}
           >
             <MenuItem value={10}>10</MenuItem>
@@ -56,8 +54,8 @@ class ControlledOpenSelect extends React.Component {
   }
 }
 
-ControlledOpenSelect.propTypes = {
+Dropdown.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ControlledOpenSelect);
+export default withStyles(styles)(Dropdown);
