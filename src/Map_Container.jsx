@@ -14,9 +14,10 @@ const divStyle = {
   width: '100%',
   position: 'relative',
   top: '40%',
-  zIndex: '10000',
+  zIndex: '2',
   paddingBottom: '3em',
-  paddingTop: '8em'
+  paddingTop: '0em',
+  marginBottom: '10em'
 }
 
 
@@ -33,6 +34,7 @@ export class MapContainer extends Component {
 
     return (
       <div style={divStyle}>
+        
           <Map google={google}
             zoom={12}
             style={style}

@@ -11,6 +11,7 @@ const styles = {
     boxShadow: '0 9px 10px 0 rgba(0,0,0,0.2)',
     fontFamily: 'Karla',
     paddingTop: '20px',
+    zIndex: '99999'
   },
 
   navHead: {

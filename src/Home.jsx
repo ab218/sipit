@@ -23,6 +23,7 @@ export default class Home extends Component {
         lat: 49.2827,
         lng: -123.1207,
       },
+      results: 10
     }
   }
 
@@ -70,7 +71,7 @@ export default class Home extends Component {
 
   searchCafes = (e) => {
     e.preventDefault()
-    this.getCafeCards(this.state.cafeSearch, 10)
+    this.getCafeCards(this.state.cafeSearch, this.state.results)
   }
 
   handleInputChange = (e) => {
@@ -83,6 +84,10 @@ export default class Home extends Component {
     });
   }
 
+  handleChangeResults = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
 
   componentDidMount() {
 
@@ -94,15 +99,24 @@ export default class Home extends Component {
     const { yelpDataLoaded, cafesList, myLatLng } = this.state;
 
     return (<div style={mainTheme}>
-      <MapContainer
-        cafesList={cafesList}
-        myLatLng={myLatLng}
-      />
+    <div style={{ display: 'inline-flex', justifyContent: 'space-between' }}>
+    <div >
       <SearchBar
         searchCafes={this.searchCafes}
         handleInputChange={this.handleInputChange}
       />
-      <Dropdown />
+      </div>
+      <div>
+      <Dropdown 
+      handleChangeResults={this.handleChangeResults}
+      results={this.state.results}
+      />
+      </div>
+      </div>
+      <MapContainer
+        cafesList={cafesList}
+        myLatLng={myLatLng}
+      />
       {yelpDataLoaded
         ? <CafeCard cafesList={cafesList} />
         : <h1 style={{ color: 'white' }}>Brewing results...</h1>

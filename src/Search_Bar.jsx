@@ -11,16 +11,17 @@ const styles = {
     position: 'relative',
   },
   textField: {
-    width: 300,
+    width: 500,
   },
   input: {
     borderColor: '5px solid black',
-    color: 'white'
+    color: 'white',
+//    backgroundColor: 'white',
   }
 };
 
 const textFieldPadding = {
-  padding: '100px',
+  padding: '8em',
   //    fontFamily: 'Karla', sans-serif;
 }
 
@@ -43,8 +44,8 @@ class TextFieldMargins extends Component {
         <form onSubmit={this.props.searchCafes}>
           <TextField
             id="cafeSearch"
-            name="cafeSearch"
-            defaultValue="Enter Search Term"
+            name="cafeSearch" 
+            placeholder="Enter Search Term"
             margin="normal"
             onChange={this.props.handleInputChange}
             InputProps={{
