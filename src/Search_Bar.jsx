@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-
 const styles = {
   container: {
     display: 'flex',
@@ -52,7 +51,7 @@ class TextFieldMargins extends Component {
               style: input
             }}
           />
-          <i className="fas fa-search" style={icon}></i>
+          <span style={{backgroundColor: 'brown'}}><button onClick={this.props.searchCafes}><i className="fas fa-search"></i></button></span>
         </form>
       </div>
     );
