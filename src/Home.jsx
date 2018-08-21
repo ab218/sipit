@@ -38,7 +38,9 @@ export default class Home extends Component {
         myLatLng: {
           lat: latitude,
           lng: longitude
-        }
+        },
+        cafeSearch: '',
+        locationSearch: '',
       });
     } catch (error) {
       console.log('failed to get position.', error);
@@ -55,8 +57,24 @@ export default class Home extends Component {
 
   getCafeCards(term, limit) {
     axios
-      .post('/api/yelp', {
-        location: this.state.myLatLng,
+      .post('/api/yelp/latlng', {
+        latLng: this.state.myLatLng,
+        term: term,
+        limit: limit
+      })
+      .then(res => {
+        return this.setState({
+          ...this.state,
+          cafesList: res.data,
+          yelpDataLoaded: true,
+        })
+      })
+  }
+
+  async getCafeCardsLocation(term, limit) {
+    axios
+      .post('/api/yelp/loc', {
+        location: this.state.locationSearch,
         term: term,
         limit: limit
       })
@@ -71,7 +89,12 @@ export default class Home extends Component {
 
   searchCafes = (e) => {
     e.preventDefault()
+    if (this.state.locationSearch === '') {
     this.getCafeCards(this.state.cafeSearch, this.state.results)
+    }
+    else {
+      this.getCafeCardsLocation(this.state.cafeSearch, this.state.results)
+    }
   }
 
   handleInputChange = (e) => {
@@ -84,6 +107,14 @@ export default class Home extends Component {
     });
   }
 
+  recenterMap = () => {
+    this.setState({
+      myLatLng: {
+        lat: this.state.cafesList[0].coordinates.latitude,
+        lng: this.state.cafesList[0].coordinates.longitude
+      }
+    })
+  }
 
   componentDidMount() {
 
