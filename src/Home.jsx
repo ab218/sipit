@@ -71,7 +71,7 @@ export default class Home extends Component {
       })
   }
 
-  async getCafeCardsLocation(term, limit) {
+   getCafeCardsLocation(term, limit) {
     axios
       .post('/api/yelp/loc', {
         location: this.state.locationSearch,
