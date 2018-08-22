@@ -35,8 +35,12 @@ const styles = theme => ({
     paddingTop: '56.25%', // 16:9
   },
   actions: {
-    display: 'inline-box',
+    display: 'inline-flex',
   },
+  buttons: {
+    position: 'relative',
+    marginTop: '100%'
+  }
 
 });
 
@@ -68,8 +72,10 @@ getCafes = () => {
             image={cafe.image_url}
           />
           <CardContent>
+            <span>
             <RatingStar starRating={cafe.rating}/>
-
+            <p>{`(${cafe.review_count} reviews)`}</p>
+            </span>
             {/* <Typography component="ul">
             { 
                 cafe.categories.map((sub, subindex) =>
@@ -77,7 +83,7 @@ getCafes = () => {
             }
             </Typography> */}
           </CardContent>
-          <CardActions className={classes.actions} disableActionSpacing>
+          <CardActions  disableActionSpacing>
             <IconButton aria-label="Add to favorites">
               <FavoriteIcon />
             </IconButton>

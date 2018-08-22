@@ -7,10 +7,8 @@ const history = require('connect-history-api-fallback');
 
 // const cors = require('cors')
 const app = express();
-app.use(history());
 
 // app.use(cors())
-
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -23,6 +21,9 @@ const reviewsRoutes = require("./routes/Reviews.js");
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/reviews", reviewsRoutes(knex));
 
+app.get('/api', (req, res) => {
+  res.json({why: 'doesnt', this: 'work'});
+});
 
 const axios = require('axios')
 const settings = require('./settings.json')
@@ -33,9 +34,6 @@ const yelpApi = axios.create({
     Authorization: `Bearer ${settings['YELP_API_KEY']}`,
   },
 })
-
-
-
 
 app.post("/api/yelp/loc", function (req, res) {
   return yelpApi
@@ -48,7 +46,7 @@ app.post("/api/yelp/loc", function (req, res) {
     })
     .then(response =>
       res.send(response.data.businesses.map(business => {
-        const { id, name, coordinates, rating, image_url, categories } = business
+        const { id, name, coordinates, rating, image_url, categories, review_count } = business
         return ({
           id,
           name,
@@ -56,6 +54,7 @@ app.post("/api/yelp/loc", function (req, res) {
           rating,
           image_url,
           categories,
+          review_count,
         })
       })))
     .catch(error => console.error(error))
@@ -73,7 +72,7 @@ app.post("/api/yelp/latlng", function (req, res) {
     })
     .then(response =>
       res.send(response.data.businesses.map(business => {
-        const { id, name, coordinates, rating, image_url, categories } = business
+        const { id, name, coordinates, rating, image_url, categories, review_count } = business
         return ({
           id,
           name,
@@ -81,11 +80,11 @@ app.post("/api/yelp/latlng", function (req, res) {
           rating,
           image_url,
           categories,
+          review_count,
         })
       })))
     .catch(error => console.error(error))
 })
-
 
 app.get("/api/business/:id/details", function (req, res) {
   return yelpApi
@@ -96,8 +95,19 @@ app.get("/api/business/:id/details", function (req, res) {
     .catch(error => console.error(error))
 })
 
+app.get("/api/business/:id/reviews", function (req, res) {
+  return yelpApi
+    .get(`/businesses/${req.params.id}/reviews`, {
+    })
+    .then(response =>
+      res.send(response.data))
+    .catch(error => console.error(error))
+})
+
+
+app.use(history());
 
 app.listen(PORT, () => {
-  console.log(`Server up`);
+  console.log(`Server up on ${PORT}`);
 });
 
