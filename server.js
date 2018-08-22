@@ -5,18 +5,23 @@ const knex = require('knex')(knexConfig['development']);
 const PORT = process.env.API_PORT | 8081; // this port needs to match the port in the webapack.config.js -> devServer -> proxy
 const history = require('connect-history-api-fallback');
 
-const cors = require('cors')
+// const cors = require('cors')
 const app = express();
 app.use(history());
 
-app.use(cors())
+// app.use(cors())
+
 
 app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(bodyParser.json())
 
+const usersRoutes = require("./routes/Users.js");
+const reviewsRoutes = require("./routes/Reviews.js");
 
+app.use("/api/users", usersRoutes(knex));
+app.use("/api/reviews", reviewsRoutes(knex));
 
 
 const axios = require('axios')
@@ -29,20 +34,40 @@ const yelpApi = axios.create({
   },
 })
 
-const usersRoutes = require("./routes/Users.js");
-const reviewsRoutes = require("./routes/Reviews.js");
 
-app.use("/api/users", usersRoutes(knex));
-app.use("/api/reviews", reviewsRoutes(knex));
 
-app.post("/api/yelp", function (req, res) {
+app.post("/api/yelp/loc", function (req, res) {
   return yelpApi
     .get('/businesses/search', {
       params: {
         limit: req.body.limit,
         term: req.body.term,
-        latitude: req.body.location.lat,
-        longitude: req.body.location.lng
+        location: req.body.location,
+      },
+    })
+    .then(response =>
+      res.send(response.data.businesses.map(business => {
+        const { id, name, coordinates, rating, image_url, categories } = business
+        return ({
+          id,
+          name,
+          coordinates,
+          rating,
+          image_url,
+          categories,
+        })
+      })))
+    .catch(error => console.error(error))
+})
+
+app.post("/api/yelp/latlng", function (req, res) {
+  return yelpApi
+    .get('/businesses/search', {
+      params: {
+        limit: req.body.limit,
+        term: req.body.term,
+        latitude: req.body.latLng.lat,
+        longitude: req.body.latLng.lng
       },
     })
     .then(response =>
@@ -61,11 +86,6 @@ app.post("/api/yelp", function (req, res) {
 })
 
 
-
-app.get("/login", function (req,res) {
-  return res.render("login");
-
-})
 app.get("/api/:id/business", function (req, res) {
   return yelpApi
     .get(`/businesses/${req.params.id}`, {

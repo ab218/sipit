@@ -15,7 +15,7 @@ const styles = {
   input: {
     borderColor: '5px solid black',
     color: 'white',
-//    backgroundColor: 'white',
+    //    backgroundColor: 'white',
   }
 };
 
@@ -43,7 +43,7 @@ class TextFieldMargins extends Component {
         <form onSubmit={this.props.searchCafes}>
           <TextField
             id="cafeSearch"
-            name="cafeSearch" 
+            name="cafeSearch"
             placeholder="Enter Search Term"
             margin="normal"
             onChange={this.props.handleInputChange}
@@ -51,7 +51,17 @@ class TextFieldMargins extends Component {
               style: input
             }}
           />
-        <span><button onClick={this.props.searchCafes}><i className="fas fa-search"></i></button></span>
+          <TextField
+            id="locationSearch"
+            name="locationSearch"
+            placeholder="Enter Location"
+            margin="normal"
+            onChange={this.props.handleInputChange}
+            InputProps={{
+              style: input
+            }}
+          />
+          <span><button onClick={this.props.searchCafes}><i className="fas fa-search"></i></button></span>
         </form>
       </div>
     );
