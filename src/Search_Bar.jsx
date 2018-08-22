@@ -19,10 +19,6 @@ const styles = {
   }
 };
 
-const textFieldPadding = {
-  padding: '8em',
-  //    fontFamily: 'Karla', sans-serif;
-}
 
 const icon = {
   paddingTop: '25px',
