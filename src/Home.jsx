@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-// import MapContainer from './Map_Container.jsx';
 import CafeCard from './Cafe_Card.jsx';
 import axios from 'axios'
-// import SideNav from './Side_Nav.jsx';
 import SearchBar from './Search_Bar.jsx';
-//import SearchBarComponent from './SearchBar.jsx';
 import MapContainer from './Map_Container.jsx';
 import Dropdown from './Dropdown.jsx';
 
@@ -23,7 +20,9 @@ export default class Home extends Component {
         lat: 49.2827,
         lng: -123.1207,
       },
-      results: 10
+      results: 10,
+      cafeSearch: '',
+      locationSearch: '',
     }
   }
 
@@ -39,8 +38,6 @@ export default class Home extends Component {
           lat: latitude,
           lng: longitude
         },
-        cafeSearch: '',
-        locationSearch: '',
       });
     } catch (error) {
       console.log('failed to get position.', error);
@@ -83,17 +80,22 @@ export default class Home extends Component {
           ...this.state,
           cafesList: res.data,
           yelpDataLoaded: true,
+          myLatLng: {
+            lat: res.data[0].coordinates.latitude,
+            lng: res.data[0].coordinates.longitude
+          }
         })
       })
   }
 
   searchCafes = (e) => {
+    const { cafeSearch, locationSearch, results, cafesList } = this.state
     e.preventDefault()
-    if (this.state.locationSearch === '') {
-    this.getCafeCards(this.state.cafeSearch, this.state.results)
+    if (locationSearch === '') {
+    this.getCafeCards(cafeSearch, results)
     }
     else {
-      this.getCafeCardsLocation(this.state.cafeSearch, this.state.results)
+      this.getCafeCardsLocation(cafeSearch, results)
     }
   }
 
@@ -107,15 +109,6 @@ export default class Home extends Component {
     });
   }
 
-  recenterMap = () => {
-    this.setState({
-      myLatLng: {
-        lat: this.state.cafesList[0].coordinates.latitude,
-        lng: this.state.cafesList[0].coordinates.longitude
-      }
-    })
-  }
-
   componentDidMount() {
 
     this.loadPosition()
@@ -123,7 +116,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { yelpDataLoaded, cafesList, myLatLng } = this.state;
+    const { yelpDataLoaded, cafesList, myLatLng, results } = this.state;
 
     return (<div style={mainTheme}>
       <div style={{ display: 'inline-flex' }}>
@@ -136,7 +129,7 @@ export default class Home extends Component {
         <div>
           <Dropdown
             handleInputChange={this.handleInputChange}
-            results={this.state.results}
+            results={results}
           />
         </div>
       </div>

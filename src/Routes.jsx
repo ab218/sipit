@@ -18,8 +18,8 @@ export default class Routes extends Component {
         return (
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/signup" component={Signup} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
                 <Route path="/business/:id" component={Business} />
             </Switch>
         )

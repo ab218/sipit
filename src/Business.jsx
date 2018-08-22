@@ -16,7 +16,7 @@ export default class Home extends Component {
 
     getBusiness() {
         axios
-            .get(`/api/${this.props.match.params.id}/business`, {
+            .get(`/api/business/${this.props.match.params.id}/details`, {
             })
             .then(res => {
                 return this.setState({

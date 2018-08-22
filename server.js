@@ -36,6 +36,7 @@ const yelpApi = axios.create({
 
 
 
+
 app.post("/api/yelp/loc", function (req, res) {
   return yelpApi
     .get('/businesses/search', {
@@ -86,7 +87,7 @@ app.post("/api/yelp/latlng", function (req, res) {
 })
 
 
-app.get("/api/:id/business", function (req, res) {
+app.get("/api/business/:id/details", function (req, res) {
   return yelpApi
     .get(`/businesses/${req.params.id}`, {
     })
