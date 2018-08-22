@@ -9,7 +9,8 @@ import Select from '@material-ui/core/Select';
 const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
-    minWidth: 120,
+    minWidth: 60,
+    backgroundColor: 'white'
   },
 });
 

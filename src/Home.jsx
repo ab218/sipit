@@ -119,19 +119,17 @@ export default class Home extends Component {
     const { yelpDataLoaded, cafesList, myLatLng, results } = this.state;
 
     return (<div style={mainTheme}>
-      <div style={{ display: 'inline-flex' }}>
-        <div >
+      <div style={{ display: 'inline-flex', paddingBottom: '8em', marginLeft: '10em', }}>
           <SearchBar
             searchCafes={this.searchCafes}
             handleInputChange={this.handleInputChange}
           />
-        </div>
-        <div>
+          <div style={{marginTop: '0.65em', paddingLeft: '0.3em'}}>
           <Dropdown
             handleInputChange={this.handleInputChange}
             results={results}
           />
-        </div>
+          </div>
       </div>
       <MapContainer
         cafesList={cafesList}

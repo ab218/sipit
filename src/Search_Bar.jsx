@@ -38,8 +38,6 @@ class TextFieldMargins extends Component {
   render() {
     const { container, input } = styles;
     return (
-      <div style={container} >
-        <div style={textFieldPadding}></div>
         <form onSubmit={this.props.searchCafes}>
           <TextField
             id="cafeSearch"
@@ -50,7 +48,7 @@ class TextFieldMargins extends Component {
             InputProps={{
               style: input
             }}
-          />
+            />
           <TextField
             id="locationSearch"
             name="locationSearch"
@@ -60,10 +58,9 @@ class TextFieldMargins extends Component {
             InputProps={{
               style: input
             }}
-          />
+            />
           <span><button onClick={this.props.searchCafes}><i className="fas fa-search"></i></button></span>
         </form>
-      </div>
     );
   }
 }
