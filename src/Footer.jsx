@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 const styles = {
     footer : {
+        position: 'relative',
         backgroundColor: '#405d27',
         color: '#FFFAF0',
         marginBottom: '1.25rem',
@@ -46,7 +47,9 @@ class FooterComponent extends Component {
             <div className="footer" style={footer} >
                 <section className="footer-content">
                     <div className="footerTitle" style={footerTitle}>
-                        <span><h2 style={{ paddingBottom: 20 + 'px' }}>Sip-it</h2>
+                        <span><h2 style={{ paddingBottom: 20 + 'px' ,     
+                                           fontFamily: 'Pacifico',
+                                           fontWeight: 'bold'}}>Sip-it</h2>
                             <p>Find your best coffee.</p>
                         </span>
                     </div>

@@ -1,10 +1,37 @@
 import React, { Component } from 'react';
 
 const styles = {
-    title: {
-        color: '#FFFF',
+    mainTheme: {
+        backgroundColor: "#5d4427",
     },
 
+    wrapper: {
+        position: 'relative',
+        backgroundColor: '#FFFF',
+        width: '50em',
+        height: '40em',
+        marginLeft: '20em',
+        paddingTop: '5em',
+        textAlign: 'center',
+        borderRadius: '15%',
+        top: '100px',
+        bottom: '100px',
+    },
+    title: {
+        color: '#5d4427',
+        fontSize: '56px',
+        margin: '0 0 50px 0',
+        fontFamily: 'Pacifico',
+        fontWeight: 'bold',
+    },
+    elementsLabel: {
+        color: 'gray',
+        margin: '0 0 30px 0',
+
+    elementsInput:{
+        fontSize: '1.3em',  
+    }
+    }
 }
 
 export default class Signup extends Component {
@@ -27,21 +54,32 @@ export default class Signup extends Component {
         event.preventDefault();
     }
      render() {
-        const { title, input } = styles; 
+        const { mainTheme, wrapper, title, elementsLabel, elementsInput, input } = styles; 
         return (
-             <div>
-                 <h3 style={title}>Sign Up</h3>
+             <div style={mainTheme}>
+                <div style={wrapper}>
+                 <h2 style={title}>Sip-it</h2>
                  <form onSubmit={this.handleSubmit}>  
-                    <label>
-                        ID: 
-                        <input type="text" name="userId" value={this.state.userId} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Password: 
-                        <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
-                    </label>
+                    <label style={elementsLabel}>
+                        Email
+                        <input style={elementsInput} type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+                    </label><br />
+                    <label style={elementsLabel}>
+                        Password
+                        <input style={elementsInput} type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+                        </label><br />
+                    <label style={elementsLabel}>
+                        Confirm Password
+                        <input style={elementsInput} type="text" name="confPassword" value={this.state.confPassword} onChange={this.handleChange} />
+                        </label><br />
+                    <label style={elementsLabel}>
+                        User Name
+                        <input style={elementsInput} type="text" name="userName" value={this.state.userName} onChange={this.handleChange} />
+                    </label><br />
                     <input type="submit" value="submit" />
-                </form>
+                    
+                 </form>
+                </div>
              </div>
          );
 
