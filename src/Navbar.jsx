@@ -75,10 +75,12 @@ const styles = {
     borderRadius: '15px',
     color: '#FFFF',
     margin: '0 15px 20px 15px',
-    padding: '5px'
+    padding: '5px',
+  },
+
+  linkStyle: {
 
   }
-
 }
 class NavbarComponent extends Component {
   constructor(props) {
@@ -137,9 +139,11 @@ class NavbarComponent extends Component {
           </div>
         </div>
         <div className="memberControl" style={memberControl}>
-          <span style={logInBtn}>Log In</span>
-          <span style={signUpBtn}>Sign Up</span>
+          <span style={logInBtn}><Link to="login">Log In</Link></span>
+          <span style={signUpBtn}><Link to="signup">Sign Up</Link></span>
         </div>
+        {this.props.children}
+
       </div>
     );
   }

@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Home from './Home.jsx';
 import Business from './Business.jsx';
 import Login from './Login.jsx';
+import Signup from './Signup.jsx';
 
 
 
@@ -17,8 +18,9 @@ export default class Routes extends Component {
         return (
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/:id" component={Business} />
-                <Route path="/login" component={Login} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route path="/business/:id" component={Business} />
             </Switch>
         )
     }

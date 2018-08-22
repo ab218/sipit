@@ -37,9 +37,7 @@ const styles = theme => ({
   actions: {
     display: 'inline-box',
   },
-  // avatar: {
-  //   backgroundColor: red[500],
-  // },
+
 });
 
 class CafeCard extends React.Component {
@@ -55,7 +53,7 @@ getCafes = () => {
     .map((cafe, i) => (
         <div key={i} className={classes.actions}>
         <Card className={classes.card}>
-        <Link to={`/${cafe.id}`}>
+        <Link to={`/business/${cafe.id}`}>
           <CardHeader
             action={
               <IconButton>

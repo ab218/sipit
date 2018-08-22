@@ -60,6 +60,12 @@ app.post("/api/yelp", function (req, res) {
     .catch(error => console.error(error))
 })
 
+
+
+app.get("/login", function (req,res) {
+  return res.render("login");
+
+})
 app.get("/api/:id/business", function (req, res) {
   return yelpApi
     .get(`/businesses/${req.params.id}`, {
@@ -69,6 +75,8 @@ app.get("/api/:id/business", function (req, res) {
     .catch(error => console.error(error))
 })
 
+
 app.listen(PORT, () => {
   console.log(`Server up`);
 });
+
