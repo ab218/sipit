@@ -2,7 +2,7 @@ const express = require('express');
 const knexConfig = require('./knexfile');
 const bodyParser = require('body-parser');
 const knex = require('knex')(knexConfig['development']);
-const PORT = process.env.API_PORT | 8081; // this port needs to match the port in the webapack.config.js -> devServer -> proxy
+const PORT = process.env.PORT | 8081; // this port needs to match the port in the webapack.config.js -> devServer -> proxy
 const history = require('connect-history-api-fallback');
 require('dotenv').config();
 
