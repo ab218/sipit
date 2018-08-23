@@ -9,7 +9,7 @@ const path = require("path");
 
 // const cors = require('cors')
 const app = express();
-
+app.use(express.static('build/public'));
 // app.use(cors())
 
 app.use(bodyParser.urlencoded({
@@ -106,7 +106,7 @@ app.get("/api/business/:id/reviews", function (req, res) {
 })
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/src/public/index.html'));
+  res.sendFile(path.join(__dirname, '/build/bundle.js'));
 });
 
 app.use(history());
