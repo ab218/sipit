@@ -106,6 +106,7 @@ app.get("/api/business/:id/reviews", function (req, res) {
     .catch(error => console.error(error))
 })
 
+//history must go after other endpoints and before app.use to enable fallback on heroku
 app.use(history());
 
 if (process.env.NODE_ENV === 'production') {
