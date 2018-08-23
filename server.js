@@ -3,13 +3,13 @@ const express = require('express');
 const knexConfig = require('./knexfile');
 const bodyParser = require('body-parser');
 const knex = require('knex')(knexConfig['development']);
-const PORT = process.env.PORT || 8081; // this port needs to match the port in the webapack.config.js -> devServer -> proxy
+const PORT = process.env.PORT || 8081; // this port needs to match the port in the webpack.config.js -> devServer -> proxy
 const history = require('connect-history-api-fallback');
 const path = require("path");
 
 // const cors = require('cors')
 const app = express();
-// app.use(express.static(__dirname + '/'));
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('src/public'));
   app.use(express.static('build'));
@@ -108,12 +108,6 @@ app.get("/api/business/:id/reviews", function (req, res) {
       res.send(response.data))
     .catch(error => console.error(error))
 })
-
-
-// app.get('/', (req, res) => {
-// 	res.sendFile(path.join(__dirname, 'src/public', 'index.html'));
-// });
-
 
 
 app.use(history());
