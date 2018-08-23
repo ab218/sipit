@@ -74,7 +74,9 @@ module.exports = {
       // $: 'jquery',
       _: 'lodash',
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: path.resolve(__dirname, './.env')
+    }),
   ],
   
 };
