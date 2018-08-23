@@ -10,6 +10,7 @@ const path = require("path");
 // const cors = require('cors')
 const app = express();
 app.use(express.static('build/public'));
+app.use(express.static(__dirname + '/'));
 // app.use(cors())
 
 app.use(bodyParser.urlencoded({
