@@ -11,13 +11,24 @@ export default class Routes extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            favorites: 0,
         }
     }
+
+    setFavorites = (amount) => {
+        this.setState({
+            favorites: amount,
+        })
+    }
+
     render() {
         return (
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={() => {
+                    return <Home 
+                    favorites={this.state.favorites}
+                    setFavorites={this.setFavorites} />
+                }} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/business/:id" component={Business} />

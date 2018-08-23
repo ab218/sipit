@@ -9,7 +9,7 @@ const mainTheme = {
   backgroundColor: '#5d4427',
 }
 
-export default class Home extends Component {
+export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -138,6 +138,7 @@ export default class Home extends Component {
           />
         </div>
       </div>
+      <p>you have {this.props.favorites} favorites</p>
       <MapContainer
         cafesList={cafesList}
         myLatLng={myLatLng}
