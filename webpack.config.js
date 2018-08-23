@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const Dotenv = require('dotenv-webpack');
+var merge = require('webpack-merge');
+require('dotenv').config();
 
 
 
@@ -74,8 +75,8 @@ module.exports = {
       // $: 'jquery',
       _: 'lodash',
     }),
-    new Dotenv({
-      path: path.resolve(__dirname, './.env')
+    new webpack.DefinePlugin({
+      'process.env.GOOGLE_API_KEY': JSON.stringify(process.env.GOOGLE_API_KEY),
     }),
   ],
   
