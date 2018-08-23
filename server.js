@@ -11,7 +11,7 @@ const path = require("path");
 const app = express();
 // app.use(express.static(__dirname + '/'));
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('src/build'));
+  app.use(express.static('src/public'));
 }
 // app.use(cors())
 
@@ -110,7 +110,7 @@ app.get("/api/business/:id/reviews", function (req, res) {
 
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'src/build', 'index.html'));
+	res.sendFile(path.join(__dirname, 'src/public', 'index.html'));
 });
 
 // app.get('*', (req, res) => {
