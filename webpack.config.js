@@ -1,8 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
+
 
 
 module.exports = {
+  
   mode: 'development',
   entry: ["babel-polyfill", './src/index.js'],
 
@@ -70,6 +73,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       // $: 'jquery',
       _: 'lodash',
-    })
-  ]
+    }),
+    new Dotenv(),
+  ],
+  
 };
