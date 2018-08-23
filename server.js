@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const knex = require('knex')(knexConfig['development']);
 const PORT = process.env.API_PORT | 8081; // this port needs to match the port in the webapack.config.js -> devServer -> proxy
 const history = require('connect-history-api-fallback');
+require('dotenv').config();
 
 // const cors = require('cors')
 const app = express();
@@ -26,12 +27,11 @@ app.get('/api', (req, res) => {
 });
 
 const axios = require('axios')
-const settings = require('./settings.json')
 
 const yelpApi = axios.create({
   baseURL: 'https://api.yelp.com/v3',
   headers: {
-    Authorization: `Bearer ${settings['YELP_API_KEY']}`,
+    Authorization: `Bearer ${process.env.YELP_API_KEY}`,
   },
 })
 

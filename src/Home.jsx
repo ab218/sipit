@@ -9,7 +9,7 @@ const mainTheme = {
   backgroundColor: '#5d4427',
 }
 
-export default class extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {

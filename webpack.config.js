@@ -11,10 +11,10 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
-  // node: {
-  //   fs: 'empty',
-  //   net: 'empty'
-  // },
+  node: {
+    fs: 'empty',
+    // net: 'empty'
+  },
   // target: 'web',
 
   // https://webpack.js.org/configuration/devtool/#devtool

@@ -30,6 +30,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.3",
     "faker": "^4.1.0",
+    "fs": "0.0.1-security",
     "google-maps-react": "^2.0.2",
     "jquery": "^3.3.1",
     "knex": "^0.15.2",

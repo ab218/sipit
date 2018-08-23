@@ -27,17 +27,17 @@ class BusinessDetails extends React.Component {
 
         return (
             <div style={{ maxWidth: '500px', margin: 'auto' }}>
-            <h3 style={{color: 'pink'}}>Yelp Reviews</h3>
+                <h3 style={{ color: 'pink' }}>Yelp Reviews</h3>
                 {
                     reviewsData.reviews.map((sub, subindex) =>
                         <div style={review} key={subindex}><h4 style={reviewTitle}>
                             {`${subindex + 1}. ${sub.user.name}`}
                         </h4>
-                        <p style={review}>
-                            {sub.text}
-                        </p>
-                        <p style={{color: 'green', float: 'right'}}>posted at: {sub.time_created}</p>
-                        <br />
+                            <p style={review}>
+                                {sub.text}
+                            </p>
+                            <p style={{ color: 'green', float: 'right' }}>posted at: {sub.time_created}</p>
+                            <br />
                         </div>
                     )
                 }
