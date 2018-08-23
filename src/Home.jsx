@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CafeCard from './Cafe_Card.jsx';
+import CafeCard from './Cafe_Cardx.jsx';
 import axios from 'axios'
 import SearchBar from './Search_Bar.jsx';
 import MapContainer from './Map_Container.jsx';

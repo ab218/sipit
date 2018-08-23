@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Home from './Home.jsx';
 import Business from './Business.jsx';
 import Login from './Login.jsx';
-import Signup from './Signup.jsx';
+import Signup from './Signupx.jsx';
 
 
 
