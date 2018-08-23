@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 require('dotenv').config();
-const apiKey = process.env.YELP_API_KEY
+const apiKey = process.env.GOOGLE_API_KEY
 
 const style = {
   position: 'absolute',
