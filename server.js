@@ -108,8 +108,13 @@ app.get("/api/business/:id/reviews", function (req, res) {
     .catch(error => console.error(error))
 })
 
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'src/build', 'index.html'));
+});
+
 // app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/src/public/bundle.js'));
+//   res.sendFile(path.join(__dirname, '/src/public/index.html'));
 // });
 
 app.use(history());
