@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const styles = {
 
   navBar: {
+    positon: 'absolute',
     backgroundColor: '#FFFF',
     color: '#5d4427',
     fontSize: '30px',
@@ -17,6 +18,8 @@ const styles = {
   navHead: {
     margin: '10px 0 0 20px',
     float: 'left',
+    fontFamily: 'Pacifico',
+    fontWeight: 'bold'
   },
 
   navIcon: {

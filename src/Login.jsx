@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -30,11 +29,48 @@ const styles = theme => ({
       },
     },
  });
-  
-function CustomizedInputs(props) {
-    const { classes } = props;
-  
+
+const custtomStyles = {
+    submitBtn : {
+        display: 'inline-block',
+        padding: '0.3em 1em',
+        textDecoration: 'none',
+        textAlign: 'center',
+        color: '#f26622',
+        border: 'solid 2px #f26622',
+        borderRadius: '3px',
+        transition: '.4s',
+    },
+}
+
+//   //Menu mouse over effect
+
+
+class CustomizedInputs extends React.Component  {
+//    console.log(props);
+
+constructor(props) {
+    super(props);
+
+
+}
+
+onMouseOver() {
+    this.custtomStyles.submitBtn.style.backgroundColor= "#f26622";
+    this.custtomStyles.submitBtn.style.color = "#FFF";
+  }
+
+  onMouseLeave() {
+    this.showContent.style.removeProperty("background-color");
+//    this.showContent.style.display = "none";
+
+  }
+
+render(){
+    const { classes } = this.props;
+
     return (
+        <div className="formWrapper" style={mainTheme}>
       <div className={classes.container}>
         <FormControl className={classes.margin}>
           <InputLabel
@@ -69,12 +105,17 @@ function CustomizedInputs(props) {
             }}
             id="Password"
           />
+          <div className="Btn" style={custtomStyles.submitBtn}>
+          <input type="submit" value="Log in"
+          onMouseOver={this.onMouseOver.bind(this)}
+          onMouseLeave={this.onMouseLeave.bind(this)} />
+          </div>
         </FormControl>
-
+      </div>
       </div>
     );
   }
-  
+}
   CustomizedInputs.propTypes = {
     classes: PropTypes.object.isRequired,
   };
