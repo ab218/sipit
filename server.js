@@ -10,9 +10,9 @@ const path = require("path");
 // const cors = require('cors')
 const app = express();
 // app.use(express.static(__dirname + '/'));
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('src/public'));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('src/public'));
+// }
 // app.use(cors())
 
 app.use(bodyParser.urlencoded({
