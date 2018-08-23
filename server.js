@@ -10,10 +10,7 @@ const path = require("path");
 // const cors = require('cors')
 const app = express();
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('src/public'));
-  app.use(express.static('build'));
-}
+
 // app.use(cors())
 
 app.use(bodyParser.urlencoded({
@@ -109,8 +106,13 @@ app.get("/api/business/:id/reviews", function (req, res) {
     .catch(error => console.error(error))
 })
 
-
 app.use(history());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('src/public'));
+  app.use(express.static('build'));
+}
+
 
 app.listen(PORT, () => {
   console.log(`Server up on ${PORT}`);

@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-var merge = require('webpack-merge');
 require('dotenv').config();
 
 
