@@ -11,7 +11,7 @@ const path = require("path");
 const app = express();
 // app.use(express.static(__dirname + '/'));
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build/public'));
+  app.use(express.static('src/build'));
 }
 // app.use(cors())
 
