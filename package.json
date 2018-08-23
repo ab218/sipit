@@ -7,8 +7,9 @@
     "build": "webpack-cli",
     "dev": "concurrently --kill-others \"webpack-dev-server\" \"nodemon server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run dev",
-    "seed": "knex migrate:rollback && knex migrate:latest && knex seed:run"
+    "start": "node server.js",
+    "seed": "knex migrate:rollback && knex migrate:latest && knex seed:run",
+    "postinstall": "npm run build"
   },
   "author": "Jeremy Holman <jeremy.holman@gmail.com>",
   "license": "UNLICENSED",
