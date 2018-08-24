@@ -30,9 +30,22 @@ const styles = theme => ({
     },
  });
 
-const custtomStyles = {
+const customStyles = {
+    formBox : {
+        padding: '3em',
+        textAlign: 'center',
+        backgroundColor: '#FFFF',
+        borderRadius: '15%',
+        marginTop: '30px',
+        marginBottom: '30px',
+        top: '70px',
+        bottom: '70px',
+    },
     submitBtn : {
         display: 'inline-block',
+        backgroundColor: '#FFFF',
+        borderStyle: 'none',
+        marginTop: '50px',
         padding: '0.3em 1em',
         textDecoration: 'none',
         textAlign: 'center',
@@ -41,52 +54,74 @@ const custtomStyles = {
         borderRadius: '3px',
         transition: '.4s',
     },
+    title: {
+        color: '#5d4427',
+        fontSize: '56px',
+        margin: '0 0 50px 0',
+        fontFamily: 'Pacifico',
+        fontWeight: 'bold',
+    },
 }
 
-//   //Menu mouse over effect
-
-
 class CustomizedInputs extends React.Component  {
-//    console.log(props);
 
 constructor(props) {
     super(props);
-
-
+    this.state = {};
 }
 
-onMouseOver() {
-    this.custtomStyles.submitBtn.style.backgroundColor= "#f26622";
-    this.custtomStyles.submitBtn.style.color = "#FFF";
+  onMouseOver() {
+    this.submitBtn.style.backgroundColor= "#f26622";
+    this.submitBtn.style.color = "#FFF";
   }
 
   onMouseLeave() {
-    this.showContent.style.removeProperty("background-color");
-//    this.showContent.style.display = "none";
+    this.submitBtn.style.backgroundColor= "#FFFF";
+    this.submitBtn.style.color = "#f26622";
 
   }
+
+  // POST values
+  handleInputChange = (e) => {
+    let target = event.target;
+    let value  = target.value;
+    let name   = target.name;
+    this.setState({
+        [name] : value
+    })
+};
+    handleSubmit = (e) => {
+        alert(this.state);
+        event.preventDefault();
+    }
+
 
 render(){
     const { classes } = this.props;
 
     return (
         <div className="formWrapper" style={mainTheme}>
-      <div className={classes.container}>
-        <FormControl className={classes.margin}>
+      <div className={classes.container} style={{marginLeft:'auto', marginRight:'auto'}}>
+      <div className="formBox" style={customStyles.formBox}>
+      <h2 style={customStyles.title}>Sip-it</h2>
+        <FormControl className={classes.margin} onSubmit={this.handleSubmit}>
           <InputLabel
             FormLabelClasses={{
               root: classes.cssLabel,
               focused: classes.cssFocused,
             }}
-            htmlFor="ID"
+            htmlFor="email"
           >
-            ID
+            Email
           </InputLabel>
           <Input
             classes={{
               underline: classes.cssUnderline,
             }}
-            id="ID"
+            id="email"
+            name="email"
+            value={this.state.email}
+            onChange={this.handleInputChange}
           />
         </FormControl>
         <FormControl className={classes.margin}>
@@ -104,13 +139,19 @@ render(){
               underline: classes.cssUnderline,
             }}
             id="Password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
           />
-          <div className="Btn" style={custtomStyles.submitBtn}>
-          <input type="submit" value="Log in"
+          <input ref = { div => {
+              this.submitBtn = div;
+            }}
+            className="Btn" type="submit" value="Log in"
           onMouseOver={this.onMouseOver.bind(this)}
-          onMouseLeave={this.onMouseLeave.bind(this)} />
-          </div>
+          onMouseLeave={this.onMouseLeave.bind(this)} 
+          style={customStyles.submitBtn}/>
         </FormControl>
+        </div>
       </div>
       </div>
     );

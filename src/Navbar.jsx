@@ -57,8 +57,10 @@ const styles = {
     padding: '12px 16px',
   },
   memberControl: {
+    position: 'relative',
     textAlign: 'right',
     fontSize: '20px',
+    top: '-15px',
     //  marBotton: '20px',
   },
 
