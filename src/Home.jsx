@@ -57,7 +57,7 @@ export default class Home extends Component {
       .post('/api/yelp/latlng', {
         latLng: this.state.myLatLng,
         term: term,
-        limit: limit
+        limit: limit,
       })
       .then(res => {
         return this.setState({
