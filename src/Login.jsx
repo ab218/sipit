@@ -91,9 +91,9 @@ constructor(props) {
     })
 };
     handleSubmit = (e) => {
+      e.preventDefault();
         alert(this.state);
-        event.preventDefault();
-    }
+      }
 
 
 render(){
