@@ -1,11 +1,13 @@
 require('dotenv').config();
 const express = require('express');
+const router = express.Router();
 const knexConfig = require('./knexfile');
 const bodyParser = require('body-parser');
 const knex = require('knex')(knexConfig['development']);
 const PORT = process.env.PORT || 8081; // this port needs to match the port in the webpack.config.js -> devServer -> proxy
 const history = require('connect-history-api-fallback');
 const path = require("path");
+const axios = require('axios')
 
 // const cors = require('cors')
 const app = express();
@@ -20,15 +22,33 @@ app.use(bodyParser.json())
 
 const usersRoutes = require("./routes/Users.js");
 const reviewsRoutes = require("./routes/Reviews.js");
+const loginRoutes = require("./routes/Login.js");
+// const loginDataHelpers = require('./routes/login_data_helpers.js');
 
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/reviews", reviewsRoutes(knex));
+app.use("/api/login", loginRoutes());
+
+// app.post('/login', function (req, res) {
+//   res.json('shit is broken')
+//   // const { email, password } = req.body;
+//   // loginDataHelpers.authenticateUser(email, password)
+//   //   .then((foundUser) => {
+//   //     if(foundUser){
+//   //       res.cookie('userId', foundUser.id);
+//   //       console.log('login success');
+//   //       res.redirect('/');
+//   //     } else {
+//   //       console.log('login fail')
+//   //       res.redirect('/');
+//   //     }
+//   //   });
+// });
+
 
 app.get('/api', (req, res) => {
   res.json({why: 'doesnt', this: 'work'});
 });
-
-const axios = require('axios')
 
 const yelpApi = axios.create({
   baseURL: 'https://api.yelp.com/v3',
@@ -105,6 +125,7 @@ app.get("/api/business/:id/reviews", function (req, res) {
       res.send(response.data))
     .catch(error => console.error(error))
 })
+
 
 //history must go after other endpoints and before app.use to enable fallback on heroku
 app.use(history());

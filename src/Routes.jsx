@@ -12,6 +12,7 @@ export default class Routes extends Component {
         super(props)
         this.state = {
             favorites: 0,
+            users: [{id: 'a1234z', userName: 'ab', email: 'ab@ab.com', password: 'ab'}]
         }
     }
 
@@ -21,6 +22,8 @@ export default class Routes extends Component {
         })
     }
 
+    
+
     render() {
         return (
             <Switch>
@@ -29,7 +32,10 @@ export default class Routes extends Component {
                     favorites={this.state.favorites}
                     setFavorites={this.setFavorites} />
                 }} />
-                <Route path="/login" component={Login} />
+                <Route path="/login" component={() => {
+                    return <Login 
+                    users={this.state.users}
+                    /> }} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/business/:id" component={Business} />
             </Switch>

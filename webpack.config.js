@@ -28,7 +28,7 @@ module.exports = {
     contentBase: path.resolve(__dirname, 'src/public'),
     host: '0.0.0.0',
     proxy: {
-      '/api': 'http://localhost:8081'
+      '/api': 'http://[::1]:8081'
     },
     historyApiFallback: true
   
