@@ -4,6 +4,7 @@ import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import axios from 'axios';
 
 const mainTheme = {
     backgroundColor: '#5d4427',
@@ -63,11 +64,17 @@ const customStyles = {
     },
 }
 
+//login prosess
+
 class CustomizedInputs extends React.Component  {
 
 constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {email: '',
+                  password: ''};
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 }
 
   onMouseOver() {
@@ -81,9 +88,10 @@ constructor(props) {
 
   }
 
-  // POST values
+
+  // handle Input
   handleInputChange = (e) => {
-    let target = event.target;
+    let target = e.target;
     let value  = target.value;
     let name   = target.name;
     this.setState({
@@ -91,8 +99,20 @@ constructor(props) {
     })
 };
     handleSubmit = (e) => {
-        alert(this.state);
-        event.preventDefault();
+        alert(this.state.email);
+        axios.post('/signin', {
+            email : this.state.email,
+            password: this.state.password
+          })
+          .then(function (res){
+            console.log(res);
+          })
+          .catch(function(error){
+            console.log(error);
+          })
+          
+          e.preventDefault();
+     
     }
 
 
@@ -104,7 +124,8 @@ render(){
       <div className={classes.container} style={{marginLeft:'auto', marginRight:'auto'}}>
       <div className="formBox" style={customStyles.formBox}>
       <h2 style={customStyles.title}>Sip-it</h2>
-        <FormControl className={classes.margin} onSubmit={this.handleSubmit}>
+       <form onSubmit={this.handleSubmit}>
+        <FormControl className={classes.margin}>
           <InputLabel
             FormLabelClasses={{
               root: classes.cssLabel,
@@ -151,6 +172,7 @@ render(){
           onMouseLeave={this.onMouseLeave.bind(this)} 
           style={customStyles.submitBtn}/>
         </FormControl>
+        </form>
         </div>
       </div>
       </div>

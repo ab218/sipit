@@ -40,7 +40,7 @@ const styles = {
     display: 'none',
     // display: 'grid',
     color: '#FFFF',
-    position: 'absolute',
+    position: 'relative',
     minWidth: '160px',
     boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
     zIndex: '1',
