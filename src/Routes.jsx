@@ -11,8 +11,6 @@ export default class Routes extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            favorites: 0,
-            users: [{id: 'a1234z', userName: 'ab', email: 'ab@ab.com', password: 'ab'}]
         }
     }
 

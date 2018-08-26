@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-
+import { Link, Redirect } from "react-router-dom";
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types'
+import Button from '@material-ui/core/Button';
 
 const styles = {
 
@@ -30,10 +32,6 @@ const styles = {
     display: 'inline-flex',
     padding: '10px 0 0 70px',
     fontSize: '20px',
-  },
-
-  navDropdown: {
-
   },
 
   dropContent: {
@@ -88,8 +86,15 @@ const styles = {
   }
 }
 class NavbarComponent extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
   constructor(props) {
     super(props);
+    this.state = {
+      user: props.cookies.get('user') || null,
+      logoutRedirect: false
+    }
   }
 
   //Menu mouse over effect
@@ -101,13 +106,33 @@ class NavbarComponent extends Component {
   onMouseLeave() {
     this.showContent.style.removeProperty("display");
     this.showContent.style.display = "none";
+  }
 
+  logout = () => {
+    const { cookies } = this.props
+    cookies.remove('user')
+    console.log(cookies.get('user'))
+    this.setState({
+      user: null,
+    })
+    this.setState({
+      logoutRedirect: true
+    })
   }
 
   render() {
 
     const { navBar, navHead, navIcon, navItem, navBody, dropContent, dropItem,
       memberControl, logInBtn, signUpBtn } = styles
+
+      const { logoutRedirect } = this.state
+      const { cookies } = this.props
+
+      let logout;
+
+      if(logoutRedirect){
+        logout = <Redirect to="/login" href="/login"/>;
+      }
 
     return (
       <div className="navBar" style={navBar}>
@@ -144,8 +169,14 @@ class NavbarComponent extends Component {
           </div>
         </div>
         <div className="memberControl" style={memberControl}>
-          <span style={logInBtn}><Link to="login">Log In</Link></span>
-          <span style={signUpBtn}><Link to="signup">Sign Up</Link></span>
+        {cookies.get('user') === undefined
+         ? <span style={logInBtn}><Link to="login">Log In</Link></span>
+         : <Button onClick={this.logout}>Log Out</Button>
+        }
+        {cookies.get('user') === undefined
+        ?  <span style={signUpBtn}><Link to="signup">Sign Up</Link></span>
+        : <span></span>
+        }
         </div>
         {this.props.children}
 
@@ -154,4 +185,4 @@ class NavbarComponent extends Component {
   }
 }
 
-export default NavbarComponent;
+export default withCookies(NavbarComponent);

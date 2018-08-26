@@ -42,17 +42,17 @@ function rando() {
   }
 
 module.exports = () => {
-router.post('/log', (req, res, next) => {
+router.post('/', (req, res, next) => {
     console.log('thing')
     const { email, password } = req.body;
     authenticateUser(email, password)
       .then((foundUser) => {
         if(foundUser){
-        console.log('login success')
+        console.log('foundUser')
             var message = 'user authenticated'
             res.json({
               message: message,
-              foundUser: results
+              name: foundUser
             })
         } else {
           console.log('login fail')

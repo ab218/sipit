@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter } from 'react-router-dom'
+import { CookiesProvider } from 'react-cookie';
 
 
 const theme = createMuiTheme({
@@ -16,7 +17,9 @@ const theme = createMuiTheme({
 ReactDOM.render(
     <BrowserRouter>
 <MuiThemeProvider theme={theme}>
+<CookiesProvider>
 <App />
+</CookiesProvider>
 </MuiThemeProvider>
 </BrowserRouter>
 , document.getElementById('react-root'));
