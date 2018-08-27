@@ -78,8 +78,8 @@ class Login extends React.Component {
     this.state = {
       user: cookies.get('user') || null,
       loginRedirect: false,
-      email: '',
-      password: '',
+      email: 'ab@ab.com',
+      password: 'ab',
     };
   }
 

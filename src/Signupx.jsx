@@ -113,5 +113,3 @@ export default class Signup extends Component {
             
     }
 }
-
-//export default Login;
