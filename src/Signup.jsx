@@ -49,7 +49,12 @@ const styles = {
 export default class Signup extends Component {
     constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+          email: 'aaa@aaa.com',
+          password: 'a',
+          confPassword: 'a',
+          userName: 'aaa',
+      };
     }
 
     handleInputChange = (event) => {

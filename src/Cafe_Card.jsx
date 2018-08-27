@@ -14,7 +14,7 @@ import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import RatingStar from './Rating_Starx.jsx';
+import RatingStar from './Rating_Star.jsx';
 import { Link } from "react-router-dom";
 
 
