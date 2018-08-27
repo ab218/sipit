@@ -29,23 +29,6 @@ app.use("/api/users", usersRoutes(knex));
 app.use("/api/reviews", reviewsRoutes(knex));
 app.use("/api/login", loginRoutes());
 
-// app.post('/login', function (req, res) {
-//   res.json('shit is broken')
-//   // const { email, password } = req.body;
-//   // loginDataHelpers.authenticateUser(email, password)
-//   //   .then((foundUser) => {
-//   //     if(foundUser){
-//   //       res.cookie('userId', foundUser.id);
-//   //       console.log('login success');
-//   //       res.redirect('/');
-//   //     } else {
-//   //       console.log('login fail')
-//   //       res.redirect('/');
-//   //     }
-//   //   });
-// });
-
-
 app.get('/api', (req, res) => {
   res.json({why: 'doesnt', this: 'work'});
 });

@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -27,9 +28,9 @@ const styles = theme => ({
     marginBottom: 20,
   },
   spacer: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));',
-      paddingLeft: 20
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));',
+    paddingLeft: 20
   },
   media: {
     height: 0,
@@ -46,63 +47,58 @@ const styles = theme => ({
 });
 
 class CafeCard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
     }
+  }
 
-getCafes = () => {
+  getCafes = () => {
     const { classes, cafesList } = this.props;
     return cafesList
-    .map((cafe, i) => (
+      .map((cafe, i) => (
         <div key={i} className={classes.actions}>
-        <Card className={classes.card}>
-        <Link to={`/business/${cafe.id}`}>
-          <CardHeader
-            action={
-              <IconButton>
-                <MoreVertIcon />
+          <Card className={classes.card}>
+            <Link to={`/business/${cafe.id}`}>
+              <CardHeader
+                action={
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title={`${i + 1}. ${cafe.name}`}
+              />
+            </Link>
+            <CardMedia
+              className={classes.media}
+              image={cafe.image_url}
+            />
+            <CardContent>
+              <span>
+                <RatingStar starRating={cafe.rating} />
+                <p>{`(${cafe.review_count} reviews)`}</p>
+              </span>
+            </CardContent>
+            <CardActions disableActionSpacing>
+              <IconButton aria-label="Add to favorites">
+                <FavoriteIcon />
               </IconButton>
-            }
-            title={`${i + 1}. ${cafe.name}`}
-          />
-          </Link>
-          <CardMedia
-            className={classes.media}
-            image={cafe.image_url}
-          />
-          <CardContent>
-            <span>
-            <RatingStar starRating={cafe.rating}/>
-            <p>{`(${cafe.review_count} reviews)`}</p>
-            </span>
-            {/* <Typography component="ul">
-            { 
-                cafe.categories.map((sub, subindex) =>
-                    <li key={subindex}>{sub.title}</li>)
-            }
-            </Typography> */}
-          </CardContent>
-          <CardActions  disableActionSpacing>
-            <IconButton aria-label="Add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="Share">
-              <ShareIcon />
-            </IconButton>
-          </CardActions>
-        </Card>
-      </div>
-    ))
-}
+              <IconButton aria-label="Share">
+                <ShareIcon />
+              </IconButton>
+            </CardActions>
+          </Card>
+        </div>
+      ))
+  }
 
   render() {
-      const { classes } = this.props
+    const { classes } = this.props
     return (
-        <div className={classes.spacer}>
-            {this.getCafes()}
-        </div>
+      <div className={classes.spacer}>
+        {this.getCafes()}
+      </div>
+      
     )
   }
 }

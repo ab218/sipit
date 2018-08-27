@@ -77,21 +77,21 @@ export default class Signup extends Component {
                         <tr>
                             <th style={th}><label htmlFor="email" style={elementsLabel}>Email</label></th>
                             <td style={td}>
-                                <input id="email" style={elementsInput} type="text" name="email" value={this.state.email} 
+                                <input id="email" style={elementsInput} type="email" name="email" value={this.state.email} 
                                 onChange={this.handleChange} />
                             </td>
                         </tr>
                         <tr>
                             <th style={th}><label htmlFor="password" style={elementsLabel}>Password</label></th>
                             <td style={td}>
-                            <input id="password" style={elementsInput} type="text" name="password" value={this.state.password} 
+                            <input id="password" style={elementsInput} type="password" name="password" value={this.state.password} 
                             onChange={this.handleChange} />
                             </td>
                         </tr>
                         <tr>
                             <th style={th}><label htmlFor="confPassword" style={elementsLabel}>Confirm Password</label></th>
                             <td style={td}>
-                            <input id="confPassword" style={elementsInput} type="text" name="confPassword" value={this.state.confPassword} 
+                            <input id="confPassword" style={elementsInput} type="password" name="confPassword" value={this.state.confPassword} 
                             onChange={this.handleChange} />
                             </td>
                         </tr>

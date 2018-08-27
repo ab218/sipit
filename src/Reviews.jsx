@@ -36,7 +36,7 @@ class BusinessDetails extends React.Component {
                             <p style={review}>
                                 {sub.text}
                             </p>
-                            <p style={{ color: 'green', float: 'right' }}>posted at: {sub.time_created}</p>
+                            <p style={{ color: 'green', float: 'right' }}>posted: {sub.time_created}</p>
                             <br />
                         </div>
                     )

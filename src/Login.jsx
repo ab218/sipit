@@ -180,6 +180,7 @@ class Login extends React.Component {
                   }}
                   id="Password"
                   name="password"
+                  type="password"
                   value={password}
                   onChange={this.handleInputChange}
                 />
