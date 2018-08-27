@@ -25,15 +25,8 @@ export default class Routes extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/" component={() => {
-                    return <Home 
-                    favorites={this.state.favorites}
-                    setFavorites={this.setFavorites} />
-                }} />
-                <Route path="/login" component={() => {
-                    return <Login 
-                    users={this.state.users}
-                    /> }} />
+                <Route exact path="/" component={Home} />
+                <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/business/:id" component={Business} />
             </Switch>
@@ -41,3 +34,9 @@ export default class Routes extends Component {
     }
 }
 
+
+{/* <Route exact path="/" component={() => {
+    return <Home 
+    favorites={this.state.favorites}
+    setFavorites={this.setFavorites} />
+}} /> */}

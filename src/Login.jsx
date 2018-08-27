@@ -135,7 +135,10 @@ class Login extends React.Component {
     const { email, password, loginRedirect } = this.state;
 
     if (loginRedirect) {
-      return <Redirect to="/" />
+      return <Redirect to={{
+        pathname: "/",
+        state: 'hello'
+      }} />
     }
     else {
       return (

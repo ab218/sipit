@@ -4,6 +4,7 @@ import axios from 'axios'
 import SearchBar from './Search_Bar.jsx';
 import MapContainer from './Map_Container.jsx';
 import Dropdown from './Dropdown.jsx';
+import Snackbar from './Snackbar.jsx';
 
 const mainTheme = {
   backgroundColor: '#5d4427',
@@ -23,6 +24,7 @@ export default class Home extends Component {
       results: 10,
       cafeSearch: '',
       locationSearch: '',
+      loginSuccessSnackbar: '',
     }
   }
 
@@ -116,14 +118,19 @@ export default class Home extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { yelpDataLoaded, cafesList, myLatLng, results } = this.state;
-
+    
     return (<div style={mainTheme}>
       <div style={{
         display: 'inline-flex',
         paddingBottom: '8em',
         marginLeft: '10em',
       }}>
+      {this.props.location.state === 'hello'
+      ? <Snackbar />
+      : <span></span>
+      }
         <SearchBar
           searchCafes={this.searchCafes}
           handleInputChange={this.handleInputChange}
