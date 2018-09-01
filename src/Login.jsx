@@ -4,10 +4,14 @@ import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+<<<<<<< HEAD
 import Button from '@material-ui/core/Button';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { Redirect } from 'react-router-dom'
+=======
+import axios from 'axios';
+>>>>>>> 6957ead12a59dd4bd4096a5a9664fa3b7a81e2f7
 
 const mainTheme = {
   backgroundColor: '#5d4427',
@@ -67,13 +71,20 @@ const customStyles = {
   },
 }
 
+<<<<<<< HEAD
 class Login extends React.Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
   };
+=======
+//login prosess
+
+class CustomizedInputs extends React.Component  {
+>>>>>>> 6957ead12a59dd4bd4096a5a9664fa3b7a81e2f7
 
   constructor(props) {
     super(props);
+<<<<<<< HEAD
     const { cookies } = props;
     this.state = {
       user: cookies.get('user') || null,
@@ -82,6 +93,14 @@ class Login extends React.Component {
       password: 'ab',
     };
   }
+=======
+    this.state = {email: '',
+                  password: ''};
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+}
+>>>>>>> 6957ead12a59dd4bd4096a5a9664fa3b7a81e2f7
 
   onMouseOver() {
     this.submitBtn.style.backgroundColor = "#f26622";
@@ -94,11 +113,20 @@ class Login extends React.Component {
 
   }
 
+<<<<<<< HEAD
   handleInputChange = (e) => {
     const target = e.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
+=======
+
+  // handle Input
+  handleInputChange = (e) => {
+    let target = e.target;
+    let value  = target.value;
+    let name   = target.name;
+>>>>>>> 6957ead12a59dd4bd4096a5a9664fa3b7a81e2f7
     this.setState({
       [name]: value
     });
@@ -115,6 +143,7 @@ class Login extends React.Component {
         password: this.state.password
       })
     })
+<<<<<<< HEAD
       .then((results) => results.json())
       .then((response) => {
         cookies.set('user', response.name.id, { path: '/' });
@@ -126,6 +155,25 @@ class Login extends React.Component {
       }).catch(function (err) {
         console.log(err)
       });
+=======
+};
+    handleSubmit = (e) => {
+        alert(this.state.email);
+        axios.post('/signin', {
+            email : this.state.email,
+            password: this.state.password
+          })
+          .then(function (res){
+            console.log(res);
+          })
+          .catch(function(error){
+            console.log(error);
+          })
+          
+          e.preventDefault();
+     
+    }
+>>>>>>> 6957ead12a59dd4bd4096a5a9664fa3b7a81e2f7
 
   }
 
@@ -143,6 +191,7 @@ class Login extends React.Component {
     else {
       return (
         <div className="formWrapper" style={mainTheme}>
+<<<<<<< HEAD
           <div className={classes.container} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
             <div className="formBox" style={customStyles.formBox}>
               <h2 style={customStyles.title}>Sip-it</h2>
@@ -156,6 +205,21 @@ class Login extends React.Component {
                   htmlFor="email"
                 >
                   Email
+=======
+      <div className={classes.container} style={{marginLeft:'auto', marginRight:'auto'}}>
+      <div className="formBox" style={customStyles.formBox}>
+      <h2 style={customStyles.title}>Sip-it</h2>
+       <form onSubmit={this.handleSubmit}>
+        <FormControl className={classes.margin}>
+          <InputLabel
+            FormLabelClasses={{
+              root: classes.cssLabel,
+              focused: classes.cssFocused,
+            }}
+            htmlFor="email"
+          >
+            Email
+>>>>>>> 6957ead12a59dd4bd4096a5a9664fa3b7a81e2f7
           </InputLabel>
                 <Input
                   classes={{
@@ -177,6 +241,7 @@ class Login extends React.Component {
                 >
                   Password
           </InputLabel>
+<<<<<<< HEAD
                 <Input
                   classes={{
                     underline: classes.cssUnderline,
@@ -198,6 +263,26 @@ class Login extends React.Component {
               </FormControl>
             </div>
           </div>
+=======
+          <Input
+            classes={{
+              underline: classes.cssUnderline,
+            }}
+            id="Password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+          />
+          <input ref = { div => {
+              this.submitBtn = div;
+            }}
+            className="Btn" type="submit" value="Log in"
+          onMouseOver={this.onMouseOver.bind(this)}
+          onMouseLeave={this.onMouseLeave.bind(this)} 
+          style={customStyles.submitBtn}/>
+        </FormControl>
+        </form>
+>>>>>>> 6957ead12a59dd4bd4096a5a9664fa3b7a81e2f7
         </div>
       );
     }

@@ -116,6 +116,17 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
 }
 
+//signIn check
+app.post('/signin', function(req, res){
+  console.log("yay");
+  var userEmail = req.body.email;
+  var userPassword = req.body.password;
+  if (userEmail === 'admin' && password === 'admin'){
+    res.send('success')
+  } else {
+    res.send('failed')
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Server up on ${PORT}`);
