@@ -11,7 +11,6 @@ const reviewTitle = {
 const review = {
     backgroundColor: 'white',
     color: 'black',
-
 }
 
 class BusinessDetails extends React.Component {
