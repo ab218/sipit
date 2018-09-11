@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CafeCard from './CafeCard';
-import SearchBar from './Search_Bar';
+import SearchBar from './SearchBar';
 import MapContainer from './MapContainer';
 import Dropdown from './Dropdown';
 import Snackbar from './Snackbar';
@@ -39,28 +39,28 @@ export default class Home extends Component {
 
 
   getCafeCards(term, limit) {
+    const { myLatLng } = this.state;
     axios
       .post('/api/yelp/latlng', {
-        latLng: this.state.myLatLng,
+        latLng: myLatLng,
         term,
         limit,
       })
       .then(res => this.setState({
-        ...this.state,
         cafesList: res.data,
         yelpDataLoaded: true,
       }));
   }
 
   getCafeCardsLocation(term, limit) {
+    const { locationSearch } = this.state;
     axios
       .post('/api/yelp/loc', {
-        location: this.state.locationSearch,
+        location: locationSearch,
         term,
         limit,
       })
       .then(res => this.setState({
-        ...this.state,
         cafesList: res.data,
         yelpDataLoaded: true,
         myLatLng: {
@@ -74,8 +74,7 @@ export default class Home extends Component {
     try {
       console.log('trying to get geoposition...');
       const position = await this.getCurrentPosition();
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
+      const { latitude, longitude } = position.coords;
       console.log(`got it! At: ${latitude}, ${longitude}`);
       this.setState({
         myLatLng: {

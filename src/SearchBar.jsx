@@ -19,27 +19,24 @@ const styles = {
   },
 };
 
-
 const icon = {
   paddingTop: '25px',
   fontSize: '28px',
   color: '#FFFF',
 };
-class TextFieldMargins extends Component {
-  constructor(props) {
-    super(props);
-  }
 
+class TextFieldMargins extends Component {
   render() {
     const { container, input } = styles;
+    const { handleInputChange, searchCafes } = this.props;
     return (
-      <form onSubmit={this.props.searchCafes}>
+      <form onSubmit={searchCafes}>
         <TextField
           id="cafeSearch"
           name="cafeSearch"
           placeholder="Enter Search Term"
           margin="normal"
-          onChange={this.props.handleInputChange}
+          onChange={handleInputChange}
           InputProps={{
             style: input,
           }}
@@ -49,20 +46,20 @@ class TextFieldMargins extends Component {
           name="locationSearch"
           placeholder="Enter Location"
           margin="normal"
-          onChange={this.props.handleInputChange}
+          onChange={handleInputChange}
           InputProps={{
             style: input,
           }}
         />
-        <span><button onClick={this.props.searchCafes}><i className="fas fa-search" /></button></span>
+        <span><button type="submit" onClick={searchCafes}><i className="fas fa-search" /></button></span>
       </form>
     );
   }
 }
 
-// TextFieldMargins.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+TextFieldMargins.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 
 export default withStyles(styles)(TextFieldMargins);

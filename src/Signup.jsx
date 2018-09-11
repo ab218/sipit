@@ -58,9 +58,9 @@ export default class Signup extends Component {
   }
 
     handleInputChange = (event) => {
-      const target = event.target;
-      const value = target.value;
-      const name = target.name;
+      const { target } = event;
+      const { value, name } = target;
+
       this.setState({
         [name]: value,
       });
@@ -71,6 +71,9 @@ export default class Signup extends Component {
       const {
         mainTheme, wrapper, title, elementsLabel, elementsInput, th, td,
       } = styles;
+      const {
+        email, password, confPassword, userName,
+      } = this.state;
       return (
         <div style={mainTheme}>
           <div style={wrapper}>
@@ -86,8 +89,8 @@ export default class Signup extends Component {
                         style={elementsInput}
                         type="email"
                         name="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
+                        defaultValue={email}
+                        onChange={this.handleInputChange}
                       />
                     </td>
                   </tr>
@@ -99,8 +102,8 @@ export default class Signup extends Component {
                         style={elementsInput}
                         type="password"
                         name="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
+                        defaultValue={password}
+                        onChange={this.handleInputChange}
                       />
                     </td>
                   </tr>
@@ -112,8 +115,8 @@ export default class Signup extends Component {
                         style={elementsInput}
                         type="password"
                         name="confPassword"
-                        value={this.state.confPassword}
-                        onChange={this.handleChange}
+                        defaultValue={confPassword}
+                        onChange={this.handleInputChange}
                       />
                     </td>
                   </tr>
@@ -125,8 +128,8 @@ export default class Signup extends Component {
                         style={elementsInput}
                         type="text"
                         name="userName"
-                        value={this.state.userName}
-                        onChange={this.handleChange}
+                        value={userName}
+                        onChange={this.handleInputChange}
                       />
                     </td>
                   </tr>
