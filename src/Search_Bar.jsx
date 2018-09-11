@@ -16,7 +16,7 @@ const styles = {
     borderColor: '5px solid black',
     color: 'white',
     //    backgroundColor: 'white',
-  }
+  },
 };
 
 
@@ -24,39 +24,38 @@ const icon = {
   paddingTop: '25px',
   fontSize: '28px',
   color: '#FFFF',
-}
+};
 class TextFieldMargins extends Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {
     const { container, input } = styles;
     return (
-        <form onSubmit={this.props.searchCafes}>
-          <TextField
-            id="cafeSearch"
-            name="cafeSearch"
-            placeholder="Enter Search Term"
-            margin="normal"
-            onChange={this.props.handleInputChange}
-            InputProps={{
-              style: input
-            }}
-            />
-          <TextField
-            id="locationSearch"
-            name="locationSearch"
-            placeholder="Enter Location"
-            margin="normal"
-            onChange={this.props.handleInputChange}
-            InputProps={{
-              style: input
-            }}
-            />
-          <span><button onClick={this.props.searchCafes}><i className="fas fa-search"></i></button></span>
-        </form>
+      <form onSubmit={this.props.searchCafes}>
+        <TextField
+          id="cafeSearch"
+          name="cafeSearch"
+          placeholder="Enter Search Term"
+          margin="normal"
+          onChange={this.props.handleInputChange}
+          InputProps={{
+            style: input,
+          }}
+        />
+        <TextField
+          id="locationSearch"
+          name="locationSearch"
+          placeholder="Enter Location"
+          margin="normal"
+          onChange={this.props.handleInputChange}
+          InputProps={{
+            style: input,
+          }}
+        />
+        <span><button onClick={this.props.searchCafes}><i className="fas fa-search" /></button></span>
+      </form>
     );
   }
 }

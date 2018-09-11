@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types'
+import { instanceOf } from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 const styles = {
@@ -14,14 +14,14 @@ const styles = {
     boxShadow: '0 9px 10px 0 rgba(0,0,0,0.2)',
     fontFamily: 'Karla',
     paddingTop: '20px',
-    zIndex: '99999'
+    zIndex: '99999',
   },
 
   navHead: {
     margin: '10px 0 0 20px',
     float: 'left',
     fontFamily: 'Pacifico',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 
   navIcon: {
@@ -69,7 +69,7 @@ const styles = {
     borderRadius: '15px',
     color: '#FFFF',
     margin: '0 10px 20px 10px',
-    padding: '5px 10px 5px 10px'
+    padding: '5px 10px 5px 10px',
   },
 
   signUpBtn: {
@@ -83,83 +83,90 @@ const styles = {
 
   linkStyle: {
 
-  }
-}
+  },
+};
 class NavbarComponent extends Component {
   static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
+    cookies: instanceOf(Cookies).isRequired,
   };
+
   constructor(props) {
     super(props);
     this.state = {
       user: props.cookies.get('user') || null,
-      logoutRedirect: false
-    }
+      logoutRedirect: false,
+    };
   }
 
-  //Menu mouse over effect
+  // Menu mouse over effect
   onMouseOver() {
-    this.showContent.style.removeProperty("display");
-    this.showContent.style.display = "inline-flex";
+    this.showContent.style.removeProperty('display');
+    this.showContent.style.display = 'inline-flex';
   }
 
   onMouseLeave() {
-    this.showContent.style.removeProperty("display");
-    this.showContent.style.display = "none";
+    this.showContent.style.removeProperty('display');
+    this.showContent.style.display = 'none';
   }
 
   logout = () => {
-    const { cookies } = this.props
-    cookies.remove('user')
+    const { cookies } = this.props;
+    cookies.remove('user');
     this.setState({
       user: null,
-    })
+    });
     this.setState({
-      logoutRedirect: true
-    })
+      logoutRedirect: true,
+    });
   }
 
   render() {
+    const {
+      navBar, navHead, navIcon, navItem, navBody, dropContent, dropItem,
+      memberControl, logInBtn, signUpBtn,
+    } = styles;
 
-    const { navBar, navHead, navIcon, navItem, navBody, dropContent, dropItem,
-      memberControl, logInBtn, signUpBtn } = styles
+    const { logoutRedirect } = this.state;
+    const { cookies, children } = this.props;
 
-      const { logoutRedirect } = this.state
-      const { cookies } = this.props
-
-      let logout;
-
-      if(logoutRedirect){
-        logout = <Redirect to="/login" href="/login"/>;
-      }
+    if (logoutRedirect) {
+      return <Redirect to="/login" href="/login" />;
+    }
 
     return (
       <div className="navBar" style={navBar}>
         <div className="navHead" style={navHead}>
           <div className="navBrand">
-            <i className="fas fa-coffee" style={navIcon}></i> Sip-It
+            <i className="fas fa-coffee" style={navIcon} />
+            {' '}
+Sip-It
           </div>
         </div>
         <div className="navBody" style={navBody}>
-          <Link to={`/`}>
+          <Link to="/">
             <div className="navItem" style={navItem}>
               Home
-          </div>
+            </div>
           </Link>
           <div className="navItem" style={navItem}>
             About
           </div>
-          <div className="navDropdown"
+          <div
+            className="navDropdown"
             className="navItem"
             style={navItem}
             onMouseOver={this.onMouseOver.bind(this)}
-            onMouseLeave={this.onMouseLeave.bind(this)}>
+            onMouseLeave={this.onMouseLeave.bind(this)}
+          >
             Menu
-           <i className="fas fa-caret-down"></i>
-            <div ref={div => {
-              this.showContent = div;
-            }}
-              className="dropContent" style={dropContent} >
+            <i className="fas fa-caret-down" />
+            <div
+              ref={(div) => {
+                this.showContent = div;
+              }}
+              className="dropContent"
+              style={dropContent}
+            >
               <a className="dropDownItem" style={dropItem} href="#">Action</a>
               <a className="dropDownItem" style={dropItem} href="#">Action</a>
               <a className="dropDownItem" style={dropItem} href="#">Action</a>
@@ -168,16 +175,16 @@ class NavbarComponent extends Component {
           </div>
         </div>
         <div className="memberControl" style={memberControl}>
-        {cookies.get('user') === undefined
-         ? <span style={logInBtn}><Link to="login">Log In</Link></span>
-         : <Button onClick={this.logout}>Log Out</Button>
-        }
-        {cookies.get('user') === undefined
-        ?  <span style={signUpBtn}><Link to="signup">Sign Up</Link></span>
-        : <span></span>
-        }
+          {cookies.get('user') === undefined
+            ? <span style={logInBtn}><Link to="login">Log In</Link></span>
+            : <Button onClick={this.logout}>Log Out</Button>
+          }
+          {cookies.get('user') === undefined
+            ? <span style={signUpBtn}><Link to="signup">Sign Up</Link></span>
+            : <span />
+          }
         </div>
-        {this.props.children}
+        {children}
 
       </div>
     );

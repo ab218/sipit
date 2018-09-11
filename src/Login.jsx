@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import PropTypes, { instanceOf } from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import Button from '@material-ui/core/Button';
 import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 const mainTheme = {
   backgroundColor: '#5d4427',
-}
+};
 
 const styles = theme => ({
   container: {
@@ -65,11 +63,11 @@ const customStyles = {
     fontFamily: 'Pacifico',
     fontWeight: 'bold',
   },
-}
+};
 
-class Login extends React.Component {
+class Login extends Component {
   static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
+    cookies: instanceOf(Cookies).isRequired,
   };
 
   constructor(props) {
@@ -84,14 +82,13 @@ class Login extends React.Component {
   }
 
   onMouseOver() {
-    this.submitBtn.style.backgroundColor = "#f26622";
-    this.submitBtn.style.color = "#FFF";
+    this.submitBtn.style.backgroundColor = '#f26622';
+    this.submitBtn.style.color = '#FFF';
   }
 
   onMouseLeave() {
-    this.submitBtn.style.backgroundColor = "#FFFF";
-    this.submitBtn.style.color = "#f26622";
-
+    this.submitBtn.style.backgroundColor = '#FFFF';
+    this.submitBtn.style.color = '#f26622';
   }
 
   handleInputChange = (e) => {
@@ -100,33 +97,33 @@ class Login extends React.Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
   handleSubmit = (e) => {
-    const { cookies } = this.props
+    const { cookies } = this.props;
+    const { email, password } = this.state;
     e.preventDefault();
-    fetch(`/api/login`, {
+    fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
+        email,
+        password,
+      }),
     })
-      .then((results) => results.json())
+      .then(results => results.json())
       .then((response) => {
         cookies.set('user', response.name.id, { path: '/' });
-        this.setState({ user: response.name.userName, loginRedirect: true, });
-        console.log(response)
+        this.setState({ user: response.name.userName, loginRedirect: true });
+        console.log(response);
         if (response.status >= 400) {
-          throw new Error("Bad response from server");
+          throw new Error('Bad response from server');
         }
-      }).catch(function (err) {
-        console.log(err)
+      }).catch((err) => {
+        console.log(err);
       });
-
   }
 
 
@@ -135,72 +132,78 @@ class Login extends React.Component {
     const { email, password, loginRedirect } = this.state;
 
     if (loginRedirect) {
-      return <Redirect to={{
-        pathname: "/",
-        state: 'hello'
-      }} />
-    }
-    else {
       return (
-        <div className="formWrapper" style={mainTheme}>
-          <div className={classes.container} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-            <div className="formBox" style={customStyles.formBox}>
-              <h2 style={customStyles.title}>Sip-it</h2>
-
-              <FormControl className={classes.margin}>
-                <InputLabel
-                  FormLabelClasses={{
-                    root: classes.cssLabel,
-                    focused: classes.cssFocused,
-                  }}
-                  htmlFor="email"
-                >
-                  Email
-          </InputLabel>
-                <Input
-                  classes={{
-                    underline: classes.cssUnderline,
-                  }}
-                  id="email"
-                  name="email"
-                  value={email}
-                  onChange={this.handleInputChange}
-                />
-              </FormControl>
-              <FormControl className={classes.margin}>
-                <InputLabel
-                  FormLabelClasses={{
-                    root: classes.cssLabel,
-                    focused: classes.cssFocused,
-                  }}
-                  htmlFor="Password"
-                >
-                  Password
-          </InputLabel>
-                <Input
-                  classes={{
-                    underline: classes.cssUnderline,
-                  }}
-                  id="Password"
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={this.handleInputChange}
-                />
-                <input ref={div => {
-                  this.submitBtn = div;
-                }}
-                  onClick={this.handleSubmit}
-                  className="Btn" type="submit" value="Log in"
-                  onMouseOver={this.onMouseOver.bind(this)}
-                  onMouseLeave={this.onMouseLeave.bind(this)}
-                  style={customStyles.submitBtn} />
-              </FormControl>
-            </div>
-          </div>
-        </div>
+        <Redirect to={{
+          pathname: '/',
+          state: 'hello',
+        }}
+        />
       );
     }
+
+    return (
+      <div className="formWrapper" style={mainTheme}>
+        <div className={classes.container} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+          <div className="formBox" style={customStyles.formBox}>
+            <h2 style={customStyles.title}>Sip-it</h2>
+
+            <FormControl className={classes.margin}>
+              <InputLabel
+                FormLabelClasses={{
+                  root: classes.cssLabel,
+                  focused: classes.cssFocused,
+                }}
+                htmlFor="email"
+              >
+                  Email
+              </InputLabel>
+              <Input
+                classes={{
+                  underline: classes.cssUnderline,
+                }}
+                id="email"
+                name="email"
+                value={email}
+                onChange={this.handleInputChange}
+              />
+            </FormControl>
+            <FormControl className={classes.margin}>
+              <InputLabel
+                FormLabelClasses={{
+                  root: classes.cssLabel,
+                  focused: classes.cssFocused,
+                }}
+                htmlFor="Password"
+              >
+                  Password
+              </InputLabel>
+              <Input
+                classes={{
+                  underline: classes.cssUnderline,
+                }}
+                id="Password"
+                name="password"
+                type="password"
+                value={password}
+                onChange={this.handleInputChange}
+              />
+              <input
+                ref={(div) => {
+                  this.submitBtn = div;
+                }}
+                onClick={this.handleSubmit}
+                className="Btn"
+                type="submit"
+                value="Log in"
+                onMouseOver={this.onMouseOver.bind(this)}
+                onMouseLeave={this.onMouseLeave.bind(this)}
+                style={customStyles.submitBtn}
+              />
+            </FormControl>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 Login.propTypes = {

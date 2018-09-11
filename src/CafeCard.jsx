@@ -10,8 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import RatingStar from './Rating_Star.jsx';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import RatingStar from './RatingStar';
 
 
 const styles = theme => ({
@@ -26,7 +26,7 @@ const styles = theme => ({
   spacer: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));',
-    paddingLeft: 20
+    paddingLeft: 20,
   },
   media: {
     height: 0,
@@ -37,8 +37,8 @@ const styles = theme => ({
   },
   buttons: {
     position: 'relative',
-    marginTop: '100%'
-  }
+    marginTop: '100%',
+  },
 
 });
 
@@ -46,7 +46,7 @@ class CafeCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    }
+    };
   }
 
   getCafes = () => {
@@ -57,11 +57,11 @@ class CafeCard extends React.Component {
           <Card className={classes.card}>
             <Link to={`/business/${cafe.id}`}>
               <CardHeader
-                action={
+                action={(
                   <IconButton>
                     <MoreVertIcon />
                   </IconButton>
-                }
+                )}
                 title={`${i + 1}. ${cafe.name}`}
               />
             </Link>
@@ -85,17 +85,17 @@ class CafeCard extends React.Component {
             </CardActions>
           </Card>
         </div>
-      ))
+      ));
   }
 
   render() {
-    const { classes } = this.props
+    const { classes } = this.props;
     return (
       <div className={classes.spacer}>
         {this.getCafes()}
       </div>
-      
-    )
+
+    );
   }
 }
 

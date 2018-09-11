@@ -10,7 +10,7 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 60,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
 });
 
@@ -30,17 +30,18 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, results, handleInputChange } = this.props;
+    const { open } = this.state;
 
     return (
       <form autoComplete="off">
         <FormControl className={classes.formControl}>
-          <Select 
-            open={this.state.open}
+          <Select
+            open={open}
             onClose={this.handleClose}
             onOpen={this.handleOpen}
-            value={this.props.results}
-            onChange={this.props.handleInputChange}
+            value={results}
+            onChange={handleInputChange}
             inputProps={{
               name: 'results',
             }}
