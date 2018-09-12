@@ -92,9 +92,11 @@ class Login extends Component {
   }
 
   handleInputChange = (e) => {
-    const target = e.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+    const {
+      target: {
+        value, name,
+      },
+    } = e;
 
     this.setState({
       [name]: value,

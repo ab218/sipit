@@ -16,7 +16,6 @@ const styles = theme => ({
 
 class Dropdown extends Component {
   state = {
-    results: '',
     open: false,
   };
 

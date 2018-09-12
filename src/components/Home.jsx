@@ -24,7 +24,6 @@ export default class Home extends Component {
       results: 10,
       cafeSearch: '',
       locationSearch: '',
-      loginSuccessSnackbar: '',
     };
   }
 
@@ -33,7 +32,8 @@ export default class Home extends Component {
   }
 
 
-  getCurrentPosition = (options = { timeout: 10000, maximumAge: 3600000 }) => new Promise((resolve, reject) => {
+  getCurrentPosition =
+  (options = { timeout: 10000, maximumAge: 3600000 }) => new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, options);
   });
 
@@ -91,7 +91,7 @@ export default class Home extends Component {
 
   searchCafes = (e) => {
     const {
-      cafeSearch, locationSearch, results, cafesList,
+      cafeSearch, locationSearch, results,
     } = this.state;
     e.preventDefault();
     if (locationSearch === '') {
@@ -104,7 +104,7 @@ export default class Home extends Component {
   handleInputChange = (e) => {
     const {
       target: {
-        type, checked, value, name,
+        value, name,
       },
     } = e;
 

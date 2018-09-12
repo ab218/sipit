@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import RatingStar from './RatingStar';
 
 
-const styles = theme => ({
+const styles = () => ({
   card: {
     maxWidth: 300,
     minWidth: 300,
