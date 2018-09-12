@@ -30,7 +30,7 @@ class BusinessDetails extends React.Component {
         <SlickCarousel cafeData={cafeData} />
         {
           cafeData.location.display_address
-            .map((sub, subindex) => <h5 style={title} key={subindex}>{sub}</h5>)
+            .map(sub => <h5 style={title} key={sub}>{sub}</h5>)
         }
         <br />
         <h5 style={title}>{cafeData.display_phone}</h5>

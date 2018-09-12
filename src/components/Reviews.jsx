@@ -28,7 +28,7 @@ class BusinessDetails extends React.Component {
         <h3 style={{ color: 'pink' }}>Yelp Reviews</h3>
         {
           reviewsData.reviews.map((sub, subindex) => (
-            <div style={review} key={subindex}>
+            <div style={review} key={sub.id}>
               <h4 style={reviewTitle}>
                 {`${subindex + 1}. ${sub.user.name}`}
               </h4>

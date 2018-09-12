@@ -14,7 +14,7 @@ export default class SimpleSlider extends React.Component {
     return (
       <Slider {...settings}>
         {cafeData.photos.map((sub, subindex) => (
-          <div key={subindex}>
+          <div key={sub}>
             <img alt={subindex} style={{ maxHeight: '30em' }} src={sub} />
           </div>
         ))}

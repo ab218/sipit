@@ -27,7 +27,6 @@ export default class Home extends Component {
       .get(`/api/business/${match.params.id}/details`, {
       })
       .then(res => this.setState({
-        ...this.state,
         yelpDataLoaded: true,
         cafeData: res.data,
       }));
@@ -39,7 +38,6 @@ export default class Home extends Component {
       .get(`/api/business/${match.params.id}/reviews`, {
       })
       .then(res => this.setState({
-        ...this.state,
         reviewsLoaded: true,
         reviewsData: res.data,
       }));

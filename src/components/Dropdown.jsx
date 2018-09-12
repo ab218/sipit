@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 // import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -55,8 +55,8 @@ class Dropdown extends Component {
   }
 }
 
-Dropdown.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// Dropdown.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 export default withStyles(styles)(Dropdown);

@@ -122,7 +122,7 @@ class NavbarComponent extends Component {
 
   render() {
     const {
-      navBar, navHead, navIcon, navItem, navBody, dropContent, dropItem,
+      navBar, navHead, navIcon, navItem, navBody,
       memberControl, logInBtn, signUpBtn,
     } = styles;
 

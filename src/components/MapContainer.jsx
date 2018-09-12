@@ -43,7 +43,7 @@ export class MapContainer extends Component {
         >
           {cafesList.map((markers, i) => (
             <Marker
-              key={i}
+              key={markers.id}
               name={markers.name}
               position={{
                 lat: markers.coordinates.latitude,

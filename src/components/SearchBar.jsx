@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -19,15 +19,15 @@ const styles = {
   },
 };
 
-const icon = {
-  paddingTop: '25px',
-  fontSize: '28px',
-  color: '#FFFF',
-};
+// const icon = {
+//   paddingTop: '25px',
+//   fontSize: '28px',
+//   color: '#FFFF',
+// };
 
 class TextFieldMargins extends Component {
   render() {
-    const { container, input } = styles;
+    const { input } = styles;
     const { handleInputChange, searchCafes } = this.props;
     return (
       <form onSubmit={searchCafes}>
@@ -57,9 +57,9 @@ class TextFieldMargins extends Component {
   }
 }
 
-TextFieldMargins.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// TextFieldMargins.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 
 export default withStyles(styles)(TextFieldMargins);
