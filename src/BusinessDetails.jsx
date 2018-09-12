@@ -6,6 +6,19 @@ const title = {
 
 };
 
+function HoursComp({ isOpenNow, endHours }) {
+  if (isOpenNow) {
+    return (
+      <h5 style={{ color: 'lightgreen' }}>
+        OPEN NOW (closes at
+        {' '}
+        {endHours}
+        )
+      </h5>);
+  }
+  return <h5 style={{ color: 'tomato' }}>CLOSED NOW</h5>;
+}
+
 class BusinessDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -28,19 +41,13 @@ class BusinessDetails extends React.Component {
         <br />
         <h5 style={title}>{cafeData.display_phone}</h5>
         {/* nested ternary below, consider refactoring into something more readable */}
-        {cafeData.hours
-          ? (cafeData.hours[0].is_open_now
-            ? (
-              <h5 style={{ color: 'lightgreen' }}>
-OPEN NOW (closes at
-                {' '}
-                {cafeData.hours[0].open[0].end}
-)
-              </h5>
+        {!cafeData.hours
+            || (
+              <HoursComp
+                isOpenNow={cafeData.hours[0].is_open_now}
+                endHours={cafeData.hours[0].open[0].end}
+              />
             )
-            : <h5 style={{ color: 'tomato' }}>CLOSED NOW</h5>
-          )
-          : <div>No hours posted</div>
         }
         <br />
       </div>

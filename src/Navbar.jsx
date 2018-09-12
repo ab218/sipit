@@ -156,7 +156,10 @@ Sip-It
             className="navItem"
             style={navItem}
             onMouseOver={this.onMouseOver.bind(this)}
+            onFocus={this.onMouseOver.bind(this)}
             onMouseLeave={this.onMouseLeave.bind(this)}
+            onBlur={this.onMouseLeave.bind(this)}
+
           >
             Menu
             <i className="fas fa-caret-down" />
