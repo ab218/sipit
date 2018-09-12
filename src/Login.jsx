@@ -196,7 +196,9 @@ class Login extends Component {
                 type="submit"
                 value="Log in"
                 onMouseOver={this.onMouseOver.bind(this)}
+                onFocus={this.onMouseOver.bind(this)}
                 onMouseLeave={this.onMouseLeave.bind(this)}
+                onBlur={this.onMouseLeave.bind(this)}
                 style={customStyles.submitBtn}
               />
             </FormControl>

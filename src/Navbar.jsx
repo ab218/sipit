@@ -151,7 +151,7 @@ Sip-It
           <div className="navItem" style={navItem}>
             About
           </div>
-          <div
+          {/* <div
             className="navDropdown"
             className="navItem"
             style={navItem}
@@ -175,7 +175,7 @@ Sip-It
               <a className="dropDownItem" style={dropItem} href="#">Action</a>
               <a className="dropDownItem" style={dropItem} href="#">Action</a>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
