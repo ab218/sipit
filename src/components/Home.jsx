@@ -31,43 +31,50 @@ export default class Home extends Component {
     this.loadPosition();
   }
 
-
   getCurrentPosition =
   (options = { timeout: 10000, maximumAge: 3600000 }) => new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, options);
   });
 
 
-  getCafeCards(term, limit) {
-    const { myLatLng } = this.state;
-    axios
-      .post('/api/yelp/latlng', {
-        latLng: myLatLng,
-        term,
-        limit,
-      })
-      .then(res => this.setState({
+  getCafeCards = async (term, limit) => {
+    try {
+      const { myLatLng } = this.state;
+      const res = await axios
+        .post('/api/yelp/latlng', {
+          latLng: myLatLng,
+          term,
+          limit,
+        });
+      this.setState({
         cafesList: res.data,
         yelpDataLoaded: true,
-      }));
+      });
+    } catch (error) {
+      console.log('could not get it.... :(', error);
+    }
   }
 
-  getCafeCardsLocation(term, limit) {
-    const { locationSearch } = this.state;
-    axios
-      .post('/api/yelp/loc', {
-        location: locationSearch,
-        term,
-        limit,
-      })
-      .then(res => this.setState({
-        cafesList: res.data,
+  getCafeCardsLocation = async (term, limit) => {
+    try {
+      const { locationSearch } = this.state;
+      const cardLocation = await axios
+        .post('/api/yelp/loc', {
+          location: locationSearch,
+          term,
+          limit,
+        });
+      this.setState({
+        cafesList: cardLocation.data,
         yelpDataLoaded: true,
         myLatLng: {
-          lat: res.data[0].coordinates.latitude,
-          lng: res.data[0].coordinates.longitude,
+          lat: cardLocation.data[0].coordinates.latitude,
+          lng: cardLocation.data[0].coordinates.longitude,
         },
-      }));
+      });
+    } catch (error) {
+      console.log('could not get it!', error);
+    }
   }
 
   loadPosition = async () => {

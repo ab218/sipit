@@ -112,9 +112,7 @@ class NavbarComponent extends Component {
   logout = () => {
     const { cookies } = this.props;
     cookies.remove('user');
-    this.setState({
-      user: null,
-    });
+    this.setState({ user: null });
     this.setState({
       logoutRedirect: true,
     });

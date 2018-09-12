@@ -26,17 +26,6 @@ type Book {
   }
 `;
 
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-    books: () => books,
-  },
-
-  Book: {
-    author: book => find(books, { id: book.id }),
-  },
-};
 
 const books = [
   {
@@ -50,6 +39,17 @@ const books = [
     author: 'Michael Crichton',
   },
 ];
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    hello: () => 'Hello world!',
+    books: () => books,
+  },
+
+  Book: {
+    author: book => find(books, { id: book.id }),
+  },
+};
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
@@ -73,10 +73,6 @@ const loginRoutes = require('./routes/Login.js');
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/reviews', reviewsRoutes(knex));
 app.use('/api/login', loginRoutes());
-
-app.get('/api', (req, res) => {
-  res.json({ why: 'doesnt', this: 'work' });
-});
 
 const yelpApi = axios.create({
   baseURL: 'https://api.yelp.com/v3',
@@ -146,16 +142,6 @@ app.get('/api/business/:id/reviews', (req, res) => yelpApi
   .then(response => res.send(response.data))
   .catch(error => console.error(error)));
 
-// signIn check
-// app.post('/signin', (req, res) => {
-//   const userEmail = req.body.email;
-//   const userPassword = req.body.password;
-//   if (userEmail === 'admin' && password === 'admin') {
-//     res.send('success');
-//   } else {
-//     res.send('failed');
-//   }
-// });
 
 // history must go after other endpoints and before app.use to enable fallback on heroku
 app.use(history());

@@ -128,7 +128,6 @@ class Login extends Component {
       });
   }
 
-
   render() {
     const { classes } = this.props;
     const { email, password, loginRedirect } = this.state;
@@ -213,7 +212,6 @@ class Login extends Component {
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
 
 // dealing with multiple higher order function 101
 Login = withStyles(styles)(Login);
