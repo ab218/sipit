@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
@@ -18,17 +18,16 @@ class SimpleSnackbar extends React.Component {
     open: true,
   };
 
-
   handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-
     this.setState({ open: false });
   };
 
   render() {
     const { classes } = this.props;
+    const { open } = this.state;
     return (
       <div>
         <Snackbar
@@ -36,7 +35,7 @@ class SimpleSnackbar extends React.Component {
             vertical: 'bottom',
             horizontal: 'left',
           }}
-          open={this.state.open}
+          open={open}
           autoHideDuration={3000}
           onClose={this.handleClose}
           ContentProps={{

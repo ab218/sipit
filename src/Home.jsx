@@ -102,15 +102,16 @@ export default class Home extends Component {
   }
 
   handleInputChange = (e) => {
-    const target = e.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+    const {
+      target: {
+        type, checked, value, name,
+      },
+    } = e;
 
     this.setState({
       [name]: value,
     });
   }
-
 
   render() {
     const {

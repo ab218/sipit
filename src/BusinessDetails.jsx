@@ -3,7 +3,6 @@ import SlickCarousel from './SlickCarousel';
 
 const title = {
   color: 'white',
-
 };
 
 function HoursComp({ isOpenNow, endHours }) {
@@ -13,19 +12,13 @@ function HoursComp({ isOpenNow, endHours }) {
         OPEN NOW (closes at
         {' '}
         {endHours}
-        )
+)
       </h5>);
   }
   return <h5 style={{ color: 'tomato' }}>CLOSED NOW</h5>;
 }
 
 class BusinessDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
   render() {
     const { cafeData } = this.props;
 
@@ -40,7 +33,6 @@ class BusinessDetails extends React.Component {
         }
         <br />
         <h5 style={title}>{cafeData.display_phone}</h5>
-        {/* nested ternary below, consider refactoring into something more readable */}
         {!cafeData.hours
             || (
               <HoursComp

@@ -26,8 +26,7 @@ const divStyle = {
 
 export class MapContainer extends Component {
   render() {
-    const { myLatLng, google, cafesList } = this.props;
-
+    const { myLatLng: { lat, lng }, google, cafesList } = this.props;
     return (
       <div style={divStyle}>
 
@@ -36,12 +35,10 @@ export class MapContainer extends Component {
           zoom={12}
           style={style}
           initialCenter={{
-            lat: myLatLng.lat,
-            lng: myLatLng.lng,
+            lat, lng,
           }}
           center={{
-            lat: myLatLng.lat,
-            lng: myLatLng.lng,
+            lat, lng,
           }}
         >
           {cafesList.map((markers, i) => (
