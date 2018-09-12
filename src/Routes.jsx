@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import Business from './Business';
-import Login from './Login';
-import Signup from './Signup';
+import Home from './components/Home';
+import Business from './components/Business';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 
 export default class Routes extends Component {

@@ -68,7 +68,7 @@ app.use(bodyParser.json());
 const usersRoutes = require('./routes/Users.js');
 const reviewsRoutes = require('./routes/Reviews.js');
 const loginRoutes = require('./routes/Login.js');
-// const loginDataHelpers = require('./routes/login_data_helpers.js');
+// const loginDataHelpers = require('./routes/loginDataHelpers.js');
 
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/reviews', reviewsRoutes(knex));
@@ -147,16 +147,15 @@ app.get('/api/business/:id/reviews', (req, res) => yelpApi
   .catch(error => console.error(error)));
 
 // signIn check
-app.post('/signin', (req, res) => {
-  console.log('yay');
-  const userEmail = req.body.email;
-  const userPassword = req.body.password;
-  if (userEmail === 'admin' && password === 'admin') {
-    res.send('success');
-  } else {
-    res.send('failed');
-  }
-});
+// app.post('/signin', (req, res) => {
+//   const userEmail = req.body.email;
+//   const userPassword = req.body.password;
+//   if (userEmail === 'admin' && password === 'admin') {
+//     res.send('success');
+//   } else {
+//     res.send('failed');
+//   }
+// });
 
 // history must go after other endpoints and before app.use to enable fallback on heroku
 app.use(history());

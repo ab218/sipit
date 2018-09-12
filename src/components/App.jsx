@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavbarComponent from './Navbar';
-import Routes from './Routes';
+import Routes from '../Routes';
 import FooterComponent from './Footer';
 
 

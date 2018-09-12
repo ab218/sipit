@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
-import App from './App';
+import App from './components/App';
 
 
 const theme = createMuiTheme({
