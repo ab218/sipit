@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import CafeCard from './CafeCard';
 import MapContainer from './MapContainer';
@@ -9,12 +10,10 @@ const mainTheme = {
   backgroundColor: '#5d4427',
 };
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cafesList: [],
-      yelpDataLoaded: false,
       // default LatLng = Vancouver (49.2827, -123.1207)
       myLatLng: {
         lat: 49.2827,
@@ -39,16 +38,15 @@ export default class Home extends Component {
   getCafeCards = async (term, limit) => {
     try {
       const { myLatLng } = this.state;
+      const { fetchCafes, cafeDataLoading } = this.props;
       const res = await axios
         .post('/api/yelp/latlng', {
           latLng: myLatLng,
           term,
           limit,
         });
-      this.setState({
-        cafesList: res.data,
-        yelpDataLoaded: true,
-      });
+      fetchCafes(res.data);
+      cafeDataLoading(false);
     } catch (error) {
       console.log('could not get it.... :(', error);
     }
@@ -57,15 +55,16 @@ export default class Home extends Component {
   getCafeCardsLocation = async (term, limit) => {
     try {
       const { locationSearch } = this.state;
+      const { fetchCafes, cafeDataLoading } = this.props;
       const cardLocation = await axios
         .post('/api/yelp/loc', {
           location: locationSearch,
           term,
           limit,
         });
+      fetchCafes(cardLocation.data);
+      cafeDataLoading(false);
       this.setState({
-        cafesList: cardLocation.data,
-        yelpDataLoaded: true,
         myLatLng: {
           lat: cardLocation.data[0].coordinates.latitude,
           lng: cardLocation.data[0].coordinates.longitude,
@@ -121,10 +120,10 @@ export default class Home extends Component {
 
   render() {
     const {
-      yelpDataLoaded, cafesList, myLatLng, results,
+      myLatLng, results,
     } = this.state;
 
-    const { location } = this.props;
+    const { location, cafesList, fetchCafesLoading } = this.props;
 
     return (
       <div style={mainTheme}>
@@ -148,16 +147,37 @@ export default class Home extends Component {
           }}
           />
         </div>
-        {/* <p>you have {this.props.favorites} favorites</p> */}
-        <MapContainer
-          cafesList={cafesList}
-          myLatLng={myLatLng}
-        />
-        {yelpDataLoaded
-          ? <CafeCard cafesList={cafesList} />
-          : <h1 style={{ color: 'white' }}>Brewing results...</h1>
+        {cafesList
+        && (
+          <MapContainer
+            cafesList={cafesList}
+            myLatLng={myLatLng}
+          />
+        )
+        }
+        {fetchCafesLoading
+          ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
+          : <CafeCard cafesList={cafesList} />
         }
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  cafesList: state.fetchCafes.cafesList,
+  fetchCafesLoading: state.fetchCafes.cafesLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchCafes: data => dispatch({
+    type: 'FETCH_CAFES',
+    payload: data,
+  }),
+  cafeDataLoading: bool => dispatch({
+    type: 'FETCH_CAFES_LOADING',
+    payload: bool,
+  }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
