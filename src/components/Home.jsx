@@ -16,7 +16,7 @@ export default class Home extends Component {
     this.state = {
       cafesList: [],
       yelpDataLoaded: false,
-      // default LatLng set to Vancouver
+      // default LatLng = Vancouver (49.2827, -123.1207)
       myLatLng: {
         lat: 49.2827,
         lng: -123.1207,

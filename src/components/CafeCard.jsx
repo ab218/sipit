@@ -16,9 +16,11 @@ import RatingStar from './RatingStar';
 
 const styles = () => ({
   card: {
+    display: 'grid',
+    gridTemplateRows: '30% 30% 30% 10%',
     maxWidth: 300,
     minWidth: 300,
-    maxHeight: 500,
+    maxHeight: 450,
     paddingRight: 20,
     paddingLeft: 20,
     marginBottom: 20,
