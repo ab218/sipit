@@ -6,6 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const mainTheme = {
   backgroundColor: '#5d4427',
@@ -144,6 +145,7 @@ class Login extends Component {
 
     return (
       <div className="formWrapper" style={mainTheme}>
+        <Navbar />
         <div className={classes.container} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="formBox" style={customStyles.formBox}>
             <h2 style={customStyles.title}>Sip-it</h2>

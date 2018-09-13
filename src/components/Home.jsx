@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Navbar from './Navbar';
 import CafeCard from './CafeCard';
-import SearchBar from './SearchBar';
 import MapContainer from './MapContainer';
-import Dropdown from './Dropdown';
 import Snackbar from './Snackbar';
 
 const mainTheme = {
@@ -130,29 +129,24 @@ export default class Home extends Component {
     return (
       <div style={mainTheme}>
         <div style={{
-          display: 'inline-flex',
           paddingBottom: '8em',
-          marginLeft: '10em',
         }}
         >
+          <Navbar
+            searchCafes={this.searchCafes}
+            handleInputChange={this.handleInputChange}
+            results={results}
+          />
+
           {location.state === 'hello'
             ? <Snackbar />
             : <span />
           }
-          <SearchBar
-            searchCafes={this.searchCafes}
-            handleInputChange={this.handleInputChange}
-          />
           <div style={{
             marginTop: '0.65em',
             paddingLeft: '0.3em',
           }}
-          >
-            <Dropdown
-              handleInputChange={this.handleInputChange}
-              results={results}
-            />
-          </div>
+          />
         </div>
         {/* <p>you have {this.props.favorites} favorites</p> */}
         <MapContainer

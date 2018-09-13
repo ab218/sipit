@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import NavbarComponent from './Navbar';
 import Routes from '../Routes';
-import FooterComponent from './Footer';
+import Footer from './Footer';
 
 
 export default class App extends Component {
@@ -14,9 +13,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <NavbarComponent />
+
         <Routes />
-        <FooterComponent />
+        <Footer />
       </div>
     );
   }
