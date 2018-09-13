@@ -15,10 +15,6 @@ class Home extends Component {
     super(props);
     this.state = {
       // default LatLng = Vancouver (49.2827, -123.1207)
-      myLatLng: {
-        lat: 49.2827,
-        lng: -123.1207,
-      },
       results: 10,
       cafeSearch: '',
       locationSearch: '',
@@ -37,8 +33,7 @@ class Home extends Component {
 
   getCafeCards = async (term, limit) => {
     try {
-      const { myLatLng } = this.state;
-      const { fetchCafes, cafeDataLoading } = this.props;
+      const { fetchCafes, cafeDataLoading, myLatLng } = this.props;
       const res = await axios
         .post('/api/yelp/latlng', {
           latLng: myLatLng,
@@ -55,7 +50,7 @@ class Home extends Component {
   getCafeCardsLocation = async (term, limit) => {
     try {
       const { locationSearch } = this.state;
-      const { fetchCafes, cafeDataLoading } = this.props;
+      const { fetchCafes, cafeDataLoading, getPosition } = this.props;
       const cardLocation = await axios
         .post('/api/yelp/loc', {
           location: locationSearch,
@@ -64,29 +59,23 @@ class Home extends Component {
         });
       fetchCafes(cardLocation.data);
       cafeDataLoading(false);
-      this.setState({
-        myLatLng: {
-          lat: cardLocation.data[0].coordinates.latitude,
-          lng: cardLocation.data[0].coordinates.longitude,
-        },
-      });
+      getPosition(
+        cardLocation.data[0].coordinates.latitude,
+        cardLocation.data[0].coordinates.longitude,
+      );
     } catch (error) {
       console.log('could not get it!', error);
     }
   }
 
   loadPosition = async () => {
+    const { getPosition } = this.props;
     try {
       console.log('trying to get geoposition...');
       const position = await this.getCurrentPosition();
       const { latitude, longitude } = position.coords;
       console.log(`got it! At: ${latitude}, ${longitude}`);
-      this.setState({
-        myLatLng: {
-          lat: latitude,
-          lng: longitude,
-        },
-      });
+      getPosition(latitude, longitude);
     } catch (error) {
       console.log('failed to get position.', error);
     } finally {
@@ -120,10 +109,12 @@ class Home extends Component {
 
   render() {
     const {
-      myLatLng, results,
+      results,
     } = this.state;
 
-    const { location, cafesList, fetchCafesLoading } = this.props;
+    const {
+      location, cafesList, fetchCafesLoading, myLatLng,
+    } = this.props;
 
     return (
       <div style={mainTheme}>
@@ -167,6 +158,7 @@ class Home extends Component {
 const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
   fetchCafesLoading: state.fetchCafes.cafesLoading,
+  myLatLng: state.getPosition.myLatLng,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -177,6 +169,13 @@ const mapDispatchToProps = dispatch => ({
   cafeDataLoading: bool => dispatch({
     type: 'FETCH_CAFES_LOADING',
     payload: bool,
+  }),
+  getPosition: (lat, lng) => dispatch({
+    type: 'GET_POSITION',
+    payload: {
+      lat,
+      lng,
+    },
   }),
 });
 
