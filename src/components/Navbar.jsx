@@ -3,10 +3,14 @@ import { Link, Redirect } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import Button from '@material-ui/core/Button';
+import SearchBar from './SearchBar';
+import Dropdown from './Dropdown';
+
 
 const styles = {
 
   navBar: {
+    display: 'flex',
     positon: 'absolute',
     backgroundColor: '#FFFF',
     color: '#5d4427',
@@ -14,7 +18,7 @@ const styles = {
     boxShadow: '0 9px 10px 0 rgba(0,0,0,0.2)',
     fontFamily: 'Karla',
     paddingTop: '20px',
-    zIndex: '99999',
+    zIndex: '9',
   },
 
   navHead: {
@@ -29,7 +33,7 @@ const styles = {
   },
 
   navBody: {
-    display: 'inline-flex',
+    display: 'flex',
     padding: '10px 0 0 70px',
     fontSize: '20px',
   },
@@ -55,7 +59,6 @@ const styles = {
     padding: '12px 16px',
   },
   memberControl: {
-    position: 'relative',
     textAlign: 'right',
     fontSize: '20px',
     top: '-15px',
@@ -112,9 +115,7 @@ class NavbarComponent extends Component {
   logout = () => {
     const { cookies } = this.props;
     cookies.remove('user');
-    this.setState({
-      user: null,
-    });
+    this.setState({ user: null });
     this.setState({
       logoutRedirect: true,
     });
@@ -177,6 +178,14 @@ Sip-It
             </div>
           </div> */}
         </div>
+        <SearchBar
+          searchCafes={this.props.searchCafes}
+          handleInputChange={this.props.handleInputChange}
+        />
+        <Dropdown
+          handleInputChange={this.props.handleInputChange}
+          results={this.props.results}
+        />
         <div className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
             ? <span style={logInBtn}><Link to="login">Log In</Link></span>

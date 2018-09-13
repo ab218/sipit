@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Navbar from './Navbar';
 import BusinessDetails from './BusinessDetails';
 import Reviews from './Reviews';
 
@@ -51,6 +52,7 @@ export default class Home extends Component {
 
     return (
       <div style={mainTheme}>
+        <Navbar />
         {yelpDataLoaded
           ? <BusinessDetails cafeData={cafeData} />
           : <h1 style={{ color: 'white' }}>Brewing results ...</h1>

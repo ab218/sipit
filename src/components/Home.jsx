@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Navbar from './Navbar';
 import CafeCard from './CafeCard';
-import SearchBar from './SearchBar';
 import MapContainer from './MapContainer';
-import Dropdown from './Dropdown';
 import Snackbar from './Snackbar';
 
 const mainTheme = {
@@ -16,7 +15,7 @@ export default class Home extends Component {
     this.state = {
       cafesList: [],
       yelpDataLoaded: false,
-      // default LatLng set to Vancouver
+      // default LatLng = Vancouver (49.2827, -123.1207)
       myLatLng: {
         lat: 49.2827,
         lng: -123.1207,
@@ -31,43 +30,50 @@ export default class Home extends Component {
     this.loadPosition();
   }
 
-
   getCurrentPosition =
   (options = { timeout: 10000, maximumAge: 3600000 }) => new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, options);
   });
 
 
-  getCafeCards(term, limit) {
-    const { myLatLng } = this.state;
-    axios
-      .post('/api/yelp/latlng', {
-        latLng: myLatLng,
-        term,
-        limit,
-      })
-      .then(res => this.setState({
+  getCafeCards = async (term, limit) => {
+    try {
+      const { myLatLng } = this.state;
+      const res = await axios
+        .post('/api/yelp/latlng', {
+          latLng: myLatLng,
+          term,
+          limit,
+        });
+      this.setState({
         cafesList: res.data,
         yelpDataLoaded: true,
-      }));
+      });
+    } catch (error) {
+      console.log('could not get it.... :(', error);
+    }
   }
 
-  getCafeCardsLocation(term, limit) {
-    const { locationSearch } = this.state;
-    axios
-      .post('/api/yelp/loc', {
-        location: locationSearch,
-        term,
-        limit,
-      })
-      .then(res => this.setState({
-        cafesList: res.data,
+  getCafeCardsLocation = async (term, limit) => {
+    try {
+      const { locationSearch } = this.state;
+      const cardLocation = await axios
+        .post('/api/yelp/loc', {
+          location: locationSearch,
+          term,
+          limit,
+        });
+      this.setState({
+        cafesList: cardLocation.data,
         yelpDataLoaded: true,
         myLatLng: {
-          lat: res.data[0].coordinates.latitude,
-          lng: res.data[0].coordinates.longitude,
+          lat: cardLocation.data[0].coordinates.latitude,
+          lng: cardLocation.data[0].coordinates.longitude,
         },
-      }));
+      });
+    } catch (error) {
+      console.log('could not get it!', error);
+    }
   }
 
   loadPosition = async () => {
@@ -123,29 +129,24 @@ export default class Home extends Component {
     return (
       <div style={mainTheme}>
         <div style={{
-          display: 'inline-flex',
           paddingBottom: '8em',
-          marginLeft: '10em',
         }}
         >
+          <Navbar
+            searchCafes={this.searchCafes}
+            handleInputChange={this.handleInputChange}
+            results={results}
+          />
+
           {location.state === 'hello'
             ? <Snackbar />
             : <span />
           }
-          <SearchBar
-            searchCafes={this.searchCafes}
-            handleInputChange={this.handleInputChange}
-          />
           <div style={{
             marginTop: '0.65em',
             paddingLeft: '0.3em',
           }}
-          >
-            <Dropdown
-              handleInputChange={this.handleInputChange}
-              results={results}
-            />
-          </div>
+          />
         </div>
         {/* <p>you have {this.props.favorites} favorites</p> */}
         <MapContainer
