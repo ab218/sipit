@@ -7,7 +7,7 @@ import Dropdown from './Dropdown';
 import Snackbar from './Snackbar';
 
 const mainTheme = {
-  backgroundColor: '#5d4427',
+  backgroundColor: '#C1A88B',
 };
 
 export default class Home extends Component {

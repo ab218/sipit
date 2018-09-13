@@ -8,7 +8,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
 
 const mainTheme = {
-  backgroundColor: '#5d4427',
+  backgroundColor: '#C1A88B',
 };
 
 const styles = theme => ({
@@ -210,9 +210,9 @@ class Login extends Component {
     );
   }
 }
-Login.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// Login.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 
 // dealing with multiple higher order function 101

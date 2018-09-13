@@ -12,7 +12,7 @@ module.exports = {
       password: 'chagilove',
       database: 'sipit',
       port: 5432,
-      ssl: false
+      ssl: false,
     },
   },
 
@@ -25,11 +25,11 @@ module.exports = {
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   production: {
@@ -41,11 +41,11 @@ module.exports = {
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
+      tableName: 'knex_migrations',
+    },
+  },
 
 };

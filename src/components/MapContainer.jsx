@@ -10,6 +10,8 @@ const style = {
   height: '15em',
   width: '80%',
   margin: 'auto',
+  border: '5px solid #5d4427',
+  borderRadius: '15px',
 };
 
 const divStyle = {
@@ -21,6 +23,7 @@ const divStyle = {
   paddingBottom: '3em',
   paddingTop: '0em',
   marginBottom: '10em',
+  borderRadius: '15px',
 };
 
 
