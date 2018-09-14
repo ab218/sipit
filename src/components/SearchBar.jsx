@@ -16,7 +16,7 @@ const styles = {
   },
   input: {
     borderColor: '5px solid black',
-    color: 'white',
+    color: 'black',
     //    backgroundColor: 'white',
   },
 };
