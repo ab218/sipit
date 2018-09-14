@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 // import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -19,6 +21,19 @@ class Dropdown extends Component {
     open: false,
   };
 
+  handleInputChange = (e) => {
+    const { setResults } = this.props;
+    const {
+      target: {
+        value, name,
+      },
+    } = e;
+
+    if (name === 'results') {
+      setResults(value);
+    }
+  }
+
 
   handleClose = () => {
     this.setState({ open: false });
@@ -29,7 +44,7 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { classes, results, handleInputChange } = this.props;
+    const { classes, results } = this.props;
     const { open } = this.state;
 
     return (
@@ -40,7 +55,7 @@ class Dropdown extends Component {
             onClose={this.handleClose}
             onOpen={this.handleOpen}
             value={results}
-            onChange={handleInputChange}
+            onChange={this.handleInputChange}
             inputProps={{
               name: 'results',
             }}
@@ -59,4 +74,19 @@ class Dropdown extends Component {
 //   classes: PropTypes.object.isRequired,
 // };
 
-export default withStyles(styles)(Dropdown);
+// const mapStateToProps = state => ({
+//   foo: state,
+// });
+
+const mapDispatchToProps = dispatch => ({
+  setResults: results => dispatch({
+    type: 'SEARCH_RESULTS',
+    payload: results,
+  }),
+});
+
+
+export default compose(
+  withStyles(styles),
+  connect(null, mapDispatchToProps),
+)(Dropdown);

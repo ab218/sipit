@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 
 const styles = {
@@ -26,9 +28,26 @@ const styles = {
 // };
 
 class TextFieldMargins extends Component {
+  handleInputChange = (e) => {
+    const { setName, setLocation } = this.props;
+    const {
+      target: {
+        value, name,
+      },
+    } = e;
+
+    if (name === 'cafeSearch') {
+      setName(value);
+    }
+    if (name === 'locationSearch') {
+      setLocation(value);
+    }
+  }
+
+
   render() {
     const { input } = styles;
-    const { handleInputChange, searchCafes } = this.props;
+    const { searchCafes } = this.props;
     return (
       <form onSubmit={searchCafes}>
         <TextField
@@ -36,7 +55,7 @@ class TextFieldMargins extends Component {
           name="cafeSearch"
           placeholder="Enter Search Term"
           margin="normal"
-          onChange={handleInputChange}
+          onChange={this.handleInputChange}
           InputProps={{
             style: input,
           }}
@@ -46,7 +65,7 @@ class TextFieldMargins extends Component {
           name="locationSearch"
           placeholder="Enter Location"
           margin="normal"
-          onChange={handleInputChange}
+          onChange={this.handleInputChange}
           InputProps={{
             style: input,
           }}
@@ -60,6 +79,22 @@ class TextFieldMargins extends Component {
 // TextFieldMargins.propTypes = {
 //   classes: PropTypes.object.isRequired,
 // };
+// const mapStateToProps = state => ({
+//   foo: state,
+// });
 
+const mapDispatchToProps = dispatch => ({
+  setName: name => dispatch({
+    type: 'SEARCH_NAME',
+    payload: name,
+  }),
+  setLocation: location => dispatch({
+    type: 'SEARCH_LOCATION',
+    payload: location,
+  }),
+});
 
-export default withStyles(styles)(TextFieldMargins);
+export default compose(
+  withStyles(styles),
+  connect(null, mapDispatchToProps),
+)(TextFieldMargins);

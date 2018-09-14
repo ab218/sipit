@@ -180,12 +180,8 @@ Sip-It
         </div>
         <SearchBar
           searchCafes={this.props.searchCafes}
-          handleInputChange={this.props.handleInputChange}
         />
-        <Dropdown
-          handleInputChange={this.props.handleInputChange}
-          results={this.props.results}
-        />
+        <Dropdown />
         <div className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
             ? <span style={logInBtn}><Link to="login">Log In</Link></span>

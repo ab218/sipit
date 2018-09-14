@@ -11,16 +11,6 @@ const mainTheme = {
 };
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // default LatLng = Vancouver (49.2827, -123.1207)
-      results: 10,
-      cafeSearch: '',
-      locationSearch: '',
-    };
-  }
-
   componentDidMount() {
     this.loadPosition();
   }
@@ -49,7 +39,7 @@ class Home extends Component {
 
   getCafeCardsLocation = async (term, limit) => {
     try {
-      const { locationSearch } = this.state;
+      const { locationSearch } = this.props;
       const { fetchCafes, cafeDataLoading, getPosition } = this.props;
       const cardLocation = await axios
         .post('/api/yelp/loc', {
@@ -85,33 +75,17 @@ class Home extends Component {
 
   searchCafes = (e) => {
     const {
-      cafeSearch, locationSearch, results,
-    } = this.state;
+      cafeSearch, locationSearch, resultsSearch,
+    } = this.props;
     e.preventDefault();
     if (locationSearch === '') {
-      this.getCafeCards(cafeSearch, results);
+      this.getCafeCards(cafeSearch, resultsSearch);
     } else {
-      this.getCafeCardsLocation(cafeSearch, results);
+      this.getCafeCardsLocation(cafeSearch, resultsSearch);
     }
   }
 
-  handleInputChange = (e) => {
-    const {
-      target: {
-        value, name,
-      },
-    } = e;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
   render() {
-    const {
-      results,
-    } = this.state;
-
     const {
       location, cafesList, fetchCafesLoading, myLatLng,
     } = this.props;
@@ -124,8 +98,6 @@ class Home extends Component {
         >
           <Navbar
             searchCafes={this.searchCafes}
-            handleInputChange={this.handleInputChange}
-            results={results}
           />
 
           {location.state === 'hello'
@@ -159,6 +131,9 @@ const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
   fetchCafesLoading: state.fetchCafes.cafesLoading,
   myLatLng: state.getPosition.myLatLng,
+  cafeSearch: state.searchFields.searchName,
+  locationSearch: state.searchFields.searchLocation,
+  resultsSearch: state.searchFields.searchResults,
 });
 
 const mapDispatchToProps = dispatch => ({
