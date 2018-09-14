@@ -128,7 +128,7 @@ class NavbarComponent extends Component {
     } = styles;
 
     const { logoutRedirect } = this.state;
-    const { cookies, children } = this.props;
+    const { cookies, children, searchCafes } = this.props;
 
     if (logoutRedirect) {
       return <Redirect to="/login" href="/login" />;
@@ -179,7 +179,7 @@ Sip-It
           </div> */}
         </div>
         <SearchBar
-          searchCafes={this.props.searchCafes}
+          searchCafes={searchCafes}
         />
         <Dropdown />
         <div className="memberControl" style={memberControl}>

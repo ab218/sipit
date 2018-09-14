@@ -87,7 +87,7 @@ class Home extends Component {
 
   render() {
     const {
-      location, cafesList, fetchCafesLoading, myLatLng,
+      location, cafesList, fetchCafesLoading,
     } = this.props;
 
     return (
@@ -112,10 +112,7 @@ class Home extends Component {
         </div>
         {cafesList
         && (
-          <MapContainer
-            cafesList={cafesList}
-            myLatLng={myLatLng}
-          />
+          <MapContainer />
         )
         }
         {fetchCafesLoading

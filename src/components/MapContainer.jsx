@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import {
   Map, InfoWindow, Marker, GoogleApiWrapper,
 } from 'google-maps-react';
@@ -61,6 +63,14 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: process.env.GOOGLE_API_KEY,
-})(MapContainer);
+const mapStateToProps = state => ({
+  cafesList: state.fetchCafes.cafesList,
+  myLatLng: state.getPosition.myLatLng,
+});
+
+export default compose(
+  GoogleApiWrapper({
+    apiKey: process.env.GOOGLE_API_KEY,
+  }),
+  connect(mapStateToProps, null),
+)(MapContainer);
