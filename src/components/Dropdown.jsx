@@ -44,7 +44,7 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { classes, results } = this.props;
+    const { classes, resultsSearch } = this.props;
     const { open } = this.state;
 
     return (
@@ -54,8 +54,8 @@ class Dropdown extends Component {
             open={open}
             onClose={this.handleClose}
             onOpen={this.handleOpen}
-            value={results}
             onChange={this.handleInputChange}
+            value={resultsSearch}
             inputProps={{
               name: 'results',
             }}
@@ -78,6 +78,10 @@ class Dropdown extends Component {
 //   foo: state,
 // });
 
+const mapStateToProps = state => ({
+  resultsSearch: state.searchFields.searchResults,
+});
+
 const mapDispatchToProps = dispatch => ({
   setResults: results => dispatch({
     type: 'SEARCH_RESULTS',
@@ -88,5 +92,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   withStyles(styles),
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
 )(Dropdown);
