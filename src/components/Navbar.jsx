@@ -19,13 +19,17 @@ const styles = {
     fontFamily: 'Karla',
     paddingTop: '20px',
     zIndex: '9',
+    width: '100%',
+    height: '5em',
   },
 
   navHead: {
     margin: '10px 0 0 20px',
+    minWidth: '10rem',
     float: 'left',
     fontFamily: 'Pacifico',
     fontWeight: 'bold',
+    fontSize: 'calc(20px + 0.25vw)',
   },
 
   navIcon: {
@@ -33,8 +37,8 @@ const styles = {
   },
 
   navBody: {
-    display: 'flex',
-    padding: '10px 0 0 70px',
+    display: 'inline-flex',
+    padding: '1rem 0 0 3rem',
     fontSize: '20px',
   },
 
@@ -60,7 +64,7 @@ const styles = {
   },
   memberControl: {
     textAlign: 'right',
-    fontSize: '20px',
+    fontSize: 'calc(20px + 0.25vw)',
     top: '-15px',
     //  marBotton: '20px',
   },
@@ -80,7 +84,7 @@ const styles = {
     border: '2px solid #6196d2',
     borderRadius: '15px',
     color: '#FFFF',
-    margin: '0 15px 20px 15px',
+    margin: '0 0.1em 2em',
     padding: '5px',
   },
 

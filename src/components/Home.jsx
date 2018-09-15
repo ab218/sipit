@@ -7,7 +7,7 @@ import Snackbar from './Snackbar';
 import { loadPosition, makeFetchCafesThunk } from '../actions';
 
 const mainTheme = {
-  backgroundColor: '#5d4427',
+  backgroundColor: '#C1A88B',
 };
 
 const mapDown = {

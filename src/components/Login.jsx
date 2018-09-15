@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const mainTheme = {
-  backgroundColor: '#5d4427',
+  backgroundColor: '#C1A88B',
 };
 
 const styles = theme => ({
@@ -207,9 +207,9 @@ class Login extends Component {
     );
   }
 }
-Login.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// Login.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 // Login = withStyles(styles)(Login);
 export default withCookies(withStyles(styles)(Login));

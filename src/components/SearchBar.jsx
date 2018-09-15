@@ -4,28 +4,65 @@ import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
+import customCss from '../index.css';
 
 const styles = {
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    position: 'relative',
+    positon: 'absolute',
+    height: '5em',
+    top: 0,
+
+
   },
   textField: {
     width: 500,
   },
   input: {
-    borderColor: '5px solid black',
+    borderColor: '5px solid #f26622',
+    //    borderRadius: '8px',
     color: 'black',
-    //    backgroundColor: 'white',
+    backgroundColor: 'transparent',
+  },
+  searchBarWrapper: {
+    position: 'absolute',
+    top: '11.5vh',
+    left: '48%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#5d4427',
+    borderRadius: '30px',
+    width: '18em',
+    height: '1.3em',
+  },
+  customForm: {
+    position: 'relative',
+    display: 'contents',
+  },
+  customSearchBtn: {
+    border: '0',
+    outline: '0',
+    backgroundColor: 'transparent',
+    verticalAlign: 'middle',
+  },
+  customFilterBtn: {
+    border: '0',
+    outline: '0',
+    backgroundColor: 'transparent',
+    verticalAlign: 'middle',
+    paddingLeft: '3px',
+    marginBottom: '40px',
+  },
+  filterWrapper: {
+    backgroundColor: '#5d4427',
+    borderRadius: '50%',
+    position: 'absolute',
+    width: '40px',
+    height: '40px',
+    margin: '0.35em  0em 0em 0.5em',
+    paddingLeft: '0.2em',
   },
 };
-
-// const icon = {
-//   paddingTop: '25px',
-//   fontSize: '28px',
-//   color: '#FFFF',
-// };
 
 class TextFieldMargins extends Component {
   handleInputChange = (e) => {
@@ -42,32 +79,40 @@ class TextFieldMargins extends Component {
 
 
   render() {
-    const { input } = styles;
+    const {
+      input, searchBarWrapper, customForm, customSearchBtn, customFilterBtn,
+    } = styles;
     const { searchCafes } = this.props;
     return (
-      <form onSubmit={searchCafes}>
-        <TextField
-          id="cafeSearch"
-          name="cafeSearch"
-          placeholder="Enter Search Term"
-          margin="normal"
-          onChange={this.handleInputChange}
-          InputProps={{
-            style: input,
-          }}
-        />
-        <TextField
-          id="locationSearch"
-          name="locationSearch"
-          placeholder="Enter Location"
-          margin="normal"
-          onChange={this.handleInputChange}
-          InputProps={{
-            style: input,
-          }}
-        />
-        <span><button type="submit" onClick={searchCafes}><i className="fas fa-search" /></button></span>
-      </form>
+      <div id="searchBarWrapper" style={searchBarWrapper}>
+        <form onSubmit={searchCafes} style={customForm}>
+          <TextField
+            id="cafeSearch"
+            className={customCss.rightPadding}
+            name="cafeSearch"
+            placeholder="Enter Search Term"
+            onChange={this.handleInputChange}
+            InputProps={{
+              style: input,
+            }}
+          />
+          <TextField
+            id="locationSearch"
+            name="locationSearch"
+            placeholder="Enter Location"
+            margin="normal"
+            onChange={this.handleInputChange}
+            InputProps={{
+              style: input,
+            }}
+          />
+          <span><button type="submit" onClick={searchCafes} style={customSearchBtn}><i className="fas fa-search" style={{ color: '#FFFF', fontSize: '25px' }} /></button></span>
+          <span>
+            <button type="submit" style={customFilterBtn}><i className="fas fa-filter" style={{ color: '#FFFF', fontSize: '20px' }} /></button>
+          </span>
+        </form>
+
+      </div>
     );
   }
 }
