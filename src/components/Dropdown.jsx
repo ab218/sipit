@@ -23,11 +23,7 @@ class Dropdown extends Component {
 
   handleInputChange = (e) => {
     const { setResults } = this.props;
-    const {
-      target: {
-        value, name,
-      },
-    } = e;
+    const { value, name } = e.target;
 
     if (name === 'results') {
       setResults(value);

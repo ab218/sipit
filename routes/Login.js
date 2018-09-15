@@ -1,64 +1,44 @@
-
-
 const express = require('express');
 
 const router = express.Router();
-
 
 const users = [{
   id: 'a1234z', userName: 'ab', email: 'ab@ab.com', password: 'ab',
 }];
 
-// function rando() {
-//   let output = '';
-//   const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-//   for (let i = 0; i < 6; i++) {
-//     output += alphabet[Math.floor(Math.random() * alphabet.length)];
-//   }
-//   return output;
-// }
-
-function getUserByEmail(email) {
+async function getUserByEmail(email) {
   const foundUser = users.find(user => user.email === email);
-  return Promise.resolve(foundUser);
+  return foundUser;
 }
 
-// function getUserById(id) {
-//   const foundUser = users.find(user => user.id === id);
-//   return Promise.resolve(foundUser);
-// }
-// function getUserByUserName(userName) {
-//   const foundUser = users.find(user => user.userName === userName);
-//   return Promise.resolve(foundUser);
-// }
-
-function authenticateUser(email, password) {
-  return getUserByEmail(email)
-    .then((foundUser) => {
-      if (foundUser && foundUser.password === password) {
-        return foundUser;
-      }
-      return undefined;
-    });
+async function authenticateUser(email, password) {
+  const foundUser = await getUserByEmail(email);
+  if (foundUser && foundUser.password === password) {
+    return foundUser;
+  }
+  return undefined;
 }
-
-module.exports = () => {
-  router.post('/', (req, res) => {
+router.post('/', async (req, res, next) => {
+  try {
     console.log('thing');
     const { email, password } = req.body;
-    authenticateUser(email, password)
-      .then((foundUser) => {
-        if (foundUser) {
-          console.log('foundUser');
-          const message = 'user authenticated';
-          res.json({
-            message,
-            name: foundUser,
-          });
-        } else {
-          console.log('login fail');
-        }
+    const foundUser = await authenticateUser(email, password);
+    if (foundUser) {
+      console.log('foundUser');
+      const message = 'user authenticated';
+      res.json({
+        message,
+        name: foundUser,
       });
-  });
-  return router;
-};
+    } else {
+      res.status(401).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+module.exports = router;
+
+
+// /users/me

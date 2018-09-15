@@ -30,11 +30,7 @@ const styles = {
 class TextFieldMargins extends Component {
   handleInputChange = (e) => {
     const { setName, setLocation } = this.props;
-    const {
-      target: {
-        value, name,
-      },
-    } = e;
+    const { value, name } = e.target;
 
     if (name === 'cafeSearch') {
       setName(value);

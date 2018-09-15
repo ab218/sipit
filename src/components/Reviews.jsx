@@ -2,15 +2,15 @@ import React from 'react';
 
 
 const reviewTitle = {
-  backgroundColor: 'white',
-  color: 'black',
+  backgroundColor: 'rgb(93, 68, 39)',
+  color: 'white',
   textDecoration: 'underline',
 
 };
 
 const review = {
-  backgroundColor: 'white',
-  color: 'black',
+  backgroundColor: 'rgb(93, 68, 39)',
+  color: 'white',
 };
 
 class BusinessDetails extends React.Component {

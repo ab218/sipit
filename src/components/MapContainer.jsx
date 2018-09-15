@@ -26,7 +26,7 @@ const divStyle = {
 };
 
 
-export class MapContainer extends Component {
+class MapContainer extends Component {
   render() {
     const { myLatLng: { lat, lng }, google, cafesList } = this.props;
     return (

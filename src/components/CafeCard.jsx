@@ -9,10 +9,9 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
 import RatingStar from './RatingStar';
-
 
 const styles = () => ({
   card: {
@@ -59,11 +58,11 @@ class CafeCard extends React.Component {
           <Card className={classes.card}>
             <Link to={`/business/${cafe.id}`}>
               <CardHeader
-                action={(
-                  <IconButton>
-                    <MoreVertIcon />
-                  </IconButton>
-                )}
+                // action={(
+                //   <IconButton>
+                //     <MoreVertIcon />
+                //   </IconButton>
+                // )}
                 title={`${i + 1}. ${cafe.name}`}
               />
             </Link>

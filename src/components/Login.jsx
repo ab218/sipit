@@ -93,11 +93,7 @@ class Login extends Component {
   }
 
   handleInputChange = (e) => {
-    const {
-      target: {
-        value, name,
-      },
-    } = e;
+    const { value, name } = e.target;
 
     this.setState({
       [name]: value,
@@ -215,6 +211,5 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// dealing with multiple higher order function 101
-Login = withStyles(styles)(Login);
-export default withCookies(Login);
+// Login = withStyles(styles)(Login);
+export default withCookies(withStyles(styles)(Login));

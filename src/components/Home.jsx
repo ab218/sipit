@@ -1,123 +1,57 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import CafeCard from './CafeCard';
-import MapContainer from './MapContainer';
+import GoogleMapContainer from './MapContainer';
 import Snackbar from './Snackbar';
+import { loadPosition, makeFetchCafesThunk } from '../actions';
 
 const mainTheme = {
   backgroundColor: '#5d4427',
 };
 
+const mapDown = {
+  paddingBottom: '8em',
+};
+
 class Home extends Component {
-  componentDidMount() {
-    this.loadPosition();
+  async componentDidMount() {
+    const { makeFetchCafes, loadPosition: loadPos } = this.props;
+    await loadPos();
+    makeFetchCafes('coffee', 10);
   }
-
-  getCurrentPosition =
-  (options = { timeout: 10000, maximumAge: 3600000 }) => new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject, options);
-  });
-
-
-  getCafeCards = async (term, limit) => {
-    try {
-      const { fetchCafes, cafeDataLoading, myLatLng } = this.props;
-      const res = await axios
-        .post('/api/yelp/latlng', {
-          latLng: myLatLng,
-          term,
-          limit,
-        });
-      fetchCafes(res.data);
-      cafeDataLoading(false);
-    } catch (error) {
-      console.log('could not get it.... :(', error);
-    }
-  }
-
-  getCafeCardsLocation = async (term, limit) => {
-    try {
-      const { locationSearch } = this.props;
-      const { fetchCafes, cafeDataLoading, getPosition } = this.props;
-      const cardLocation = await axios
-        .post('/api/yelp/loc', {
-          location: locationSearch,
-          term,
-          limit,
-        });
-      fetchCafes(cardLocation.data);
-      cafeDataLoading(false);
-      getPosition(
-        cardLocation.data[0].coordinates.latitude,
-        cardLocation.data[0].coordinates.longitude,
-      );
-    } catch (error) {
-      console.log('could not get it!', error);
-    }
-  }
-
-  loadPosition = async () => {
-    const { getPosition } = this.props;
-    try {
-      console.log('trying to get geoposition...');
-      const position = await this.getCurrentPosition();
-      const { latitude, longitude } = position.coords;
-      console.log(`got it! At: ${latitude}, ${longitude}`);
-      getPosition(latitude, longitude);
-    } catch (error) {
-      console.log('failed to get position.', error);
-    } finally {
-      this.getCafeCards('coffee', 10);
-    }
-  };
 
   searchCafes = (e) => {
     const {
-      cafeSearch, locationSearch, resultsSearch,
+      cafeSearch, locationSearch, resultsSearch, makeFetchCafes,
+      myLatLng,
     } = this.props;
     e.preventDefault();
     if (locationSearch === '') {
-      this.getCafeCards(cafeSearch, resultsSearch);
+      makeFetchCafes(cafeSearch, resultsSearch, myLatLng);
     } else {
-      this.getCafeCardsLocation(cafeSearch, resultsSearch);
+      makeFetchCafes(cafeSearch, resultsSearch, locationSearch);
     }
   }
 
   render() {
-    const {
-      location, cafesList, fetchCafesLoading,
-    } = this.props;
+    const { location, cafesList, fetchCafesLoading } = this.props;
 
     return (
       <div style={mainTheme}>
-        <div style={{
-          paddingBottom: '8em',
-        }}
-        >
+        <div style={mapDown}>
           <Navbar
             searchCafes={this.searchCafes}
           />
-
-          {location.state === 'hello'
-            ? <Snackbar />
-            : <span />
-          }
-          <div style={{
-            marginTop: '0.65em',
-            paddingLeft: '0.3em',
-          }}
-          />
         </div>
-        {cafesList
-        && (
-          <MapContainer />
-        )
-        }
+        {cafesList && (<GoogleMapContainer />)}
         {fetchCafesLoading
           ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
           : <CafeCard cafesList={cafesList} />
+        }
+        {location.state === 'hello'
+          ? <Snackbar />
+          : null
         }
       </div>
     );
@@ -134,6 +68,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  loadPosition: () => dispatch(loadPosition()),
+  makeFetchCafes: (term, limit, loc) => {
+    dispatch(makeFetchCafesThunk(term, limit, loc));
+  },
   fetchCafes: data => dispatch({
     type: 'FETCH_CAFES',
     payload: data,

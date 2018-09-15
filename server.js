@@ -72,7 +72,7 @@ const loginRoutes = require('./routes/Login.js');
 
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/reviews', reviewsRoutes(knex));
-app.use('/api/login', loginRoutes());
+app.use('/api/login', loginRoutes);
 
 const yelpApi = axios.create({
   baseURL: 'https://api.yelp.com/v3',
