@@ -8,7 +8,11 @@ const styles = {
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    position: 'relative',
+    positon: 'absolute',
+    height: '5em',
+    top: 0,
+
+
   },
   textField: {
     width: 500,
@@ -20,35 +24,49 @@ const styles = {
     backgroundColor: 'transparent',
   },
   searchBarWrapper: {
+    position: 'absolute',
+    top: '21.5vh',
+    left: '48%',
+    transform: 'translate(-50%, -50%)',
     backgroundColor: '#5d4427',
     borderRadius: '30px',
-    width: '40em',
-    height: '3em',
+    width: '18em',
+    height: '1.3em',
     marginTop: '10px',
   },
   customForm: {
-    marginTop: '-11px',
-    marginBottom: '8px',
-    marginLeft: '5em',
+    position: 'relative',
+    display: 'contents',
   },
-  customBtn: {
+  customSearchBtn: {
     border: '0',
     outline: '0',
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
   },
+  customFilterBtn: {
+    border: '0',
+    outline: '0',
+    backgroundColor: 'transparent',
+    verticalAlign: 'middle',
+    paddingLeft: '3px',
+    marginBottom: '40px',
+  },
+  filterWrapper: {
+    backgroundColor: '#5d4427',
+    borderRadius: '50%',
+    position: 'absolute',
+    width: '40px',
+    height: '40px',
+    margin: '0.35em  0em 0em 0.5em',
+    paddingLeft: '0.2em',
+  },
 };
-
-// const icon = {
-//   paddingTop: '25px',
-//   fontSize: '28px',
-//   color: '#FFFF',
-// };
 
 class TextFieldMargins extends Component {
   render() {
     const {
-      input, searchBarWrapper, customForm, customBtn,
+      input, searchBarWrapper, customForm, customSearchBtn, filterWrapper, customFilterBtn,
     } = styles;
     const { handleInputChange, searchCafes } = this.props;
     return (
@@ -64,7 +82,6 @@ class TextFieldMargins extends Component {
               style: input,
             }}
           />
-          <span style={{ color: 'black', width: '2px', height: '20px' }} />
           <TextField
             id="locationSearch"
             name="locationSearch"
@@ -75,8 +92,12 @@ class TextFieldMargins extends Component {
               style: input,
             }}
           />
-          <span><button type="submit" onClick={searchCafes} style={customBtn}><i className="fas fa-search" style={{ color: '#FFFF', fontSize: '25px' }} /></button></span>
+          <span><button type="submit" onClick={searchCafes} style={customSearchBtn}><i className="fas fa-search" style={{ color: '#FFFF', fontSize: '25px' }} /></button></span>
+          <span>
+            <button type="submit" style={customFilterBtn}><i className="fas fa-filter" style={{ color: '#FFFF', fontSize: '20px' }} /></button>
+          </span>
         </form>
+
       </div>
     );
   }
