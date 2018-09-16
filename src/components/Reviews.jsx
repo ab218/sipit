@@ -5,7 +5,6 @@ const reviewTitle = {
   backgroundColor: 'rgb(93, 68, 39)',
   color: 'white',
   textDecoration: 'underline',
-
 };
 
 const review = {

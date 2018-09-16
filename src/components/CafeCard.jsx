@@ -12,36 +12,7 @@ import ShareIcon from '@material-ui/icons/Share';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
 import RatingStar from './RatingStar';
-
-const styles = () => ({
-  card: {
-    display: 'grid',
-    gridTemplateRows: '30% 30% 30% 10%',
-    maxWidth: 300,
-    minWidth: 300,
-    maxHeight: 450,
-    paddingRight: 20,
-    paddingLeft: 20,
-    marginBottom: 20,
-  },
-  spacer: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));',
-    paddingLeft: 20,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  actions: {
-    display: 'inline-flex',
-  },
-  buttons: {
-    position: 'relative',
-    marginTop: '100%',
-  },
-
-});
+import styles from './styles/cafeCardStyles';
 
 class CafeCard extends React.Component {
   constructor(props) {
@@ -58,11 +29,6 @@ class CafeCard extends React.Component {
           <Card className={classes.card}>
             <Link to={`/business/${cafe.id}`}>
               <CardHeader
-                // action={(
-                //   <IconButton>
-                //     <MoreVertIcon />
-                //   </IconButton>
-                // )}
                 title={`${i + 1}. ${cafe.name}`}
               />
             </Link>

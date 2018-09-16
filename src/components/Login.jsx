@@ -7,63 +7,10 @@ import FormControl from '@material-ui/core/FormControl';
 import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
+import { styles, customStyles } from '../loginStyles';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',
-};
-
-const styles = theme => ({
-  container: {
-    display: 'grid',
-    flexWrap: 'wrap',
-    width: 300,
-    marginLeft: '35em',
-  },
-  margin: {
-    margin: theme.spacing.unit,
-  },
-  cssLabel: {
-    '&$cssFocused': {
-    },
-  },
-  cssFocused: {},
-  cssUnderline: {
-    '&:after': {
-    },
-  },
-});
-
-const customStyles = {
-  formBox: {
-    padding: '3em',
-    textAlign: 'center',
-    backgroundColor: '#FFFF',
-    borderRadius: '15%',
-    marginTop: '30px',
-    marginBottom: '30px',
-    top: '70px',
-    bottom: '70px',
-  },
-  submitBtn: {
-    display: 'inline-block',
-    backgroundColor: '#FFFF',
-    borderStyle: 'none',
-    marginTop: '50px',
-    padding: '0.3em 1em',
-    textDecoration: 'none',
-    textAlign: 'center',
-    color: '#f26622',
-    border: 'solid 2px #f26622',
-    borderRadius: '3px',
-    transition: '.4s',
-  },
-  title: {
-    color: '#5d4427',
-    fontSize: '56px',
-    margin: '0 0 50px 0',
-    fontFamily: 'Pacifico',
-    fontWeight: 'bold',
-  },
 };
 
 class Login extends Component {

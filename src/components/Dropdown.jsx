@@ -30,7 +30,6 @@ class Dropdown extends Component {
     }
   }
 
-
   handleClose = () => {
     this.setState({ open: false });
   };

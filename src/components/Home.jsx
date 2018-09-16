@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Snackbar from '@material-ui/core/Snackbar';
 import Navbar from './Navbar';
 import CafeCard from './CafeCard';
 import GoogleMapContainer from './MapContainer';
-import Snackbar from './Snackbar';
+// import Snackbar from './Snackbar';
 import { loadPosition, makeFetchCafesThunk } from '../actions';
 
 const mainTheme = {
@@ -23,8 +24,8 @@ class Home extends Component {
 
   searchCafes = (e) => {
     const {
-      cafeSearch, locationSearch, resultsSearch, makeFetchCafes,
-      myLatLng,
+      cafeSearch, locationSearch, resultsSearch,
+      makeFetchCafes, myLatLng,
     } = this.props;
     e.preventDefault();
     if (locationSearch === '') {
@@ -36,7 +37,7 @@ class Home extends Component {
 
   render() {
     const { location, cafesList, fetchCafesLoading } = this.props;
-
+    console.log(location);
     return (
       <div style={mainTheme}>
         <div style={mapDown}>
@@ -49,10 +50,12 @@ class Home extends Component {
           ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
           : <CafeCard cafesList={cafesList} />
         }
-        {location.state === 'hello'
-          ? <Snackbar />
-          : null
-        }
+        <Snackbar
+          open={this.props.notificationIsOpen}
+          onClose={this.props.notificationHide}
+          message={<p>Login successful</p>}
+          autoHideDuration={2000}
+        />
       </div>
     );
   }
@@ -65,6 +68,7 @@ const mapStateToProps = state => ({
   cafeSearch: state.searchFields.searchName,
   locationSearch: state.searchFields.searchLocation,
   resultsSearch: state.searchFields.searchResults,
+  notificationIsOpen: state.notifications.show,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -86,6 +90,14 @@ const mapDispatchToProps = dispatch => ({
       lat,
       lng,
     },
+  }),
+  notificationShow: () => dispatch({
+    type: 'NOTIFICATION_SHOW',
+    payload: true,
+  }),
+  notificationHide: () => dispatch({
+    type: 'NOTIFICATION_HIDE',
+    payload: false,
   }),
 });
 
