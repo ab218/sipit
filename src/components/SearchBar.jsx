@@ -49,9 +49,9 @@ class TextFieldMargins extends Component {
             }}
           />
           <span><button type="submit" onClick={searchCafes} style={customSearchBtn}><i className="fas fa-search" style={{ color: '#FFFF', fontSize: '25px' }} /></button></span>
-          <span>
+          {/* <span>
             <button type="submit" style={customFilterBtn}><i className="fas fa-filter" style={{ color: '#FFFF', fontSize: '20px' }} /></button>
-          </span>
+          </span> */}
         </form>
 
       </div>

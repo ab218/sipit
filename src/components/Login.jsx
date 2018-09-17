@@ -6,8 +6,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from './Navbar';
-import { styles, customStyles } from '../loginStyles';
+import { styles, customStyles } from './styles/loginStyles';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',
@@ -47,29 +48,21 @@ class Login extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     const { cookies } = this.props;
     const { email, password } = this.state;
     e.preventDefault();
-    fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then(results => results.json())
-      .then((response) => {
-        cookies.set('user', response.name.id, { path: '/' });
-        this.setState({ user: response.name.userName, loginRedirect: true });
-        console.log(response);
-        if (response.status >= 400) {
-          throw new Error('Bad response from server');
-        }
-      }).catch((err) => {
-        console.log(err);
-      });
+    try {
+      const login = await axios
+        .post('/api/login', {
+          email, password,
+        });
+      console.log(login);
+      cookies.set('user', login.data.name.id, { path: '/' });
+      this.setState({ user: login.data.userName, loginRedirect: true });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
@@ -80,7 +73,7 @@ class Login extends Component {
       return (
         <Redirect to={{
           pathname: '/',
-          state: 'hello',
+          state: 'snackbar',
         }}
         />
       );
@@ -141,10 +134,10 @@ class Login extends Component {
                 className="Btn"
                 type="submit"
                 value="Log in"
-                onMouseOver={this.onMouseOver.bind(this)}
-                onFocus={this.onMouseOver.bind(this)}
-                onMouseLeave={this.onMouseLeave.bind(this)}
-                onBlur={this.onMouseLeave.bind(this)}
+                onMouseOver={() => this.onMouseOver()}
+                onFocus={() => this.onMouseOver()}
+                onMouseLeave={() => this.onMouseLeave()}
+                onBlur={() => this.onMouseLeave()}
                 style={customStyles.submitBtn}
               />
             </FormControl>

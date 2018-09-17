@@ -69,9 +69,6 @@ class Dropdown extends Component {
 //   classes: PropTypes.object.isRequired,
 // };
 
-// const mapStateToProps = state => ({
-//   foo: state,
-// });
 
 const mapStateToProps = state => ({
   resultsSearch: state.searchFields.searchResults,

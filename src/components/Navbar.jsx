@@ -91,6 +91,16 @@ const styles = {
   linkStyle: {
 
   },
+  flexContainer: {
+    display: 'inline-flex',
+    width: '100%',
+  },
+  container1: {
+    display: 'flex',
+  },
+  container2: {
+    display: 'flex',
+  },
 };
 class NavbarComponent extends Component {
   static propTypes = {
@@ -147,54 +157,35 @@ class NavbarComponent extends Component {
 Sip-It
           </div>
         </div>
-        <div className="navBody" style={navBody}>
-          <Link to="/">
-            <div className="navItem" style={navItem}>
+        <div className="flexContainer">
+          <div className="container1">
+            <div className="navBody" style={navBody}>
+              <Link to="/">
+                <div className="navItem" style={navItem}>
               Home
-            </div>
-          </Link>
-          <div className="navItem" style={navItem}>
+                </div>
+              </Link>
+              <div className="navItem" style={navItem}>
             About
-          </div>
-          {/* <div
-            className="navDropdown"
-            className="navItem"
-            style={navItem}
-            onMouseOver={this.onMouseOver.bind(this)}
-            onFocus={this.onMouseOver.bind(this)}
-            onMouseLeave={this.onMouseLeave.bind(this)}
-            onBlur={this.onMouseLeave.bind(this)}
-
-          >
-            Menu
-            <i className="fas fa-caret-down" />
-            <div
-              ref={(div) => {
-                this.showContent = div;
-              }}
-              className="dropContent"
-              style={dropContent}
-            >
-              <a className="dropDownItem" style={dropItem} href="#">Action</a>
-              <a className="dropDownItem" style={dropItem} href="#">Action</a>
-              <a className="dropDownItem" style={dropItem} href="#">Action</a>
-              <a className="dropDownItem" style={dropItem} href="#">Action</a>
+              </div>
             </div>
-          </div> */}
-        </div>
-        <SearchBar
-          searchCafes={searchCafes}
-        />
-        <Dropdown />
-        <div className="memberControl" style={memberControl}>
-          {cookies.get('user') === undefined
-            ? <span style={logInBtn}><Link to="login">Log In</Link></span>
-            : <Button onClick={this.logout}>Log Out</Button>
-          }
-          {cookies.get('user') === undefined
-            ? <span style={signUpBtn}><Link to="signup">Sign Up</Link></span>
-            : <span />
-          }
+          </div>
+          <div className="container2">
+            <SearchBar
+              searchCafes={searchCafes}
+            />
+            <Dropdown />
+          </div>
+          <div className="memberControl" style={memberControl}>
+            {cookies.get('user') === undefined
+              ? <span style={logInBtn}><Link to="login">Log In</Link></span>
+              : <Button onClick={this.logout}>Log Out</Button>
+            }
+            {cookies.get('user') === undefined
+              ? <span style={signUpBtn}><Link to="signup">Sign Up</Link></span>
+              : <span />
+            }
+          </div>
         </div>
         {children}
 
