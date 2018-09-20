@@ -2,7 +2,7 @@ const styles = {
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    positon: 'absolute',
+    // positon: 'absolute',
     height: '5em',
     top: 0,
   },
@@ -30,7 +30,6 @@ const styles = {
   },
 
   customForm: {
-    position: 'absolute',
     display: 'inline-flex',
     top: '0.1em',
     left: '0.5em',
@@ -55,9 +54,10 @@ const styles = {
   },
 
   filterWrapper: {
+    display: 'flex',
     backgroundColor: '#5d4427',
     borderRadius: '50%',
-    position: 'absolute',
+    // position: 'absolute',
     width: '40px',
     height: '40px',
     margin: '0.35em  0em 0em 0.5em',

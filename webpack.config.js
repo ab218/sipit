@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 require('dotenv').config();
 
-
 module.exports = {
 
   mode: 'development',
@@ -30,12 +29,10 @@ module.exports = {
       '/api': 'http://[::1]:8081',
     },
     historyApiFallback: true,
-
   },
 
   module: {
     rules: [
-
       // https://webpack.js.org/loaders/babel-loader/
       {
         test: /\.jsx?$/,
@@ -45,7 +42,6 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-
       // https://webpack.js.org/loaders/sass-loader/
       {
         test: /\.(c|sa|sc)ss$/,
@@ -78,5 +74,4 @@ module.exports = {
       'process.env.GOOGLE_API_KEY': JSON.stringify(process.env.GOOGLE_API_KEY),
     }),
   ],
-
 };
