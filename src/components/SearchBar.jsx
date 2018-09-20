@@ -37,7 +37,7 @@ class TextFieldMargins extends Component {
 
   render() {
     const {
-      input, searchBarWrapper, customSearchBtn, customFilterBtn,
+      input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn,
     } = styles;
     return (
       <form onSubmit={this.searchCafes} style={searchBarWrapper}>
@@ -61,10 +61,12 @@ class TextFieldMargins extends Component {
             style: input,
           }}
         />
-        <span><button type="submit" onClick={this.searchCafes} style={customSearchBtn}><i className="fas fa-search" style={{ color: '#FFFF', fontSize: '25px' }} /></button></span>
-        <span><Dropdown /></span>
+        <button type="submit" onClick={this.searchCafes} style={customSearchBtn}><i className="fas fa-search" style={searchIcon} /></button>
+        <Dropdown />
         {/* <span>
-            <button type="submit" style={customFilterBtn}><i className="fas fa-filter" style={{ color: '#FFFF', fontSize: '20px' }} /></button>
+            <button type="submit" style={customFilterBtn}>
+            <i className="fas fa-filter" style={{ color: '#FFFF', fontSize: '20px' }} />
+            </button>
           </span> */}
       </form>
     );

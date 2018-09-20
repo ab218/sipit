@@ -86,7 +86,6 @@ class Login extends Component {
         <div className={classes.container} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="formBox" style={customStyles.formBox}>
             <h2 style={customStyles.title}>Sip-it</h2>
-
             <FormControl className={classes.margin}>
               <InputLabel
                 FormLabelClasses={{

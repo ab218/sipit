@@ -1,23 +1,4 @@
 const styles = {
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    // positon: 'absolute',
-    // height: '5em',
-    // top: 0,
-  },
-
-  // textField: {
-  //   width: 300,
-  // },
-
-  input: {
-    borderColor: '5px solid #f26622',
-    borderRadius: '8px',
-    margin: '0 0.5em',
-    color: 'black',
-    backgroundColor: 'white',
-  },
 
   searchBarWrapper: {
     textAlign: 'center',
@@ -27,11 +8,24 @@ const styles = {
     borderRadius: '30px',
   },
 
+  input: {
+    borderColor: '5px solid #f26622',
+    borderRadius: '8px',
+    margin: '0 0.5em',
+    color: 'black',
+    backgroundColor: 'white',
+  },
+
   customSearchBtn: {
     border: '0',
     outline: '0',
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
+  },
+
+  searchIcon: {
+    color: '#FFFF',
+    fontSize: '25px',
   },
 
   // customFilterBtn: {
@@ -43,9 +37,9 @@ const styles = {
   //   marginBottom: '40px',
   // },
 
-  filterWrapper: {
-    display: 'flex',
-    backgroundColor: '#5d4427',
-  },
+  // filterWrapper: {
+  //   display: 'flex',
+  //   backgroundColor: '#5d4427',
+  // },
 };
 export default styles;
