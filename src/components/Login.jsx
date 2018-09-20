@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes, { instanceOf } from 'prop-types';
+import { compose } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -21,9 +22,9 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
-    const { cookies } = props;
+    // const { cookies } = props;
     this.state = {
-      user: cookies.get('user') || null,
+      // user: cookies.get('user') || null,
       loginRedirect: false,
       email: 'ab@ab.com',
       password: 'ab',
@@ -58,8 +59,8 @@ class Login extends Component {
           email, password,
         });
       console.log(login);
-      cookies.set('user', login.data.name.id, { path: '/' });
-      this.setState({ user: login.data.userName, loginRedirect: true });
+      cookies.set('user', login.data.name.id);
+      this.setState({ loginRedirect: true });
     } catch (err) {
       console.log(err);
     }
@@ -151,5 +152,7 @@ class Login extends Component {
 //   classes: PropTypes.object.isRequired,
 // };
 
-// Login = withStyles(styles)(Login);
-export default withCookies(withStyles(styles)(Login));
+export default compose(
+  withStyles(styles),
+  withCookies,
+)(Login);
