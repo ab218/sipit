@@ -22,11 +22,6 @@ const styles = {
     fontFamily: 'Pacifico',
     fontWeight: 'bold',
   },
-  elementsLabel: {
-    color: 'gray',
-    margin: '0',
-    fontFamily: 'Karla',
-  },
   elementsInput: {
     fontSize: '1.3em',
     verticalAlign: 'bottom',
@@ -35,6 +30,9 @@ const styles = {
     padding: '10px 10px 10px',
     textAlign: 'right',
     fontSize: '18px',
+    color: 'gray',
+    margin: '0',
+    fontFamily: 'Karla',
   },
   td: {
     paddingTop: '10px',
