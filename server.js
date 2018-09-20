@@ -24,7 +24,7 @@ app.use('/api/reviews', reviewsRoutes(knex));
 app.use('/api/login', loginRoutes);
 app.use('/api/yelp', yelpRoutes);
 
-// history must go after other endpoints and before app.use to enable fallback on heroku
+// history must go after other endpoints
 app.use(history());
 
 if (process.env.NODE_ENV === 'production') {
