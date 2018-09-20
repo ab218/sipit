@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import customCss from '../index.css';
 import styles from './styles/searchBarStyles';
+import Dropdown from './Dropdown';
 
 class TextFieldMargins extends Component {
   handleInputChange = (e) => {
@@ -49,6 +50,7 @@ class TextFieldMargins extends Component {
             }}
           />
           <span><button type="submit" onClick={searchCafes} style={customSearchBtn}><i className="fas fa-search" style={{ color: '#FFFF', fontSize: '25px' }} /></button></span>
+          <span><Dropdown /></span>
           {/* <span>
             <button type="submit" style={customFilterBtn}><i className="fas fa-filter" style={{ color: '#FFFF', fontSize: '20px' }} /></button>
           </span> */}

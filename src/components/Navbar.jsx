@@ -4,7 +4,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import Button from '@material-ui/core/Button';
 import SearchBar from './SearchBar';
-import Dropdown from './Dropdown';
 import styles from './styles/navbarStyles';
 
 
@@ -16,7 +15,6 @@ class NavbarComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: props.cookies.get('user') || null,
       logoutRedirect: false,
     };
   }
@@ -35,7 +33,6 @@ class NavbarComponent extends Component {
   logout = () => {
     const { cookies } = this.props;
     cookies.remove('user');
-    this.setState({ user: null });
     this.setState({
       logoutRedirect: true,
     });
@@ -63,35 +60,32 @@ class NavbarComponent extends Component {
 Sip-It
           </div>
         </div>
-        <div className="flexContainer" style={flexContainer}>
-          <div className="container1" style={container1}>
-            <div className="navBody" style={navBody}>
-              <Link to="/">
-                <div className="navItem" style={navItem}>
-              Home
-                </div>
-              </Link>
+        <div className="container1" style={container1}>
+          <div className="navBody" style={navBody}>
+            <Link to="/">
               <div className="navItem" style={navItem}>
-            About
+              Home
               </div>
+            </Link>
+            <div className="navItem" style={navItem}>
+            About
             </div>
           </div>
-          <div className="container2" style={container2}>
-            <SearchBar
-              searchCafes={searchCafes}
-            />
-            <Dropdown />
-          </div>
-          <div className="memberControl" style={memberControl}>
-            {cookies.get('user') === undefined
-              ? <span style={logInBtn}><Link to="/login">Log In</Link></span>
-              : <Button onClick={this.logout}>Log Out</Button>
-            }
-            {cookies.get('user') === undefined
-              ? <span style={signUpBtn}><Link to="/signup">Sign Up</Link></span>
-              : <span />
-            }
-          </div>
+        </div>
+        <div className="container2" style={container2}>
+          <SearchBar
+            searchCafes={searchCafes}
+          />
+        </div>
+        <div className="memberControl" style={memberControl}>
+          {cookies.get('user') === undefined
+            ? <span style={logInBtn}><Link to="/login">Log In</Link></span>
+            : <Button onClick={this.logout}>Log Out</Button>
+          }
+          {cookies.get('user') === undefined
+            ? <span style={signUpBtn}><Link to="/signup">Sign Up</Link></span>
+            : <span />
+          }
         </div>
         {children}
 

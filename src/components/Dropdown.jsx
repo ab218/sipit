@@ -43,24 +43,22 @@ class Dropdown extends Component {
     const { open } = this.state;
 
     return (
-      <form autoComplete="off">
-        <FormControl className={classes.formControl}>
-          <Select
-            open={open}
-            onClose={this.handleClose}
-            onOpen={this.handleOpen}
-            onChange={this.handleInputChange}
-            value={resultsSearch}
-            inputProps={{
-              name: 'results',
-            }}
-          >
-            <MenuItem value={10}>10</MenuItem>
-            <MenuItem value={20}>20</MenuItem>
-            <MenuItem value={30}>30</MenuItem>
-          </Select>
-        </FormControl>
-      </form>
+      <FormControl className={classes.formControl}>
+        <Select
+          open={open}
+          onClose={this.handleClose}
+          onOpen={this.handleOpen}
+          onChange={this.handleInputChange}
+          value={resultsSearch}
+          inputProps={{
+            name: 'results',
+          }}
+        >
+          <MenuItem value={10}>10</MenuItem>
+          <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={30}>30</MenuItem>
+        </Select>
+      </FormControl>
     );
   }
 }
