@@ -25,7 +25,7 @@ export default class Home extends Component {
   getBusiness() {
     const { match } = this.props;
     axios
-      .get(`/api/business/${match.params.id}/details`, {
+      .get(`/api/yelp/${match.params.id}/details`, {
       })
       .then(res => this.setState({
         yelpDataLoaded: true,
@@ -36,7 +36,7 @@ export default class Home extends Component {
   getReviews() {
     const { match } = this.props;
     axios
-      .get(`/api/business/${match.params.id}/reviews`, {
+      .get(`/api/yelp/${match.params.id}/reviews`, {
       })
       .then(res => this.setState({
         reviewsLoaded: true,
