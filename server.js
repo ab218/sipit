@@ -10,7 +10,6 @@ const knex = require('knex')(knexConfig.development);
 
 const app = express();
 
-
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
