@@ -5,38 +5,49 @@ const styles = {
     positon: 'absolute',
     height: '5em',
     top: 0,
-
-
   },
+
   textField: {
     width: 500,
   },
+
   input: {
     borderColor: '5px solid #f26622',
     //    borderRadius: '8px',
     color: 'black',
     backgroundColor: 'transparent',
   },
+
   searchBarWrapper: {
-    position: 'absolute',
+    position: 'relative',
     top: '11.5vh',
-    left: '48%',
+    marginRight: 'auto',
+    marginLeft: 'auto',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#5d4427',
     borderRadius: '30px',
-    width: '18em',
-    height: '1.3em',
+    width: '50%',
+    height: '31%',
+    paddingTop: '4%',
+    minWidth: '13em',
   },
+
   customForm: {
-    position: 'relative',
-    display: 'contents',
+    position: 'absolute',
+    display: 'inline-flex',
+    top: '0.1em',
+    left: '0.5em',
+    width: '100%',
+    height: '100%',
   },
+
   customSearchBtn: {
     border: '0',
     outline: '0',
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
   },
+
   customFilterBtn: {
     border: '0',
     outline: '0',
@@ -45,6 +56,7 @@ const styles = {
     paddingLeft: '3px',
     marginBottom: '40px',
   },
+
   filterWrapper: {
     backgroundColor: '#5d4427',
     borderRadius: '50%',

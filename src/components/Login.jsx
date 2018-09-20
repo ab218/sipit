@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
-import { styles, customStyles } from '../loginStyles';
+import { styles, customStyles } from './styles/loginStyles';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',
