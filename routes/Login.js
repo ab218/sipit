@@ -18,6 +18,7 @@ async function authenticateUser(email, password) {
   }
   return undefined;
 }
+
 router.post('/', async (req, res, next) => {
   try {
     console.log('thing');

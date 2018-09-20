@@ -84,11 +84,11 @@ Sip-It
           </div>
           <div className="memberControl" style={memberControl}>
             {cookies.get('user') === undefined
-              ? <span style={logInBtn}><Link to="login">Log In</Link></span>
+              ? <span style={logInBtn}><Link to="/login">Log In</Link></span>
               : <Button onClick={this.logout}>Log Out</Button>
             }
             {cookies.get('user') === undefined
-              ? <span style={signUpBtn}><Link to="signup">Sign Up</Link></span>
+              ? <span style={signUpBtn}><Link to="/signup">Sign Up</Link></span>
               : <span />
             }
           </div>

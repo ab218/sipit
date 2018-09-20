@@ -14,7 +14,6 @@ export default class Signup extends Component {
 
     handleInputChange = (e) => {
       const { value, name } = e.target;
-
       this.setState({
         [name]: value,
       });
@@ -22,7 +21,7 @@ export default class Signup extends Component {
 
     render() {
       const {
-        mainTheme, wrapper, title, elementsLabel, elementsInput, th, td,
+        mainTheme, wrapper, title, elementsInput, th, td,
       } = styles;
       const {
         email, password, confPassword, userName,
@@ -31,65 +30,65 @@ export default class Signup extends Component {
         <div style={mainTheme}>
           <div style={wrapper}>
             <h2 style={title}>Sip-it</h2>
-            <form onSubmit={this.handleSubmit}>
-              <table style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                <tbody>
-                  <tr>
-                    <th style={th}><label htmlFor="email" style={elementsLabel}>Email</label></th>
-                    <td style={td}>
-                      <input
-                        id="email"
-                        style={elementsInput}
-                        type="email"
-                        name="email"
-                        defaultValue={email}
-                        onChange={this.handleInputChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th style={th}><label htmlFor="password" style={elementsLabel}>Password</label></th>
-                    <td style={td}>
-                      <input
-                        id="password"
-                        style={elementsInput}
-                        type="password"
-                        name="password"
-                        defaultValue={password}
-                        onChange={this.handleInputChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th style={th}><label htmlFor="confPassword" style={elementsLabel}>Confirm Password</label></th>
-                    <td style={td}>
-                      <input
-                        id="confPassword"
-                        style={elementsInput}
-                        type="password"
-                        name="confPassword"
-                        defaultValue={confPassword}
-                        onChange={this.handleInputChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th style={th}><label htmlFor="userName" style={elementsLabel}>User Name</label></th>
-                    <td style={td}>
-                      <input
-                        id="userName"
-                        style={elementsInput}
-                        type="text"
-                        name="userName"
-                        value={userName}
-                        onChange={this.handleInputChange}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <input type="submit" v alue="submit" />
-            </form>
+            {/* <form onSubmit={this.handleSubmit}> */}
+            <table style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+              <tbody>
+                <tr>
+                  <th style={th}>Email</th>
+                  <td style={td}>
+                    <input
+                      id="email"
+                      style={elementsInput}
+                      type="email"
+                      name="email"
+                      defaultValue={email}
+                      onChange={this.handleInputChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th style={th}>Password</th>
+                  <td style={td}>
+                    <input
+                      id="password"
+                      style={elementsInput}
+                      type="password"
+                      name="password"
+                      defaultValue={password}
+                      onChange={this.handleInputChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th style={th}>Confirm Password</th>
+                  <td style={td}>
+                    <input
+                      id="confPassword"
+                      style={elementsInput}
+                      type="password"
+                      name="confPassword"
+                      defaultValue={confPassword}
+                      onChange={this.handleInputChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th style={th}>User Name</th>
+                  <td style={td}>
+                    <input
+                      id="userName"
+                      style={elementsInput}
+                      type="text"
+                      name="userName"
+                      value={userName}
+                      onChange={this.handleInputChange}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <input type="submit" value="submit" />
+            {/* </form> */}
           </div>
         </div>
       );

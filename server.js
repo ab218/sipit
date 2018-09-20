@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 8081;
 const history = require('connect-history-api-fallback');
-const axios = require('axios');
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig.development);
 
@@ -18,82 +17,14 @@ app.use(bodyParser.json());
 const usersRoutes = require('./routes/Users.js');
 const reviewsRoutes = require('./routes/Reviews.js');
 const loginRoutes = require('./routes/Login.js');
-// const loginDataHelpers = require('./routes/loginDataHelpers.js');
+const yelpRoutes = require('./routes/yelpRoutes.js');
 
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/reviews', reviewsRoutes(knex));
 app.use('/api/login', loginRoutes);
+app.use('/api/yelp', yelpRoutes);
 
-const yelpApi = axios.create({
-  baseURL: 'https://api.yelp.com/v3',
-  headers: {
-    Authorization: `Bearer ${process.env.YELP_API_KEY}`,
-  },
-});
-
-app.post('/api/yelp/loc', (req, res) => yelpApi
-  .get('/businesses/search', {
-    params: {
-      limit: req.body.limit,
-      term: req.body.term,
-      location: req.body.location,
-    },
-  })
-  .then(response => res.send(response.data.businesses.map((business) => {
-    const {
-      id, name, coordinates, rating, image_url, categories, review_count,
-    } = business;
-    return ({
-      id,
-      name,
-      coordinates,
-      rating,
-      image_url,
-      categories,
-      review_count,
-    });
-  })))
-  .catch(error => console.error(error)));
-
-app.post('/api/yelp/latlng', (req, res) => yelpApi
-  .get('/businesses/search', {
-    params: {
-      limit: req.body.limit,
-      term: req.body.term,
-      latitude: req.body.latLng.lat,
-      longitude: req.body.latLng.lng,
-    },
-  })
-  .then(response => res.send(response.data.businesses.map((business) => {
-    const {
-      id, name, coordinates, rating, image_url, categories, review_count,
-    } = business;
-    return ({
-      id,
-      name,
-      coordinates,
-      rating,
-      image_url,
-      categories,
-      review_count,
-    });
-  })))
-  .catch(error => console.error(error)));
-
-app.get('/api/business/:id/details', (req, res) => yelpApi
-  .get(`/businesses/${req.params.id}`, {
-  })
-  .then(response => res.send(response.data))
-  .catch(error => console.error(error)));
-
-app.get('/api/business/:id/reviews', (req, res) => yelpApi
-  .get(`/businesses/${req.params.id}/reviews`, {
-  })
-  .then(response => res.send(response.data))
-  .catch(error => console.error(error)));
-
-
-// history must go after other endpoints and before app.use to enable fallback on heroku
+// history must go after other endpoints
 app.use(history());
 
 if (process.env.NODE_ENV === 'production') {

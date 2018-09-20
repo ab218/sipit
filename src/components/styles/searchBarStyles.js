@@ -2,7 +2,7 @@ const styles = {
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    positon: 'absolute',
+    // positon: 'absolute',
     height: '5em',
     top: 0,
   },
@@ -59,9 +59,14 @@ const styles = {
   },
 
   filterWrapper: {
+    display: 'flex',
     backgroundColor: '#5d4427',
     borderRadius: '50%',
+<<<<<<< HEAD
     //    position: 'absolute',
+=======
+    // position: 'absolute',
+>>>>>>> 553debf45833dd954e08d3ac378d2f198cdcb741
     width: '40px',
     height: '40px',
     margin: '0.35em  0em 0em 0.5em',
