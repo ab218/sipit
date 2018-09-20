@@ -19,18 +19,22 @@ const styles = {
   },
 
   searchBarWrapper: {
-    // position: 'absolute',
-    // top: '11.5vh',
-    // left: '48%',
+    //    position: 'relative',
+    //    top: '11.5vh',
+    //    marginRight: 'auto',
+    //    marginLeft: 'auto',
     // transform: 'translate(-50%, -50%)',
     backgroundColor: '#5d4427',
     borderRadius: '30px',
-    width: '18em',
-    // height: '1.3em',
+    //    width: '50%',
+    //    height: '31%',
+    //    paddingTop: '4%',
+    //    minWidth: '13em',
+    alignSelf: 'flex-end',
   },
 
   customForm: {
-    position: 'absolute',
+    //    position: 'absolute',
     display: 'inline-flex',
     top: '0.1em',
     left: '0.5em',
@@ -57,7 +61,7 @@ const styles = {
   filterWrapper: {
     backgroundColor: '#5d4427',
     borderRadius: '50%',
-    position: 'absolute',
+    //    position: 'absolute',
     width: '40px',
     height: '40px',
     margin: '0.35em  0em 0em 0.5em',

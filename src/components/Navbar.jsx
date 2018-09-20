@@ -44,7 +44,7 @@ class NavbarComponent extends Component {
   render() {
     const {
       navBar, navHead, navIcon, navItem, navBody,
-      memberControl, logInBtn, signUpBtn,
+      memberControl, logInBtn, signUpBtn, flexContainer, container1, container2,
     } = styles;
 
     const { logoutRedirect } = this.state;
@@ -63,8 +63,8 @@ class NavbarComponent extends Component {
 Sip-It
           </div>
         </div>
-        <div className="flexContainer">
-          <div className="container1">
+        <div className="flexContainer" style={flexContainer}>
+          <div className="container1" style={container1}>
             <div className="navBody" style={navBody}>
               <Link to="/">
                 <div className="navItem" style={navItem}>
@@ -76,7 +76,7 @@ Sip-It
               </div>
             </div>
           </div>
-          <div className="container2">
+          <div className="container2" style={container2}>
             <SearchBar
               searchCafes={searchCafes}
             />

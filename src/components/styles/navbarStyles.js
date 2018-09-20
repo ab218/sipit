@@ -1,5 +1,29 @@
 const styles = {
 
+  navHead: {
+    margin: '10px 0 0 20px',
+    minWidth: '11rem',
+    float: 'left',
+    fontFamily: 'Pacifico',
+    fontWeight: 'bold',
+    fontSize: 'calc(20px + 0.25vw)',
+  },
+
+  flexContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  container1: {
+    display: 'flex',
+    //    flexDirection: 'row',
+  },
+
+  navBody: {
+    display: 'inline-flex',
+    padding: '1rem 0 0 3rem',
+    fontSize: '20px',
+  },
+
   navBar: {
     display: 'flex',
     positon: 'absolute',
@@ -14,23 +38,18 @@ const styles = {
     height: '5em',
   },
 
-  navHead: {
-    margin: '10px 0 0 20px',
-    minWidth: '11rem',
-    float: 'left',
-    fontFamily: 'Pacifico',
-    fontWeight: 'bold',
-    fontSize: 'calc(20px + 0.25vw)',
+  navItem: {
+    padding: '12px 16px',
+  },
+
+  container2: {
+    display: 'flex',
+    width: '100%',
+    flexWrap: 'wrap',
   },
 
   navIcon: {
     //  paddingRight: '20px',
-  },
-
-  navBody: {
-    display: 'inline-flex',
-    padding: '1rem 0 0 3rem',
-    fontSize: '20px',
   },
 
   dropContent: {
@@ -50,15 +69,12 @@ const styles = {
     // text-decoration: none;
   },
 
-  navItem: {
-    padding: '12px 16px',
-  },
   memberControl: {
     display: 'flex',
     textAlign: 'right',
     fontSize: 'calc(15px + 0.25vw)',
     top: '-15px',
-    //  marBotton: '20px',
+    flexWrap: 'wrap',
   },
 
   logInBtn: {
