@@ -16,7 +16,7 @@ Sip-It is a web app for finding nearby cafes. It was built by Aaron Black and Hy
 ## Stack
 - Node
 - Express
-- React
+- React/Redux
 - Postgres
 
 
