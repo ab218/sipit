@@ -40,8 +40,8 @@ class NavbarComponent extends Component {
 
   render() {
     const {
-      navBar, navHead, navIcon, navItem, navBody,
-      memberControl, logInBtn, signUpBtn, flexContainer, container1, container2,
+      navBar, navHead, navIcon, navItem,
+      memberControl, logInBtn, signUpBtn, container1, container2,
     } = styles;
 
     const { logoutRedirect } = this.state;
@@ -61,23 +61,17 @@ Sip-It
           </div>
         </div>
         <div className="container1" style={container1}>
-          <div className="navBody" style={navBody}>
-            <Link to="/">
-              <div className="navItem" style={navItem}>
-              Home
-              </div>
-            </Link>
+          <Link to="/">
             <div className="navItem" style={navItem}>
-            About
+              Home
             </div>
+          </Link>
+          <div className="navItem" style={navItem}>
+            About
           </div>
+
         </div>
-        <div className="container2" style={container2}>
-          <SearchBar
-            searchCafes={searchCafes}
-          />
-        </div>
-        <div className="memberControl" style={memberControl}>
+        <span className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
             ? <span style={logInBtn}><Link to="/login">Log In</Link></span>
             : <Button onClick={this.logout}>Log Out</Button>
@@ -86,8 +80,13 @@ Sip-It
             ? <span style={signUpBtn}><Link to="/signup">Sign Up</Link></span>
             : <span />
           }
-        </div>
+        </span>
         {children}
+        <div className="container2" style={container2}>
+          <SearchBar
+            searchCafes={searchCafes}
+          />
+        </div>
 
       </div>
     );

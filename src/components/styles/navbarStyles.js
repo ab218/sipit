@@ -10,15 +10,9 @@ const styles = {
     fontSize: 'calc(20px + 0.25vw)',
   },
 
-  navBody: {
-    display: 'inline-flex',
-    padding: '1rem 0 0 3rem',
-    fontSize: '20px',
-  },
-
   navBar: {
     display: 'flex',
-    positon: 'absolute',
+    flexWrap: 'wrap',
     backgroundColor: '#FFFF',
     color: '#5d4427',
     fontSize: '30px',
@@ -28,6 +22,7 @@ const styles = {
     zIndex: '9',
     width: '100%',
     height: '5em',
+    justifyContent: 'space-between',
   },
 
   navItem: {
@@ -56,11 +51,15 @@ const styles = {
   },
 
   container1: {
-    display: 'flex',
+    display: 'inline-flex',
+    padding: '1rem 0 0 3rem',
+    fontSize: '20px',
     order: '1',
     //    flexDirection: 'row',
   },
   container2: {
+    justifySelf: 'center',
+    alignSelf: 'flex-end',
     display: 'flex',
     width: '100%',
     flexWrap: 'wrap',
@@ -69,11 +68,12 @@ const styles = {
   },
 
   memberControl: {
-    display: 'flex',
+    display: 'inline',
+    minWidth: '200px',
     textAlign: 'right',
     fontSize: 'calc(15px + 0.25vw)',
-    flexWrap: 'wrap',
-    order: '3',
+    // flexWrap: 'wrap',
+    order: '1',
   },
 
   logInBtn: {

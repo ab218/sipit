@@ -23,7 +23,7 @@ const styles = {
     backgroundColor: '#5d4427',
     // padding: '0.25em',
     borderRadius: '30px',
-    alignSelf: 'flex-end',
+    alignSelf: 'start',
   },
 
   customForm: {
