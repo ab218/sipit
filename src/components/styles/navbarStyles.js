@@ -28,7 +28,6 @@ const styles = {
 
   container1: {
     display: 'inline-flex',
-    // padding: '1rem 0 0 3rem',
     fontSize: '20px',
     order: '1',
 
@@ -41,8 +40,6 @@ const styles = {
   },
   container2: {
     justifyContent: 'center',
-    justifySelf: 'center',
-    alignSelf: 'center',
     display: 'flex',
     width: '100%',
     flexWrap: 'wrap',
@@ -77,9 +74,6 @@ const styles = {
     padding: '5px',
   },
 
-  linkStyle: {
-
-  },
 };
 
 

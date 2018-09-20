@@ -82,7 +82,9 @@ class Login extends Component {
 
     return (
       <div className="formWrapper" style={mainTheme}>
-        <Navbar />
+        <Navbar
+          page="login"
+        />
         <div className={classes.container} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="formBox" style={customStyles.formBox}>
             <h2 style={customStyles.title}>Sip-it</h2>

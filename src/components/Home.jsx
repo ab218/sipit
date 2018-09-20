@@ -30,7 +30,9 @@ class Home extends Component {
     return (
       <div style={mainTheme}>
         <div style={mapDown}>
-          <Navbar />
+          <Navbar
+            page="home"
+          />
         </div>
         {cafesList && (<GoogleMapContainer />)}
         {fetchCafesLoading

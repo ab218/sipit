@@ -3,15 +3,23 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import customCss from '../index.css';
 import styles from './styles/searchBarStyles';
 import Dropdown from './Dropdown';
 import { makeFetchCafesThunk } from '../actions';
 
-class TextFieldMargins extends Component {
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+    };
+  }
+
   onMouseOver() {
-    this.searchBtn.style.color = 'red';
+    this.searchBtn.style.color = 'orange';
   }
 
   onMouseLeave() {
@@ -33,7 +41,7 @@ class TextFieldMargins extends Component {
   searchCafes = (e) => {
     const {
       cafeSearch, locationSearch, resultsSearch,
-      makeFetchCafes, myLatLng,
+      makeFetchCafes, myLatLng, page,
     } = this.props;
     e.preventDefault();
     if (locationSearch === '') {
@@ -41,14 +49,21 @@ class TextFieldMargins extends Component {
     } else {
       makeFetchCafes(cafeSearch, resultsSearch, locationSearch);
     }
+    if (page !== 'home') {
+      this.setState({
+        redirect: true,
+      });
+    }
   }
 
   render() {
     const {
       input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn,
     } = styles;
+    const { redirect } = this.state;
     return (
       <form onSubmit={this.searchCafes} style={searchBarWrapper}>
+        {redirect && <Redirect to="/" />}
         <TextField
           id="cafeSearch"
           className={customCss.rightPadding}
@@ -126,4 +141,4 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   withStyles(styles),
   connect(mapStateToProps, mapDispatchToProps),
-)(TextFieldMargins);
+)(SearchBar);

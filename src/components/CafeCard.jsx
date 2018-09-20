@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -9,18 +9,11 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-// import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
 import RatingStar from './RatingStar';
 import styles from './styles/cafeCardStyles';
 
-class CafeCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
+class CafeCard extends Component {
   getCafes = () => {
     const { classes, cafesList } = this.props;
     return cafesList

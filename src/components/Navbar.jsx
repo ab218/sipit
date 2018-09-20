@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import MediaQuery from 'react-responsive';
 import Button from '@material-ui/core/Button';
 import SearchBar from './SearchBar';
 import styles from './styles/navbarStyles';
@@ -20,15 +21,15 @@ class NavbarComponent extends Component {
   }
 
   // Menu mouse over effect
-  onMouseOver() {
-    this.showContent.style.removeProperty('display');
-    this.showContent.style.display = 'inline-flex';
-  }
+  // onMouseOver() {
+  //   this.showContent.style.removeProperty('display');
+  //   this.showContent.style.display = 'inline-flex';
+  // }
 
-  onMouseLeave() {
-    this.showContent.style.removeProperty('display');
-    this.showContent.style.display = 'none';
-  }
+  // onMouseLeave() {
+  //   this.showContent.style.removeProperty('display');
+  //   this.showContent.style.display = 'none';
+  // }
 
   logout = () => {
     const { cookies } = this.props;
@@ -45,7 +46,7 @@ class NavbarComponent extends Component {
     } = styles;
 
     const { logoutRedirect } = this.state;
-    const { cookies } = this.props;
+    const { cookies, page } = this.props;
 
     if (logoutRedirect) {
       return <Redirect to="/login" />;
@@ -75,7 +76,9 @@ class NavbarComponent extends Component {
           }
         </div>
         <div className="container2" style={container2}>
-          <SearchBar />
+          <SearchBar
+            page={page}
+          />
         </div>
       </div>
     );

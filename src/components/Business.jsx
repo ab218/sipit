@@ -52,7 +52,9 @@ export default class Business extends Component {
 
     return (
       <div style={mainTheme}>
-        <Navbar />
+        <Navbar
+          page="business"
+        />
         {yelpDataLoaded
           ? <BusinessDetails cafeData={cafeData} />
           : <h1 style={{ color: 'white' }}>Brewing results ...</h1>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles/signupStyles';
+import Navbar from './Navbar';
 
 export default class Signup extends Component {
   constructor(props) {
@@ -28,6 +29,9 @@ export default class Signup extends Component {
       } = this.state;
       return (
         <div style={mainTheme}>
+          <Navbar
+            page="signup"
+          />
           <div style={wrapper}>
             <h2 style={title}>Sip-it</h2>
             {/* <form onSubmit={this.handleSubmit}> */}
