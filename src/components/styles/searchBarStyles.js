@@ -26,6 +26,7 @@ const styles = {
   searchIcon: {
     color: '#FFFF',
     fontSize: '25px',
+    transition: '.4s',
   },
 
   // customFilterBtn: {

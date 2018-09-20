@@ -10,6 +10,14 @@ import Dropdown from './Dropdown';
 import { makeFetchCafesThunk } from '../actions';
 
 class TextFieldMargins extends Component {
+  onMouseOver() {
+    this.searchBtn.style.color = 'red';
+  }
+
+  onMouseLeave() {
+    this.searchBtn.style.color = '#FFF';
+  }
+
   handleInputChange = (e) => {
     const { setName, setLocation } = this.props;
     const { value, name } = e.target;
@@ -61,7 +69,23 @@ class TextFieldMargins extends Component {
             style: input,
           }}
         />
-        <button type="submit" onClick={this.searchCafes} style={customSearchBtn}><i className="fas fa-search" style={searchIcon} /></button>
+        <button
+          type="submit"
+          onClick={this.searchCafes}
+          style={customSearchBtn}
+        >
+          <i
+            className="fas fa-search"
+            ref={(div) => {
+              this.searchBtn = div;
+            }}
+            onMouseOver={() => this.onMouseOver()}
+            onFocus={() => this.onMouseOver()}
+            onMouseLeave={() => this.onMouseLeave()}
+            onBlur={() => this.onMouseLeave()}
+            style={searchIcon}
+          />
+        </button>
         <Dropdown />
         {/* <span>
             <button type="submit" style={customFilterBtn}>
