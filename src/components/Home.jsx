@@ -4,7 +4,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Navbar from './Navbar';
 import CafeCard from './CafeCard';
 import GoogleMapContainer from './MapContainer';
-// import Snackbar from './Snackbar';
 import { loadPosition, makeFetchCafesThunk } from '../actions';
 
 const mainTheme = {
@@ -22,19 +21,6 @@ class Home extends Component {
     makeFetchCafes('coffee', 10);
   }
 
-  searchCafes = (e) => {
-    const {
-      cafeSearch, locationSearch, resultsSearch,
-      makeFetchCafes, myLatLng,
-    } = this.props;
-    e.preventDefault();
-    if (locationSearch === '') {
-      makeFetchCafes(cafeSearch, resultsSearch, myLatLng);
-    } else {
-      makeFetchCafes(cafeSearch, resultsSearch, locationSearch);
-    }
-  }
-
   render() {
     const {
       location, cafesList, fetchCafesLoading,
@@ -44,9 +30,7 @@ class Home extends Component {
     return (
       <div style={mainTheme}>
         <div style={mapDown}>
-          <Navbar
-            searchCafes={this.searchCafes}
-          />
+          <Navbar />
         </div>
         {cafesList && (<GoogleMapContainer />)}
         {fetchCafesLoading

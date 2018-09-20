@@ -20,18 +20,11 @@ const styles = {
   },
 
   searchBarWrapper: {
+    textAlign: 'center',
+    alignSelf: 'center',
     backgroundColor: '#5d4427',
-    // padding: '0.25em',
+    padding: '0 0.5em',
     borderRadius: '30px',
-    alignSelf: 'start',
-  },
-
-  customForm: {
-    // display: 'inline-flex',
-    // top: '0.1em',
-    // left: '0.5em',
-    // width: '100%',
-    // height: '100%',
   },
 
   customSearchBtn: {

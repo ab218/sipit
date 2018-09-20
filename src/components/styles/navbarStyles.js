@@ -1,15 +1,5 @@
 const styles = {
 
-  navHead: {
-    order: '0',
-    margin: '10px 0 0 20px',
-    minWidth: '11rem',
-    float: 'left',
-    fontFamily: 'Pacifico',
-    fontWeight: 'bold',
-    fontSize: 'calc(20px + 0.25vw)',
-  },
-
   navBar: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -25,41 +15,34 @@ const styles = {
     justifyContent: 'space-between',
   },
 
-  navItem: {
-    padding: '12px 16px',
-  },
+  navHead: {
+    order: '0',
+    margin: '10px 0 0 20px',
+    minWidth: '11rem',
+    float: 'left',
+    fontFamily: 'Pacifico',
+    fontWeight: 'bold',
+    fontSize: 'calc(20px + 0.25vw)',
 
-  navIcon: {
-    //  paddingRight: '20px',
-  },
-
-  dropContent: {
-    display: 'none',
-    // display: 'grid',
-    color: '#FFFF',
-    position: 'relative',
-    minWidth: '160px',
-    boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
-    zIndex: '1',
-
-  },
-
-  dropItem: {
-    color: 'black',
-    padding: '12px 16px',
-    // text-decoration: none;
   },
 
   container1: {
     display: 'inline-flex',
-    padding: '1rem 0 0 3rem',
+    // padding: '1rem 0 0 3rem',
     fontSize: '20px',
     order: '1',
+
     //    flexDirection: 'row',
   },
+
+  navItem: {
+    padding: '12px 16px',
+    color: 'black',
+  },
   container2: {
+    justifyContent: 'center',
     justifySelf: 'center',
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
     display: 'flex',
     width: '100%',
     flexWrap: 'wrap',
@@ -98,5 +81,21 @@ const styles = {
 
   },
 };
+
+
+// dropContent: {
+  //   display: 'none',
+  //   color: '#FFFF',
+  //   position: 'relative',
+  //   minWidth: '160px',
+  //   boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+  //   zIndex: '1',
+  // },
+
+  // dropItem: {
+  //   color: 'black',
+  //   padding: '12px 16px',
+  //   // text-decoration: none;
+  // },
 
 export default styles;

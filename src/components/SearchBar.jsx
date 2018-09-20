@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import customCss from '../index.css';
 import styles from './styles/searchBarStyles';
 import Dropdown from './Dropdown';
+import { makeFetchCafesThunk } from '../actions';
 
 class TextFieldMargins extends Component {
   handleInputChange = (e) => {
@@ -21,42 +22,51 @@ class TextFieldMargins extends Component {
     }
   }
 
+  searchCafes = (e) => {
+    const {
+      cafeSearch, locationSearch, resultsSearch,
+      makeFetchCafes, myLatLng,
+    } = this.props;
+    e.preventDefault();
+    if (locationSearch === '') {
+      makeFetchCafes(cafeSearch, resultsSearch, myLatLng);
+    } else {
+      makeFetchCafes(cafeSearch, resultsSearch, locationSearch);
+    }
+  }
+
   render() {
     const {
-      input, searchBarWrapper, customForm, customSearchBtn, customFilterBtn,
+      input, searchBarWrapper, customSearchBtn, customFilterBtn,
     } = styles;
-    const { searchCafes } = this.props;
     return (
-      <div id="searchBarWrapper" style={searchBarWrapper}>
-        <form onSubmit={searchCafes} style={customForm}>
-          <TextField
-            id="cafeSearch"
-            className={customCss.rightPadding}
-            name="cafeSearch"
-            placeholder="Enter Search Term"
-            onChange={this.handleInputChange}
-            InputProps={{
-              style: input,
-            }}
-          />
-          <TextField
-            id="locationSearch"
-            name="locationSearch"
-            placeholder="Enter Location"
-            margin="normal"
-            onChange={this.handleInputChange}
-            InputProps={{
-              style: input,
-            }}
-          />
-          <span><button type="submit" onClick={searchCafes} style={customSearchBtn}><i className="fas fa-search" style={{ color: '#FFFF', fontSize: '25px' }} /></button></span>
-          <span><Dropdown /></span>
-          {/* <span>
+      <form onSubmit={this.searchCafes} style={searchBarWrapper}>
+        <TextField
+          id="cafeSearch"
+          className={customCss.rightPadding}
+          name="cafeSearch"
+          placeholder="Enter Search Term"
+          onChange={this.handleInputChange}
+          InputProps={{
+            style: input,
+          }}
+        />
+        <TextField
+          id="locationSearch"
+          name="locationSearch"
+          placeholder="Enter Location"
+          margin="normal"
+          onChange={this.handleInputChange}
+          InputProps={{
+            style: input,
+          }}
+        />
+        <span><button type="submit" onClick={this.searchCafes} style={customSearchBtn}><i className="fas fa-search" style={{ color: '#FFFF', fontSize: '25px' }} /></button></span>
+        <span><Dropdown /></span>
+        {/* <span>
             <button type="submit" style={customFilterBtn}><i className="fas fa-filter" style={{ color: '#FFFF', fontSize: '20px' }} /></button>
           </span> */}
-        </form>
-
-      </div>
+      </form>
     );
   }
 }
@@ -65,8 +75,18 @@ class TextFieldMargins extends Component {
 //   classes: PropTypes.object.isRequired,
 // };
 
+const mapStateToProps = state => ({
+  myLatLng: state.getPosition.myLatLng,
+  cafeSearch: state.searchFields.searchName,
+  locationSearch: state.searchFields.searchLocation,
+  resultsSearch: state.searchFields.searchResults,
+});
+
 
 const mapDispatchToProps = dispatch => ({
+  makeFetchCafes: (term, limit, loc) => {
+    dispatch(makeFetchCafesThunk(term, limit, loc));
+  },
   setName: name => dispatch({
     type: 'SEARCH_NAME',
     payload: name,
@@ -79,5 +99,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   withStyles(styles),
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
 )(TextFieldMargins);

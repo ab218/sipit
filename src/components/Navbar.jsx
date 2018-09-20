@@ -45,10 +45,10 @@ class NavbarComponent extends Component {
     } = styles;
 
     const { logoutRedirect } = this.state;
-    const { cookies, children, searchCafes } = this.props;
+    const { cookies } = this.props;
 
     if (logoutRedirect) {
-      return <Redirect to="/login" href="/login" />;
+      return <Redirect to="/login" />;
     }
 
     return (
@@ -57,37 +57,26 @@ class NavbarComponent extends Component {
           <div className="navBrand">
             <i className="fas fa-coffee" style={navIcon} />
             {' '}
-Sip-It
+            Sip-It
           </div>
         </div>
         <div className="container1" style={container1}>
-          <Link to="/">
-            <div className="navItem" style={navItem}>
-              Home
-            </div>
-          </Link>
-          <div className="navItem" style={navItem}>
-            About
-          </div>
-
+          <Link to="/"><div className="navItem" style={navItem}>Home</div></Link>
+          <Link to="/"><div className="navItem" style={navItem}>About</div></Link>
         </div>
-        <span className="memberControl" style={memberControl}>
+        <div className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
-            ? <span style={logInBtn}><Link to="/login">Log In</Link></span>
+            ? <Link to="/login"><span style={logInBtn}>Log In</span></Link>
             : <Button onClick={this.logout}>Log Out</Button>
           }
           {cookies.get('user') === undefined
-            ? <span style={signUpBtn}><Link to="/signup">Sign Up</Link></span>
+            ? <Link to="/signup"><span style={signUpBtn}>Sign Up</span></Link>
             : <span />
           }
-        </span>
-        {children}
-        <div className="container2" style={container2}>
-          <SearchBar
-            searchCafes={searchCafes}
-          />
         </div>
-
+        <div className="container2" style={container2}>
+          <SearchBar />
+        </div>
       </div>
     );
   }
