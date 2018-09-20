@@ -19,17 +19,14 @@ const styles = {
   },
 
   searchBarWrapper: {
-    position: 'relative',
-    top: '11.5vh',
-    marginRight: 'auto',
-    marginLeft: 'auto',
-    transform: 'translate(-50%, -50%)',
+    // position: 'absolute',
+    // top: '11.5vh',
+    // left: '48%',
+    // transform: 'translate(-50%, -50%)',
     backgroundColor: '#5d4427',
     borderRadius: '30px',
-    width: '50%',
-    height: '31%',
-    paddingTop: '4%',
-    minWidth: '13em',
+    width: '18em',
+    // height: '1.3em',
   },
 
   customForm: {

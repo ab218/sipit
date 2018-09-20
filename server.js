@@ -5,65 +5,15 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8081;
 const history = require('connect-history-api-fallback');
 const axios = require('axios');
-const { ApolloServer, gql } = require('apollo-server-express');
-const { find } = require('lodash');
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig.development);
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-
-
-type Book {
-  id: Int!
-  title: String
-  author: String
-}
-
-  type Query {
-    hello: String
-    books: [Book]
-  }
-`;
-
-
-const books = [
-  {
-    id: 1,
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
-  },
-  {
-    id: 2,
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-];
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-    books: () => books,
-  },
-
-  Book: {
-    author: book => find(books, { id: book.id }),
-  },
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
-
-// const cors = require('cors')
 const app = express();
-server.applyMiddleware({ app });
-
-// app.use(cors())
 
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
 app.use(bodyParser.json());
-
 
 const usersRoutes = require('./routes/Users.js');
 const reviewsRoutes = require('./routes/Reviews.js');
@@ -152,5 +102,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(PORT, () => {
-  console.log(`Server up on http://localhost:${PORT}${server.graphqlPath}`);
+  console.log(`Server up on http://localhost:${PORT}`);
 });

@@ -36,7 +36,10 @@ class Home extends Component {
   }
 
   render() {
-    const { location, cafesList, fetchCafesLoading } = this.props;
+    const {
+      location, cafesList, fetchCafesLoading,
+      notificationIsOpen, notificationHide,
+    } = this.props;
     console.log(location);
     return (
       <div style={mainTheme}>
@@ -51,8 +54,8 @@ class Home extends Component {
           : <CafeCard cafesList={cafesList} />
         }
         <Snackbar
-          open={this.props.notificationIsOpen}
-          onClose={this.props.notificationHide}
+          open={notificationIsOpen}
+          onClose={notificationHide}
           message={<p>Login successful</p>}
           autoHideDuration={2000}
         />
