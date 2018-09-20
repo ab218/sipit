@@ -5,18 +5,19 @@ const styles = {
     positon: 'absolute',
     height: '5em',
     top: 0,
-
-
   },
+
   textField: {
     width: 500,
   },
+
   input: {
     borderColor: '5px solid #f26622',
     //    borderRadius: '8px',
     color: 'black',
     backgroundColor: 'transparent',
   },
+
   searchBarWrapper: {
     // position: 'absolute',
     // top: '11.5vh',
@@ -27,16 +28,23 @@ const styles = {
     width: '18em',
     // height: '1.3em',
   },
+
   customForm: {
-    position: 'relative',
-    display: 'contents',
+    position: 'absolute',
+    display: 'inline-flex',
+    top: '0.1em',
+    left: '0.5em',
+    width: '100%',
+    height: '100%',
   },
+
   customSearchBtn: {
     border: '0',
     outline: '0',
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
   },
+
   customFilterBtn: {
     border: '0',
     outline: '0',
@@ -45,6 +53,7 @@ const styles = {
     paddingLeft: '3px',
     marginBottom: '40px',
   },
+
   filterWrapper: {
     backgroundColor: '#5d4427',
     borderRadius: '50%',
