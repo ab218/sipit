@@ -1,6 +1,6 @@
 const styles = {
   mainTheme: {
-    backgroundColor: '#5d4427',
+    backgroundColor: '#C1A88B',
     height: '700px',
   },
   wrapper: {

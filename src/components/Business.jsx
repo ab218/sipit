@@ -5,7 +5,7 @@ import BusinessDetails from './BusinessDetails';
 import Reviews from './Reviews';
 
 const mainTheme = {
-  backgroundColor: '#5d4427',
+  backgroundColor: '#C1A88B',
 };
 
 export default class Business extends Component {

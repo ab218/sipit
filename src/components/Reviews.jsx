@@ -2,14 +2,14 @@ import React from 'react';
 
 
 const reviewTitle = {
-  backgroundColor: 'rgb(93, 68, 39)',
-  color: 'white',
+  backgroundColor: 'white',
+  color: 'black',
   textDecoration: 'underline',
 };
 
 const review = {
-  backgroundColor: 'rgb(93, 68, 39)',
-  color: 'white',
+  backgroundColor: 'white',
+  color: 'black',
 };
 
 class BusinessDetails extends React.Component {
@@ -23,7 +23,7 @@ class BusinessDetails extends React.Component {
     const { reviewsData } = this.props;
 
     return (
-      <div style={{ maxWidth: '500px', margin: 'auto' }}>
+      <div style={{ maxWidth: '50%', margin: 'auto' }}>
         <h3 style={{ color: 'pink' }}>Yelp Reviews</h3>
         {
           reviewsData.reviews.map((sub, subindex) => (
