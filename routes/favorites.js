@@ -13,5 +13,21 @@ module.exports = (knex) => {
         res.status(500).send(e);
       });
   });
+
+  router.post('/add', (req, res) => {
+    const { title, url, user_id } = req.body;
+    knex('favorites')
+      .insert({
+        title,
+        body: 'Mmmmmmmmmm coffee',
+        url,
+        user_id,
+      })
+      .then(() => {
+        res.json({
+          message: 'favorite added',
+        });
+      });
+  });
   return router;
 };

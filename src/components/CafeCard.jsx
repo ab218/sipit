@@ -12,8 +12,10 @@ import ShareIcon from '@material-ui/icons/Share';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import RatingStar from './RatingStar';
 import styles from './styles/cafeCardStyles';
+import { getFavorites } from '../actions';
 
 class CafeCard extends Component {
   isFavorite = (cafe) => {
@@ -23,6 +25,17 @@ class CafeCard extends Component {
       return true;
     }
     return false;
+  }
+
+  addFavorite = async (cafe) => {
+    const { getFavorites } = this.props;
+    try {
+      await axios.post('/api/favorites/add', { title: cafe.name, url: cafe.id, user_id: 1 });
+      console.log('favorited');
+      getFavorites(1);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   getCafes = () => {
@@ -50,7 +63,7 @@ class CafeCard extends Component {
               <IconButton aria-label="Add to favorites">
                 {this.isFavorite(cafe)
                   ? <FavoriteIcon color="error" />
-                  : <FavoriteIcon />
+                  : <FavoriteIcon onClick={() => this.addFavorite(cafe)} />
                 }
               </IconButton>
               <IconButton aria-label="Share">
@@ -82,13 +95,13 @@ const mapStateToProps = state => ({
 });
 
 
-// const mapDispatchToProps = dispatch => ({
-//   makeFetchCafes: (term, limit, loc) => {
-//     dispatch(makeFetchCafesThunk(term, limit, loc));
-//   },
-// });
+const mapDispatchToProps = dispatch => ({
+  getFavorites: (user_id) => {
+    dispatch(getFavorites(user_id));
+  },
+});
 
 export default compose(
   withStyles(styles),
-  connect(mapStateToProps, null),
+  connect(mapStateToProps, mapDispatchToProps),
 )(CafeCard);

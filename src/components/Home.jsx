@@ -66,8 +66,8 @@ const mapDispatchToProps = dispatch => ({
   makeFetchCafes: (term, limit, loc) => {
     dispatch(makeFetchCafesThunk(term, limit, loc));
   },
-  getFavorites: (term, limit, loc) => {
-    dispatch(getFavorites(term, limit, loc));
+  getFavorites: (user_id) => {
+    dispatch(getFavorites(user_id));
   },
   fetchCafes: data => dispatch({
     type: 'FETCH_CAFES',
