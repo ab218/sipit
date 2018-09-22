@@ -14,6 +14,14 @@ import RatingStar from './RatingStar';
 import styles from './styles/cafeCardStyles';
 
 class CafeCard extends Component {
+  isFavorite = (cafe) => {
+    const filteredFavs = this.props.favorites.find(favorite => favorite.url === cafe.id);
+    if (filteredFavs) {
+      return true;
+    }
+    return false;
+  }
+
   getCafes = () => {
     const { classes, cafesList } = this.props;
     return cafesList
@@ -37,7 +45,10 @@ class CafeCard extends Component {
             </CardContent>
             <CardActions disableActionSpacing>
               <IconButton aria-label="Add to favorites">
-                <FavoriteIcon />
+                {this.isFavorite(cafe)
+                  ? <FavoriteIcon color="error" />
+                  : <FavoriteIcon />
+                }
               </IconButton>
               <IconButton aria-label="Share">
                 <ShareIcon />

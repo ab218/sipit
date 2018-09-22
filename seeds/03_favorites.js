@@ -1,15 +1,15 @@
 exports.seed = function (knex, Promise) {
   return knex('favorites')
     .insert([{
-      title: 'Delicious Coffee',
+      title: 'Revolver',
       body: 'Mmmmmmmmmm coffee',
-      url: 'abcde',
+      url: 'dX6y4zA-1AtWsYnT4AZXNg',
       user_id: 1,
     },
     {
-      title: 'Delicious tea',
+      title: 'Timbertrain Coffee Roasters',
       body: 'Mmmmmmmmmm tea',
-      url: 'efghi',
+      url: 'MTrkGD8e4LRxTpUiYek9aQ',
       user_id: 2,
     },
     ]);

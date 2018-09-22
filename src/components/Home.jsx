@@ -15,10 +15,21 @@ const mapDown = {
 };
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      favorites: [],
+    };
+  }
+
   async componentDidMount() {
+    const userId = 1;
     const { makeFetchCafes, loadPosition: loadPos } = this.props;
     await loadPos();
     makeFetchCafes('coffee', 10);
+    await fetch(`/api/favorites/${userId}`)
+      .then(results => results.json())
+      .then(results => this.setState({ favorites: results }));
   }
 
   render() {
@@ -37,7 +48,7 @@ class Home extends Component {
         {cafesList && (<GoogleMapContainer />)}
         {fetchCafesLoading
           ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
-          : <CafeCard cafesList={cafesList} />
+          : <CafeCard cafesList={cafesList} favorites={this.state.favorites} />
         }
         <Snackbar
           open={notificationIsOpen}

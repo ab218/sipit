@@ -16,11 +16,13 @@ app.use(bodyParser.json());
 
 const usersRoutes = require('./routes/Users.js');
 const reviewsRoutes = require('./routes/Reviews.js');
+const favoritesRoutes = require('./routes/favorites.js');
 const loginRoutes = require('./routes/Login.js');
 const yelpRoutes = require('./routes/yelpRoutes.js');
 
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/reviews', reviewsRoutes(knex));
+app.use('/api/favorites', favoritesRoutes(knex));
 app.use('/api/login', loginRoutes);
 app.use('/api/yelp', yelpRoutes);
 
