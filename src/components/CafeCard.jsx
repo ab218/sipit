@@ -10,13 +10,16 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import { Link } from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import RatingStar from './RatingStar';
 import styles from './styles/cafeCardStyles';
 
 class CafeCard extends Component {
   isFavorite = (cafe) => {
-    const filteredFavs = this.props.favorites.find(favorite => favorite.url === cafe.id);
-    if (filteredFavs) {
+    const { favorites } = this.props;
+    const foundFav = favorites.find(favorite => favorite.url === cafe.id);
+    if (foundFav) {
       return true;
     }
     return false;
@@ -74,4 +77,18 @@ class CafeCard extends Component {
 //   classes: PropTypes.object.isRequired,
 // };
 
-export default withStyles(styles)(CafeCard);
+const mapStateToProps = state => ({
+  favorites: state.fetchFavorites.favorites,
+});
+
+
+// const mapDispatchToProps = dispatch => ({
+//   makeFetchCafes: (term, limit, loc) => {
+//     dispatch(makeFetchCafesThunk(term, limit, loc));
+//   },
+// });
+
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, null),
+)(CafeCard);

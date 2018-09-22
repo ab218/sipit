@@ -4,7 +4,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Navbar from './Navbar';
 import CafeCard from './CafeCard';
 import GoogleMapContainer from './MapContainer';
-import { loadPosition, makeFetchCafesThunk } from '../actions';
+import { loadPosition, makeFetchCafesThunk, getFavorites } from '../actions';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',
@@ -15,21 +15,11 @@ const mapDown = {
 };
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      favorites: [],
-    };
-  }
-
   async componentDidMount() {
-    const userId = 1;
-    const { makeFetchCafes, loadPosition: loadPos } = this.props;
+    const { makeFetchCafes, loadPosition: loadPos, getFavorites } = this.props;
     await loadPos();
     makeFetchCafes('coffee', 10);
-    await fetch(`/api/favorites/${userId}`)
-      .then(results => results.json())
-      .then(results => this.setState({ favorites: results }));
+    getFavorites(1);
   }
 
   render() {
@@ -48,7 +38,7 @@ class Home extends Component {
         {cafesList && (<GoogleMapContainer />)}
         {fetchCafesLoading
           ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
-          : <CafeCard cafesList={cafesList} favorites={this.state.favorites} />
+          : <CafeCard cafesList={cafesList} />
         }
         <Snackbar
           open={notificationIsOpen}
@@ -75,6 +65,9 @@ const mapDispatchToProps = dispatch => ({
   loadPosition: () => dispatch(loadPosition()),
   makeFetchCafes: (term, limit, loc) => {
     dispatch(makeFetchCafesThunk(term, limit, loc));
+  },
+  getFavorites: (term, limit, loc) => {
+    dispatch(getFavorites(term, limit, loc));
   },
   fetchCafes: data => dispatch({
     type: 'FETCH_CAFES',

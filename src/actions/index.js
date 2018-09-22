@@ -10,6 +10,18 @@ function getPosition(lat, lng) {
   };
 }
 
+export function getFavorites(userId) {
+  return async (dispatch) => {
+    try {
+      const favorites = await axios.get(`/api/favorites/${userId}`);
+      dispatch({ type: 'FETCH_FAVORITES', payload: favorites.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+
 const getCurrentPosition = (options = { timeout: 10000, maximumAge: 3600000 }) => new
 Promise((resolve, reject) => {
   navigator.geolocation.getCurrentPosition(resolve, reject, options);
