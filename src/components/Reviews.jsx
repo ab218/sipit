@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const reviewTitle = {
   backgroundColor: 'white',
   color: 'black',
