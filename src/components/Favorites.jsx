@@ -39,9 +39,9 @@ class Favorites extends Component {
               <li style={{ padding: '1em' }}>
                 <Link to={`/business/${fav.url}`} key={fav.url}>
                   <span style={{ color: 'black' }}>{fav.title}</span>
+                  <br />
+                  <img src={fav.image_url} alt={fav.url} style={{ height: '100px', width: 'auto', alignSelf: 'center' }} />
                 </Link>
-                <br />
-                <img src={fav.image_url} alt={fav.url} style={{ height: '100px', width: 'auto', alignSelf: 'center' }} />
                 <br />
               </li>
 
