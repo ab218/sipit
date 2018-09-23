@@ -3,9 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 8081;
+const ENV = process.env.ENV || 'production';
 const history = require('connect-history-api-fallback');
 const knexConfig = require('./knexfile');
-const knex = require('knex')(knexConfig.development);
+const knex = require('knex')(knexConfig[ENV]);
 
 const app = express();
 
