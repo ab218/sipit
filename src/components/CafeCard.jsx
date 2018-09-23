@@ -38,6 +38,17 @@ class CafeCard extends Component {
     }
   }
 
+  removeFavorite = async (cafe) => {
+    const { getFavorites } = this.props;
+    try {
+      await axios.delete('/api/favorites/delete', { data: { url: cafe.id, user_id: 1 } });
+      console.log('favorite deleted');
+      getFavorites(1);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   getCafes = () => {
     const { classes, cafesList } = this.props;
     return cafesList
@@ -62,7 +73,7 @@ class CafeCard extends Component {
             <CardActions disableActionSpacing>
               <IconButton aria-label="Add to favorites">
                 {this.isFavorite(cafe)
-                  ? <FavoriteIcon color="error" />
+                  ? <FavoriteIcon onClick={() => this.removeFavorite(cafe)} color="error" />
                   : <FavoriteIcon onClick={() => this.addFavorite(cafe)} />
                 }
               </IconButton>

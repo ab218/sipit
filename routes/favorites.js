@@ -29,5 +29,18 @@ module.exports = (knex) => {
         });
       });
   });
+
+  router.delete('/delete', (req, res) => {
+    const { url, user_id } = req.body;
+    knex('favorites')
+      .where('url', '=', url)
+      .where('user_id', '=', user_id)
+      .del()
+      .then(() => {
+        res.json({
+          message: 'favorite removed',
+        });
+      });
+  });
   return router;
 };
