@@ -38,7 +38,6 @@ class CafeCard extends Component {
       await axios.post('/api/favorites/add', {
         title: cafe.name, url: cafe.id, image_url: cafe.image_url, user_id: cookies.get('user').id,
       });
-      console.log('favorited');
       getFavorites(cookies.get('user').id);
     } catch (error) {
       console.log(error);
@@ -49,7 +48,6 @@ class CafeCard extends Component {
     const { getFavorites, cookies } = this.props;
     try {
       await axios.delete('/api/favorites/delete', { data: { url: cafe.id, user_id: cookies.get('user').id } });
-      console.log('favorite deleted');
       getFavorites(cookies.get('user').id);
     } catch (error) {
       console.log(error);
