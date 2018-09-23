@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Snackbar from '@material-ui/core/Snackbar';
 import { withCookies, Cookies } from 'react-cookie';
-import PropTypes, { instanceOf } from 'prop-types';
+import { instanceOf } from 'prop-types';
 import Navbar from './Navbar';
 import CafeCard from './CafeCard';
 import GoogleMapContainer from './MapContainer';
@@ -35,10 +35,9 @@ class Home extends Component {
 
   render() {
     const {
-      location, cafesList, fetchCafesLoading,
+      cafesList, fetchCafesLoading,
       notificationIsOpen, notificationHide,
     } = this.props;
-    console.log(location);
     return (
       <div style={mainTheme}>
         <div style={mapDown}>

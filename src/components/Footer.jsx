@@ -18,7 +18,7 @@ class FooterComponent extends Component {
                 fontWeight: 'bold',
               }}
               >
-Sip-it
+              Sip-it
               </h2>
               <p>Find your best coffee.</p>
             </span>
