@@ -36,8 +36,8 @@ class Favorites extends Component {
           <h1>My Favorites:</h1>
           <ul style={{ display: 'inline-flex', listStyle: 'none', flexWrap: 'wrap' }}>
             {favorites.map(fav => (
-              <li style={{ padding: '1em' }}>
-                <Link to={`/business/${fav.url}`} key={fav.url}>
+              <li key={fav.url} style={{ padding: '1em' }}>
+                <Link to={`/business/${fav.url}`}>
                   <span style={{ color: 'black' }}>{fav.title}</span>
                   <br />
                   <img src={fav.image_url} alt={fav.url} style={{ height: '100px', width: 'auto', alignSelf: 'center' }} />

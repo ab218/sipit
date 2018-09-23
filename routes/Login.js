@@ -24,5 +24,43 @@ module.exports = (knex) => {
         res.json({ message: `${e}` });
       });
   });
+
+  router.post('/new', (req, res) => {
+    const {
+      email, password, first_name, last_name,
+    } = req.body;
+    knex('users')
+      .select()
+      .where('email', '=', email)
+      .then((results) => {
+        if (results.length > 0) {
+          res.json({
+            message: 'Name taken',
+          });
+        } else {
+          knex('users')
+            .insert({
+              email,
+              password,
+              first_name,
+              last_name,
+            })
+            .then(() => {
+              knex('users')
+                .select()
+                .where('email', '=', email)
+                .then((result) => {
+                  res.json({
+                    user: result,
+                    message: 'successful signup',
+                  });
+                });
+            });
+        }
+      })
+      .catch((e) => {
+        res.json({ message: `${e}` });
+      });
+  });
   return router;
 };

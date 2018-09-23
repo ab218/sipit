@@ -8,19 +8,6 @@ import Favorites from './components/Favorites';
 
 
 export default class Routes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  // setFavorites = (amount) => {
-  //   this.setState({
-  //     favorites: amount,
-  //   });
-  // }
-
-
   render() {
     return (
       <Switch>
@@ -40,3 +27,8 @@ export default class Routes extends Component {
 //     favorites={this.state.favorites}
 //     setFavorites={this.setFavorites} />
 // }} />
+// setFavorites = (amount) => {
+//   this.setState({
+//     favorites: amount,
+//   });
+// }

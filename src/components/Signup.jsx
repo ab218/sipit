@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
-import styles from './styles/signupStyles';
+import axios from 'axios';
+import { withCookies, Cookies } from 'react-cookie';
+import { Redirect } from 'react-router-dom';
+import PropTypes, { instanceOf } from 'prop-types';
+import { compose } from 'redux';
 import Navbar from './Navbar';
+import styles from './styles/signupStyles';
 
-export default class Signup extends Component {
+
+class Signup extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       email: 'aaa@aaa.com',
       password: 'a',
       confPassword: 'a',
-      firstName: 'a',
-      lastName: 'b',
+      first_name: 'a',
+      last_name: 'b',
+      wentWrong: false,
+      loginRedirect: false,
     };
   }
 
@@ -21,13 +33,46 @@ export default class Signup extends Component {
       });
     }
 
+    handleSubmit = async (e) => {
+      const { cookies } = this.props;
+      const {
+        email, password, confPassword, first_name, last_name,
+      } = this.state;
+      e.preventDefault();
+      try {
+        const signup = await axios
+          .post('/api/login/new', {
+            email, password, first_name, last_name,
+          });
+        if (signup.data.message !== 'successful signup') {
+          return this.setState({ wentWrong: true });
+        }
+        cookies.set('user', signup.data.user[0]);
+        return this.setState({ loginRedirect: true });
+      } catch (err) {
+        console.log(err);
+      }
+      return null;
+    }
+
     render() {
       const {
         mainTheme, wrapper, title, elementsInput, th, td,
       } = styles;
       const {
-        email, password, confPassword, firstName, lastName,
+        email, password, confPassword, first_name, last_name, loginRedirect, wentWrong,
       } = this.state;
+
+      if (loginRedirect) {
+        return (
+          <Redirect to={{
+            pathname: '/',
+            state: 'snackbar',
+          }}
+          />
+        );
+      }
+
       return (
         <div style={mainTheme}>
           <Navbar
@@ -81,11 +126,11 @@ export default class Signup extends Component {
                   <th style={th}>First Name</th>
                   <td style={td}>
                     <input
-                      id="firstName"
+                      id="first_name"
                       style={elementsInput}
                       type="text"
-                      name="firstName"
-                      value={firstName}
+                      name="first_name"
+                      value={first_name}
                       onChange={this.handleInputChange}
                     />
                   </td>
@@ -94,21 +139,27 @@ export default class Signup extends Component {
                   <th style={th}>Last Name</th>
                   <td style={td}>
                     <input
-                      id="lastName"
+                      id="last_name"
                       style={elementsInput}
                       type="text"
-                      name="lastName"
-                      value={lastName}
+                      name="last_name"
+                      value={last_name}
                       onChange={this.handleInputChange}
                     />
                   </td>
                 </tr>
               </tbody>
             </table>
-            <input type="submit" value="submit" />
+            {wentWrong
+                  && <h5 style={{ color: 'red' }}>Email taken!</h5>
+            }
+            <input onClick={this.handleSubmit} type="submit" value="submit" />
             {/* </form> */}
           </div>
         </div>
       );
     }
 }
+export default compose(
+  withCookies,
+)(Signup);
