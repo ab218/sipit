@@ -23,7 +23,7 @@ const yelpRoutes = require('./routes/yelpRoutes.js');
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/reviews', reviewsRoutes(knex));
 app.use('/api/favorites', favoritesRoutes(knex));
-app.use('/api/login', loginRoutes);
+app.use('/api/login', loginRoutes(knex));
 app.use('/api/yelp', yelpRoutes);
 
 // history must go after other endpoints

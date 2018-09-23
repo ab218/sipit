@@ -28,6 +28,7 @@ class Login extends Component {
       loginRedirect: false,
       email: 'ab@ab.com',
       password: 'ab',
+      wentWrong: false,
     };
   }
 
@@ -58,17 +59,22 @@ class Login extends Component {
         .post('/api/login', {
           email, password,
         });
-      console.log(login);
-      cookies.set('user', login.data.name.id);
-      this.setState({ loginRedirect: true });
+      if (login.data.message !== 'successful login') {
+        return this.setState({ wentWrong: true });
+      }
+      cookies.set('user', login.data.user[0]);
+      return this.setState({ loginRedirect: true });
     } catch (err) {
       console.log(err);
     }
+    return null;
   }
 
   render() {
     const { classes } = this.props;
-    const { email, password, loginRedirect } = this.state;
+    const {
+      email, password, loginRedirect, wentWrong,
+    } = this.state;
 
     if (loginRedirect) {
       return (
@@ -128,6 +134,9 @@ class Login extends Component {
                 value={password}
                 onChange={this.handleInputChange}
               />
+              {wentWrong
+                  && <h5>Something went wrong!</h5>
+              }
               <input
                 ref={(div) => {
                   this.submitBtn = div;

@@ -21,6 +21,27 @@ export function getFavorites(userId) {
   };
 }
 
+// export function addFavorite(cafe) {
+//   return async () => {
+//     try {
+//       await axios.post('/api/favorites/add', { title: cafe.name, url: cafe.id, user_id: 1 });
+//       console.log('favorited');
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
+
+// export function removeFavorite(cafe) {
+//   return async () => {
+//     try {
+//       await axios.delete('/api/favorites/delete', { data: { url: cafe.id, user_id: 1 } });
+//       console.log('favorite deleted');
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
 
 const getCurrentPosition = (options = { timeout: 10000, maximumAge: 3600000 }) => new
 Promise((resolve, reject) => {
