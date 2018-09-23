@@ -35,7 +35,9 @@ class CafeCard extends Component {
   addFavorite = async (cafe) => {
     const { getFavorites, cookies } = this.props;
     try {
-      await axios.post('/api/favorites/add', { title: cafe.name, url: cafe.id, user_id: cookies.get('user').id });
+      await axios.post('/api/favorites/add', {
+        title: cafe.name, url: cafe.id, image_url: cafe.image_url, user_id: cookies.get('user').id,
+      });
       console.log('favorited');
       getFavorites(cookies.get('user').id);
     } catch (error) {

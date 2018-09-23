@@ -26,7 +26,7 @@ class Favorites extends Component {
     }
 
     render() {
-      const { mainTheme } = styles;
+      const { mainTheme, imgPreview } = styles;
       const { favorites } = this.props;
       return (
         <div style={mainTheme}>
@@ -34,8 +34,18 @@ class Favorites extends Component {
             page="favorites"
           />
           <h1>My Favorites:</h1>
-          <ul>
-            {favorites.map(fav => <Link to={`/business/${fav.url}`} key={fav.url}><li>{fav.title}</li></Link>)}
+          <ul style={{ display: 'inline-flex', listStyle: 'none', flexWrap: 'wrap' }}>
+            {favorites.map(fav => (
+              <li style={{ padding: '1em' }}>
+                <Link to={`/business/${fav.url}`} key={fav.url}>
+                  <span style={{ color: 'black' }}>{fav.title}</span>
+                </Link>
+                <br />
+                <img src={fav.image_url} alt={fav.url} style={{ height: '100px', width: 'auto', alignSelf: 'center' }} />
+                <br />
+              </li>
+
+            ))}
           </ul>
         </div>
       );

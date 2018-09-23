@@ -15,13 +15,16 @@ module.exports = (knex) => {
   });
 
   router.post('/add', (req, res) => {
-    const { title, url, user_id } = req.body;
+    const {
+      title, url, user_id, image_url,
+    } = req.body;
     knex('favorites')
       .insert({
         title,
         body: 'Mmmmmmmmmm coffee',
         url,
         user_id,
+        image_url,
       })
       .then(() => {
         res.json({

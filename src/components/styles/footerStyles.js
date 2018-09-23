@@ -1,4 +1,4 @@
-export const styles = {
+const styles = {
   footer: {
     position: 'relative',
     backgroundColor: '#405d27',
