@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Snackbar from '@material-ui/core/Snackbar';
+import { withCookies, Cookies } from 'react-cookie';
+import PropTypes, { instanceOf } from 'prop-types';
 import Navbar from './Navbar';
 import CafeCard from './CafeCard';
 import GoogleMapContainer from './MapContainer';
@@ -15,11 +18,19 @@ const mapDown = {
 };
 
 class Home extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired,
+  };
+
   async componentDidMount() {
-    const { makeFetchCafes, loadPosition: loadPos, getFavorites } = this.props;
+    const {
+      makeFetchCafes, loadPosition: loadPos, getFavorites, cookies,
+    } = this.props;
     await loadPos();
     makeFetchCafes('coffee', 10);
-    getFavorites(1);
+    if (cookies.get('user') !== undefined) {
+      getFavorites(cookies.get('user').id);
+    }
   }
 
   render() {
@@ -94,4 +105,7 @@ const mapDispatchToProps = dispatch => ({
   }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default compose(
+  withCookies,
+  connect(mapStateToProps, mapDispatchToProps),
+)(Home);

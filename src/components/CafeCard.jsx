@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes, { instanceOf } from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -13,11 +13,16 @@ import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { withCookies, Cookies } from 'react-cookie';
 import RatingStar from './RatingStar';
 import styles from './styles/cafeCardStyles';
 import { getFavorites } from '../actions';
 
 class CafeCard extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired,
+  };
+
   isFavorite = (cafe) => {
     const { favorites } = this.props;
     const foundFav = favorites.find(favorite => favorite.url === cafe.id);
@@ -28,29 +33,29 @@ class CafeCard extends Component {
   }
 
   addFavorite = async (cafe) => {
-    const { getFavorites } = this.props;
+    const { getFavorites, cookies } = this.props;
     try {
-      await axios.post('/api/favorites/add', { title: cafe.name, url: cafe.id, user_id: 1 });
+      await axios.post('/api/favorites/add', { title: cafe.name, url: cafe.id, user_id: cookies.get('user').id });
       console.log('favorited');
-      getFavorites(1);
+      getFavorites(cookies.get('user').id);
     } catch (error) {
       console.log(error);
     }
   }
 
   removeFavorite = async (cafe) => {
-    const { getFavorites } = this.props;
+    const { getFavorites, cookies } = this.props;
     try {
-      await axios.delete('/api/favorites/delete', { data: { url: cafe.id, user_id: 1 } });
+      await axios.delete('/api/favorites/delete', { data: { url: cafe.id, user_id: cookies.get('user').id } });
       console.log('favorite deleted');
-      getFavorites(1);
+      getFavorites(cookies.get('user').id);
     } catch (error) {
       console.log(error);
     }
   }
 
   getCafes = () => {
-    const { classes, cafesList } = this.props;
+    const { classes, cafesList, cookies } = this.props;
     return cafesList
       .map((cafe, i) => (
         <div key={cafe.id} className={classes.actions}>
@@ -71,12 +76,20 @@ class CafeCard extends Component {
               </span>
             </CardContent>
             <CardActions disableActionSpacing>
-              <IconButton aria-label="Add to favorites">
-                {this.isFavorite(cafe)
-                  ? <FavoriteIcon onClick={() => this.removeFavorite(cafe)} color="error" />
-                  : <FavoriteIcon onClick={() => this.addFavorite(cafe)} />
-                }
-              </IconButton>
+              {cookies.get('user') !== undefined
+                && (this.isFavorite(cafe)
+                  ? (
+                    <IconButton onClick={() => this.removeFavorite(cafe)} aria-label="Add to favorites">
+                      <FavoriteIcon color="error" />
+                    </IconButton>
+                  )
+                  : (
+                    <IconButton onClick={() => this.addFavorite(cafe)} aria-label="Add to favorites">
+                      <FavoriteIcon />
+                    </IconButton>
+                  )
+                )
+              }
               <IconButton aria-label="Share">
                 <ShareIcon />
               </IconButton>
@@ -114,5 +127,6 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   withStyles(styles),
+  withCookies,
   connect(mapStateToProps, mapDispatchToProps),
 )(CafeCard);

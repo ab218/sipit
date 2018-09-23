@@ -135,7 +135,7 @@ class Login extends Component {
                 onChange={this.handleInputChange}
               />
               {wentWrong
-                  && <h5>Something went wrong!</h5>
+                  && <h5 style={{ color: 'red' }}>Something went wrong!</h5>
               }
               <input
                 ref={(div) => {
