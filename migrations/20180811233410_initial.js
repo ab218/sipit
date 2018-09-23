@@ -46,6 +46,5 @@ exports.down = function (knex, Promise) {
     knex.raw('DROP TABLE users CASCADE'),
     knex.raw('DROP TABLE cafes CASCADE'),
     knex.raw('DROP TABLE reviews CASCADE'),
-    knex.raw('DROP TABLE favorites CASCADE'),
   ]);
 };
