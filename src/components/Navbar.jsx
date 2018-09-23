@@ -70,7 +70,7 @@ class NavbarComponent extends Component {
         <div className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
             ? <Link to="/login"><span style={logInBtn}>Log In</span></Link>
-            : <p>
+            : <p style={{ marginRight: '1em' }}>
 Logged in as
 {' '}
 {cookies.get('user').first_name}
