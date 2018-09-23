@@ -63,17 +63,18 @@ class NavbarComponent extends Component {
         <div className="container1" style={container1}>
           <Link to="/"><div className="navItem" style={navItem}>Home</div></Link>
           <Link to="/"><div className="navItem" style={navItem}>About</div></Link>
+          {cookies.get('user') !== undefined
+          && <Link to="/favorites"><div className="navItem" style={navItem}>Favorites</div></Link>
+          }
         </div>
         <div className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
             ? <Link to="/login"><span style={logInBtn}>Log In</span></Link>
-            : (
-<p>
+            : <p>
 Logged in as
 {' '}
 {cookies.get('user').first_name}
 </p>
-)
           }
           {cookies.get('user') === undefined
             ? <Link to="/signup"><span style={signUpBtn}>Sign Up</span></Link>
