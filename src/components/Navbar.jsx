@@ -51,7 +51,6 @@ class NavbarComponent extends Component {
     if (logoutRedirect) {
       return <Redirect to="/login" />;
     }
-
     return (
       <div className="navBar" style={navBar}>
         <div className="navHead" style={navHead}>
@@ -68,11 +67,17 @@ class NavbarComponent extends Component {
         <div className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
             ? <Link to="/login"><span style={logInBtn}>Log In</span></Link>
-            : <Button onClick={this.logout}>Log Out</Button>
+            : (
+<p>
+Logged in as
+{' '}
+{cookies.get('user').first_name}
+</p>
+)
           }
           {cookies.get('user') === undefined
             ? <Link to="/signup"><span style={signUpBtn}>Sign Up</span></Link>
-            : <span />
+            : <Button onClick={this.logout}>Log Out</Button>
           }
         </div>
         <div className="container2" style={container2}>

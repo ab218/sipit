@@ -9,7 +9,8 @@ export default class Signup extends Component {
       email: 'aaa@aaa.com',
       password: 'a',
       confPassword: 'a',
-      userName: 'aaa',
+      firstName: 'a',
+      lastName: 'b',
     };
   }
 
@@ -25,7 +26,7 @@ export default class Signup extends Component {
         mainTheme, wrapper, title, elementsInput, th, td,
       } = styles;
       const {
-        email, password, confPassword, userName,
+        email, password, confPassword, firstName, lastName,
       } = this.state;
       return (
         <div style={mainTheme}>
@@ -77,14 +78,27 @@ export default class Signup extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <th style={th}>User Name</th>
+                  <th style={th}>First Name</th>
                   <td style={td}>
                     <input
-                      id="userName"
+                      id="firstName"
                       style={elementsInput}
                       type="text"
-                      name="userName"
-                      value={userName}
+                      name="firstName"
+                      value={firstName}
+                      onChange={this.handleInputChange}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th style={th}>Last Name</th>
+                  <td style={td}>
+                    <input
+                      id="lastName"
+                      style={elementsInput}
+                      type="text"
+                      name="lastName"
+                      value={lastName}
                       onChange={this.handleInputChange}
                     />
                   </td>
