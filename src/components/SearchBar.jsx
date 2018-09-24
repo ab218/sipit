@@ -58,7 +58,7 @@ class SearchBar extends Component {
 
   render() {
     const {
-      input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn, inputStyles,
+      input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn,
     } = styles;
     const { redirect } = this.state;
 

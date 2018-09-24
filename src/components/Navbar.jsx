@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import SearchBar from './SearchBar';
 import styles from './styles/navbarStyles';
 
+
 class NavbarComponent extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
