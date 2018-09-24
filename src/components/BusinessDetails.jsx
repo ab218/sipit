@@ -2,7 +2,8 @@ import React from 'react';
 import SlickCarousel from './SlickCarousel';
 
 const title = {
-  color: 'white',
+  color: 'grey',
+  fontWeight: 'bold',
 };
 
 function HoursComp({ isOpenNow, endHours }) {

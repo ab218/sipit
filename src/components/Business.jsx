@@ -5,7 +5,10 @@ import BusinessDetails from './BusinessDetails';
 import Reviews from './Reviews';
 
 const mainTheme = {
-  backgroundColor: '#C1A88B',
+//  backgroundColor: '#DFDCE3',
+  backgroundColor: '#FFFF',
+  fontFamily: 'Quicksand',
+
 };
 
 export default class Business extends Component {
@@ -57,11 +60,11 @@ export default class Business extends Component {
         />
         {yelpDataLoaded
           ? <BusinessDetails cafeData={cafeData} />
-          : <h1 style={{ color: 'white' }}>Brewing results ...</h1>
+          : <h1 style={{ color: 'grey' }}>Brewing results ...</h1>
         }
         {reviewsLoaded
           ? <Reviews reviewsData={reviewsData} />
-          : <h1 style={{ color: 'white' }}>Brewing reviews ...</h1>
+          : <h1 style={{ color: 'grey' }}>Brewing reviews ...</h1>
         }
       </div>
     );

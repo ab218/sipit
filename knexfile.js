@@ -8,8 +8,8 @@ module.exports = {
     client: 'postgresql',
     connection: {
       host: 'localhost',
-      user: 'chagi',
-      password: 'chagilove',
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
       database: 'sipit',
       port: 5432,
       ssl: false,

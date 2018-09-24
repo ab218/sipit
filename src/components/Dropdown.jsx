@@ -13,6 +13,7 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     minWidth: 60,
     backgroundColor: 'white',
+    borderRadius: '20px',
   },
 });
 
@@ -52,6 +53,7 @@ class Dropdown extends Component {
           value={resultsSearch}
           inputProps={{
             name: 'results',
+            disableUnderline: true,
           }}
         >
           <MenuItem value={10}>10</MenuItem>
