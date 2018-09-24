@@ -20,9 +20,9 @@ const review = {
 };
 
 const imgStyle = {
-  height: '2em',
-  width: '2em',
-  borderRadius: '1em',
+  height: '3em',
+  width: '3em',
+  borderRadius: '3em',
 };
 
 class Reviews extends React.Component {
@@ -37,7 +37,7 @@ class Reviews extends React.Component {
             <div style={review} key={sub.id}>
               <div style={reviewTitle}>
                 <img style={imgStyle} alt={sub.user.image_url} src={sub.user.image_url} />
-                <p style={{ marginRight: 'auto', padding: '0.5em' }}>{`${sub.user.name}`}</p>
+                <p style={{ marginRight: 'auto', padding: '1em' }}>{`${sub.user.name}`}</p>
                 <RatingStar starRating={sub.rating} />
               </div>
               <p style={review}>
