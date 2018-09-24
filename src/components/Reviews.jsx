@@ -10,7 +10,6 @@ const reviewTitle = {
   color: 'black',
   display: 'inline-flex',
   borderTop: '1px solid white',
-//  textDecoration: 'underline',
 };
 
 const review = {
@@ -20,20 +19,27 @@ const review = {
   borderRadius: '.5em',
 };
 
+const imgStyle = {
+  height: '2em',
+  width: '2em',
+  borderRadius: '1em',
+};
+
 class Reviews extends React.Component {
   render() {
     const { reviewsData } = this.props;
 
     return (
-      <div style={{ maxWidth: '50%', margin: 'auto' }}>
+      <div style={{ maxWidth: '50em', margin: 'auto' }}>
         <h3 style={{ color: 'pink' }}>Yelp Reviews</h3>
         {
           reviewsData.reviews.map(sub => (
             <div style={review} key={sub.id}>
-              <h4 style={reviewTitle}>
-                {`${sub.user.name}`}
+              <div style={reviewTitle}>
+                <img style={imgStyle} alt={sub.user.image_url} src={sub.user.image_url} />
+                <p style={{ marginRight: 'auto', padding: '0.5em' }}>{`${sub.user.name}`}</p>
                 <RatingStar starRating={sub.rating} />
-              </h4>
+              </div>
               <p style={review}>
                 {sub.text}
               </p>
