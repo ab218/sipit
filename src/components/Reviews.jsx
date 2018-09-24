@@ -5,12 +5,15 @@ import { connect } from 'react-redux';
 const reviewTitle = {
   backgroundColor: 'white',
   color: 'black',
-  textDecoration: 'underline',
+  text,
+//  textDecoration: 'underline',
 };
 
 const review = {
-  backgroundColor: 'white',
+  backgroundColor: '#f2f1ef',
   color: 'black',
+  position: 'relative',
+  borderRadius: '.5em',
 };
 
 class Reviews extends React.Component {
@@ -24,7 +27,7 @@ class Reviews extends React.Component {
           reviewsData.reviews.map((sub, subindex) => (
             <div style={review} key={sub.id}>
               <h4 style={reviewTitle}>
-                {`${subindex + 1}. ${sub.user.name}`}
+                {`${sub.user.name}`}
               </h4>
               <p style={review}>
                 {sub.text}

@@ -8,7 +8,10 @@ import Reviews from './Reviews';
 import { getBusinessData, getReviews } from '../actions';
 
 const mainTheme = {
-  backgroundColor: '#C1A88B',
+//  backgroundColor: '#DFDCE3',
+  backgroundColor: '#FFFF',
+  fontFamily: 'Quicksand',
+
 };
 
 class Business extends Component {
@@ -27,11 +30,11 @@ class Business extends Component {
           page="business"
         />
         {businessDataLoading
-          ? <h1 style={{ color: 'white' }}>Brewing results ...</h1>
+          ? <h1 style={{ color: 'grey' }}>Brewing results ...</h1>
           : <BusinessDetails />
         }
         {reviewsDataLoading
-          ? <h1 style={{ color: 'white' }}>Brewing reviews ...</h1>
+          ? <h1 style={{ color: 'grey' }}>Brewing reviews ...</h1>
           : <Reviews />
         }
       </div>

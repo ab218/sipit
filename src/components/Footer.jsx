@@ -14,13 +14,13 @@ class FooterComponent extends Component {
             <span>
               <h2 style={{
                 paddingBottom: `${20}px`,
-                fontFamily: 'Pacifico',
+                fontFamily: 'Exo',
                 fontWeight: 'bold',
               }}
               >
               Sip-it
               </h2>
-              <p>Find your best coffee.</p>
+              <p style={{ fontFamily: ['Quicksand', 'sans-serif'], fontWeight: 'bold' }}>Find your best coffee.</p>
             </span>
           </div>
           <ul className="list" style={listBox}>

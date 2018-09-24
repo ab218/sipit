@@ -3,11 +3,13 @@ const styles = {
   navBar: {
     display: 'flex',
     flexWrap: 'wrap',
-    backgroundColor: '#FFFF',
-    color: '#5d4427',
+    //    backgroundColor: '#23cba7', green
+    // backgroundColor: '#f9690e', orange
+    backgroundColor: '#23cba7',
+
+    color: '#FFFF',
     fontSize: '30px',
     boxShadow: '0 9px 10px 0 rgba(0,0,0,0.2)',
-    fontFamily: 'Karla',
     paddingTop: '20px',
     zIndex: '9',
     width: '100%',
@@ -15,15 +17,21 @@ const styles = {
     justifyContent: 'space-between',
   },
 
+  fontTitles: {
+    fontFamily: 'Maven Pro',
+    fontWeight: 'bold',
+    fontSize: 'calc(20px + 0.25vw)',
+  },
+
+  fontContents: {
+    fontFamily: 'Quicksand',
+  },
+
   navHead: {
     order: '0',
     margin: '10px 0 0 20px',
     minWidth: '11rem',
     float: 'left',
-    fontFamily: 'Pacifico',
-    fontWeight: 'bold',
-    fontSize: 'calc(20px + 0.25vw)',
-
   },
 
   container1: {
@@ -34,10 +42,12 @@ const styles = {
     //    flexDirection: 'row',
   },
 
+
   navItem: {
     padding: '12px 16px',
-    color: 'black',
+    color: '#FFFF',
   },
+
   container2: {
     justifyContent: 'center',
     display: 'flex',
@@ -57,8 +67,8 @@ const styles = {
   },
 
   logInBtn: {
-    backgroundColor: '#f26622',
-    border: '2px solid #f26622',
+    backgroundColor: '#f62459',
+    border: '2px solid #FFFF',
     borderRadius: '15px',
     color: '#FFFF',
     margin: '0 10px 20px 10px',
@@ -67,7 +77,7 @@ const styles = {
 
   signUpBtn: {
     backgroundColor: '#6196d2',
-    border: '2px solid #6196d2',
+    border: '2px solid #FFFF',
     borderRadius: '15px',
     color: '#FFFF',
     margin: '0 0.1em 2em',

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import SlickCarousel from './SlickCarousel';
 
 const title = {
-  color: 'white',
+  color: 'grey',
+  fontWeight: 'bold',
 };
 
 function HoursComp({ isOpenNow, endHours }) {

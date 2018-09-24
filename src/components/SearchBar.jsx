@@ -58,7 +58,7 @@ class SearchBar extends Component {
 
   render() {
     const {
-      input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn,
+      input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn, inputStyles,
     } = styles;
     const { redirect } = this.state;
     return (
@@ -66,12 +66,14 @@ class SearchBar extends Component {
         {redirect && <Redirect to="/" />}
         <TextField
           id="cafeSearch"
-          className={customCss.rightPadding}
           name="cafeSearch"
           placeholder="Enter Search Term"
           onChange={this.handleInputChange}
+
           InputProps={{
             style: input,
+            className: this.props.classes.inputStyles,
+            disableUnderline: true,
           }}
         />
         <TextField
@@ -82,6 +84,8 @@ class SearchBar extends Component {
           onChange={this.handleInputChange}
           InputProps={{
             style: input,
+            disableUnderline: true,
+
           }}
         />
         <button
