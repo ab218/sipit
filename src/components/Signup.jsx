@@ -4,14 +4,15 @@ import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
 import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
+import Button from '@material-ui/core/Button';
 import Navbar from './Navbar';
 import styles from './styles/signupStyles';
 
 
 class Signup extends Component {
-  // static propTypes = {
-  //   cookies: instanceOf(Cookies).isRequired,
-  // };
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired,
+  };
 
   constructor(props) {
     super(props);
@@ -36,7 +37,7 @@ class Signup extends Component {
     handleSubmit = async (e) => {
       const { cookies } = this.props;
       const {
-        email, password, confPassword, first_name, last_name,
+        email, password, first_name, last_name,
       } = this.state;
       e.preventDefault();
       try {
@@ -110,7 +111,7 @@ class Signup extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <th style={th}>Confirm Password</th>
+                  <th style={th}>Confirm</th>
                   <td style={td}>
                     <input
                       id="confPassword"
@@ -153,8 +154,7 @@ class Signup extends Component {
             {wentWrong
                   && <h5 style={{ color: 'red' }}>Email taken!</h5>
             }
-            <input onClick={this.handleSubmit} type="submit" value="submit" />
-            {/* </form> */}
+            <Button style={{ marginTop: '2em' }} color="primary" onClick={this.handleSubmit}>Submit</Button>
           </div>
         </div>
       );
