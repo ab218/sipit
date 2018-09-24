@@ -9,9 +9,9 @@ import styles from './styles/signupStyles';
 
 
 class Signup extends Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired,
-  };
+  // static propTypes = {
+  //   cookies: instanceOf(Cookies).isRequired,
+  // };
 
   constructor(props) {
     super(props);

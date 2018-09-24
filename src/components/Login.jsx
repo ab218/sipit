@@ -22,9 +22,7 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
-    // const { cookies } = props;
     this.state = {
-      // user: cookies.get('user') || null,
       loginRedirect: false,
       email: 'ab@ab.com',
       password: 'ab',
@@ -158,9 +156,6 @@ class Login extends Component {
     );
   }
 }
-// Login.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
 
 export default compose(
   withStyles(styles),

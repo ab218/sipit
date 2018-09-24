@@ -1,8 +1,9 @@
 
 const styles = () => ({
   card: {
-    display: 'grid',
-    gridTemplateRows: '30% 30% 30% 10%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
     maxWidth: 300,
     minWidth: 300,
     maxHeight: 450,

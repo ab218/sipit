@@ -48,7 +48,7 @@ class Home extends Component {
         {cafesList && (<GoogleMapContainer />)}
         {fetchCafesLoading
           ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
-          : <CafeCard cafesList={cafesList} />
+          : <CafeCard />
         }
         <Snackbar
           open={notificationIsOpen}

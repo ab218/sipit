@@ -1,11 +1,15 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import RatingStar from './RatingStar';
 
 const reviewTitle = {
-  backgroundColor: 'white',
+  width: '100%',
+  justifyContent: 'space-between',
+  backgroundColor: '#f2f1ef',
   color: 'black',
-  text,
+  display: 'inline-flex',
+  borderTop: '1px solid white',
 //  textDecoration: 'underline',
 };
 
@@ -24,10 +28,11 @@ class Reviews extends React.Component {
       <div style={{ maxWidth: '50%', margin: 'auto' }}>
         <h3 style={{ color: 'pink' }}>Yelp Reviews</h3>
         {
-          reviewsData.reviews.map((sub, subindex) => (
+          reviewsData.reviews.map(sub => (
             <div style={review} key={sub.id}>
               <h4 style={reviewTitle}>
                 {`${sub.user.name}`}
+                <RatingStar starRating={sub.rating} />
               </h4>
               <p style={review}>
                 {sub.text}

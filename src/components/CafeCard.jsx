@@ -21,6 +21,7 @@ import { getFavorites } from '../actions';
 class CafeCard extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
+    // classes: PropTypes.object.isRequired,
   };
 
   isFavorite = (cafe) => {
@@ -60,7 +61,7 @@ class CafeCard extends Component {
       .map((cafe, i) => (
         <div key={cafe.id} className={classes.actions}>
           <Card className={classes.card}>
-            <Link to={`/business/${cafe.id}`}>
+            <Link to={`/business/${cafe.id}`} style={{ margin: '0 0 auto 0' }}>
               <CardHeader
                 title={`${i + 1}. ${cafe.name}`}
               />
@@ -110,12 +111,9 @@ class CafeCard extends Component {
   }
 }
 
-// CafeCard.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
 const mapStateToProps = state => ({
   favorites: state.fetchFavorites.favorites,
+  cafesList: state.fetchCafes.cafesList,
 });
 
 

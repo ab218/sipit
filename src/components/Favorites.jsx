@@ -9,47 +9,47 @@ import styles from './styles/favoritesStyles';
 import { getFavorites } from '../actions';
 
 class Favorites extends Component {
-    static propTypes = {
-      cookies: instanceOf(Cookies).isRequired,
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+
     };
+  }
 
-    constructor(props) {
-      super(props);
-      this.state = {
+  componentDidMount() {
+    const { getFavorites, cookies } = this.props;
+    getFavorites(cookies.get('user').id);
+  }
 
-      };
-    }
-
-    componentDidMount() {
-      const { getFavorites, cookies } = this.props;
-      getFavorites(cookies.get('user').id);
-    }
-
-    render() {
-      const { mainTheme, imgPreview } = styles;
-      const { favorites } = this.props;
-      return (
-        <div style={mainTheme}>
-          <Navbar
-            page="favorites"
-          />
-          <h1>My Favorites:</h1>
-          <ul style={{ display: 'inline-flex', listStyle: 'none', flexWrap: 'wrap' }}>
-            {favorites.map(fav => (
-              <li key={fav.url} style={{ padding: '1em' }}>
-                <Link to={`/business/${fav.url}`}>
-                  <span style={{ color: 'black' }}>{fav.title}</span>
-                  <br />
-                  <img src={fav.image_url} alt={fav.url} style={{ height: '100px', width: 'auto', alignSelf: 'center' }} />
-                </Link>
+  render() {
+    const { mainTheme, imgPreview } = styles;
+    const { favorites } = this.props;
+    return (
+      <div style={mainTheme}>
+        <Navbar
+          page="favorites"
+        />
+        <h1>My Favorites:</h1>
+        <ul style={{ display: 'inline-flex', listStyle: 'none', flexWrap: 'wrap' }}>
+          {favorites.map(fav => (
+            <li key={fav.url} style={{ padding: '1em' }}>
+              <Link to={`/business/${fav.url}`}>
+                <span style={{ color: 'black' }}>{fav.title}</span>
                 <br />
-              </li>
+                <img src={fav.image_url} alt={fav.url} style={{ height: '100px', width: 'auto', alignSelf: 'center' }} />
+              </Link>
+              <br />
+            </li>
 
-            ))}
-          </ul>
-        </div>
-      );
-    }
+          ))}
+        </ul>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({

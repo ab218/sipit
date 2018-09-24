@@ -61,6 +61,7 @@ class SearchBar extends Component {
       input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn, inputStyles,
     } = styles;
     const { redirect } = this.state;
+
     return (
       <form onSubmit={this.searchCafes} style={searchBarWrapper}>
         {redirect && <Redirect to="/" />}
@@ -72,7 +73,6 @@ class SearchBar extends Component {
 
           InputProps={{
             style: input,
-            className: this.props.classes.inputStyles,
             disableUnderline: true,
           }}
         />
@@ -115,10 +115,6 @@ class SearchBar extends Component {
     );
   }
 }
-
-// TextFieldMargins.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
 
 const mapStateToProps = state => ({
   myLatLng: state.getPosition.myLatLng,

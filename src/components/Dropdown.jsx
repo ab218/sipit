@@ -53,7 +53,6 @@ class Dropdown extends Component {
           value={resultsSearch}
           inputProps={{
             name: 'results',
-            disableUnderline: true,
           }}
         >
           <MenuItem value={10}>10</MenuItem>
@@ -64,10 +63,6 @@ class Dropdown extends Component {
     );
   }
 }
-
-// Dropdown.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
 
 
 const mapStateToProps = state => ({
