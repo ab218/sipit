@@ -15,6 +15,7 @@ const styles = {
     margin: '0 0.5em',
     color: 'black',
     backgroundColor: 'white',
+    textAlign: 'center',
   },
 
   customSearchBtn: {

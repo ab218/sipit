@@ -70,9 +70,10 @@ class SearchBar extends Component {
           name="cafeSearch"
           placeholder="Enter Search Term"
           onChange={this.handleInputChange}
-
-          InputProps={{
+          inputProps={{
             style: input,
+          }}
+          InputProps={{
             disableUnderline: true,
           }}
         />
@@ -82,10 +83,11 @@ class SearchBar extends Component {
           placeholder="Enter Location"
           margin="normal"
           onChange={this.handleInputChange}
-          InputProps={{
+          inputProps={{
             style: input,
+          }}
+          InputProps={{
             disableUnderline: true,
-
           }}
         />
         <button
