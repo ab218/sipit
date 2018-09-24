@@ -10,10 +10,10 @@ export default class SimpleSlider extends React.Component {
       adaptiveHeight: true,
     };
 
-    const { cafeData } = this.props;
+    const { businessData } = this.props;
     return (
       <Slider {...settings}>
-        {cafeData.photos.map((sub, subindex) => (
+        {businessData.photos.map((sub, subindex) => (
           <div key={sub}>
             <img alt={subindex} style={{ maxHeight: '30em' }} src={sub} />
           </div>

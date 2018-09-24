@@ -6,19 +6,16 @@ Sip-It is a web app for finding nearby cafes. It was built by Aaron Black and Hy
 ## Currently Working
 - Gets geolocation and finds nearby cafes.
 - Displays nearby cafes on a map.
-- Can search by a term (yelp API)
-
-## Wishlist
-- Login
-- Can favorite a place
-- Can review a place
+- Can search by a term and location (yelp API).
+- Login/Signup.
+- Can save places to favorites.
+- Can view favorites page.
 
 ## Stack
 - Node
 - Express
 - React/Redux
 - Postgres
-
 
 ---
 

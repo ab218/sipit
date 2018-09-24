@@ -1,4 +1,6 @@
 import React from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 const reviewTitle = {
   backgroundColor: 'white',
@@ -11,13 +13,7 @@ const review = {
   color: 'black',
 };
 
-class BusinessDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
+class Reviews extends React.Component {
   render() {
     const { reviewsData } = this.props;
 
@@ -48,4 +44,10 @@ class BusinessDetails extends React.Component {
   }
 }
 
-export default BusinessDetails;
+const mapStateToProps = state => ({
+  reviewsData: state.fetchBusinessData.reviewsData,
+});
+
+export default compose(
+  connect(mapStateToProps, null),
+)(Reviews);

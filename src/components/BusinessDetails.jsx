@@ -1,4 +1,6 @@
 import React from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import SlickCarousel from './SlickCarousel';
 
 const title = {
@@ -20,25 +22,25 @@ function HoursComp({ isOpenNow, endHours }) {
 
 class BusinessDetails extends React.Component {
   render() {
-    const { cafeData } = this.props;
+    const { businessData } = this.props;
 
     return (
       <div style={{ maxWidth: '500px', margin: 'auto' }}>
         <h1 style={title}>
-          {cafeData.name}
+          {businessData.name}
         </h1>
-        <SlickCarousel cafeData={cafeData} />
+        <SlickCarousel businessData={businessData} />
         {
-          cafeData.location.display_address
+          businessData.location.display_address
             .map(sub => <h5 style={title} key={sub}>{sub}</h5>)
         }
         <br />
-        <h5 style={title}>{cafeData.display_phone}</h5>
-        {cafeData.hours
+        <h5 style={title}>{businessData.display_phone}</h5>
+        {businessData.hours
             && (
               <HoursComp
-                isOpenNow={cafeData.hours[0].is_open_now}
-                endHours={cafeData.hours[0].open[0].end}
+                isOpenNow={businessData.hours[0].is_open_now}
+                endHours={businessData.hours[0].open[0].end}
               />
             )
         }
@@ -48,4 +50,10 @@ class BusinessDetails extends React.Component {
   }
 }
 
-export default BusinessDetails;
+const mapStateToProps = state => ({
+  businessData: state.fetchBusinessData.businessData,
+});
+
+export default compose(
+  connect(mapStateToProps, null),
+)(BusinessDetails);

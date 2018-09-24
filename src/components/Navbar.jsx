@@ -62,7 +62,7 @@ class NavbarComponent extends Component {
         </div>
         <div className="container1" style={container1}>
           <Link to="/"><div className="navItem" style={navItem}>Home</div></Link>
-          <Link to="/"><div className="navItem" style={navItem}>About</div></Link>
+          <div className="navItem" style={navItem}>About</div>
           {cookies.get('user') !== undefined
           && <Link to="/favorites"><div className="navItem" style={navItem}>Favorites</div></Link>
           }
