@@ -14,6 +14,17 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { withCookies, Cookies } from 'react-cookie';
+import {
+  FacebookShareButton, LinkedinShareButton, TwitterShareButton, RedditShareButton, EmailShareButton,
+} from 'react-share';
+import {
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  RedditIcon,
+  EmailIcon,
+} from 'react-share';
+import Tooltip from '@material-ui/core/Tooltip';
 import RatingStar from './RatingStar';
 import styles from './styles/cafeCardStyles';
 import { getFavorites } from '../actions';
@@ -77,23 +88,36 @@ class CafeCard extends Component {
               </span>
             </CardContent>
             <CardActions disableActionSpacing>
+              <FacebookShareButton url={`https://sipit-cafes.herokuapp.com/business/${cafe.id}`} style={{ margin: '0 1em 0 0' }}>
+                <FacebookIcon size={24} />
+              </FacebookShareButton>
+              <TwitterShareButton url={`https://sipit-cafes.herokuapp.com/business/${cafe.id}`} style={{ margin: '0 1em 0 0' }}>
+                <TwitterIcon size={24} />
+              </TwitterShareButton>
+              <RedditShareButton url={`https://sipit-cafes.herokuapp.com/business/${cafe.id}`} style={{ margin: '0 1em 0 0' }}>
+                <RedditIcon size={24} />
+              </RedditShareButton>
+              <EmailShareButton url={`https://sipit-cafes.herokuapp.com/business/${cafe.id}`} style={{ margin: '0 1em 0 0' }}>
+                <EmailIcon size={24} />
+              </EmailShareButton>
               {cookies.get('user') !== undefined
                 && (this.isFavorite(cafe)
                   ? (
-                    <IconButton onClick={() => this.removeFavorite(cafe)} aria-label="Add to favorites">
-                      <FavoriteIcon color="error" />
-                    </IconButton>
+                    <Tooltip title="Remove from favorites" placement="top">
+                      <IconButton style={{ margin: '0 2em' }} onClick={() => this.removeFavorite(cafe)} aria-label="Add to favorites">
+                        <FavoriteIcon color="error" />
+                      </IconButton>
+                    </Tooltip>
                   )
                   : (
-                    <IconButton onClick={() => this.addFavorite(cafe)} aria-label="Add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
+                    <Tooltip title="Add to favorites" placement="top">
+                      <IconButton style={{ margin: '0 2em' }} onClick={() => this.addFavorite(cafe)} aria-label="Add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                    </Tooltip>
                   )
                 )
               }
-              <IconButton aria-label="Share">
-                <ShareIcon />
-              </IconButton>
             </CardActions>
           </Card>
         </div>

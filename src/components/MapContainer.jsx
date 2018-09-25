@@ -56,7 +56,6 @@ class MapContainer extends Component {
               label={(i + 1).toString()}
             />
           ))}
-          <InfoWindow onClose={this.onInfoWindowClose} />
         </Map>
       </div>
     );
