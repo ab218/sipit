@@ -2,52 +2,34 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import RatingStar from './RatingStar';
-
-const reviewTitle = {
-  width: '100%',
-  justifyContent: 'space-between',
-  backgroundColor: '#f2f1ef',
-  color: 'black',
-  display: 'inline-flex',
-  borderTop: '1px solid white',
-};
-
-const review = {
-  backgroundColor: '#f2f1ef',
-  color: 'black',
-  position: 'relative',
-  borderRadius: '.5em',
-};
-
-const imgStyle = {
-  height: '3em',
-  width: '3em',
-  borderRadius: '3em',
-};
+import styles from './styles/reviewStyles';
 
 class Reviews extends React.Component {
   render() {
     const { reviewsData } = this.props;
-
+    const {
+      reviewWrapper, title, reviewMain, imgStyle, reviewTitle, reviewContent, speechBubble,
+    } = styles;
     return (
-      <div style={{ maxWidth: '50em', margin: 'auto' }}>
-        <h3 style={{ color: 'pink' }}>Yelp Reviews</h3>
+      <div style={reviewWrapper}>
+        <div style={title}><h2 style={{ color: '#FFFF' }}>Yelp Reviews</h2></div>
         {
-          reviewsData.reviews.map(sub => (
-            <div style={review} key={sub.id}>
+          reviewsData.reviews.map(review => (
+            <div style={reviewMain} key={review.id}>
               <div style={reviewTitle}>
-                <img style={imgStyle} alt={sub.user.image_url} src={sub.user.image_url} />
-                <p style={{ marginRight: 'auto', padding: '1em' }}>{`${sub.user.name}`}</p>
-                <RatingStar starRating={sub.rating} />
+                <img style={imgStyle} alt={review.user.image_url} src={review.user.image_url} />
+                <p style={{ marginRight: 'auto', padding: '1em' }}>{`${review.user.name}`}</p>
+                <RatingStar starRating={review.rating} />
               </div>
-              <p style={review}>
-                {sub.text}
-              </p>
-              <p style={{ color: 'green', float: 'right' }}>
+              <div style={speechBubble} />
+              <div style={reviewContent}>
+                {review.text}
+                <p style={{ color: 'green', float: 'right' }}>
               posted:
-                                {' '}
-                                {sub.time_created}
-              </p>
+                  {' '}
+                  {review.time_created}
+                </p>
+              </div>
               <br />
             </div>
           ))

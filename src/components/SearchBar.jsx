@@ -73,7 +73,6 @@ class SearchBar extends Component {
           inputProps={{
             style: input,
             className: this.props.classes.inputStyles,
-            disableUnderline: true,
           }}
           InputProps={{
             disableUnderline: true,
@@ -87,8 +86,6 @@ class SearchBar extends Component {
           onChange={this.handleInputChange}
           inputProps={{
             style: input,
-            disableUnderline: true,
-
           }}
           InputProps={{
             disableUnderline: true,

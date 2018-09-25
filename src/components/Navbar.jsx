@@ -52,13 +52,15 @@ class NavbarComponent extends Component {
     }
     return (
       <div className="navBar" style={navBar}>
-        <div className="navHead" style={{ ...navHead, ...fontTitles }}>
-          <div className="navBrand">
-            <i className="fas fa-coffee" style={navIcon} />
-            {' '}
+        <Link style={{ color: '#FFFF' }} to="/">
+                    <div className="navHead" style={{ ...navHead, ...fontTitles }}>
+            <div className="navBrand">
+              <i className="fas fa-coffee" style={navIcon} />
+              {' '}
             Sip-It
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="container1" style={container1}>
           <Link to="/"><div className="navItem" style={{ ...navItem, ...fontTitles }}>Home</div></Link>
           <div className="navItem" style={{ ...navItem, ...fontTitles }}>About</div>
