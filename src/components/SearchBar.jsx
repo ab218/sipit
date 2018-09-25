@@ -58,7 +58,7 @@ class SearchBar extends Component {
 
   render() {
     const {
-      input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn,
+      input, searchBarWrapper, customSearchBtn, searchIcon, customFilterBtn, inputStyles,
     } = styles;
     const { redirect } = this.state;
 
@@ -72,6 +72,7 @@ class SearchBar extends Component {
           onChange={this.handleInputChange}
           inputProps={{
             style: input,
+            className: this.props.classes.inputStyles,
           }}
           InputProps={{
             disableUnderline: true,

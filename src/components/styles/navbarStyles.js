@@ -67,7 +67,7 @@ const styles = {
   },
 
   logInBtn: {
-    backgroundColor: '#f62459',
+    backgroundColor: '#f26622',
     border: '2px solid #FFFF',
     borderRadius: '15px',
     color: '#FFFF',
