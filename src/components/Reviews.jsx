@@ -44,9 +44,9 @@ class Reviews extends React.Component {
                 {sub.text}
               </p>
               <p style={{ color: 'green', float: 'right' }}>
-                        posted:
-                {' '}
-                {sub.time_created}
+              posted:
+{' '}
+{sub.time_created}
               </p>
               <br />
             </div>

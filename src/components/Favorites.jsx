@@ -4,21 +4,38 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import Navbar from './Navbar';
-import styles from './styles/favoritesStyles';
+import { withStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import IconButton from '@material-ui/core/IconButton';
 import { getFavorites } from '../actions';
+import styles from './styles/favoritesStyles';
+import Navbar from './Navbar';
+
+const styles2 = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    width: '100%',
+    height: 'auto',
+    padding: '1em',
+  },
+  icon: {
+    color: 'rgba(255, 255, 255, 0.54)',
+  },
+});
 
 class Favorites extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
 
   componentDidMount() {
     const { getFavorites, cookies } = this.props;
@@ -27,26 +44,37 @@ class Favorites extends Component {
 
   render() {
     const { mainTheme, imgPreview } = styles;
-    const { favorites } = this.props;
+    const { favorites, classes } = this.props;
     return (
       <div style={mainTheme}>
         <Navbar
           page="favorites"
         />
-        <h1>My Favorites:</h1>
-        <ul style={{ display: 'inline-flex', listStyle: 'none', flexWrap: 'wrap' }}>
-          {favorites.map(fav => (
-            <li key={fav.url} style={{ padding: '1em' }}>
-              <Link to={`/business/${fav.url}`}>
-                <span style={{ color: 'black' }}>{fav.title}</span>
-                <br />
-                <img src={fav.image_url} alt={fav.url} style={{ height: '100px', width: 'auto', alignSelf: 'center' }} />
+        {favorites.length === 0 && <h1 style={{ color: 'white' }}>No favorites saved.</h1>}
+        <GridList cellHeight={180} cols={4} className={classes.gridList}>
+          {favorites.map(tile => (
+            <GridListTile key={tile.url}>
+              <img src={tile.image_url} alt={tile.title} />
+              <Link to={`/business/${tile.url}`}>
+                <GridListTileBar
+                  title={tile.title}
+                  subtitle={(
+                    <span>
+    favorited:
+                      {' '}
+                      {tile.created_at.split('T')[0]}
+                    </span>
+                  )}
+                  actionIcon={(
+                    <IconButton className={classes.icon}>
+                      <FavoriteIcon color="error" />
+                    </IconButton>
+                  )}
+                />
               </Link>
-              <br />
-            </li>
-
+            </GridListTile>
           ))}
-        </ul>
+        </GridList>
       </div>
     );
   }
@@ -64,6 +92,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
+  withStyles(styles2),
   withCookies,
   connect(mapStateToProps, mapDispatchToProps),
 )(Favorites);

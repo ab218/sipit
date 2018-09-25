@@ -34,7 +34,6 @@ class MapContainer extends Component {
     const { myLatLng: { lat, lng }, google, cafesList } = this.props;
     return (
       <div style={divStyle}>
-
         <Map
           google={google}
           zoom={12}
@@ -46,20 +45,18 @@ class MapContainer extends Component {
             lat, lng,
           }}
         >
-          {cafesList.map((markers, i) => (
+          {cafesList.map((marker, i) => (
             <Marker
-              key={markers.id}
-              name={markers.name}
+              key={marker.id}
+              name={marker.name}
               position={{
-                lat: markers.coordinates.latitude,
-                lng: markers.coordinates.longitude,
+                lat: marker.coordinates.latitude,
+                lng: marker.coordinates.longitude,
               }}
               label={(i + 1).toString()}
             />
           ))}
-          <InfoWindow onClose={this.onInfoWindowClose}>
-            <div />
-          </InfoWindow>
+          <InfoWindow onClose={this.onInfoWindowClose} />
         </Map>
       </div>
     );

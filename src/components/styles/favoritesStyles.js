@@ -1,7 +1,7 @@
 const styles = {
   mainTheme: {
     backgroundColor: '#C1A88B',
-    height: '700px',
+    height: '100%',
   },
   imgPreview: {
     maxHeight: '100px',

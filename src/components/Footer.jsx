@@ -13,7 +13,6 @@ class FooterComponent extends Component {
           <div className="footerTitle" style={footerTitle}>
             <span>
               <h2 style={{
-                paddingBottom: `${20}px`,
                 fontFamily: 'Exo',
                 fontWeight: 'bold',
               }}

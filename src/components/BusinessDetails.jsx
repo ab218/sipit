@@ -13,9 +13,9 @@ function HoursComp({ isOpenNow, endHours }) {
     return (
       <h5 style={{ color: 'lightgreen' }}>
         OPEN NOW (closes at
-        {' '}
-        {endHours}
-)
+{' '}
+{endHours}
+        )
       </h5>);
   }
   return <h5 style={{ color: 'tomato' }}>CLOSED NOW</h5>;

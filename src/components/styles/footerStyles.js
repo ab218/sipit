@@ -1,6 +1,5 @@
 const styles = {
   footer: {
-    position: 'relative',
     backgroundColor: '#DFDCE3',
     color: '#FC4A1A',
     marginBottom: '1.25rem',

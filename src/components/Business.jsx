@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Navbar from './Navbar';
@@ -16,7 +15,9 @@ const mainTheme = {
 
 class Business extends Component {
   componentDidMount() {
-    const { getBusinessData, getReviews, match } = this.props;
+    const {
+      getBusinessData, getReviews, match,
+    } = this.props;
     getBusinessData(match.params.id);
     getReviews(match.params.id);
   }
@@ -25,18 +26,20 @@ class Business extends Component {
     const { businessDataLoading, reviewsDataLoading } = this.props;
 
     return (
-      <div style={mainTheme}>
+      <div>
         <Navbar
           page="business"
         />
-        {businessDataLoading
-          ? <h1 style={{ color: 'grey' }}>Brewing results ...</h1>
-          : <BusinessDetails />
-        }
-        {reviewsDataLoading
-          ? <h1 style={{ color: 'grey' }}>Brewing reviews ...</h1>
-          : <Reviews />
-        }
+        <div style={mainTheme}>
+          {businessDataLoading
+            ? <h1 style={{ color: 'grey' }}>Brewing results ...</h1>
+            : <BusinessDetails />
+          }
+          {reviewsDataLoading
+            ? <h1 style={{ color: 'grey' }}>Brewing reviews ...</h1>
+            : <Reviews />
+          }
+        </div>
       </div>
     );
   }
@@ -55,6 +58,10 @@ const mapDispatchToProps = dispatch => ({
   getReviews: (params) => {
     dispatch(getReviews(params));
   },
+  changeCafeData: data => dispatch({
+    type: 'FETCH_CAFES',
+    payload: data,
+  }),
 });
 
 export default compose(
