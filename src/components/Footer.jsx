@@ -13,12 +13,11 @@ class FooterComponent extends Component {
           <div className="footerTitle" style={footerTitle}>
             <span>
               <h2 style={{
-                paddingBottom: `${20}px`,
                 fontFamily: 'Exo',
                 fontWeight: 'bold',
               }}
               >
-Sip-it
+              Sip-it
               </h2>
               <p style={{ fontFamily: ['Quicksand', 'sans-serif'], fontWeight: 'bold' }}>Find your best coffee.</p>
             </span>

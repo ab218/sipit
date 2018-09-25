@@ -1,4 +1,4 @@
-export default function (state = { cafesLoading: true }, action) {
+export default function (state = { cafesList: [], cafesLoading: true }, action) {
   const { type, payload } = action;
 
   switch (type) {

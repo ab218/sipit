@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Input from '@material-ui/core/Input';
 
 const styles = theme => ({
   formControl: {
@@ -22,39 +23,22 @@ class Dropdown extends Component {
     open: false,
   };
 
-  handleInputChange = (e) => {
-    const { setResults } = this.props;
-    const { value, name } = e.target;
-
-    if (name === 'results') {
-      setResults(value);
-    }
-  }
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
   render() {
-    const { classes, resultsSearch } = this.props;
+    const { classes, resultsSearch, setResults } = this.props;
     const { open } = this.state;
-
     return (
       <FormControl className={classes.formControl}>
         <Select
           open={open}
-          onClose={this.handleClose}
-          onOpen={this.handleOpen}
-          onChange={this.handleInputChange}
+          onClose={() => this.setState({ open: false })}
+          onOpen={() => this.setState({ open: true })}
+          onChange={e => setResults(e.target.value)}
           value={resultsSearch}
-          inputProps={{
-            name: 'results',
-            disableUnderline: true,
-          }}
+          input={(
+            <Input
+              disableUnderline
+            />
+          )}
         >
           <MenuItem value={10}>10</MenuItem>
           <MenuItem value={20}>20</MenuItem>
@@ -64,11 +48,6 @@ class Dropdown extends Component {
     );
   }
 }
-
-// Dropdown.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
 
 const mapStateToProps = state => ({
   resultsSearch: state.searchFields.searchResults,
@@ -80,7 +59,6 @@ const mapDispatchToProps = dispatch => ({
     payload: results,
   }),
 });
-
 
 export default compose(
   withStyles(styles),

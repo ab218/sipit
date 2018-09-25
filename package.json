@@ -1,8 +1,8 @@
 {
-  "name": "boilerplate",
+  "name": "sipit",
   "version": "0.1.0",
   "private": true,
-  "description": "webpack/babel/etc recipes for starting new projects",
+  "description": "cafe finder webapp",
   "scripts": {
     "build": "webpack-cli",
     "dev": "concurrently --kill-others \"webpack-dev-server\" \"nodemon server.js\"",
@@ -11,7 +11,7 @@
     "seed": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "postinstall": "npm run build"
   },
-  "author": "Jeremy Holman <jeremy.holman@gmail.com>",
+  "author": "Aaron Black",
   "license": "UNLICENSED",
   "dependencies": {
     "@material-ui/core": "^1.5.1",

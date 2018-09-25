@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Snackbar from '@material-ui/core/Snackbar';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 import Navbar from './Navbar';
 import CafeCard from './CafeCard';
 import GoogleMapContainer from './MapContainer';
-import { loadPosition, makeFetchCafesThunk } from '../actions';
+import { loadPosition, makeFetchCafesThunk, getFavorites } from '../actions';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',
@@ -15,29 +18,26 @@ const mapDown = {
 };
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      favorites: [],
-    };
-  }
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired,
+  };
 
   async componentDidMount() {
-    const userId = 1;
-    const { makeFetchCafes, loadPosition: loadPos } = this.props;
+    const {
+      makeFetchCafes, loadPosition: loadPos, getFavorites, cookies,
+    } = this.props;
     await loadPos();
     makeFetchCafes('coffee', 10);
-    await fetch(`/api/favorites/${userId}`)
-      .then(results => results.json())
-      .then(results => this.setState({ favorites: results }));
+    if (cookies.get('user') !== undefined) {
+      getFavorites(cookies.get('user').id);
+    }
   }
 
   render() {
     const {
-      location, cafesList, fetchCafesLoading,
+      cafesList, fetchCafesLoading,
       notificationIsOpen, notificationHide,
     } = this.props;
-    console.log(location);
     return (
       <div style={mainTheme}>
         <div style={mapDown}>
@@ -48,7 +48,7 @@ class Home extends Component {
         {cafesList && (<GoogleMapContainer />)}
         {fetchCafesLoading
           ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
-          : <CafeCard cafesList={cafesList} favorites={this.state.favorites} />
+          : <CafeCard />
         }
         <Snackbar
           open={notificationIsOpen}
@@ -76,6 +76,9 @@ const mapDispatchToProps = dispatch => ({
   makeFetchCafes: (term, limit, loc) => {
     dispatch(makeFetchCafesThunk(term, limit, loc));
   },
+  getFavorites: (user_id) => {
+    dispatch(getFavorites(user_id));
+  },
   fetchCafes: data => dispatch({
     type: 'FETCH_CAFES',
     payload: data,
@@ -101,4 +104,7 @@ const mapDispatchToProps = dispatch => ({
   }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default compose(
+  withCookies,
+  connect(mapStateToProps, mapDispatchToProps),
+)(Home);

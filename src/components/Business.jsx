@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import BusinessDetails from './BusinessDetails';
 import Reviews from './Reviews';
+import { getBusinessData, getReviews } from '../actions';
 
 const mainTheme = {
 //  backgroundColor: '#DFDCE3',
@@ -11,62 +13,57 @@ const mainTheme = {
 
 };
 
-export default class Business extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      yelpDataLoaded: false,
-      reviewsLoaded: false,
-    };
-  }
-
+class Business extends Component {
   componentDidMount() {
-    this.getBusiness();
-    this.getReviews();
+    const {
+      getBusinessData, getReviews, match,
+    } = this.props;
+    getBusinessData(match.params.id);
+    getReviews(match.params.id);
   }
-
-  getBusiness() {
-    const { match } = this.props;
-    axios
-      .get(`/api/yelp/${match.params.id}/details`, {
-      })
-      .then(res => this.setState({
-        yelpDataLoaded: true,
-        cafeData: res.data,
-      }));
-  }
-
-  getReviews() {
-    const { match } = this.props;
-    axios
-      .get(`/api/yelp/${match.params.id}/reviews`, {
-      })
-      .then(res => this.setState({
-        reviewsLoaded: true,
-        reviewsData: res.data,
-      }));
-  }
-
 
   render() {
-    const {
-      yelpDataLoaded, cafeData, reviewsLoaded, reviewsData,
-    } = this.state;
+    const { businessDataLoading, reviewsDataLoading } = this.props;
 
     return (
-      <div style={mainTheme}>
+      <div>
         <Navbar
           page="business"
         />
-        {yelpDataLoaded
-          ? <BusinessDetails cafeData={cafeData} />
-          : <h1 style={{ color: 'grey' }}>Brewing results ...</h1>
-        }
-        {reviewsLoaded
-          ? <Reviews reviewsData={reviewsData} />
-          : <h1 style={{ color: 'grey' }}>Brewing reviews ...</h1>
-        }
+        <div style={mainTheme}>
+          {businessDataLoading
+            ? <h1 style={{ color: 'grey' }}>Brewing results ...</h1>
+            : <BusinessDetails />
+          }
+          {reviewsDataLoading
+            ? <h1 style={{ color: 'grey' }}>Brewing reviews ...</h1>
+            : <Reviews />
+          }
+        </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  businessDataLoading: state.fetchBusinessData.businessDataLoading,
+  reviewsDataLoading: state.fetchBusinessData.reviewsDataLoading,
+});
+
+
+const mapDispatchToProps = dispatch => ({
+  getBusinessData: (params) => {
+    dispatch(getBusinessData(params));
+  },
+  getReviews: (params) => {
+    dispatch(getReviews(params));
+  },
+  changeCafeData: data => dispatch({
+    type: 'FETCH_CAFES',
+    payload: data,
+  }),
+});
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+)(Business);

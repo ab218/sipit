@@ -50,7 +50,6 @@ class NavbarComponent extends Component {
     if (logoutRedirect) {
       return <Redirect to="/login" />;
     }
-
     return (
       <div className="navBar" style={navBar}>
         <div className="navHead" style={{ ...navHead, ...fontTitles }}>
@@ -61,17 +60,26 @@ class NavbarComponent extends Component {
           </div>
         </div>
         <div className="container1" style={container1}>
-          <Link to="/"><div autoFocus="true" className="{classes.classNavItem}" style={{ ...navItem, ...fontTitles }}>Home</div></Link>
-          <Link to="/"><div className="navItem" style={{ ...navItem, ...fontTitles }}>About</div></Link>
+          <Link to="/"><div className="navItem" style={{ ...navItem, ...fontTitles }}>Home</div></Link>
+          <div className="navItem" style={{ ...navItem, ...fontTitles }}>About</div>
+          {cookies.get('user') !== undefined
+          && <Link to="/favorites"><div className="navItem" style={{ ...navItem, ...fontTitles }}>Favorites</div></Link>
+          }
         </div>
         <div className="memberControl" style={memberControl}>
           {cookies.get('user') === undefined
             ? <Link to="/login"><span style={{ ...logInBtn, ...fontContents }}>Log In</span></Link>
-            : <Button onClick={this.logout}>Log Out</Button>
+            : (
+              <p style={{ marginRight: '1em' }}>
+Logged in as
+                {' '}
+                {cookies.get('user').first_name}
+              </p>
+            )
           }
           {cookies.get('user') === undefined
             ? <Link to="/signup"><span style={{ ...signUpBtn, ...fontContents }}>Sign Up</span></Link>
-            : <span />
+            : <Button onClick={this.logout}>Log Out</Button>
           }
         </div>
         <div className="container2" style={container2}>

@@ -3,9 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 8081;
+const ENV = process.env.ENV || 'production';
 const history = require('connect-history-api-fallback');
 const knexConfig = require('./knexfile');
-const knex = require('knex')(knexConfig.development);
+const knex = require('knex')(knexConfig[ENV]);
 
 const app = express();
 
@@ -23,7 +24,7 @@ const yelpRoutes = require('./routes/yelpRoutes.js');
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/reviews', reviewsRoutes(knex));
 app.use('/api/favorites', favoritesRoutes(knex));
-app.use('/api/login', loginRoutes);
+app.use('/api/login', loginRoutes(knex));
 app.use('/api/yelp', yelpRoutes);
 
 // history must go after other endpoints

@@ -1,24 +1,20 @@
 const styles = {
   mainTheme: {
     backgroundColor: '#C1A88B',
-    height: '700px',
+    paddingBottom: '5em',
   },
   wrapper: {
-    position: 'relative',
     backgroundColor: '#FFFF',
-    width: '40em',
-    height: '37em',
-    marginLeft: '20em',
-    paddingTop: '5em',
+    margin: '5em auto 0',
+    padding: '5em 0',
     textAlign: 'center',
     borderRadius: '15%',
-    top: '70px',
-    bottom: '70px',
+    width: '30em',
   },
   title: {
     color: '#5d4427',
     fontSize: '56px',
-    margin: '0 0 50px 0',
+    marginBottom: '1em',
     fontFamily: 'Pacifico',
     fontWeight: 'bold',
   },
@@ -28,7 +24,6 @@ const styles = {
   },
   th: {
     padding: '10px 10px 10px',
-    textAlign: 'right',
     fontSize: '18px',
     color: 'gray',
     margin: '0',

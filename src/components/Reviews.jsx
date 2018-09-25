@@ -1,11 +1,15 @@
 import React from 'react';
-
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import RatingStar from './RatingStar';
 
 const reviewTitle = {
-  backgroundColor: 'white',
+  width: '100%',
+  justifyContent: 'space-between',
+  backgroundColor: '#f2f1ef',
   color: 'black',
-  text,
-//  textDecoration: 'underline',
+  display: 'inline-flex',
+  borderTop: '1px solid white',
 };
 
 const review = {
@@ -15,32 +19,34 @@ const review = {
   borderRadius: '.5em',
 };
 
-class BusinessDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+const imgStyle = {
+  height: '3em',
+  width: '3em',
+  borderRadius: '3em',
+};
 
+class Reviews extends React.Component {
   render() {
     const { reviewsData } = this.props;
 
     return (
-      <div style={{ maxWidth: '50%', margin: 'auto' }}>
+      <div style={{ maxWidth: '50em', margin: 'auto' }}>
         <h3 style={{ color: 'pink' }}>Yelp Reviews</h3>
         {
-          reviewsData.reviews.map((sub, subindex) => (
+          reviewsData.reviews.map(sub => (
             <div style={review} key={sub.id}>
-              <h4 style={reviewTitle}>
-                {`${sub.user.name}`}
-              </h4>
+              <div style={reviewTitle}>
+                <img style={imgStyle} alt={sub.user.image_url} src={sub.user.image_url} />
+                <p style={{ marginRight: 'auto', padding: '1em' }}>{`${sub.user.name}`}</p>
+                <RatingStar starRating={sub.rating} />
+              </div>
               <p style={review}>
                 {sub.text}
               </p>
               <p style={{ color: 'green', float: 'right' }}>
-                        posted:
-                {' '}
-                {sub.time_created}
+              posted:
+                                {' '}
+                                {sub.time_created}
               </p>
               <br />
             </div>
@@ -52,4 +58,10 @@ class BusinessDetails extends React.Component {
   }
 }
 
-export default BusinessDetails;
+const mapStateToProps = state => ({
+  reviewsData: state.fetchBusinessData.reviewsData,
+});
+
+export default compose(
+  connect(mapStateToProps, null),
+)(Reviews);
