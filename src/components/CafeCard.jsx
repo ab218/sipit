@@ -8,21 +8,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { withCookies, Cookies } from 'react-cookie';
 import {
-  FacebookShareButton, LinkedinShareButton, TwitterShareButton, RedditShareButton, EmailShareButton,
-} from 'react-share';
-import {
-  FacebookIcon,
-  TwitterIcon,
-  LinkedinIcon,
-  RedditIcon,
-  EmailIcon,
+  FacebookShareButton, TwitterShareButton, RedditShareButton, EmailShareButton,
+  FacebookIcon, TwitterIcon, RedditIcon, EmailIcon,
 } from 'react-share';
 import Tooltip from '@material-ui/core/Tooltip';
 import RatingStar from './RatingStar';
@@ -139,7 +132,6 @@ const mapStateToProps = state => ({
   favorites: state.fetchFavorites.favorites,
   cafesList: state.fetchCafes.cafesList,
 });
-
 
 const mapDispatchToProps = dispatch => ({
   getFavorites: (user_id) => {
