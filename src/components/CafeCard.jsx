@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes, { instanceOf } from 'prop-types';
-import { MuiThemeProvider, withStyles, createMuiTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -84,7 +84,6 @@ class CafeCard extends Component {
 const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
 });
-
 
 export default compose(
   withStyles(styles),
