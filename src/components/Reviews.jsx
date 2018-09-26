@@ -18,16 +18,16 @@ class Reviews extends React.Component {
             <div style={reviewMain} key={review.id}>
               <div style={reviewTitle}>
                 <img style={imgStyle} alt={review.user.image_url} src={review.user.image_url} />
-                <p style={{ marginRight: 'auto', padding: '1em' }}>{`${review.user.name}`}</p>
+                <p style={{ marginRight: 'auto', padding: '1em' }}>{review.user.name}</p>
                 <RatingStar starRating={review.rating} />
               </div>
               <div style={speechBubble} />
               <div style={reviewContent}>
                 {review.text}
+                <br />
+                <br />
                 <p style={{ color: 'green', float: 'right' }}>
-              posted:
-                  {' '}
-                  {review.time_created}
+                  {`posted: ${review.time_created}`}
                 </p>
               </div>
               <br />

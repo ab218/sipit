@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import Navbar from './Navbar';
 import styles from './styles/signupStyles';
 
-
 class Signup extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,

@@ -26,9 +26,7 @@ function GetFavoritesComp({ favorites, cols }) {
               title={tile.title}
               subtitle={(
                 <span>
-    favorited:
-                  {' '}
-                  {tile.created_at}
+                  {`favorited: ${tile.created_at}`}
                 </span>
               )}
               actionIcon={(

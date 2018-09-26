@@ -7,10 +7,8 @@ import Reviews from './Reviews';
 import { getBusinessData, getReviews } from '../actions';
 
 const mainTheme = {
-//  backgroundColor: '#DFDCE3',
   backgroundColor: '#FFFF',
   fontFamily: 'Quicksand',
-
 };
 
 class Business extends Component {

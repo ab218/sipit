@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import styles from './styles/searchBarStyles';
 import { searchCafes } from '../actions';
 
-
 class SearchBarButton extends Component {
   onMouseOver() {
     this.searchBtn.style.color = 'orange';
@@ -48,7 +47,6 @@ const mapStateToProps = state => ({
   locationSearch: state.searchFields.searchLocation,
   resultsSearch: state.searchFields.searchResults,
 });
-
 
 const mapDispatchToProps = dispatch => ({
   searchCafes: (e, cafeSearch, locationSearch, resultsSearch, myLatLng, page) => {

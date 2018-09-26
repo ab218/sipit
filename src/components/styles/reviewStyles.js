@@ -1,5 +1,4 @@
 const styles = {
-
   reviewWrapper: {
     maxWidth: '50em', margin: 'auto',
   },
@@ -23,6 +22,7 @@ const styles = {
     fontWeight: 'bold',
     display: 'inline-flex',
   },
+
   reviewContent: {
     position: 'relative',
     backgroundColor: '#f2f1ef',
@@ -50,7 +50,6 @@ const styles = {
     marginLeft: '-13px',
     marginBottom: '-26px',
   },
-
 };
 
 export default styles;
