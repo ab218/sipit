@@ -16,7 +16,6 @@ import App from './components/App';
 const theme = createMuiTheme({
   typography: {
     fontSize: 20,
-    fontFamily: 'Do Hyeon 27px',
   },
 });
 

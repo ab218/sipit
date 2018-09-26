@@ -27,6 +27,9 @@ const styles = () => ({
     position: 'relative',
     marginTop: '100%',
   },
+  avatar: {
+    backgroundColor: '#FC4A1A',
+  },
 
 });
 

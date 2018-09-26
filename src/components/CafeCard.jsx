@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes, { instanceOf } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { MuiThemeProvider, withStyles, createMuiTheme } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -15,6 +16,17 @@ import styles from './styles/cafeCardStyles';
 import FavoriteButton from './FavoriteButton';
 import ShareButtons from './ShareButtons';
 
+// still working on it...
+// const theme = createMuiTheme({
+//   overrides: {
+//     MuiCardHeader: {
+//       root: {
+//         paddingLeft: '0',
+//       },
+//     },
+//   },
+// });
+
 class CafeCard extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
@@ -23,13 +35,20 @@ class CafeCard extends Component {
 
   getCafes = () => {
     const { classes, cafesList } = this.props;
+
     return cafesList
       .map((cafe, i) => (
+        //       <MuiThemeProvider key={cafe.id} theme={theme}>
         <div key={cafe.id} className={classes.actions}>
           <Card className={classes.card}>
             <Link to={`/business/${cafe.id}`} style={{ margin: '0 0 auto 0' }}>
               <CardHeader
-                title={`${i + 1}. ${cafe.name}`}
+                avatar={(
+                  <Avatar aria-label="Recipe" className={classes.avatar}>
+                    {`${i + 1}`}
+                  </Avatar>
+                )}
+                title={`${cafe.name}`}
               />
             </Link>
             <CardMedia
@@ -48,6 +67,7 @@ class CafeCard extends Component {
             </CardActions>
           </Card>
         </div>
+        //        </MuiThemeProvider>
       ));
   }
 
