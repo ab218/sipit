@@ -6,7 +6,6 @@ const styles = {
     paddingBottom: '1.25rem',
   },
   footerTitle: {
-    width: '80rem',
     marginLeft: '50px',
     marginBottom: '20px',
     paddingTop: '15px',
@@ -24,7 +23,7 @@ const styles = {
     display: 'block',
     padding: '5px 0',
     letterSpacing: '1px',
-    width: 'max-content',
+    // width: 'max-content',
   },
 };
 

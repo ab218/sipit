@@ -6,7 +6,6 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Favorites from './components/Favorites';
 
-
 export default class Routes extends Component {
   render() {
     return (
@@ -20,15 +19,3 @@ export default class Routes extends Component {
     );
   }
 }
-
-
-// { <Route exact path="/" component={() => {
-//     return <Home
-//     favorites={this.state.favorites}
-//     setFavorites={this.setFavorites} />
-// }} />
-// setFavorites = (amount) => {
-//   this.setState({
-//     favorites: amount,
-//   });
-// }

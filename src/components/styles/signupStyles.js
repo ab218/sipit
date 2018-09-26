@@ -9,7 +9,7 @@ const styles = {
     padding: '5em 0',
     textAlign: 'center',
     borderRadius: '15%',
-    width: '30em',
+    maxWidth: '30em',
   },
   title: {
     color: '#5d4427',
