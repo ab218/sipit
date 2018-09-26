@@ -44,11 +44,11 @@ const styles = {
 
 
   navItem: {
-    padding: '12px 16px',
     color: '#FFFF',
   },
 
   container2: {
+    minWidth: '360px',
     justifyContent: 'center',
     display: 'flex',
     width: '100%',
@@ -59,8 +59,6 @@ const styles = {
 
   memberControl: {
     display: 'inline',
-    minWidth: '200px',
-    textAlign: 'right',
     fontSize: 'calc(15px + 0.25vw)',
     // flexWrap: 'wrap',
     order: '1',

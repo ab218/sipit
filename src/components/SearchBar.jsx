@@ -5,10 +5,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
+import MediaQuery from 'react-responsive';
 import customCss from '../index.css';
 import styles from './styles/searchBarStyles';
 import Dropdown from './Dropdown';
 import { makeFetchCafesThunk } from '../actions';
+
 
 class SearchBar extends Component {
   constructor(props) {
@@ -108,7 +110,9 @@ class SearchBar extends Component {
             style={searchIcon}
           />
         </button>
-        <Dropdown />
+        <MediaQuery minWidth={550}>
+          <Dropdown />
+        </MediaQuery>
         {/* <span>
             <button type="submit" style={customFilterBtn}>
             <i className="fas fa-filter" style={{ color: '#FFFF', fontSize: '20px' }} />
