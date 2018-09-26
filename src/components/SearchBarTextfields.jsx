@@ -26,7 +26,7 @@ class SearchBarTextfields extends Component {
         <TextField
           id="cafeSearch"
           name="cafeSearch"
-          placeholder="Enter Search Term"
+          placeholder="Search Term"
           onChange={this.handleInputChange}
           inputProps={{
             style: input,
@@ -35,12 +35,12 @@ class SearchBarTextfields extends Component {
           InputProps={{
             disableUnderline: true,
           }}
-          style={{ width: 140 }}
+          style={{ width: 120 }}
         />
         <TextField
           id="locationSearch"
           name="locationSearch"
-          placeholder="Enter Location"
+          placeholder="Location"
           margin="normal"
           onChange={this.handleInputChange}
           inputProps={{
@@ -49,7 +49,7 @@ class SearchBarTextfields extends Component {
           InputProps={{
             disableUnderline: true,
           }}
-          style={{ width: 140 }}
+          style={{ width: 120 }}
         />
       </React.Fragment>
     );
