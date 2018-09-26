@@ -10,7 +10,6 @@ class SearchBarTextfields extends Component {
   handleInputChange = (e) => {
     const { setName, setLocation } = this.props;
     const { value, name } = e.target;
-
     if (name === 'cafeSearch') {
       setName(value);
     }
