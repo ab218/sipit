@@ -3,7 +3,7 @@ const styles = {
   searchBarWrapper: {
     textAlign: 'center',
     alignSelf: 'center',
-    minWidth: '400px',
+    minWidth: '300px',
     backgroundColor: '#049372',
     padding: '0 0.5em',
     borderRadius: '30px',

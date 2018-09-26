@@ -12,40 +12,15 @@ import SearchBarTextfields from './SearchBarTextfields';
 import { makeFetchCafesThunk } from '../actions';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: false,
-    };
-  }
-
-  searchCafes = (e) => {
-    const {
-      cafeSearch, locationSearch, resultsSearch,
-      makeFetchCafes, myLatLng, page,
-    } = this.props;
-    e.preventDefault();
-    if (locationSearch === '') {
-      makeFetchCafes(cafeSearch, resultsSearch, myLatLng);
-    } else {
-      makeFetchCafes(cafeSearch, resultsSearch, locationSearch);
-    }
-    if (page !== 'home') {
-      this.setState({
-        redirect: true,
-      });
-    }
-  }
-
   render() {
     const { searchBarWrapper } = styles;
-    const { redirect } = this.state;
+    const { redirect, page } = this.props;
     return (
-      <form onSubmit={this.searchCafes} style={searchBarWrapper}>
+      <form style={searchBarWrapper}>
         {redirect && <Redirect to="/" />}
         <SearchBarTextfields />
+        <SearchBarButton page={page} />
         <MediaQuery minWidth={550}>
-          <SearchBarButton searchCafes={this.searchCafes} />
           <Dropdown />
         </MediaQuery>
       </form>
@@ -54,12 +29,8 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  myLatLng: state.getPosition.myLatLng,
-  cafeSearch: state.searchFields.searchName,
-  locationSearch: state.searchFields.searchLocation,
-  resultsSearch: state.searchFields.searchResults,
+  redirect: state.redirect.redirect,
 });
-
 
 const mapDispatchToProps = dispatch => ({
   makeFetchCafes: (term, limit, loc) => {
