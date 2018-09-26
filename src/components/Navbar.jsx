@@ -5,7 +5,6 @@ import { instanceOf } from 'prop-types';
 import MediaQuery from 'react-responsive';
 import SearchBar from './SearchBar';
 import styles from './styles/navbarStyles';
-import SearchBarButton from './SearchBarButton';
 
 class NavbarComponent extends Component {
   static propTypes = {

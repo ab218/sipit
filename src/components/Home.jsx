@@ -26,6 +26,7 @@ class Home extends Component {
     const {
       redirectFalse, makeFetchCafes, loadPosition: loadPos, getFavorites, cookies,
     } = this.props;
+    // after redirecting back to home, set back to false.
     redirectFalse();
     await loadPos();
     makeFetchCafes('coffee', 10);

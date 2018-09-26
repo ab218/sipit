@@ -111,3 +111,27 @@ export function searchCafes(e, cafeSearch, locationSearch, resultsSearch, myLatL
     }
   };
 }
+
+export function removeFavorite(cafeId, userId) {
+  return async (dispatch) => {
+    try {
+      await axios.delete('/api/favorites/delete', { data: { url: cafeId, user_id: userId } });
+      dispatch(getFavorites(userId));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function addFavorite(cafe, userId) {
+  return async (dispatch) => {
+    try {
+      await axios.post('/api/favorites/add', {
+        title: cafe.name, url: cafe.id, image_url: cafe.image_url, user_id: userId,
+      });
+      dispatch(getFavorites(userId));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
