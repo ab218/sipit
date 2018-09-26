@@ -13,8 +13,8 @@ function HoursComp({ isOpenNow, endHours }) {
     return (
       <h5 style={{ color: 'lightgreen' }}>
         OPEN NOW (closes at
-{' '}
-{endHours}
+        {' '}
+        {endHours}
         )
       </h5>);
   }
@@ -26,11 +26,13 @@ class BusinessDetails extends React.Component {
     const { businessData } = this.props;
 
     return (
-      <div style={{ maxWidth: '500px', margin: 'auto' }}>
-        <h1 style={title}>
+      <div style={{ maxWidth: '500px', margin: 'auto', textAlign: 'center' }}>
+        <h3 style={title}>
           {businessData.name}
-        </h1>
+        </h3>
         <SlickCarousel businessData={businessData} />
+        <br />
+        <br />
         {
           businessData.location.display_address
             .map(sub => <h5 style={title} key={sub}>{sub}</h5>)
