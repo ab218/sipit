@@ -5,7 +5,7 @@ import { instanceOf } from 'prop-types';
 import MediaQuery from 'react-responsive';
 import SearchBar from './SearchBar';
 import styles from './styles/navbarStyles';
-import Dropdown from './Dropdown';
+import SearchBarButton from './SearchBarButton';
 
 class NavbarComponent extends Component {
   static propTypes = {
@@ -18,17 +18,6 @@ class NavbarComponent extends Component {
       logoutRedirect: false,
     };
   }
-
-  // Menu mouse over effect
-  // onMouseOver() {
-  //   this.showContent.style.removeProperty('display');
-  //   this.showContent.style.display = 'inline-flex';
-  // }
-
-  // onMouseLeave() {
-  //   this.showContent.style.removeProperty('display');
-  //   this.showContent.style.display = 'none';
-  // }
 
   logout = () => {
     const { cookies } = this.props;

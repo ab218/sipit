@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import styles from './styles/searchBarStyles';
+import { searchCafes } from '../actions';
 
 
 class SearchBarButton extends Component {
@@ -13,12 +16,14 @@ class SearchBarButton extends Component {
 
   render() {
     const { customSearchBtn, searchIcon } = styles;
-    const { searchCafes } = this.props;
+    const {
+      cafeSearch, locationSearch, resultsSearch, myLatLng, page, searchCafes,
+    } = this.props;
 
     return (
       <button
         type="submit"
-        onClick={searchCafes}
+        onClick={e => searchCafes(e, cafeSearch, locationSearch, resultsSearch, myLatLng, page)}
         style={customSearchBtn}
       >
         <i
@@ -37,4 +42,20 @@ class SearchBarButton extends Component {
   }
 }
 
-export default SearchBarButton;
+const mapStateToProps = state => ({
+  myLatLng: state.getPosition.myLatLng,
+  cafeSearch: state.searchFields.searchName,
+  locationSearch: state.searchFields.searchLocation,
+  resultsSearch: state.searchFields.searchResults,
+});
+
+
+const mapDispatchToProps = dispatch => ({
+  searchCafes: (e, cafeSearch, locationSearch, resultsSearch, myLatLng, page) => {
+    dispatch(searchCafes(e, cafeSearch, locationSearch, resultsSearch, myLatLng, page));
+  },
+});
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+)(SearchBarButton);

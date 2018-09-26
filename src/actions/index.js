@@ -97,3 +97,17 @@ export function getReviews(params) {
     }
   };
 }
+
+export function searchCafes(e, cafeSearch, locationSearch, resultsSearch, myLatLng, page) {
+  return async (dispatch) => {
+    e.preventDefault();
+    if (locationSearch === '') {
+      dispatch(makeFetchCafesThunk(cafeSearch, resultsSearch, myLatLng));
+    } else {
+      dispatch(makeFetchCafesThunk(cafeSearch, resultsSearch, locationSearch));
+    }
+    if (page !== 'home') {
+      dispatch({ type: 'REDIRECT', payload: true });
+    }
+  };
+}

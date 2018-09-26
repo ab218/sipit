@@ -24,8 +24,9 @@ class Home extends Component {
 
   async componentDidMount() {
     const {
-      makeFetchCafes, loadPosition: loadPos, getFavorites, cookies,
+      redirectFalse, makeFetchCafes, loadPosition: loadPos, getFavorites, cookies,
     } = this.props;
+    redirectFalse();
     await loadPos();
     makeFetchCafes('coffee', 10);
     if (cookies.get('user') !== undefined) {
@@ -65,9 +66,6 @@ const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
   fetchCafesLoading: state.fetchCafes.cafesLoading,
   myLatLng: state.getPosition.myLatLng,
-  cafeSearch: state.searchFields.searchName,
-  locationSearch: state.searchFields.searchLocation,
-  resultsSearch: state.searchFields.searchResults,
   notificationIsOpen: state.notifications.show,
 });
 
@@ -79,6 +77,10 @@ const mapDispatchToProps = dispatch => ({
   getFavorites: (user_id) => {
     dispatch(getFavorites(user_id));
   },
+  redirectFalse: () => dispatch({
+    type: 'REDIRECT',
+    payload: false,
+  }),
   fetchCafes: data => dispatch({
     type: 'FETCH_CAFES',
     payload: data,

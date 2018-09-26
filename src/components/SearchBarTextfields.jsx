@@ -36,6 +36,7 @@ class SearchBarTextfields extends Component {
           InputProps={{
             disableUnderline: true,
           }}
+          style={{ width: 140 }}
         />
         <TextField
           id="locationSearch"
@@ -49,6 +50,7 @@ class SearchBarTextfields extends Component {
           InputProps={{
             disableUnderline: true,
           }}
+          style={{ width: 140 }}
         />
       </React.Fragment>
     );
