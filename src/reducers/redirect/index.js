@@ -1,13 +1,3 @@
-export default function (state = { redirect: false }, action) {
-  const { type, payload } = action;
+import redirect from './redirect';
 
-  switch (type) {
-  case 'REDIRECT':
-    return {
-      ...state,
-      redirect: payload,
-    };
-  default:
-    return state;
-  }
-}
+export default redirect;

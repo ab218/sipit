@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import CafeCard from './CafeCard';
 import GoogleMapContainer from './MapContainer';
 import { loadPosition, makeFetchCafesThunk, getFavorites } from '../actions';
+import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../constants/actionTypes';
 
 class Home extends Component {
   static propTypes = {
@@ -58,7 +59,6 @@ class Home extends Component {
 const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
   fetchCafesLoading: state.fetchCafes.cafesLoading,
-  myLatLng: state.getPosition.myLatLng,
   notificationIsOpen: state.notifications.show,
 });
 
@@ -71,30 +71,15 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getFavorites(user_id));
   },
   redirectFalse: () => dispatch({
-    type: 'REDIRECT',
+    type: REDIRECT,
     payload: false,
   }),
-  fetchCafes: data => dispatch({
-    type: 'FETCH_CAFES',
-    payload: data,
-  }),
-  cafeDataLoading: bool => dispatch({
-    type: 'FETCH_CAFES_LOADING',
-    payload: bool,
-  }),
-  getPosition: (lat, lng) => dispatch({
-    type: 'GET_POSITION',
-    payload: {
-      lat,
-      lng,
-    },
-  }),
   notificationShow: () => dispatch({
-    type: 'NOTIFICATION_SHOW',
+    type: NOTIFICATION_SHOW,
     payload: true,
   }),
   notificationHide: () => dispatch({
-    type: 'NOTIFICATION_HIDE',
+    type: NOTIFICATION_HIDE,
     payload: false,
   }),
 });

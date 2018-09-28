@@ -6,7 +6,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { customStyles } from './styles/loginStyles';
-
+import { REDIRECT } from '../constants/actionTypes';
 
 class LoginSubmitButton extends Component {
   static propTypes = {
@@ -103,7 +103,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   redirectTrue: () => dispatch({
-    type: 'REDIRECT',
+    type: REDIRECT,
     payload: true,
   }),
 });

@@ -5,6 +5,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import styles from './styles/searchBarStyles';
+import { SEARCH_NAME, SEARCH_LOCATION } from '../constants/actionTypes';
+
 
 class SearchBarTextfields extends Component {
   handleInputChange = (e) => {
@@ -58,11 +60,11 @@ class SearchBarTextfields extends Component {
 
 const mapDispatchToProps = dispatch => ({
   setName: name => dispatch({
-    type: 'SEARCH_NAME',
+    type: SEARCH_NAME,
     payload: name,
   }),
   setLocation: location => dispatch({
-    type: 'SEARCH_LOCATION',
+    type: SEARCH_LOCATION,
     payload: location,
   }),
 });

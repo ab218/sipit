@@ -1,18 +1,3 @@
-export default function (state = { cafesList: [], cafesLoading: true }, action) {
-  const { type, payload } = action;
+import fetchCafes from './fetchCafes';
 
-  switch (type) {
-  case 'FETCH_CAFES':
-    return {
-      ...state,
-      cafesList: payload,
-    };
-  case 'FETCH_CAFES_LOADING':
-    return {
-      ...state,
-      cafesLoading: payload,
-    };
-  default:
-    return state;
-  }
-}
+export default fetchCafes;

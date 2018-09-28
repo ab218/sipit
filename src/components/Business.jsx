@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import BusinessDetails from './BusinessDetails';
 import Reviews from './Reviews';
 import { getBusinessData, getReviews } from '../actions';
+import { FETCH_CAFES } from '../constants/actionTypes';
+
 
 const mainTheme = {
   backgroundColor: '#FFFF',
@@ -56,7 +58,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getReviews(params));
   },
   changeCafeData: data => dispatch({
-    type: 'FETCH_CAFES',
+    type: FETCH_CAFES,
     payload: data,
   }),
 });

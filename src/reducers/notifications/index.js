@@ -1,18 +1,3 @@
-export default function (state = { show: null }, action) {
-  const { type, payload } = action;
+import notifications from './notifications';
 
-  switch (type) {
-  case 'NOTIFICATION_SHOW':
-    return {
-      ...state,
-      show: payload,
-    };
-  case 'NOTIFICATION_HIDE':
-    return {
-      ...state,
-      show: payload,
-    };
-  default:
-    return state;
-  }
-}
+export default notifications;

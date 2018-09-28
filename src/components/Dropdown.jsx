@@ -8,6 +8,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import { SEARCH_RESULTS } from '../constants/actionTypes';
+
 
 const styles = theme => ({
   formControl: {
@@ -55,7 +57,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setResults: results => dispatch({
-    type: 'SEARCH_RESULTS',
+    type: SEARCH_RESULTS,
     payload: results,
   }),
 });
