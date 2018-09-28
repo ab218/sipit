@@ -38,7 +38,6 @@ class CafeCard extends Component {
 
     return cafesList
       .map((cafe, i) => (
-        //       <MuiThemeProvider key={cafe.id} theme={theme}>
         <div key={cafe.id} className={classes.actions}>
           <Card className={classes.card}>
             <Link to={`/business/${cafe.id}`}>
@@ -67,7 +66,6 @@ class CafeCard extends Component {
             </CardActions>
           </Card>
         </div>
-        //        </MuiThemeProvider>
       ));
   }
 
