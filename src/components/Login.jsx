@@ -6,10 +6,9 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { withCookies, Cookies } from 'react-cookie';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 import Navbar from './Navbar';
 import { styles, customStyles } from './styles/loginStyles';
+import LoginSubmitButton from './LoginSubmitButton';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',
@@ -23,21 +22,9 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginRedirect: false,
       email: 'ab@ab.com',
       password: 'ab',
-      wentWrong: false,
     };
-  }
-
-  onMouseOver() {
-    this.submitBtn.style.backgroundColor = '#f26622';
-    this.submitBtn.style.color = '#FFF';
-  }
-
-  onMouseLeave() {
-    this.submitBtn.style.backgroundColor = '#FFFF';
-    this.submitBtn.style.color = '#f26622';
   }
 
   handleInputChange = (e) => {
@@ -48,41 +35,9 @@ class Login extends Component {
     });
   }
 
-  handleSubmit = async (e) => {
-    const { cookies } = this.props;
-    const { email, password } = this.state;
-    e.preventDefault();
-    try {
-      const login = await axios
-        .post('/api/login', {
-          email, password,
-        });
-      if (login.data.message !== 'successful login') {
-        return this.setState({ wentWrong: true });
-      }
-      cookies.set('user', login.data.user[0]);
-      return this.setState({ loginRedirect: true });
-    } catch (err) {
-      console.log(err);
-    }
-    return null;
-  }
-
   render() {
     const { classes } = this.props;
-    const {
-      email, password, loginRedirect, wentWrong,
-    } = this.state;
-
-    if (loginRedirect) {
-      return (
-        <Redirect to={{
-          pathname: '/',
-          state: 'snackbar',
-        }}
-        />
-      );
-    }
+    const { email, password } = this.state;
 
     return (
       <div className="formWrapper" style={mainTheme}>
@@ -132,22 +87,9 @@ class Login extends Component {
                 value={password}
                 onChange={this.handleInputChange}
               />
-              {wentWrong
-                  && <h5 style={{ color: 'red' }}>Something went wrong!</h5>
-              }
-              <input
-                ref={(div) => {
-                  this.submitBtn = div;
-                }}
-                onClick={this.handleSubmit}
-                className="Btn"
-                type="submit"
-                value="Log in"
-                onMouseOver={() => this.onMouseOver()}
-                onFocus={() => this.onMouseOver()}
-                onMouseLeave={() => this.onMouseLeave()}
-                onBlur={() => this.onMouseLeave()}
-                style={customStyles.submitBtn}
+              <LoginSubmitButton
+                email={email}
+                password={password}
               />
             </FormControl>
           </div>

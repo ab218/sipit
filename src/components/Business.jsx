@@ -48,7 +48,6 @@ const mapStateToProps = state => ({
   reviewsDataLoading: state.fetchBusinessData.reviewsDataLoading,
 });
 
-
 const mapDispatchToProps = dispatch => ({
   getBusinessData: (params) => {
     dispatch(getBusinessData(params));

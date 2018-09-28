@@ -9,14 +9,6 @@ import CafeCard from './CafeCard';
 import GoogleMapContainer from './MapContainer';
 import { loadPosition, makeFetchCafesThunk, getFavorites } from '../actions';
 
-const mainTheme = {
-  backgroundColor: '#C1A88B',
-};
-
-const mapDown = {
-  paddingBottom: '8em',
-};
-
 class Home extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
@@ -41,8 +33,8 @@ class Home extends Component {
       notificationIsOpen, notificationHide,
     } = this.props;
     return (
-      <div style={mainTheme}>
-        <div style={mapDown}>
+      <div style={{ backgroundColor: '#C1A88B' }}>
+        <div style={{ paddingBottom: '8em' }}>
           <Navbar
             page="home"
           />
