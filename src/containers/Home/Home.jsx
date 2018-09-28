@@ -4,11 +4,9 @@ import { compose } from 'redux';
 import Snackbar from '@material-ui/core/Snackbar';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
-import Navbar from './Navbar';
-import CafeCard from './CafeCard';
-import GoogleMapContainer from './MapContainer';
-import { loadPosition, makeFetchCafesThunk, getFavorites } from '../actions';
-import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../constants/actionTypes';
+import { Navbar, CafeCard, MapContainer } from '../../components';
+import { loadPosition, makeFetchCafesThunk, getFavorites } from '../../actions';
+import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../constants/actionTypes';
 
 class Home extends Component {
   static propTypes = {
@@ -40,7 +38,7 @@ class Home extends Component {
             page="home"
           />
         </div>
-        {cafesList && (<GoogleMapContainer />)}
+        {cafesList && (<MapContainer />)}
         {fetchCafesLoading
           ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
           : <CafeCard />

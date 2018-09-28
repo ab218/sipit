@@ -11,10 +11,8 @@ import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withCookies, Cookies } from 'react-cookie';
-import RatingStar from './RatingStar';
-import styles from './styles/cafeCardStyles';
-import FavoriteButton from './FavoriteButton';
-import ShareButtons from './ShareButtons';
+import { RatingStar, FavoriteButton, ShareButtons } from '..';
+import styles from '../styles/cafeCardStyles';
 
 class CafeCard extends Component {
   static propTypes = {
@@ -29,16 +27,19 @@ class CafeCard extends Component {
       .map((cafe, i) => (
         <div key={cafe.id} className={classes.actions}>
           <Card className={classes.card}>
-            <Link to={`/business/${cafe.id}`}>
-              <CardHeader
-                avatar={(
-                  <Avatar aria-label="Recipe" className={classes.avatar}>
-                    {`${i + 1}`}
-                  </Avatar>
-                )}
-                title={`${cafe.name}`}
-              />
-            </Link>
+            <CardHeader
+              title={(
+                <Link style={{ color: 'black', fontSize: '22px' }} to={`/business/${cafe.id}`}>
+                  {cafe.name}
+                </Link>
+              )}
+              avatar={(
+                <Avatar aria-label="Recipe" className={classes.avatar}>
+                  {`${i + 1}`}
+                </Avatar>
+              )}
+            />
+
             <CardMedia
               className={classes.media}
               image={cafe.image_url}

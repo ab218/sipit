@@ -1,8 +1,8 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import RatingStar from './RatingStar';
-import styles from './styles/reviewStyles';
+import { RatingStar } from '..';
+import styles from '../styles/reviewStyles';
 
 class Reviews extends React.Component {
   render() {

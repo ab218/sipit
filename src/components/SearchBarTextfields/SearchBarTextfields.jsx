@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import styles from './styles/searchBarStyles';
-import { SEARCH_NAME, SEARCH_LOCATION } from '../constants/actionTypes';
+import styles from '../styles/searchBarStyles';
+import { SEARCH_NAME, SEARCH_LOCATION } from '../../constants/actionTypes';
 
 
 class SearchBarTextfields extends Component {

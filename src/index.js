@@ -10,11 +10,12 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import reducers from './reducers';
-import App from './components/App';
+import App from './components/App/App';
 
 const theme = createMuiTheme({
   typography: {
     fontSize: 22,
+    fontFamily: 'Quicksand sans-serif',
   },
 });
 

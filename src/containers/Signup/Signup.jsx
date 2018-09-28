@@ -5,9 +5,8 @@ import { Redirect } from 'react-router-dom';
 import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
-import Navbar from './Navbar';
-import styles from './styles/signupStyles';
-import SignupFields from './SignupFields';
+import { Navbar, SignupFields } from '../../components';
+import styles from '../../components/styles/signupStyles';
 
 class Signup extends Component {
   static propTypes = {

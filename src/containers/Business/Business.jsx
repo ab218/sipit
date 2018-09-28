@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import Navbar from './Navbar';
-import BusinessDetails from './BusinessDetails';
-import Reviews from './Reviews';
-import { getBusinessData, getReviews } from '../actions';
-import { FETCH_CAFES } from '../constants/actionTypes';
+import { Navbar, BusinessDetails, Reviews } from '../../components';
+import { getBusinessData, getReviews } from '../../actions';
+import { FETCH_CAFES } from '../../constants/actionTypes';
 
 const mainTheme = {
   backgroundColor: '#FFFF',

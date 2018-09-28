@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
-import MediaQuery from 'react-responsive';
-import SearchBar from './SearchBar';
-import styles from './styles/navbarStyles';
+import { SearchBar } from '..';
+import styles from '../styles/navbarStyles';
 
 class NavbarComponent extends Component {
   static propTypes = {

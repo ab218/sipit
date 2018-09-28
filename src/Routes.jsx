@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import Business from './components/Business';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Favorites from './components/Favorites';
+import Home from './containers/Home/Home';
+import Business from './containers/Business/Business';
+import Login from './containers/Login/Login';
+import Signup from './containers/Signup/Signup';
+import Favorites from './containers/Favorites/Favorites';
 
 export default class Routes extends Component {
   render() {

@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { withCookies, Cookies } from 'react-cookie';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { customStyles } from './styles/loginStyles';
-import { REDIRECT } from '../constants/actionTypes';
+import { customStyles } from '../styles/loginStyles';
+import { REDIRECT } from '../../constants/actionTypes';
 
 class LoginSubmitButton extends Component {
   static propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import SlickCarousel from './SlickCarousel';
+import { SlickCarousel } from '..';
 
 const title = {
   color: 'grey',

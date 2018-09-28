@@ -3,10 +3,8 @@ import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
 import { withCookies, Cookies } from 'react-cookie';
-import Navbar from './Navbar';
-import { styles, customStyles } from './styles/loginStyles';
-import LoginSubmitButton from './LoginSubmitButton';
-import LoginFields from './LoginFields';
+import { Navbar, LoginSubmitButton, LoginFields } from '../../components';
+import { styles, customStyles } from '../../components/styles/loginStyles';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',

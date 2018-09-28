@@ -10,9 +10,9 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
 import MediaQuery from 'react-responsive';
-import { getFavorites } from '../actions';
-import styles from './styles/favoritesStyles';
-import Navbar from './Navbar';
+import { getFavorites } from '../../actions';
+import styles from '../../components/styles/favoritesStyles';
+import { Navbar } from '../../components';
 
 function GetFavoritesComp({ favorites, cols }) {
   const { gridList, icon } = styles;
