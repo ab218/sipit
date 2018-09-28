@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Routes from '../../Routes';
-import Footer from '../Footer/Footer';
+import { Footer } from '..';
 
 export default class App extends Component {
   render() {
