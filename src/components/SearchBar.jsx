@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import styles from './styles/searchBarStyles';
-import Dropdown from './Dropdown';
+import ResultsDropdown from './ResultsDropdown';
 import SearchBarButton from './SearchBarButton';
 import SearchBarTextfields from './SearchBarTextfields';
 import { makeFetchCafesThunk } from '../actions';
@@ -21,7 +21,7 @@ class SearchBar extends Component {
         <SearchBarTextfields />
         <SearchBarButton page={page} />
         <MediaQuery minWidth={550}>
-          <Dropdown />
+          <ResultsDropdown />
         </MediaQuery>
       </form>
     );

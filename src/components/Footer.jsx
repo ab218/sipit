@@ -5,30 +5,25 @@ import styles from './styles/footerStyles';
 class FooterComponent extends Component {
   render() {
     const {
-      footer, footerTitle, listBox, listItem,
+      footer, footerTitle, appName, tagline, listBox, listItem,
     } = styles;
     return (
-      <div className="footer" style={footer}>
-        <section className="footer-content">
-          <div className="footerTitle" style={footerTitle}>
+      <div style={footer}>
+        <section>
+          <div style={footerTitle}>
             <span>
-              <h2 style={{
-                fontFamily: 'Exo',
-                fontWeight: 'bold',
-              }}
-              >
+              <h2 style={appName}>
               Sip-it
               </h2>
-              <p style={{ fontFamily: ['Quicksand', 'sans-serif'], fontWeight: 'bold' }}>Find your best coffee.</p>
+              <p style={tagline}>Find your best coffee.</p>
             </span>
           </div>
-          <ul className="list" style={listBox}>
+          <ul style={listBox}>
             <li style={listItem}>Home</li>
             <li style={listItem}>Search</li>
             <li style={listItem}>My Page</li>
             <li style={listItem}>About Us</li>
           </ul>
-
         </section>
       </div>
     );

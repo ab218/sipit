@@ -10,7 +10,6 @@ import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import { SEARCH_RESULTS } from '../constants/actionTypes';
 
-
 const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
@@ -20,7 +19,7 @@ const styles = theme => ({
   },
 });
 
-class Dropdown extends Component {
+class ResultsDropdown extends Component {
   state = {
     open: false,
   };
@@ -65,4 +64,4 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   withStyles(styles),
   connect(mapStateToProps, mapDispatchToProps),
-)(Dropdown);
+)(ResultsDropdown);

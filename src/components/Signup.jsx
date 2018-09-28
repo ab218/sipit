@@ -7,6 +7,7 @@ import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
 import Navbar from './Navbar';
 import styles from './styles/signupStyles';
+import SignupFields from './SignupFields';
 
 class Signup extends Component {
   static propTypes = {
@@ -16,11 +17,11 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'aaa@aaa.com',
+      email: 'yyy@zzz.com',
       password: 'a',
       confPassword: 'a',
-      first_name: 'a',
-      last_name: 'b',
+      first_name: 'TestAccount',
+      last_name: 'Enjoy',
       wentWrong: false,
       loginRedirect: false,
     };
@@ -56,9 +57,7 @@ class Signup extends Component {
     }
 
     render() {
-      const {
-        mainTheme, wrapper, title, elementsInput, th, td,
-      } = styles;
+      const { mainTheme, wrapper, title } = styles;
       const {
         email, password, confPassword, first_name, last_name, loginRedirect, wentWrong,
       } = this.state;
@@ -81,75 +80,14 @@ class Signup extends Component {
           <div style={wrapper}>
             <h2 style={title}>Sip-it</h2>
             {/* <form onSubmit={this.handleSubmit}> */}
-            <table style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-              <tbody>
-                <tr>
-                  <th style={th}>Email</th>
-                  <td style={td}>
-                    <input
-                      id="email"
-                      style={elementsInput}
-                      type="email"
-                      name="email"
-                      defaultValue={email}
-                      onChange={this.handleInputChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th style={th}>Password</th>
-                  <td style={td}>
-                    <input
-                      id="password"
-                      style={elementsInput}
-                      type="password"
-                      name="password"
-                      defaultValue={password}
-                      onChange={this.handleInputChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th style={th}>Confirm</th>
-                  <td style={td}>
-                    <input
-                      id="confPassword"
-                      style={elementsInput}
-                      type="password"
-                      name="confPassword"
-                      defaultValue={confPassword}
-                      onChange={this.handleInputChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th style={th}>First Name</th>
-                  <td style={td}>
-                    <input
-                      id="first_name"
-                      style={elementsInput}
-                      type="text"
-                      name="first_name"
-                      value={first_name}
-                      onChange={this.handleInputChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th style={th}>Last Name</th>
-                  <td style={td}>
-                    <input
-                      id="last_name"
-                      style={elementsInput}
-                      type="text"
-                      name="last_name"
-                      value={last_name}
-                      onChange={this.handleInputChange}
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <SignupFields
+              email={email}
+              password={password}
+              confPassword={confPassword}
+              first_name={first_name}
+              last_name={last_name}
+              handleInputChange={this.handleInputChange}
+            />
             {wentWrong
                   && <h5 style={{ color: 'red' }}>Email taken!</h5>
             }

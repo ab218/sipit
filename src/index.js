@@ -12,10 +12,9 @@ import { CookiesProvider } from 'react-cookie';
 import reducers from './reducers';
 import App from './components/App';
 
-
 const theme = createMuiTheme({
   typography: {
-    fontSize: 20,
+    fontSize: 22,
   },
 });
 
@@ -30,14 +29,14 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <MuiThemeProvider theme={theme}>
+  <MuiThemeProvider theme={theme}>
+    <Provider store={store}>
+      <BrowserRouter>
         <CookiesProvider>
           <App />
         </CookiesProvider>
-      </MuiThemeProvider>
-    </BrowserRouter>
-  </Provider>,
+      </BrowserRouter>
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById('react-root'),
 );

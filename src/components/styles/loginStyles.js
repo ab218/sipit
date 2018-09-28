@@ -3,7 +3,7 @@ export const styles = theme => ({
     display: 'grid',
     flexWrap: 'wrap',
     width: 300,
-    marginLeft: '35em',
+    margin: '0 auto',
   },
   margin: {
     margin: theme.spacing.unit,

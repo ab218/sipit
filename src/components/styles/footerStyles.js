@@ -1,4 +1,8 @@
 const styles = {
+  appName: {
+    fontFamily: 'Exo',
+    fontWeight: 'bold',
+  },
   footer: {
     backgroundColor: '#DFDCE3',
     color: '#FC4A1A',
@@ -24,6 +28,10 @@ const styles = {
     padding: '5px 0',
     letterSpacing: '1px',
     // width: 'max-content',
+  },
+  tagling: {
+    fontFamily: ['Quicksand', 'sans-serif'],
+    fontWeight: 'bold',
   },
 };
 

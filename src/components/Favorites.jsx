@@ -94,7 +94,6 @@ const mapStateToProps = state => ({
   favorites: state.fetchFavorites.favorites,
 });
 
-
 const mapDispatchToProps = dispatch => ({
   getFavorites: (user_id) => {
     dispatch(getFavorites(user_id));

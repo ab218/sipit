@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 import { withCookies, Cookies } from 'react-cookie';
 import Navbar from './Navbar';
 import { styles, customStyles } from './styles/loginStyles';
 import LoginSubmitButton from './LoginSubmitButton';
+import LoginFields from './LoginFields';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',
@@ -29,7 +27,6 @@ class Login extends Component {
 
   handleInputChange = (e) => {
     const { value, name } = e.target;
-
     this.setState({
       [name]: value,
     });
@@ -40,58 +37,22 @@ class Login extends Component {
     const { email, password } = this.state;
 
     return (
-      <div className="formWrapper" style={mainTheme}>
+      <div style={mainTheme}>
         <Navbar
           page="login"
         />
-        <div className={classes.container} style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-          <div className="formBox" style={customStyles.formBox}>
+        <div className={classes.container}>
+          <div style={customStyles.formBox}>
             <h2 style={customStyles.title}>Sip-it</h2>
-            <FormControl className={classes.margin}>
-              <InputLabel
-                FormLabelClasses={{
-                  root: classes.cssLabel,
-                  focused: classes.cssFocused,
-                }}
-                htmlFor="email"
-              >
-                  Email
-              </InputLabel>
-              <Input
-                classes={{
-                  underline: classes.cssUnderline,
-                }}
-                id="email"
-                name="email"
-                value={email}
-                onChange={this.handleInputChange}
-              />
-            </FormControl>
-            <FormControl className={classes.margin}>
-              <InputLabel
-                FormLabelClasses={{
-                  root: classes.cssLabel,
-                  focused: classes.cssFocused,
-                }}
-                htmlFor="Password"
-              >
-                  Password
-              </InputLabel>
-              <Input
-                classes={{
-                  underline: classes.cssUnderline,
-                }}
-                id="Password"
-                name="password"
-                type="password"
-                value={password}
-                onChange={this.handleInputChange}
-              />
-              <LoginSubmitButton
-                email={email}
-                password={password}
-              />
-            </FormControl>
+            <LoginFields
+              email={email}
+              password={password}
+              handleInputChange={this.handleInputChange}
+            />
+            <LoginSubmitButton
+              email={email}
+              password={password}
+            />
           </div>
         </div>
       </div>
