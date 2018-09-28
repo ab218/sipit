@@ -1,4 +1,3 @@
-import App from './App/App';
 import BusinessDetails from './BusinessDetails/BusinessDetails';
 import CafeCard from './CafeCard/CafeCard';
 import FavoriteButton from './FavoriteButton/FavoriteButton';
@@ -18,7 +17,7 @@ import SignupFields from './SignupFields/SignupFields';
 import SlickCarousel from './SlickCarousel/SlickCarousel';
 
 export {
-  App, BusinessDetails, CafeCard, FavoriteButton, Footer,
+  BusinessDetails, CafeCard, FavoriteButton, Footer,
   LoginFields, LoginSubmitButton, MapContainer, Navbar,
   RatingStar, ResultsDropdown, Reviews, SearchBar,
   SearchBarButton, SearchBarTextfields, ShareButtons,

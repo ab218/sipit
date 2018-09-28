@@ -1,7 +1,7 @@
 import {
   FETCH_BUSINESS_DATA, FETCH_BUSINESS_DATA_LOADING,
   FETCH_REVIEWS_DATA, FETCH_REVIEWS_DATA_LOADING,
-} from '../../constants/actionTypes';
+} from '../../types';
 
 export default function (state = {
   businessData: [], reviewsData: [], businessDataLoading: true, reviewsDataLoading: true,

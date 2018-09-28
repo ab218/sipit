@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import styles from '../styles/searchBarStyles';
-import { searchCafes } from '../../actions';
+import { searchCafes } from '../../redux/actions';
 
 class SearchBarButton extends Component {
   onMouseOver() {

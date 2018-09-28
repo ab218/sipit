@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { withCookies, Cookies } from 'react-cookie';
 import Tooltip from '@material-ui/core/Tooltip';
 import styles from '../styles/cafeCardStyles';
-import { addFavorite, removeFavorite } from '../../actions';
+import { addFavorite, removeFavorite } from '../../redux/actions';
 
 class FavoriteButton extends Component {
   static propTypes = {

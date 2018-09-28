@@ -5,8 +5,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { Navbar, CafeCard, MapContainer } from '../../components';
-import { loadPosition, makeFetchCafesThunk, getFavorites } from '../../actions';
-import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../constants/actionTypes';
+import { loadPosition, makeFetchCafesThunk, getFavorites } from '../../redux/actions';
+import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../redux/types';
 
 class Home extends Component {
   static propTypes = {

@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
-import { SEARCH_RESULTS } from '../../constants/actionTypes';
+import { SEARCH_RESULTS } from '../../redux/types';
 
 const styles = theme => ({
   formControl: {

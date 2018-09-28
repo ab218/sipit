@@ -1,4 +1,4 @@
-import { FETCH_FAVORITES } from '../../constants/actionTypes';
+import { FETCH_FAVORITES } from '../../types';
 
 export default function (state = { favorites: [] }, action) {
   const { type, payload } = action;

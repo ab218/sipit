@@ -1,4 +1,4 @@
-import { FETCH_CAFES, FETCH_CAFES_LOADING } from '../../constants/actionTypes';
+import { FETCH_CAFES, FETCH_CAFES_LOADING } from '../../types';
 
 export default function (state = { cafesList: [], cafesLoading: true }, action) {
   const { type, payload } = action;

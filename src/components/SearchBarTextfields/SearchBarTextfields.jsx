@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import styles from '../styles/searchBarStyles';
-import { SEARCH_NAME, SEARCH_LOCATION } from '../../constants/actionTypes';
+import { SEARCH_NAME, SEARCH_LOCATION } from '../../redux/types';
 
 
 class SearchBarTextfields extends Component {

@@ -1,4 +1,4 @@
-import { REDIRECT } from '../../constants/actionTypes';
+import { REDIRECT } from '../../types';
 
 export default function (state = { redirect: false }, action) {
   const { type, payload } = action;

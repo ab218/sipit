@@ -1,4 +1,4 @@
-import { NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../constants/actionTypes';
+import { NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../types';
 
 export default function (state = { show: null }, action) {
   const { type, payload } = action;

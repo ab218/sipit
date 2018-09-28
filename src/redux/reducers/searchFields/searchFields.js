@@ -1,4 +1,4 @@
-import { SEARCH_NAME, SEARCH_LOCATION, SEARCH_RESULTS } from '../../constants/actionTypes';
+import { SEARCH_NAME, SEARCH_LOCATION, SEARCH_RESULTS } from '../../types';
 
 export default function (state = {
   searchName: 'coffee',

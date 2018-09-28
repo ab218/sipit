@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import styles from '../styles/searchBarStyles';
 import { ResultsDropdown, SearchBarButton, SearchBarTextfields } from '..';
-import { makeFetchCafesThunk } from '../../actions';
+import { makeFetchCafesThunk } from '../../redux/actions';
 
 class SearchBar extends Component {
   render() {

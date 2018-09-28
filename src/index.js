@@ -1,16 +1,12 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  createStore, combineReducers, applyMiddleware, compose,
-} from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
-import reducers from './reducers';
-import App from './components/App/App';
+import App from './containers/App';
+import store from './redux/store';
 
 const theme = createMuiTheme({
   typography: {
@@ -18,16 +14,6 @@ const theme = createMuiTheme({
     fontFamily: 'Quicksand sans-serif',
   },
 });
-
-const rootReducer = combineReducers(reducers);
-
-const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  ),
-);
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
