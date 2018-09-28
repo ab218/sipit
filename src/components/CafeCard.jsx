@@ -16,17 +16,6 @@ import styles from './styles/cafeCardStyles';
 import FavoriteButton from './FavoriteButton';
 import ShareButtons from './ShareButtons';
 
-// still working on it...
-// const theme = createMuiTheme({
-//   overrides: {
-//     MuiCardHeader: {
-//       root: {
-//         paddingLeft: '0',
-//       },
-//     },
-//   },
-// });
-
 class CafeCard extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
