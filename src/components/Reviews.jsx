@@ -8,17 +8,18 @@ class Reviews extends React.Component {
   render() {
     const { reviewsData } = this.props;
     const {
-      reviewWrapper, title, reviewMain, imgStyle, reviewTitle, reviewContent, speechBubble,
+      reviewWrapper, title, reviewMain, imgStyle, reviewTitle,
+      reviewContent, reviewUsername, reviewPostedTime, speechBubble,
     } = styles;
     return (
       <div style={reviewWrapper}>
-        <div style={title}><h2 style={{ color: '#FFFF' }}>Yelp Reviews</h2></div>
+        <div style={title}><h2>Yelp Reviews</h2></div>
         {
           reviewsData.reviews.map(review => (
             <div style={reviewMain} key={review.id}>
               <div style={reviewTitle}>
                 <img style={imgStyle} alt={review.user.image_url} src={review.user.image_url} />
-                <p style={{ marginRight: 'auto', padding: '1em' }}>{review.user.name}</p>
+                <p style={reviewUsername}>{review.user.name}</p>
                 <RatingStar starRating={review.rating} />
               </div>
               <div style={speechBubble} />
@@ -26,7 +27,7 @@ class Reviews extends React.Component {
                 {review.text}
                 <br />
                 <br />
-                <p style={{ color: 'green', float: 'right' }}>
+                <p style={reviewPostedTime}>
                   {`posted: ${review.time_created}`}
                 </p>
               </div>

@@ -41,7 +41,7 @@ class CafeCard extends Component {
         //       <MuiThemeProvider key={cafe.id} theme={theme}>
         <div key={cafe.id} className={classes.actions}>
           <Card className={classes.card}>
-            <Link to={`/business/${cafe.id}`} style={{ margin: '0 0 auto 0' }}>
+            <Link to={`/business/${cafe.id}`}>
               <CardHeader
                 avatar={(
                   <Avatar aria-label="Recipe" className={classes.avatar}>

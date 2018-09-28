@@ -7,7 +7,6 @@ import Reviews from './Reviews';
 import { getBusinessData, getReviews } from '../actions';
 import { FETCH_CAFES } from '../constants/actionTypes';
 
-
 const mainTheme = {
   backgroundColor: '#FFFF',
   fontFamily: 'Quicksand',

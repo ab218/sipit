@@ -10,6 +10,7 @@ const styles = {
     marginBottom: '2em',
     textAlign: 'left',
     borderRadius: '.5em',
+    color: '#FFFF',
   },
 
   reviewMain: { display: 'inline-flex', flexDirection: 'column' },
@@ -29,6 +30,16 @@ const styles = {
     color: 'black',
     borderRadius: '.5em',
     padding: '1.5em',
+  },
+
+  reviewUsername: {
+    marginRight: 'auto',
+    padding: '1em',
+  },
+
+  reviewPostedTime: {
+    color: 'green',
+    float: 'right',
   },
 
   imgStyle: {
