@@ -22,14 +22,13 @@ class CafeCard extends Component {
 
   getCafes = () => {
     const { classes, cafesList } = this.props;
-
     return cafesList
       .map((cafe, i) => (
         <div key={cafe.id} className={classes.actions}>
           <Card className={classes.card}>
             <CardHeader
               title={(
-                <Link style={{ color: 'black', fontSize: '22px' }} to={`/business/${cafe.id}`}>
+                <Link className={classes.cafeTitle} to={`/business/${cafe.id}`}>
                   {cafe.name}
                 </Link>
               )}

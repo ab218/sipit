@@ -7,6 +7,7 @@ import { instanceOf } from 'prop-types';
 import { Navbar, CafeCard, MapContainer } from '../../components';
 import { loadPosition, makeFetchCafesThunk, getFavorites } from '../../redux/actions';
 import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../redux/types';
+import styles from './homeStyles';
 
 class Home extends Component {
   static propTypes = {
@@ -31,16 +32,17 @@ class Home extends Component {
       cafesList, fetchCafesLoading,
       notificationIsOpen, notificationHide,
     } = this.props;
+    const { brewing, mainTheme, pushDown } = styles;
     return (
-      <div style={{ backgroundColor: '#C1A88B' }}>
-        <div style={{ paddingBottom: '8em' }}>
+      <div style={mainTheme}>
+        <div style={pushDown}>
           <Navbar
             page="home"
           />
         </div>
         {cafesList && (<MapContainer />)}
         {fetchCafesLoading
-          ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
+          ? <h1 style={brewing}>Brewing results...</h1>
           : <CafeCard />
         }
         <Snackbar

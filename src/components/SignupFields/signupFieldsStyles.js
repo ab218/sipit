@@ -14,6 +14,10 @@ const styles = {
     paddingTop: '10px',
     paddingBottom: '10px',
   },
+  center: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
 };
 
 export default styles;

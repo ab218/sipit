@@ -14,6 +14,9 @@ const styles = {
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
+  noFavorites: {
+    color: 'white',
+  },
 };
 
 export default styles;

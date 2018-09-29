@@ -3,12 +3,14 @@ import styles from './signupFieldsStyles';
 
 class SignupFields extends Component {
   render() {
-    const { elementsInput, th, td } = styles;
+    const {
+      elementsInput, th, td, center,
+    } = styles;
     const {
       email, password, confPassword, first_name, last_name, handleInputChange,
     } = this.props;
     return (
-      <table style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+      <table style={center}>
         <tbody>
           <tr>
             <th style={th}>Email</th>

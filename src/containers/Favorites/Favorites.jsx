@@ -53,14 +53,14 @@ class Favorites extends Component {
   }
 
   render() {
-    const { mainTheme } = styles;
+    const { mainTheme, noFavorites } = styles;
     const { favorites } = this.props;
     return (
       <div style={mainTheme}>
         <Navbar
           page="favorites"
         />
-        {favorites.length === 0 && <h1 style={{ color: 'white' }}>No favorites saved.</h1>}
+        {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
         <MediaQuery minWidth={1000}>
           <GetFavoritesComp
             favorites={favorites}

@@ -11,6 +11,10 @@ const styles = () => ({
     paddingLeft: 20,
     marginBottom: 20,
   },
+  cafeTitle: {
+    color: 'black',
+    fontSize: '22px',
+  },
   spacer: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));',
