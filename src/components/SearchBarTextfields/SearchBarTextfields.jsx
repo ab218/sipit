@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
@@ -8,9 +8,9 @@ import styles from './searchBarTextfieldStyles';
 import { SEARCH_NAME, SEARCH_LOCATION } from '../../redux/types';
 
 
-class SearchBarTextfields extends Component {
-  handleInputChange = (e) => {
-    const { setName, setLocation } = this.props;
+const SearchBarTextfields = (props) => {
+  function handleInputChange(e) {
+    const { setName, setLocation } = props;
     const { value, name } = e.target;
     if (name === 'cafeSearch') {
       setName(value);
@@ -20,41 +20,39 @@ class SearchBarTextfields extends Component {
     }
   }
 
-  render() {
-    const { input } = styles;
-    return (
-      <React.Fragment>
-        <TextField
-          id="cafeSearch"
-          name="cafeSearch"
-          placeholder="Search Term"
-          onChange={this.handleInputChange}
-          inputProps={{
-            style: input,
-          }}
-          InputProps={{
-            disableUnderline: true,
-          }}
-          style={{ width: 120 }}
-        />
-        <TextField
-          id="locationSearch"
-          name="locationSearch"
-          placeholder="Location"
-          margin="normal"
-          onChange={this.handleInputChange}
-          inputProps={{
-            style: input,
-          }}
-          InputProps={{
-            disableUnderline: true,
-          }}
-          style={{ width: 120 }}
-        />
-      </React.Fragment>
-    );
-  }
-}
+  const { input } = styles;
+  return (
+    <React.Fragment>
+      <TextField
+        id="cafeSearch"
+        name="cafeSearch"
+        placeholder="Search Term"
+        onChange={handleInputChange}
+        inputProps={{
+          style: input,
+        }}
+        InputProps={{
+          disableUnderline: true,
+        }}
+        style={{ width: 120 }}
+      />
+      <TextField
+        id="locationSearch"
+        name="locationSearch"
+        placeholder="Location"
+        margin="normal"
+        onChange={handleInputChange}
+        inputProps={{
+          style: input,
+        }}
+        InputProps={{
+          disableUnderline: true,
+        }}
+        style={{ width: 120 }}
+      />
+    </React.Fragment>
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
   setName: name => dispatch({
