@@ -48,7 +48,6 @@ class LoginSubmitButton extends Component {
         .post('/api/login', {
           email, password,
         });
-      console.log(login);
       if (login.data.message !== 'successful login') {
         return this.setState({ wentWrong: true });
       }
