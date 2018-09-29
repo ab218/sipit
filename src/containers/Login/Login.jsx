@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
 import { withCookies, Cookies } from 'react-cookie';
 import { Navbar, LoginSubmitButton, LoginFields } from '../../components';
-import { styles, customStyles } from '../../components/styles/loginStyles';
+import styles from './loginStyles';
 
 const mainTheme = {
   backgroundColor: '#C1A88B',
@@ -33,15 +33,15 @@ class Login extends Component {
   render() {
     const { classes } = this.props;
     const { email, password } = this.state;
-
+    const { container, formBox, title } = classes;
     return (
       <div style={mainTheme}>
         <Navbar
           page="login"
         />
-        <div className={classes.container}>
-          <div style={customStyles.formBox}>
-            <h2 style={customStyles.title}>Sip-it</h2>
+        <div className={container}>
+          <div className={formBox}>
+            <h2 className={title}>Sip-it</h2>
             <LoginFields
               email={email}
               password={password}

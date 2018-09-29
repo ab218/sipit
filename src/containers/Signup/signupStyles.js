@@ -18,22 +18,12 @@ const styles = {
     fontFamily: 'Pacifico',
     fontWeight: 'bold',
   },
-  elementsInput: {
-    fontSize: '1.3em',
-    verticalAlign: 'bottom',
+  button: {
+    marginTop: '2em',
   },
-  th: {
-    padding: '10px 10px 10px',
-    fontSize: '18px',
-    color: 'gray',
-    margin: '0',
-    fontFamily: 'Karla',
+  emailTaken: {
+    color: 'red',
   },
-  td: {
-    paddingTop: '10px',
-    paddingBottom: '10px',
-  },
-
 };
 
 export default styles;

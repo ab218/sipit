@@ -6,16 +6,6 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'space-around',
   },
-  imgPreview: {
-    maxHeight: '100px',
-    maxWidth: '100px',
-  },
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-  },
   gridList: {
     width: '80%',
     height: 'auto',

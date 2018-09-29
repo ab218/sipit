@@ -6,7 +6,7 @@ import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
 import { Navbar, SignupFields } from '../../components';
-import styles from '../../components/styles/signupStyles';
+import styles from './signupStyles';
 
 class Signup extends Component {
   static propTypes = {
@@ -56,7 +56,9 @@ class Signup extends Component {
     }
 
     render() {
-      const { mainTheme, wrapper, title } = styles;
+      const {
+        mainTheme, wrapper, title, button, emailTaken,
+      } = styles;
       const {
         email, password, confPassword, first_name, last_name, loginRedirect, wentWrong,
       } = this.state;
@@ -88,9 +90,9 @@ class Signup extends Component {
               handleInputChange={this.handleInputChange}
             />
             {wentWrong
-                  && <h5 style={{ color: 'red' }}>Email taken!</h5>
+                  && <h5 style={emailTaken}>Email taken!</h5>
             }
-            <Button style={{ marginTop: '2em' }} color="primary" onClick={this.handleSubmit}>Submit</Button>
+            <Button style={button} color="primary" onClick={this.handleSubmit}>Submit</Button>
           </div>
         </div>
       );

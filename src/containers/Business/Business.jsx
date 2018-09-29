@@ -4,11 +4,7 @@ import { connect } from 'react-redux';
 import { Navbar, BusinessDetails, Reviews } from '../../components';
 import { getBusinessData, getReviews } from '../../redux/actions';
 import { FETCH_CAFES } from '../../redux/types';
-
-const mainTheme = {
-  backgroundColor: '#FFFF',
-  fontFamily: 'Quicksand',
-};
+import styles from './businessStyles';
 
 class Business extends Component {
   componentDidMount() {
@@ -21,7 +17,7 @@ class Business extends Component {
 
   render() {
     const { businessDataLoading, reviewsDataLoading } = this.props;
-
+    const { mainTheme, loading } = styles;
     return (
       <div>
         <Navbar
@@ -29,11 +25,11 @@ class Business extends Component {
         />
         <div style={mainTheme}>
           {businessDataLoading
-            ? <h1 style={{ color: 'grey' }}>Brewing results ...</h1>
+            ? <h1 style={loading}>Brewing results ...</h1>
             : <BusinessDetails />
           }
           {reviewsDataLoading
-            ? <h1 style={{ color: 'grey' }}>Brewing reviews ...</h1>
+            ? <h1 style={loading}>Brewing reviews ...</h1>
             : <Reviews />
           }
         </div>

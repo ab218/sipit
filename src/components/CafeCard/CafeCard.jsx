@@ -12,7 +12,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withCookies, Cookies } from 'react-cookie';
 import { RatingStar, FavoriteButton, ShareButtons } from '..';
-import styles from '../styles/cafeCardStyles';
+import styles from './cafeCardStyles';
 
 class CafeCard extends Component {
   static propTypes = {

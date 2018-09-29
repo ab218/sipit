@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes, { instanceOf } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withCookies, Cookies } from 'react-cookie';
 import Tooltip from '@material-ui/core/Tooltip';
-import styles from '../styles/cafeCardStyles';
+import styles from './favoriteButtonStyles';
 import { addFavorite, removeFavorite } from '../../redux/actions';
 
 class FavoriteButton extends Component {
@@ -29,20 +28,21 @@ class FavoriteButton extends Component {
     const {
       cafe, cookies, removeFavorite, addFavorite,
     } = this.props;
+    const { button } = styles;
     return (
       <React.Fragment>
         {cookies.get('user') !== undefined
                 && (this.isFavorite(cafe)
                   ? (
                     <Tooltip title="Remove from favorites" placement="top">
-                      <IconButton style={{ margin: '0 2em' }} onClick={() => removeFavorite(cafe.id, cookies.get('user').id)} aria-label="Add to favorites">
+                      <IconButton style={button} onClick={() => removeFavorite(cafe.id, cookies.get('user').id)} aria-label="Add to favorites">
                         <FavoriteIcon color="error" />
                       </IconButton>
                     </Tooltip>
                   )
                   : (
                     <Tooltip title="Add to favorites" placement="top">
-                      <IconButton style={{ margin: '0 2em' }} onClick={() => addFavorite(cafe, cookies.get('user').id)} aria-label="Add to favorites">
+                      <IconButton style={button} onClick={() => addFavorite(cafe, cookies.get('user').id)} aria-label="Add to favorites">
                         <FavoriteIcon />
                       </IconButton>
                     </Tooltip>
@@ -68,7 +68,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
-  withStyles(styles),
   withCookies,
   connect(mapStateToProps, mapDispatchToProps),
 )(FavoriteButton);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../styles/signupStyles';
+import styles from './signupFieldsStyles';
 
 class SignupFields extends Component {
   render() {

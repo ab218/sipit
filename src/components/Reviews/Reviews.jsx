@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { RatingStar } from '..';
-import styles from '../styles/reviewStyles';
+import styles from './reviewStyles';
 
 class Reviews extends React.Component {
   render() {

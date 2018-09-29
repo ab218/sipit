@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-import styles from '../styles/mapContainerStyles';
+import styles from './mapContainerStyles';
 
 class MapContainer extends Component {
   render() {

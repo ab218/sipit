@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import StarRatingComponent from 'react-star-rating-component';
+import styles from './ratingStarStyles';
 
 class Stars extends Component {
   render() {
     const { starRating } = this.props;
+    const { starSize, starPosition } = styles;
     return (
-      <div style={{ fontSize: 24 }}>
+      <div style={starSize}>
         <StarRatingComponent
           name="app6"
           starColor="#ffb400"
@@ -18,7 +20,7 @@ class Stars extends Component {
           )}
           renderStarIconHalf={() => (
             <span>
-              <span style={{ position: 'absolute' }}><i className="far fa-star" /></span>
+              <span style={starPosition}><i className="far fa-star" /></span>
               <span><i className="fas fa-star-half" /></span>
             </span>
           )}

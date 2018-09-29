@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { SearchBar } from '..';
-import styles from '../styles/navbarStyles';
+import styles from './navbarStyles';
 
 class NavbarComponent extends Component {
   static propTypes = {
@@ -27,7 +27,7 @@ class NavbarComponent extends Component {
 
   render() {
     const {
-      navBar, navHead, navIcon, navItem,
+      navBar, navHead, navItem,
       memberControl, logInBtn, signUpBtn, container1, container2, fontTitles, fontContents,
     } = styles;
 
@@ -42,7 +42,7 @@ class NavbarComponent extends Component {
         <Link style={{ color: '#FFFF' }} to="/">
           <div className="navHead" style={{ ...navHead, ...fontTitles }}>
             <div className="navBrand">
-              <i className="fas fa-coffee" style={navIcon} />
+              <i className="fas fa-coffee" />
               {' '}
             Sip-It
             </div>

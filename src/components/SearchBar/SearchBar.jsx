@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
-import styles from '../styles/searchBarStyles';
+import styles from './searchBarStyles';
 import { ResultsDropdown, SearchBarButton, SearchBarTextfields } from '..';
 import { makeFetchCafesThunk } from '../../redux/actions';
 

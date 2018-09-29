@@ -18,7 +18,6 @@ const styles = {
   reviewTitle: {
     width: '100%',
     justifyContent: 'space-between',
-    //  backgroundColor: '#f2f1ef',
     color: 'black',
     fontWeight: 'bold',
     display: 'inline-flex',

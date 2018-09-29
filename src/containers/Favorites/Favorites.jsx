@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
 import MediaQuery from 'react-responsive';
 import { getFavorites } from '../../redux/actions';
-import styles from '../../components/styles/favoritesStyles';
+import styles from './favoritesStyles';
 import { Navbar } from '../../components';
 
 function GetFavoritesComp({ favorites, cols }) {

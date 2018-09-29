@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import styles from '../styles/searchBarStyles';
+import styles from './searchBarTextfieldStyles';
 import { SEARCH_NAME, SEARCH_LOCATION } from '../../redux/types';
 
 
@@ -22,7 +22,6 @@ class SearchBarTextfields extends Component {
 
   render() {
     const { input } = styles;
-    const { classes } = this.props;
     return (
       <React.Fragment>
         <TextField
@@ -32,7 +31,6 @@ class SearchBarTextfields extends Component {
           onChange={this.handleInputChange}
           inputProps={{
             style: input,
-            className: classes.inputStyles,
           }}
           InputProps={{
             disableUnderline: true,

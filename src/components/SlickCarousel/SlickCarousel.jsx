@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import styles from './slickCarouselStyles';
 
 export default class SimpleSlider extends React.Component {
   render() {
@@ -11,11 +12,12 @@ export default class SimpleSlider extends React.Component {
     };
 
     const { businessData } = this.props;
+    const { img } = styles;
     return (
       <Slider {...settings}>
         {businessData.photos.map((sub, subindex) => (
           <div key={sub}>
-            <img alt={subindex} style={{ maxHeight: '20em', maxWidth: 'auto' }} src={sub} />
+            <img alt={subindex} style={img} src={sub} />
           </div>
         ))}
       </Slider>
