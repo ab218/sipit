@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes, { instanceOf } from 'prop-types';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
@@ -10,18 +9,13 @@ import CardActions from '@material-ui/core/CardActions';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { withCookies, Cookies } from 'react-cookie';
+import { withCookies } from 'react-cookie';
 import { RatingStar, FavoriteButton, ShareButtons } from '..';
 import styles from './cafeCardStyles';
 
-class CafeCard extends Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired,
-    // classes: PropTypes.object.isRequired,
-  };
-
-  getCafes = () => {
-    const { classes, cafesList } = this.props;
+const CafeCard = (props) => {
+  function getCafes() {
+    const { classes, cafesList } = props;
     return cafesList
       .map((cafe, i) => (
         <div key={cafe.id} className={classes.actions}>
@@ -58,15 +52,13 @@ class CafeCard extends Component {
       ));
   }
 
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.spacer}>
-        {this.getCafes()}
-      </div>
-    );
-  }
-}
+  const { classes } = props;
+  return (
+    <div className={classes.spacer}>
+      {getCafes()}
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
