@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
-import App from './containers/App';
+import App from './App';
 import store from './redux/store';
 
 const theme = createMuiTheme({
