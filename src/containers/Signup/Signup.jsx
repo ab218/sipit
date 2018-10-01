@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
 import PropTypes, { instanceOf } from 'prop-types';
@@ -30,28 +29,6 @@ class Signup extends Component {
       this.setState({
         [name]: value,
       });
-    }
-
-    handleSubmit = async (e) => {
-      const { cookies } = this.props;
-      const {
-        email, password, first_name, last_name,
-      } = this.state;
-      e.preventDefault();
-      try {
-        const signup = await axios
-          .post('/api/login/new', {
-            email, password, first_name, last_name,
-          });
-        if (signup.data.message !== 'successful signup') {
-          return this.setState({ wentWrong: true });
-        }
-        cookies.set('user', signup.data.user[0]);
-        return this.setState({ loginRedirect: true });
-      } catch (err) {
-        console.log(err);
-      }
-      return null;
     }
 
     render() {
