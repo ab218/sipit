@@ -10,7 +10,7 @@ import store from './redux/store';
 
 const theme = createMuiTheme({
   typography: {
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: 'Quicksand sans-serif',
   },
 });
