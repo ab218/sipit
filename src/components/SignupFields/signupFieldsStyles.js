@@ -1,23 +1,20 @@
-const styles = {
-  elementsInput: {
-    fontSize: '1.3em',
-    verticalAlign: 'bottom',
+const styles = theme => ({
+  margin: {
+    margin: theme.spacing.unit,
   },
-  th: {
-    padding: '10px 10px 10px',
-    fontSize: '18px',
-    color: 'gray',
-    margin: '0',
-    fontFamily: 'Karla',
+  resize: {
+    fontSize: 20,
   },
-  td: {
-    paddingTop: '10px',
-    paddingBottom: '10px',
+  cssLabel: {
+    fontSize: 20,
+    '&$cssFocused': {
+    },
   },
-  center: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
+  cssFocused: {},
+  cssUnderline: {
+    '&:after': {
+    },
   },
-};
+});
 
 export default styles;

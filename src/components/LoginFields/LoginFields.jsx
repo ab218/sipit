@@ -23,6 +23,7 @@ const LoginFields = (props) => {
         </InputLabel>
         <Input
           classes={{
+            input: classes.resize,
             underline: classes.cssUnderline,
           }}
           id="email"
@@ -42,6 +43,7 @@ const LoginFields = (props) => {
         </InputLabel>
         <Input
           classes={{
+            input: classes.resize,
             underline: classes.cssUnderline,
           }}
           id="password"

@@ -2,7 +2,11 @@ const styles = theme => ({
   margin: {
     margin: theme.spacing.unit,
   },
+  resize: {
+    fontSize: 20,
+  },
   cssLabel: {
+    fontSize: 20,
     '&$cssFocused': {
     },
   },

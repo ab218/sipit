@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 import { withCookies, Cookies } from 'react-cookie';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import styles from './loginSubmitButtonStyles';
+import styles from './signupSubmitButtonStyles';
 import { REDIRECT } from '../../redux/types';
 
-class LoginSubmitButton extends Component {
+class SignupSubmitButton extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
   };
@@ -31,25 +31,27 @@ class LoginSubmitButton extends Component {
     this.submitBtn.style.color = '#f26622';
   }
 
-  handleSubmit = async () => {
+  handleSubmit = async (e) => {
     const {
-      email, password, cookies, redirectTrue,
+      email, password, cookies, first_name, last_name, redirectTrue,
     } = this.props;
+    e.preventDefault();
     try {
-      const login = await axios
-        .post('/api/login', {
-          email, password,
+      const signup = await axios
+        .post('/api/login/new', {
+          email, password, first_name, last_name,
         });
-      if (login.data.message !== 'successful login') {
+      if (signup.data.message !== 'successful signup') {
         return this.setState({ wentWrong: true });
       }
-      cookies.set('user', login.data.user[0]);
+      cookies.set('user', signup.data.user[0]);
       return redirectTrue();
     } catch (err) {
       console.log(err);
     }
     return null;
   }
+
 
   render() {
     const { wentWrong } = this.state;
@@ -76,7 +78,7 @@ class LoginSubmitButton extends Component {
           }}
           onClick={this.handleSubmit}
           type="submit"
-          value="Log in"
+          value="Sign up"
           onMouseOver={() => this.onMouseOver()}
           onFocus={() => this.onMouseOver()}
           onMouseLeave={() => this.onMouseLeave()}
@@ -103,4 +105,4 @@ export default compose(
   withStyles(styles),
   withCookies,
   connect(mapStateToProps, mapDispatchToProps),
-)(LoginSubmitButton);
+)(SignupSubmitButton);
