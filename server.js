@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 const usersRoutes = require('./routes/users');
 const reviewsRoutes = require('./routes/reviews');
-const favoritesRoutes = require('./routes/favorites.js');
+const favoritesRoutes = require('./routes/favorites');
 const loginRoutes = require('./routes/login');
 const yelpRoutes = require('./routes/yelpRoutes.js');
 
@@ -26,7 +26,6 @@ app.use('/api/reviews', reviewsRoutes(knex));
 app.use('/api/favorites', favoritesRoutes(knex));
 app.use('/api/login', loginRoutes(knex));
 app.use('/api/yelp', yelpRoutes);
-
 // history must go after other endpoints
 app.use(history());
 

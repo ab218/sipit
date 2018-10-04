@@ -33,15 +33,14 @@ class Login extends Component {
   render() {
     const { classes } = this.props;
     const { email, password } = this.state;
-    const { container, formBox, title } = classes;
     return (
       <div style={mainTheme}>
         <Navbar
           page="login"
         />
-        <div className={container}>
-          <div className={formBox}>
-            <h2 className={title}>Sip-it</h2>
+        <div className={classes.container}>
+          <div className={classes.formBox}>
+            <h2 className={classes.title}>Sip-it</h2>
             <LoginFields
               email={email}
               password={password}

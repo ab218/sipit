@@ -6,12 +6,14 @@ import reducers from '../reducers';
 
 const rootReducer = combineReducers(reducers);
 
+const mw = applyMiddleware(thunk);
+const decorators = window.__REDUX_DEVTOOLS_EXTENSION__
+  ? compose(mw, window.__REDUX_DEVTOOLS_EXTENSION__())
+  : mw;
+
 const store = createStore(
   rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  ),
+  decorators,
 );
 
 export default store;

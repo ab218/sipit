@@ -34,7 +34,7 @@ const SearchBarTextfields = (props) => {
         InputProps={{
           disableUnderline: true,
         }}
-        style={{ width: 120 }}
+        style={{ width: 100 }}
       />
       <TextField
         id="locationSearch"

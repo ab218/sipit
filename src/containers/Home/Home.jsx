@@ -62,14 +62,15 @@ const mapStateToProps = state => ({
   notificationIsOpen: state.notifications.show,
 });
 
+const dispatchAction = (dispatch, actionMaker) => (...args) => {
+  dispatch(actionMaker(...args));
+};
+
 const mapDispatchToProps = dispatch => ({
-  loadPosition: () => dispatch(loadPosition()),
-  makeFetchCafes: (term, limit, loc) => {
-    dispatch(makeFetchCafesThunk(term, limit, loc));
-  },
-  getFavorites: (user_id) => {
-    dispatch(getFavorites(user_id));
-  },
+  loadPosition: dispatchAction(dispatch, loadPosition),
+  makeFetchCafes: dispatchAction(dispatch, makeFetchCafesThunk),
+  getFavorites: dispatchAction(dispatch, getFavorites),
+
   redirectFalse: () => dispatch({
     type: REDIRECT,
     payload: false,
