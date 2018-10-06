@@ -67,16 +67,16 @@ router.post('/latlng', async (req, res) => {
 
 router.get('/:id/details', async (req, res) => {
   try {
-    const response = yelpApi.get(`/businesses/${req.params.id}`);
+    const response = await yelpApi.get(`/businesses/${req.params.id}`);
     res.json(response.data);
   } catch (err) {
     res.send(err);
   }
 });
 
-router.get('/:id/reviews', (req, res) => {
+router.get('/:id/reviews', async (req, res) => {
   try {
-    const response = yelpApi.get(`/businesses/${req.params.id}/reviews`);
+    const response = await yelpApi.get(`/businesses/${req.params.id}/reviews`);
     res.json(response.data);
   } catch (err) {
     res.send(err);
