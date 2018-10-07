@@ -25,7 +25,6 @@ const BusinessDetails = (props) => {
       </h3>
       <SlickCarousel businessData={businessData} />
       <br />
-      <br />
       {
         businessData.location.display_address
           .map(sub => <h5 style={title} key={sub}>{sub}</h5>)
