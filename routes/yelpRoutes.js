@@ -12,13 +12,25 @@ const yelpApi = axios.create({
 
 router.post('/loc', async (req, res) => {
   try {
-    const response = await yelpApi.get('/businesses/search', {
-      params: {
-        limit: req.body.limit,
-        term: req.body.term,
-        location: req.body.location,
-      },
-    });
+    let response;
+    if (req.body.location) {
+      response = await yelpApi.get('/businesses/search', {
+        params: {
+          limit: req.body.limit,
+          term: req.body.term,
+          location: req.body.location,
+        },
+      });
+    } else {
+      response = await yelpApi.get('/businesses/search', {
+        params: {
+          limit: req.body.limit,
+          term: req.body.term,
+          latitude: req.body.latLng.lat,
+          longitude: req.body.latLng.lng,
+        },
+      });
+    }
     res.json(response.data.businesses.map(({
       id, name, coordinates, rating, image_url, categories, review_count,
     }) => ({
@@ -34,36 +46,6 @@ router.post('/loc', async (req, res) => {
     res.send(error);
   }
 });
-
-router.post('/latlng', async (req, res) => {
-  try {
-    const response = await yelpApi.get('/businesses/search', {
-      params: {
-        limit: req.body.limit,
-        term: req.body.term,
-        latitude: req.body.latLng.lat,
-        longitude: req.body.latLng.lng,
-      },
-    });
-    res.json(response.data.businesses.map((business) => {
-      const {
-        id, name, coordinates, rating, image_url, categories, review_count,
-      } = business;
-      return ({
-        id,
-        name,
-        coordinates,
-        rating,
-        image_url,
-        categories,
-        review_count,
-      });
-    }));
-  } catch (error) {
-    res.send(error);
-  }
-});
-
 
 router.get('/:id/details', async (req, res) => {
   try {

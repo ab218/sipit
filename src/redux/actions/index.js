@@ -48,7 +48,7 @@ export function makeFetchCafesThunk(term, limit) {
     try {
       dispatch({ type: 'FETCH_CAFES_LOADING', payload: true });
       if (!location || location === ' ') {
-        cardLocation = await axios.post('/api/yelp/latlng', { term, limit, latLng });
+        cardLocation = await axios.post('/api/yelp/loc', { term, limit, latLng });
       } else {
         cardLocation = await axios.post('/api/yelp/loc', { term, limit, location });
       }
@@ -61,7 +61,6 @@ export function makeFetchCafesThunk(term, limit) {
     }
   };
 }
-
 
 export function getBusinessData(params) {
   return async (dispatch) => {

@@ -2,7 +2,7 @@ import { SEARCH_NAME, SEARCH_LOCATION, SEARCH_RESULTS } from '../../types';
 
 export default function (state = {
   searchName: 'coffee',
-  searchLocation: 'vancouver',
+  searchLocation: '',
   searchResults: 10,
 }, action) {
   const { type, payload } = action;
