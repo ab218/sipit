@@ -1,20 +1,15 @@
 import axios from 'axios';
-
-function getPosition(lat, lng) {
-  return {
-    type: 'GET_POSITION',
-    payload: {
-      lat,
-      lng,
-    },
-  };
-}
+import {
+  FETCH_BUSINESS_DATA, FETCH_BUSINESS_DATA_LOADING,
+  FETCH_CAFES, FETCH_CAFES_LOADING, FETCH_FAVORITES,
+  FETCH_REVIEWS_DATA, FETCH_REVIEWS_DATA_LOADING, GET_POSITION, REDIRECT,
+} from '../types';
 
 export function getFavorites(userId) {
   return async (dispatch) => {
     try {
       const favorites = await axios.get(`/api/favorites/${userId}`);
-      dispatch({ type: 'FETCH_FAVORITES', payload: favorites.data });
+      dispatch({ type: FETCH_FAVORITES, payload: favorites.data });
     } catch (error) {
       console.log(error);
     }
@@ -35,16 +30,16 @@ export function makeFetchCafesThunk() {
     } = getState();
     let cardLocation;
     try {
-      dispatch({ type: 'FETCH_CAFES_LOADING', payload: true });
+      dispatch({ type: FETCH_CAFES_LOADING, payload: true });
       if (!location || location === ' ') {
         cardLocation = await axios.post('/api/yelp/loc', { term, limit, latLng });
       } else {
         cardLocation = await axios.post('/api/yelp/loc', { term, limit, location });
       }
-      const { latitude, longitude } = cardLocation.data[0].coordinates;
-      dispatch(getPosition(latitude, longitude));
-      dispatch({ type: 'FETCH_CAFES', payload: cardLocation.data });
-      dispatch({ type: 'FETCH_CAFES_LOADING', payload: false });
+      const { latitude: lat, longitude: lng } = cardLocation.data[0].coordinates;
+      await dispatch({ type: GET_POSITION, payload: { lat, lng } });
+      dispatch({ type: FETCH_CAFES, payload: cardLocation.data });
+      dispatch({ type: FETCH_CAFES_LOADING, payload: false });
     } catch (error) {
       console.log('Error', error);
     }
@@ -55,8 +50,8 @@ export function loadPosition() {
   return async (dispatch) => {
     try {
       const position = await getCurrentPosition();
-      const { latitude, longitude } = position.coords;
-      await dispatch(getPosition(latitude, longitude));
+      const { latitude: lat, longitude: lng } = position.coords;
+      await dispatch({ type: GET_POSITION, payload: { lat, lng } });
       await dispatch(makeFetchCafesThunk());
     } catch (error) {
       console.log('failed to get position.', error);
@@ -67,10 +62,10 @@ export function loadPosition() {
 export function getBusinessData(params) {
   return async (dispatch) => {
     try {
-      dispatch({ type: 'FETCH_BUSINESS_DATA_LOADING', payload: true });
+      dispatch({ type: FETCH_BUSINESS_DATA_LOADING, payload: true });
       const businessDetails = await axios.get(`/api/yelp/${params}/details`);
-      dispatch({ type: 'FETCH_BUSINESS_DATA', payload: businessDetails.data });
-      dispatch({ type: 'FETCH_BUSINESS_DATA_LOADING', payload: false });
+      dispatch({ type: FETCH_BUSINESS_DATA, payload: businessDetails.data });
+      dispatch({ type: FETCH_BUSINESS_DATA_LOADING, payload: false });
     } catch (error) {
       console.log(error);
     }
@@ -80,10 +75,10 @@ export function getBusinessData(params) {
 export function getReviews(params) {
   return async (dispatch) => {
     try {
-      dispatch({ type: 'FETCH_REVIEWS_DATA_LOADING', payload: true });
+      dispatch({ type: FETCH_REVIEWS_DATA_LOADING, payload: true });
       const reviewsData = await axios.get(`/api/yelp/${params}/reviews`);
-      dispatch({ type: 'FETCH_REVIEWS_DATA', payload: reviewsData.data });
-      dispatch({ type: 'FETCH_REVIEWS_DATA_LOADING', payload: false });
+      dispatch({ type: FETCH_REVIEWS_DATA, payload: reviewsData.data });
+      dispatch({ type: FETCH_REVIEWS_DATA_LOADING, payload: false });
     } catch (error) {
       console.log(error);
     }
@@ -99,7 +94,7 @@ export function searchCafes(e, cafeSearch, locationSearch, resultsSearch, myLatL
       dispatch(makeFetchCafesThunk(cafeSearch, resultsSearch, locationSearch));
     }
     if (page !== 'home') {
-      dispatch({ type: 'REDIRECT', payload: true });
+      dispatch({ type: REDIRECT, payload: true });
     }
   };
 }
