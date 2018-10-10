@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
 import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
-import Button from '@material-ui/core/Button';
 import { Navbar, SignupFields } from '../../components';
-import styles from '../../components/styles/signupStyles';
+import styles from './signupStyles';
+import SignupSubmitButton from '../../components/SignupSubmitButton/SignupSubmitButton';
 
 class Signup extends Component {
   static propTypes = {
@@ -21,7 +20,6 @@ class Signup extends Component {
       confPassword: 'a',
       first_name: 'TestAccount',
       last_name: 'Enjoy',
-      wentWrong: false,
       loginRedirect: false,
     };
   }
@@ -33,32 +31,12 @@ class Signup extends Component {
       });
     }
 
-    handleSubmit = async (e) => {
-      const { cookies } = this.props;
-      const {
-        email, password, first_name, last_name,
-      } = this.state;
-      e.preventDefault();
-      try {
-        const signup = await axios
-          .post('/api/login/new', {
-            email, password, first_name, last_name,
-          });
-        if (signup.data.message !== 'successful signup') {
-          return this.setState({ wentWrong: true });
-        }
-        cookies.set('user', signup.data.user[0]);
-        return this.setState({ loginRedirect: true });
-      } catch (err) {
-        console.log(err);
-      }
-      return null;
-    }
-
     render() {
-      const { mainTheme, wrapper, title } = styles;
       const {
-        email, password, confPassword, first_name, last_name, loginRedirect, wentWrong,
+        mainTheme, wrapper, title,
+      } = styles;
+      const {
+        email, password, confPassword, first_name, last_name, loginRedirect,
       } = this.state;
 
       if (loginRedirect) {
@@ -78,7 +56,6 @@ class Signup extends Component {
           />
           <div style={wrapper}>
             <h2 style={title}>Sip-it</h2>
-            {/* <form onSubmit={this.handleSubmit}> */}
             <SignupFields
               email={email}
               password={password}
@@ -87,10 +64,12 @@ class Signup extends Component {
               last_name={last_name}
               handleInputChange={this.handleInputChange}
             />
-            {wentWrong
-                  && <h5 style={{ color: 'red' }}>Email taken!</h5>
-            }
-            <Button style={{ marginTop: '2em' }} color="primary" onClick={this.handleSubmit}>Submit</Button>
+            <SignupSubmitButton
+              email={email}
+              password={password}
+              first_name={first_name}
+              last_name={last_name}
+            />
           </div>
         </div>
       );

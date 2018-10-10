@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
 import MediaQuery from 'react-responsive';
 import { getFavorites } from '../../redux/actions';
-import styles from '../../components/styles/favoritesStyles';
+import styles from './favoritesStyles';
 import { Navbar } from '../../components';
 
 function GetFavoritesComp({ favorites, cols }) {
@@ -53,14 +53,14 @@ class Favorites extends Component {
   }
 
   render() {
-    const { mainTheme } = styles;
+    const { mainTheme, noFavorites } = styles;
     const { favorites } = this.props;
     return (
       <div style={mainTheme}>
         <Navbar
           page="favorites"
         />
-        {favorites.length === 0 && <h1 style={{ color: 'white' }}>No favorites saved.</h1>}
+        {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
         <MediaQuery minWidth={1000}>
           <GetFavoritesComp
             favorites={favorites}

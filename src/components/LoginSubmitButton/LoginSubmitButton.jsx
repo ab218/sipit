@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes, { instanceOf } from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withCookies, Cookies } from 'react-cookie';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { customStyles } from '../styles/loginStyles';
+import styles from './loginSubmitButtonStyles';
 import { REDIRECT } from '../../redux/types';
 
 class LoginSubmitButton extends Component {
@@ -30,14 +31,6 @@ class LoginSubmitButton extends Component {
     this.submitBtn.style.color = '#f26622';
   }
 
-  handleInputChange = (e) => {
-    const { value, name } = e.target;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
   handleSubmit = async () => {
     const {
       email, password, cookies, redirectTrue,
@@ -47,7 +40,6 @@ class LoginSubmitButton extends Component {
         .post('/api/login', {
           email, password,
         });
-      console.log(login);
       if (login.data.message !== 'successful login') {
         return this.setState({ wentWrong: true });
       }
@@ -61,7 +53,7 @@ class LoginSubmitButton extends Component {
 
   render() {
     const { wentWrong } = this.state;
-    const { redirect } = this.props;
+    const { redirect, classes } = this.props;
 
     if (redirect) {
       return (
@@ -83,14 +75,13 @@ class LoginSubmitButton extends Component {
             this.submitBtn = div;
           }}
           onClick={this.handleSubmit}
-          className="Btn"
           type="submit"
           value="Log in"
           onMouseOver={() => this.onMouseOver()}
           onFocus={() => this.onMouseOver()}
           onMouseLeave={() => this.onMouseLeave()}
           onBlur={() => this.onMouseLeave()}
-          style={customStyles.submitBtn}
+          className={classes.submitBtn}
         />
       </React.Fragment>
     );
@@ -109,6 +100,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
+  withStyles(styles),
   withCookies,
   connect(mapStateToProps, mapDispatchToProps),
 )(LoginSubmitButton);

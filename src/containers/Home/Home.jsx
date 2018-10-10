@@ -7,6 +7,7 @@ import { instanceOf } from 'prop-types';
 import { Navbar, CafeCard, MapContainer } from '../../components';
 import { loadPosition, makeFetchCafesThunk, getFavorites } from '../../redux/actions';
 import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../redux/types';
+import styles from './homeStyles';
 
 class Home extends Component {
   static propTypes = {
@@ -31,16 +32,17 @@ class Home extends Component {
       cafesList, fetchCafesLoading,
       notificationIsOpen, notificationHide,
     } = this.props;
+    const { brewing, mainTheme, pushDown } = styles;
     return (
-      <div style={{ backgroundColor: '#C1A88B' }}>
-        <div style={{ paddingBottom: '8em' }}>
+      <div style={mainTheme}>
+        <div style={pushDown}>
           <Navbar
             page="home"
           />
         </div>
         {cafesList && (<MapContainer />)}
         {fetchCafesLoading
-          ? <h1 style={{ color: 'white' }}>Brewing results...</h1>
+          ? <h1 style={brewing}>Brewing results...</h1>
           : <CafeCard />
         }
         <Snackbar
@@ -60,14 +62,15 @@ const mapStateToProps = state => ({
   notificationIsOpen: state.notifications.show,
 });
 
+const dispatchAction = (dispatch, actionMaker) => (...args) => {
+  dispatch(actionMaker(...args));
+};
+
 const mapDispatchToProps = dispatch => ({
-  loadPosition: () => dispatch(loadPosition()),
-  makeFetchCafes: (term, limit, loc) => {
-    dispatch(makeFetchCafesThunk(term, limit, loc));
-  },
-  getFavorites: (user_id) => {
-    dispatch(getFavorites(user_id));
-  },
+  loadPosition: dispatchAction(dispatch, loadPosition),
+  makeFetchCafes: dispatchAction(dispatch, makeFetchCafesThunk),
+  getFavorites: dispatchAction(dispatch, getFavorites),
+
   redirectFalse: () => dispatch({
     type: REDIRECT,
     payload: false,

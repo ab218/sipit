@@ -29,10 +29,8 @@ Promise((resolve, reject) => {
 export function loadPosition() {
   return async (dispatch) => {
     try {
-      console.log('trying to get geoposition...');
       const position = await getCurrentPosition();
       const { latitude, longitude } = position.coords;
-      console.log(`got it! At: ${latitude}, ${longitude}`);
       dispatch(getPosition(latitude, longitude));
     } catch (error) {
       console.log('failed to get position.', error);
@@ -46,28 +44,20 @@ export function makeFetchCafesThunk(term, limit) {
       searchFields: { searchLocation: location },
       getPosition: { myLatLng: latLng },
     } = getState();
-    if (!location || location === ' ') {
-      try {
-        dispatch({ type: 'FETCH_CAFES_LOADING', payload: true });
-        const cardLocation = await axios.post('/api/yelp/latlng', { term, limit, latLng });
-        const { latitude, longitude } = cardLocation.data[0].coordinates;
-        dispatch({ type: 'FETCH_CAFES', payload: cardLocation.data });
-        dispatch({ type: 'FETCH_CAFES_LOADING', payload: false });
-        dispatch(getPosition(latitude, longitude));
-      } catch (error) {
-        console.log('Error', error);
+    let cardLocation;
+    try {
+      dispatch({ type: 'FETCH_CAFES_LOADING', payload: true });
+      if (!location || location === ' ') {
+        cardLocation = await axios.post('/api/yelp/loc', { term, limit, latLng });
+      } else {
+        cardLocation = await axios.post('/api/yelp/loc', { term, limit, location });
       }
-    } else {
-      try {
-        dispatch({ type: 'FETCH_CAFES_LOADING', payload: true });
-        const cardLocation = await axios.post('/api/yelp/loc', { term, limit, location });
-        const { latitude, longitude } = cardLocation.data[0].coordinates;
-        dispatch({ type: 'FETCH_CAFES', payload: cardLocation.data });
-        dispatch({ type: 'FETCH_CAFES_LOADING', payload: false });
-        dispatch(getPosition(latitude, longitude));
-      } catch (error) {
-        console.log('Error', error);
-      }
+      const { latitude, longitude } = cardLocation.data[0].coordinates;
+      dispatch(getPosition(latitude, longitude));
+      dispatch({ type: 'FETCH_CAFES', payload: cardLocation.data });
+      dispatch({ type: 'FETCH_CAFES_LOADING', payload: false });
+    } catch (error) {
+      console.log('Error', error);
     }
   };
 }

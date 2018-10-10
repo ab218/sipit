@@ -3,21 +3,12 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-// import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import { SEARCH_RESULTS } from '../../redux/types';
-
-const styles = theme => ({
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 60,
-    backgroundColor: 'white',
-    borderRadius: '20px',
-  },
-});
+import styles from './resultsDropdownStyles';
 
 class ResultsDropdown extends Component {
   state = {
@@ -25,10 +16,10 @@ class ResultsDropdown extends Component {
   };
 
   render() {
-    const { classes, resultsSearch, setResults } = this.props;
+    const { classes: { formControl }, resultsSearch, setResults } = this.props;
     const { open } = this.state;
     return (
-      <FormControl className={classes.formControl}>
+      <FormControl className={formControl}>
         <Select
           open={open}
           onClose={() => this.setState({ open: false })}

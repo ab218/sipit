@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import styles from '../styles/searchBarStyles';
+import styles from './searchBarButtonStyles';
 import { searchCafes } from '../../redux/actions';
 
 class SearchBarButton extends Component {

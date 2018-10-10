@@ -1,30 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
-import styles from '../styles/searchBarStyles';
+import styles from './searchBarStyles';
 import { ResultsDropdown, SearchBarButton, SearchBarTextfields } from '..';
 import { makeFetchCafesThunk } from '../../redux/actions';
 
-class SearchBar extends Component {
-  render() {
-    const { searchBarWrapper } = styles;
-    const { redirect, page } = this.props;
-    return (
-      <form style={searchBarWrapper}>
-        {redirect && <Redirect to="/" />}
-        <SearchBarTextfields />
-        <SearchBarButton page={page} />
-        <MediaQuery minWidth={550}>
-          <ResultsDropdown />
-        </MediaQuery>
-      </form>
-    );
-  }
-}
+const SearchBar = (props) => {
+  const { searchBarWrapper } = styles;
+  const { redirect, page } = props;
+  return (
+    <form style={searchBarWrapper}>
+      {redirect && <Redirect to="/" />}
+      <SearchBarTextfields />
+      <SearchBarButton page={page} />
+      <MediaQuery minWidth={550}>
+        <ResultsDropdown />
+      </MediaQuery>
+    </form>
+  );
+};
 
 const mapStateToProps = state => ({
   redirect: state.redirect.redirect,

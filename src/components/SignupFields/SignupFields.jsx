@@ -1,84 +1,121 @@
-import React, { Component } from 'react';
-import styles from '../styles/signupStyles';
+import React from 'react';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './signupFieldsStyles';
 
-class SignupFields extends Component {
-  render() {
-    const { elementsInput, th, td } = styles;
-    const {
-      email, password, confPassword, first_name, last_name, handleInputChange,
-    } = this.props;
-    return (
-      <table style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-        <tbody>
-          <tr>
-            <th style={th}>Email</th>
-            <td style={td}>
-              <input
-                id="email"
-                style={elementsInput}
-                type="email"
-                name="email"
-                defaultValue={email}
-                onChange={handleInputChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th style={th}>Password</th>
-            <td style={td}>
-              <input
-                id="password"
-                style={elementsInput}
-                type="password"
-                name="password"
-                defaultValue={password}
-                onChange={handleInputChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th style={th}>Confirm</th>
-            <td style={td}>
-              <input
-                id="confPassword"
-                style={elementsInput}
-                type="password"
-                name="confPassword"
-                defaultValue={confPassword}
-                onChange={handleInputChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th style={th}>First Name</th>
-            <td style={td}>
-              <input
-                id="first_name"
-                style={elementsInput}
-                type="text"
-                name="first_name"
-                value={first_name}
-                onChange={handleInputChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th style={th}>Last Name</th>
-            <td style={td}>
-              <input
-                id="last_name"
-                style={elementsInput}
-                type="text"
-                name="last_name"
-                value={last_name}
-                onChange={handleInputChange}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    );
-  }
-}
+const SignupFields = (props) => {
+  const {
+    email, password, confPassword, first_name, last_name, handleInputChange, classes,
+  } = props;
+  return (
+    <React.Fragment>
+      <FormControl className={classes.margin}>
+        <InputLabel
+          FormLabelClasses={{
+            root: classes.cssLabel,
+            focused: classes.cssFocused,
+          }}
+        >
+            Email
+        </InputLabel>
+        <Input
+          classes={{
+            input: classes.resize,
+            underline: classes.cssUnderline,
+          }}
+          id="email"
+          name="email"
+          value={email}
+          onChange={handleInputChange}
+        />
+      </FormControl>
+      <FormControl className={classes.margin}>
+        <InputLabel
+          FormLabelClasses={{
+            root: classes.cssLabel,
+            focused: classes.cssFocused,
+          }}
+        >
+            Password
+        </InputLabel>
+        <Input
+          classes={{
+            input: classes.resize,
+            underline: classes.cssUnderline,
+          }}
+          id="password"
+          name="password"
+          type="password"
+          value={password}
+          onChange={handleInputChange}
+        />
+      </FormControl>
+      <FormControl className={classes.margin}>
+        <InputLabel
+          FormLabelClasses={{
+            root: classes.cssLabel,
+            focused: classes.cssFocused,
+          }}
+        >
+            Confirm Password
+        </InputLabel>
+        <Input
+          classes={{
+            input: classes.resize,
+            underline: classes.cssUnderline,
+          }}
+          id="confPassword"
+          name="confPassword"
+          type="password"
+          value={confPassword}
+          onChange={handleInputChange}
+        />
+      </FormControl>
+      <FormControl className={classes.margin}>
+        <InputLabel
+          FormLabelClasses={{
+            root: classes.cssLabel,
+            focused: classes.cssFocused,
+          }}
+        >
+            First Name
+        </InputLabel>
+        <Input
+          classes={{
+            input: classes.resize,
+            underline: classes.cssUnderline,
+          }}
+          id="first_name"
+          name="first_name"
+          value={first_name}
+          onChange={handleInputChange}
+        />
+      </FormControl>
+      <FormControl className={classes.margin}>
+        <InputLabel
+          FormLabelClasses={{
+            root: classes.cssLabel,
+            focused: classes.cssFocused,
+          }}
+        >
+            Last Name
+        </InputLabel>
+        <Input
+          classes={{
+            input: classes.resize,
+            underline: classes.cssUnderline,
+          }}
+          id="last_name"
+          name="last_name"
+          value={last_name}
+          onChange={handleInputChange}
+        />
+      </FormControl>
+      <br />
+    </React.Fragment>
+  );
+};
 
-export default SignupFields;
+export default withStyles(styles)(SignupFields);
