@@ -27,10 +27,10 @@ Promise((resolve, reject) => {
 });
 
 
-export function makeFetchCafesThunk(term, limit) {
+export function makeFetchCafesThunk() {
   return async (dispatch, getState) => {
     const {
-      searchFields: { searchLocation: location },
+      searchFields: { searchLocation: location, searchName: term, searchResults: limit },
       getPosition: { myLatLng: latLng },
     } = getState();
     let cardLocation;
@@ -57,7 +57,7 @@ export function loadPosition() {
       const position = await getCurrentPosition();
       const { latitude, longitude } = position.coords;
       await dispatch(getPosition(latitude, longitude));
-      await dispatch(makeFetchCafesThunk('coffee', 10));
+      await dispatch(makeFetchCafesThunk());
     } catch (error) {
       console.log('failed to get position.', error);
     }
