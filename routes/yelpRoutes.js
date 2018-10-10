@@ -12,6 +12,7 @@ const yelpApi = axios.create({
 
 router.post('/loc', async (req, res) => {
   try {
+    console.log(req.body);
     let response;
     if (req.body.location) {
       response = await yelpApi.get('/businesses/search', {

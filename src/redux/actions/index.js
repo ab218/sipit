@@ -26,17 +26,6 @@ Promise((resolve, reject) => {
   navigator.geolocation.getCurrentPosition(resolve, reject, options);
 });
 
-export function loadPosition() {
-  return async (dispatch) => {
-    try {
-      const position = await getCurrentPosition();
-      const { latitude, longitude } = position.coords;
-      dispatch(getPosition(latitude, longitude));
-    } catch (error) {
-      console.log('failed to get position.', error);
-    }
-  };
-}
 
 export function makeFetchCafesThunk(term, limit) {
   return async (dispatch, getState) => {
@@ -58,6 +47,19 @@ export function makeFetchCafesThunk(term, limit) {
       dispatch({ type: 'FETCH_CAFES_LOADING', payload: false });
     } catch (error) {
       console.log('Error', error);
+    }
+  };
+}
+
+export function loadPosition() {
+  return async (dispatch) => {
+    try {
+      const position = await getCurrentPosition();
+      const { latitude, longitude } = position.coords;
+      await dispatch(getPosition(latitude, longitude));
+      await dispatch(makeFetchCafesThunk('coffee', 10));
+    } catch (error) {
+      console.log('failed to get position.', error);
     }
   };
 }
