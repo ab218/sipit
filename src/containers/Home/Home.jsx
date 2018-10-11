@@ -14,7 +14,7 @@ class Home extends Component {
     cookies: instanceOf(Cookies).isRequired,
   };
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     const {
       redirectFalse,
       loadPosition, getFavorites, cookies,

@@ -128,3 +128,19 @@ export function addFavorite(cafe, userId) {
     }
   };
 }
+
+// export function loginSubmit(email, password, cookies, redirectTrue) {
+//   return async (dispatch) => {
+//     try {
+//       const login = await axios.post('/api/login', { email, password });
+//       if (login.data.message !== 'successful login') {
+//         return this.setState({ wentWrong: true });
+//       }
+//       cookies.set('user', login.data.user[0]);
+//       return redirectTrue();
+//     } catch (err) {
+//       console.log(err);
+//     }
+//     return null;
+//   };
+// }

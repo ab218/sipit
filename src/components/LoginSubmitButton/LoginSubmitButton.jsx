@@ -18,6 +18,7 @@ class LoginSubmitButton extends Component {
     super(props);
     this.state = {
       wentWrong: false,
+      redirect: false,
     };
   }
 
@@ -32,19 +33,14 @@ class LoginSubmitButton extends Component {
   }
 
   handleSubmit = async () => {
-    const {
-      email, password, cookies, redirectTrue,
-    } = this.props;
+    const { email, password, cookies } = this.props;
     try {
-      const login = await axios
-        .post('/api/login', {
-          email, password,
-        });
+      const login = await axios.post('/api/login', { email, password });
       if (login.data.message !== 'successful login') {
         return this.setState({ wentWrong: true });
       }
       cookies.set('user', login.data.user[0]);
-      return redirectTrue();
+      return this.setState({ redirect: true });
     } catch (err) {
       console.log(err);
     }
@@ -52,21 +48,12 @@ class LoginSubmitButton extends Component {
   }
 
   render() {
-    const { wentWrong } = this.state;
-    const { redirect, classes } = this.props;
-
-    if (redirect) {
-      return (
-        <Redirect to={{
-          pathname: '/',
-          state: 'snackbar',
-        }}
-        />
-      );
-    }
+    const { wentWrong, redirect } = this.state;
+    const { classes } = this.props;
 
     return (
       <React.Fragment>
+        {redirect && <Redirect to="/" />}
         {wentWrong
         && <h5 style={{ color: 'red' }}>Something went wrong!</h5>
         }

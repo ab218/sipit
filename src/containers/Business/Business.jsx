@@ -50,10 +50,6 @@ const mapDispatchToProps = dispatch => ({
   getReviews: (params) => {
     dispatch(getReviews(params));
   },
-  changeCafeData: data => dispatch({
-    type: FETCH_CAFES,
-    payload: data,
-  }),
 });
 
 export default compose(
