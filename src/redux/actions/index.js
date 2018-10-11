@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  FETCH_BUSINESS_DATA, FETCH_BUSINESS_DATA_LOADING,
+  ADD_ERROR, FETCH_BUSINESS_DATA, FETCH_BUSINESS_DATA_LOADING,
   FETCH_CAFES, FETCH_CAFES_LOADING, FETCH_FAVORITES,
   FETCH_REVIEWS_DATA, FETCH_REVIEWS_DATA_LOADING, GET_POSITION, REDIRECT,
 } from '../types';
@@ -10,8 +10,9 @@ export function getFavorites(userId) {
     try {
       const favorites = await axios.get(`/api/favorites/${userId}`);
       dispatch({ type: FETCH_FAVORITES, payload: favorites.data });
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: ADD_ERROR, error: err });
     }
   };
 }
@@ -20,7 +21,6 @@ const getCurrentPosition = (options = { timeout: 10000, maximumAge: 3600000 }) =
 Promise((resolve, reject) => {
   navigator.geolocation.getCurrentPosition(resolve, reject, options);
 });
-
 
 export function makeFetchCafesThunk() {
   return async (dispatch, getState) => {
@@ -40,8 +40,9 @@ export function makeFetchCafesThunk() {
       await dispatch({ type: GET_POSITION, payload: { lat, lng } });
       dispatch({ type: FETCH_CAFES, payload: cardLocation.data });
       dispatch({ type: FETCH_CAFES_LOADING, payload: false });
-    } catch (error) {
-      console.log('Error', error);
+    } catch (err) {
+      console.log('Error', err);
+      dispatch({ type: ADD_ERROR, error: err });
     }
   };
 }
@@ -53,8 +54,9 @@ export function loadPosition() {
       const { latitude: lat, longitude: lng } = position.coords;
       await dispatch({ type: GET_POSITION, payload: { lat, lng } });
       await dispatch(makeFetchCafesThunk());
-    } catch (error) {
-      console.log('failed to get position.', error);
+    } catch (err) {
+      console.log('failed to get position.', err);
+      dispatch({ type: ADD_ERROR, error: err });
     }
   };
 }
@@ -66,8 +68,9 @@ export function getBusinessData(params) {
       const businessDetails = await axios.get(`/api/yelp/${params}/details`);
       dispatch({ type: FETCH_BUSINESS_DATA, payload: businessDetails.data });
       dispatch({ type: FETCH_BUSINESS_DATA_LOADING, payload: false });
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: ADD_ERROR, error: err });
     }
   };
 }
@@ -79,8 +82,9 @@ export function getReviews(params) {
       const reviewsData = await axios.get(`/api/yelp/${params}/reviews`);
       dispatch({ type: FETCH_REVIEWS_DATA, payload: reviewsData.data });
       dispatch({ type: FETCH_REVIEWS_DATA_LOADING, payload: false });
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: ADD_ERROR, error: err });
     }
   };
 }
@@ -104,8 +108,9 @@ export function removeFavorite(cafeId, userId) {
     try {
       await axios.delete('/api/favorites/delete', { data: { url: cafeId, user_id: userId } });
       dispatch(getFavorites(userId));
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: ADD_ERROR, error: err });
     }
   };
 }
@@ -117,8 +122,9 @@ export function addFavorite(cafe, userId) {
         title: cafe.name, url: cafe.id, image_url: cafe.image_url, user_id: userId,
       });
       dispatch(getFavorites(userId));
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: ADD_ERROR, error: err });
     }
   };
 }

@@ -1,3 +1,4 @@
+import errors from './errors';
 import redirect from './redirect';
 import fetchCafes from './fetchCafes';
 import getPosition from './getPosition';
@@ -7,6 +8,7 @@ import fetchFavorites from './fetchFavorites';
 import fetchBusinessData from './fetchBusinessData';
 
 export default {
+  errors,
   redirect,
   fetchCafes,
   getPosition,
