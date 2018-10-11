@@ -1,8 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
 import styles from './loginFieldsStyles';
 
 const LoginFields = (props) => {
@@ -11,49 +9,32 @@ const LoginFields = (props) => {
   } = props;
 
   return (
-    <React.Fragment>
-      <FormControl className={classes.margin}>
-        <InputLabel
-          FormLabelClasses={{
-            root: classes.cssLabel,
-            focused: classes.cssFocused,
-          }}
-        >
-                  Email
-        </InputLabel>
-        <Input
-          classes={{
-            input: classes.resize,
-            underline: classes.cssUnderline,
-          }}
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleInputChange}
-        />
-      </FormControl>
-      <FormControl className={classes.margin}>
-        <InputLabel
-          FormLabelClasses={{
-            root: classes.cssLabel,
-            focused: classes.cssFocused,
-          }}
-        >
-                  Password
-        </InputLabel>
-        <Input
-          classes={{
-            input: classes.resize,
-            underline: classes.cssUnderline,
-          }}
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={handleInputChange}
-        />
-      </FormControl>
-    </React.Fragment>
+    <form>
+      <TextField
+        label="Email"
+        id="email"
+        name="email"
+        className={classes.margin}
+        InputProps={{ className: classes.resize }}
+        InputLabelProps={{ className: classes.resize }}
+        value={email}
+        onChange={handleInputChange}
+        autoComplete="email"
+      />
+      <br />
+      <TextField
+        label="Password"
+        id="password"
+        name="password"
+        type="password"
+        className={classes.margin}
+        InputProps={{ className: classes.resize }}
+        InputLabelProps={{ className: classes.resize }}
+        value={password}
+        onChange={handleInputChange}
+        autoComplete="current-password"
+      />
+    </form>
   );
 };
 
