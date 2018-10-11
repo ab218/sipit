@@ -31,7 +31,7 @@ const CafeCard = ({ cafe, classes, i }) => (
 
       <CardMedia
         className={classes.media}
-        image={cafe.image_url}
+        image={cafe.image_url || 'http://www.vibeshifting.com/wp-content/plugins/InstaBuilder/images/unavailable-200x145.png'}
       />
       <CardContent>
         <span>
