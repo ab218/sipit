@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import styles from './searchBarStyles';
-import { ResultsDropdown, SearchBarButton, SearchBarTextfields } from '..';
+import {
+ ResultsDropdown, SearchBarButton, SearchBarTextfields, SearchBarFilter 
+} from '..';
 import { makeFetchCafesThunk } from '../../redux/actions';
 
 const SearchBar = (props) => {
@@ -17,6 +19,7 @@ const SearchBar = (props) => {
       {redirect && <Redirect to="/" />}
       <SearchBarTextfields />
       <SearchBarButton page={page} />
+      <SearchBarFilter />
       <MediaQuery minWidth={550}>
         <ResultsDropdown />
       </MediaQuery>

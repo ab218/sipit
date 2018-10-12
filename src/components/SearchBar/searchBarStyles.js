@@ -2,6 +2,9 @@ const styles = {
   searchBarWrapper: {
     textAlign: 'center',
     alignSelf: 'center',
+    flexGrow: '1',
+    marginLeft: '4.5em',
+    marginRight: '4.5em',
     minWidth: '300px',
     backgroundColor: '#049372',
     padding: '0 0.5em',

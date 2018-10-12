@@ -40,7 +40,6 @@ const SearchBarTextfields = (props) => {
         id="locationSearch"
         name="locationSearch"
         placeholder="Location"
-        margin="normal"
         onChange={handleInputChange}
         inputProps={{
           style: input,
