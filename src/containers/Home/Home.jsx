@@ -14,14 +14,14 @@ class Home extends Component {
     cookies: instanceOf(Cookies).isRequired,
   };
 
-  async componentDidMount() {
+  componentDidMount = () => {
     const {
-      redirectFalse, makeFetchCafes, loadPosition: loadPos, getFavorites, cookies,
+      redirectFalse,
+      loadPosition, getFavorites, cookies,
     } = this.props;
     // after redirecting back to home, set back to false.
     redirectFalse();
-    await loadPos();
-    makeFetchCafes('coffee', 10);
+    loadPosition();
     if (cookies.get('user') !== undefined) {
       getFavorites(cookies.get('user').id);
     }
@@ -60,6 +60,7 @@ const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
   fetchCafesLoading: state.fetchCafes.cafesLoading,
   notificationIsOpen: state.notifications.show,
+  latLng: state.getPosition.myLatLng,
 });
 
 const dispatchAction = (dispatch, actionMaker) => (...args) => {

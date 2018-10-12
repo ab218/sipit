@@ -12,6 +12,7 @@ const yelpApi = axios.create({
 
 router.post('/loc', async (req, res) => {
   try {
+    console.log(req.body);
     let response;
     if (req.body.location) {
       response = await yelpApi.get('/businesses/search', {
@@ -42,8 +43,8 @@ router.post('/loc', async (req, res) => {
       categories,
       review_count,
     })));
-  } catch (error) {
-    res.send(error);
+  } catch (err) {
+    res.status(500).send(err.response.data);
   }
 });
 
@@ -52,7 +53,7 @@ router.get('/:id/details', async (req, res) => {
     const response = await yelpApi.get(`/businesses/${req.params.id}`);
     res.json(response.data);
   } catch (err) {
-    res.send(err);
+    res.status(500).send(err.response.data);
   }
 });
 
@@ -61,7 +62,7 @@ router.get('/:id/reviews', async (req, res) => {
     const response = await yelpApi.get(`/businesses/${req.params.id}/reviews`);
     res.json(response.data);
   } catch (err) {
-    res.send(err);
+    res.status(500).send(err.response.data);
   }
 });
 
