@@ -12,26 +12,20 @@ const yelpApi = axios.create({
 
 router.post('/loc', async (req, res) => {
   try {
+    const searchParams = {
+      limit: req.body.limit,
+      term: req.body.term,
+    };
     console.log(req.body);
-    let response;
     if (req.body.location) {
-      response = await yelpApi.get('/businesses/search', {
-        params: {
-          limit: req.body.limit,
-          term: req.body.term,
-          location: req.body.location,
-        },
-      });
+      searchParams.location = req.body.location;
     } else {
-      response = await yelpApi.get('/businesses/search', {
-        params: {
-          limit: req.body.limit,
-          term: req.body.term,
-          latitude: req.body.latLng.lat,
-          longitude: req.body.latLng.lng,
-        },
-      });
+      searchParams.latitude = req.body.latLng.lat;
+      searchParams.longitude = req.body.latLng.lng;
     }
+    const response = await yelpApi.get('/businesses/search', {
+      params: searchParams,
+    });
     res.json(response.data.businesses.map(({
       id, name, coordinates, rating, image_url, categories, review_count,
     }) => ({
