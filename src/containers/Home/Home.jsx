@@ -40,7 +40,7 @@ class Home extends Component {
             page="home"
           />
         </div>
-        {cafesList && (<MapContainer />)}
+        {cafesList && <MapContainer />}
         {fetchCafesLoading
           ? <h1 style={brewing}>Brewing results...</h1>
           : <CafeCard />

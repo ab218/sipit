@@ -27,6 +27,7 @@ const SearchBarTextfields = (props) => {
         id="cafeSearch"
         name="cafeSearch"
         placeholder="Search Term"
+        margin="normal"
         onChange={handleInputChange}
         inputProps={{
           style: input,
