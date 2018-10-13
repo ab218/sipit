@@ -12,6 +12,7 @@ import Dialog from '@material-ui/core/Dialog';
 // import RadioGroup from '@material-ui/core/RadioGroup';
 import Select from '@material-ui/core/Select';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { ResultsDropdown } from '..';
 
 const options = [
   'None',
@@ -40,7 +41,8 @@ class ConfirmationDialogRaw extends React.Component {
 
   // TODO
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
+    const { value } = this.props;
+    if (nextProps.value !== value) {
       this.setState({ value: nextProps.value });
     }
   }
@@ -51,11 +53,13 @@ class ConfirmationDialogRaw extends React.Component {
   //   };
 
   handleCancel = () => {
-    this.props.onClose(this.props.value);
+    const { onClose, value } = this.props;
+    onClose(value);
   };
 
   handleOk = () => {
-    this.props.onClose(this.state.value);
+    const { onClose, value } = this.props;
+    onClose(value);
   };
 
   handleChange = (event, value) => {
@@ -64,7 +68,7 @@ class ConfirmationDialogRaw extends React.Component {
 
   render() {
     const { value, ...other } = this.props;
-
+    const { value: stateValue } = this.state;
     return (
       <Dialog
         disableBackdropClick
@@ -76,15 +80,21 @@ class ConfirmationDialogRaw extends React.Component {
       >
         <DialogTitle id="confirmation-dialog-title">Set Filter</DialogTitle>
         <DialogContent>
+          Near
           <Select
             native
             name="filter"
-            value={this.state.value}
+            value={stateValue}
             onChange={this.handleChange}
           >
             <option value="" />
             ))}
           </Select>
+          Show result
+          <ResultsDropdown />
+          Good for
+          Diet
+          Has menu of
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleCancel} color="primary">
@@ -132,21 +142,22 @@ class ConfirmationDialog extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { open, value } = this.state;
     return (
       <React.Fragment>
         <IconButton
           style={{ color: '#FFFF' }}
           className="fas fa-filter"
-          aria-label="Delete"
+          aria-label="filter"
           onClick={this.handleClickListItem}
         />
         <ConfirmationDialogRaw
           classes={{
             paper: classes.paper,
           }}
-          open={this.state.open}
+          open={open}
           onClose={this.handleClose}
-          value={this.state.value}
+          value={value}
         />
       </React.Fragment>
     );

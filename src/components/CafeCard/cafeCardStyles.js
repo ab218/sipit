@@ -4,8 +4,8 @@ const styles = () => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    maxWidth: 300,
-    minWidth: 300,
+    maxWidth: '25em',
+    minWidth: '25em',
     maxHeight: 450,
     paddingRight: 20,
     paddingLeft: 20,
@@ -17,8 +17,9 @@ const styles = () => ({
   },
   spacer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr));',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(25em, 1fr));',
     paddingLeft: 20,
+    paddingRight: 20,
   },
   media: {
     height: 0,

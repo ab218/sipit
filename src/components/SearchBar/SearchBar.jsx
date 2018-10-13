@@ -4,10 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import MediaQuery from 'react-responsive';
+// import MediaQuery from 'react-responsive';
 import styles from './searchBarStyles';
 import {
- ResultsDropdown, SearchBarButton, SearchBarTextfields, SearchBarFilter 
+  SearchBarButton, SearchBarTextfields, SearchBarFilter,
 } from '..';
 import { makeFetchCafesThunk } from '../../redux/actions';
 
@@ -20,9 +20,6 @@ const SearchBar = (props) => {
       <SearchBarTextfields />
       <SearchBarButton page={page} />
       <SearchBarFilter />
-      <MediaQuery minWidth={550}>
-        <ResultsDropdown />
-      </MediaQuery>
     </form>
   );
 };
