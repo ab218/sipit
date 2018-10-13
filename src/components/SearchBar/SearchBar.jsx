@@ -9,7 +9,6 @@ import styles from './searchBarStyles';
 import {
   SearchBarButton, SearchBarTextfields, SearchBarFilter,
 } from '..';
-import { makeFetchCafesThunk } from '../../redux/actions';
 
 const SearchBar = (props) => {
   const { searchBarWrapper } = styles;
@@ -28,13 +27,7 @@ const mapStateToProps = state => ({
   redirect: state.redirect.redirect,
 });
 
-const mapDispatchToProps = dispatch => ({
-  makeFetchCafes: (term, limit, loc) => {
-    dispatch(makeFetchCafesThunk(term, limit, loc));
-  },
-});
-
 export default compose(
   withStyles(styles),
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, null),
 )(SearchBar);

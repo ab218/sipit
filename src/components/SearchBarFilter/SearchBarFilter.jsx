@@ -39,12 +39,21 @@ class ConfirmationDialogRaw extends React.Component {
     };
   }
 
+  componentWillMount() {
+    document.addEventListener('keydown', this.closeOnEsc.bind(this));
+  }
+
+
   // TODO
   componentWillReceiveProps(nextProps) {
     const { value } = this.props;
     if (nextProps.value !== value) {
       this.setState({ value: nextProps.value });
     }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.closeOnEsc.bind(this));
   }
 
 
@@ -62,51 +71,58 @@ class ConfirmationDialogRaw extends React.Component {
     onClose(value);
   };
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
+    handleChange = (event, value) => {
+      this.setState({ value });
+    };
 
-  render() {
-    const { value, ...other } = this.props;
-    const { value: stateValue } = this.state;
-    return (
-      <Dialog
-        disableBackdropClick
-        disableEscapeKeyDown
-        maxWidth="xs"
-        onEntering={this.handleEntering}
-        aria-labelledby="confirmation-dialog-title"
-        {...other}
-      >
-        <DialogTitle id="confirmation-dialog-title">Set Filter</DialogTitle>
-        <DialogContent>
+    closeOnEsc(e) {
+      if (e.keyCode === 27) {
+        this.handleCancel();
+      }
+    }
+
+
+    render() {
+      const { value, ...other } = this.props;
+      const { value: stateValue } = this.state;
+      return (
+        <Dialog
+          disableBackdropClick
+          disableEscapeKeyDown
+          maxWidth="xs"
+          onEntering={this.handleEntering}
+          aria-labelledby="confirmation-dialog-title"
+          {...other}
+        >
+          <DialogTitle id="confirmation-dialog-title">Set Filter</DialogTitle>
+          <DialogContent>
           Near
-          <Select
-            native
-            name="filter"
-            value={stateValue}
-            onChange={this.handleChange}
-          >
-            <option value="" />
+            <Select
+              native
+              name="filter"
+              value={stateValue}
+              onChange={this.handleChange}
+            >
+              <option value="" />
             ))}
-          </Select>
+            </Select>
           Show result
-          <ResultsDropdown />
+            <ResultsDropdown />
           Good for
           Diet
           Has menu of
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={this.handleCancel} color="primary">
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCancel} color="primary">
             Cancel
-          </Button>
-          <Button onClick={this.handleOk} color="primary">
+            </Button>
+            <Button onClick={this.handleOk} color="primary">
             Ok
           </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  }
+          </DialogActions>
+        </Dialog>
+      );
+    }
 }
 
 ConfirmationDialogRaw.propTypes = {
