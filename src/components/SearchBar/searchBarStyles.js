@@ -3,12 +3,12 @@ const styles = {
     textAlign: 'center',
     alignSelf: 'center',
     flexGrow: '1',
-    marginLeft: '4.5em',
-    marginRight: '4.5em',
-    minWidth: '300px',
     backgroundColor: '#049372',
     padding: '0 0.5em',
     borderRadius: '30px',
+    // currently doesn't support below iphone6
+    minWidth: '350px',
+    maxWidth: '80%',
   },
 
 

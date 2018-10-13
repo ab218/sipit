@@ -38,6 +38,11 @@ class ConfirmationDialogRaw extends React.Component {
     };
   }
 
+  componentWillMount() {
+    document.addEventListener('keydown', this.closeOnEsc.bind(this));
+  }
+
+
   // TODO
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
@@ -45,58 +50,68 @@ class ConfirmationDialogRaw extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.closeOnEsc.bind(this));
+  }
+
 
   //   handleEntering = () => {
-  //     this.radioGroupRef.focus();
-  //   };
+    //     this.radioGroupRef.focus();
+    //   };
 
-  handleCancel = () => {
-    this.props.onClose(this.props.value);
-  };
+    handleCancel = () => {
+      this.props.onClose(this.props.value);
+    };
 
-  handleOk = () => {
-    this.props.onClose(this.state.value);
-  };
+    handleOk = () => {
+      this.props.onClose(this.state.value);
+    };
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
+    handleChange = (event, value) => {
+      this.setState({ value });
+    };
 
-  render() {
-    const { value, ...other } = this.props;
+    closeOnEsc(e) {
+      if (e.keyCode === 27) {
+        this.handleCancel();
+      }
+    }
 
-    return (
-      <Dialog
-        disableBackdropClick
-        disableEscapeKeyDown
-        maxWidth="xs"
-        onEntering={this.handleEntering}
-        aria-labelledby="confirmation-dialog-title"
-        {...other}
-      >
-        <DialogTitle id="confirmation-dialog-title">Set Filter</DialogTitle>
-        <DialogContent>
-          <Select
-            native
-            name="filter"
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <option value="" />
+    render() {
+      const { value, ...other } = this.props;
+
+      return (
+        <Dialog
+          disableBackdropClick
+          disableEscapeKeyDown
+          maxWidth="xs"
+          onEntering={this.handleEntering}
+          aria-labelledby="confirmation-dialog-title"
+          {...other}
+        >
+          <DialogTitle id="confirmation-dialog-title">Set Filter</DialogTitle>
+          <DialogContent>
+            <Select
+              native
+              name="filter"
+              value={this.state.value}
+              onChange={this.handleChange}
+            >
+              <option value="" />
             ))}
-          </Select>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={this.handleCancel} color="primary">
+            </Select>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCancel} color="primary">
             Cancel
-          </Button>
-          <Button onClick={this.handleOk} color="primary">
+            </Button>
+            <Button onClick={this.handleOk} color="primary">
             Ok
-          </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  }
+            </Button>
+          </DialogActions>
+        </Dialog>
+      );
+    }
 }
 
 ConfirmationDialogRaw.propTypes = {
