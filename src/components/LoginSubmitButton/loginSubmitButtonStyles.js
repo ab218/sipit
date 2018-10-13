@@ -3,7 +3,7 @@ const styles = () => ({
     width: '80%',
     display: 'inline-block',
     backgroundColor: '#FFFF',
-    borderStyle: 'none',
+    //    borderStyle: 'none',
     marginTop: '50px',
     padding: '0.3em 1em',
     textDecoration: 'none',

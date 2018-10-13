@@ -2,7 +2,7 @@ const styles = () => ({
   container: {
     display: 'grid',
     flexWrap: 'wrap',
-    width: 300,
+    width: '0.3em',
     margin: '0 auto',
   },
   formBox: {
