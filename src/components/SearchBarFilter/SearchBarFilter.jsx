@@ -98,7 +98,6 @@ class SearchBarFilterDialog extends React.Component {
   }
 }
 
-
 const mapStateToProps = state => ({
   searchRadius: state.searchFields.searchRadius,
 });
