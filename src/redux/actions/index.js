@@ -92,14 +92,10 @@ export function getReviews(params) {
   };
 }
 
-export function searchCafes(e, locationSearch, page) {
+export function searchCafes(e, page) {
   return async (dispatch) => {
     e.preventDefault();
-    if (locationSearch === '') {
-      dispatch(makeFetchCafesThunk());
-    } else {
-      dispatch(makeFetchCafesThunk());
-    }
+    dispatch(makeFetchCafesThunk());
     if (page !== 'home') {
       dispatch({ type: REDIRECT, payload: true });
     }

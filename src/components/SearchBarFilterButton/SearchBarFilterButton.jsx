@@ -7,14 +7,6 @@ class SearchBarFilterButton extends React.Component {
     open: false,
   };
 
-  handleClick = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
   render() {
     const { open } = this.state;
     return (
@@ -23,11 +15,11 @@ class SearchBarFilterButton extends React.Component {
           style={{ color: '#FFFF' }}
           className="fas fa-filter"
           aria-label="filter"
-          onClick={this.handleClick}
+          onClick={() => this.setState({ open: true })}
         />
         <SearchBarFilter
           open={open}
-          handleClose={this.handleClose}
+          handleClose={() => this.setState({ open: false })}
         />
       </React.Fragment>
     );

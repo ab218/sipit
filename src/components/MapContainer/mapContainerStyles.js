@@ -7,7 +7,6 @@ const styles = {
     border: '5px solid #5d4427',
     borderRadius: '15px',
   },
-
   divStyle: {
     height: '100%',
     width: '100%',

@@ -17,9 +17,3 @@ export default class Routes extends Component {
     );
   }
 }
-
-{ /* <Route exact path="/" component={() => {
-    return <Home
-    favorites={this.state.favorites}
-    setFavorites={this.setFavorites} />
-}} /> */ }

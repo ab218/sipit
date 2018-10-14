@@ -22,16 +22,12 @@ class SearchBarButton extends Component {
 }
 
 const mapStateToProps = state => ({
-  myLatLng: state.getPosition.myLatLng,
-  cafeSearch: state.searchFields.searchName,
   locationSearch: state.searchFields.searchLocation,
-  resultsSearch: state.searchFields.searchResults,
-  radiusSearch: state.searchFields.searchRadius,
 });
 
 const mapDispatchToProps = dispatch => ({
-  searchCafes: (e, cafeSearch, locationSearch, resultsSearch, myLatLng, page) => {
-    dispatch(searchCafes(e, cafeSearch, locationSearch, resultsSearch, myLatLng, page));
+  searchCafes: (e, page) => {
+    dispatch(searchCafes(e, page));
   },
 });
 
