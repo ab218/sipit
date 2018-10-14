@@ -28,6 +28,7 @@ const styles = () => ({
   },
   actions: {
     display: 'inline-flex',
+    justifyContent: 'center',
   },
   buttons: {
     position: 'relative',
