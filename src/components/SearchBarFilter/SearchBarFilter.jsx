@@ -27,6 +27,7 @@ function NumberFormatCustom(props) {
           },
         });
       }}
+      allowNegative={false}
       thousandSeparator
       suffix=" meters"
     />
