@@ -12,6 +12,7 @@ import Reviews from './Reviews/Reviews';
 import SearchBar from './SearchBar/SearchBar';
 import SearchBarButton from './SearchBarButton/SearchBarButton';
 import SearchBarFilter from './SearchBarFilter/SearchBarFilter';
+import SearchBarFilterButton from './SearchBarFilterButton/SearchBarFilterButton';
 import SearchBarTextfields from './SearchBarTextfields/SearchBarTextfields';
 import ShareButtons from './ShareButtons/ShareButtons';
 import SignupFields from './SignupFields/SignupFields';
@@ -21,6 +22,6 @@ export {
   BusinessDetails, CafeCard, FavoriteButton, Footer,
   LoginFields, LoginSubmitButton, MapContainer, Navbar,
   RatingStar, ResultsDropdown, Reviews, SearchBar,
-  SearchBarButton, SearchBarFilter, SearchBarTextfields, ShareButtons,
+  SearchBarButton, SearchBarFilter, SearchBarFilterButton, SearchBarTextfields, ShareButtons,
   SignupFields, SlickCarousel,
 };

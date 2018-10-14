@@ -25,17 +25,20 @@ Promise((resolve, reject) => {
 export function makeFetchCafesThunk() {
   return async (dispatch, getState) => {
     const {
-      searchFields: { searchLocation: location, searchName: term, searchResults: limit },
+      searchFields: {
+        searchLocation: location, searchName: term, searchResults: limit, searchRadius: radius,
+      },
       getPosition: { myLatLng: latLng },
     } = getState();
-    let cardLocation;
     try {
       dispatch({ type: FETCH_CAFES_LOADING, payload: true });
+      const searchParams = { term, limit, radius };
       if (!location || location === ' ') {
-        cardLocation = await axios.post('/api/yelp/loc', { term, limit, latLng });
+        searchParams.latLng = latLng;
       } else {
-        cardLocation = await axios.post('/api/yelp/loc', { term, limit, location });
+        searchParams.location = location;
       }
+      const cardLocation = await axios.post('/api/yelp/loc', searchParams);
       const { latitude: lat, longitude: lng } = cardLocation.data[0].coordinates;
       await dispatch({ type: GET_POSITION, payload: { lat, lng } });
       dispatch({ type: FETCH_CAFES, payload: cardLocation.data });
@@ -89,13 +92,13 @@ export function getReviews(params) {
   };
 }
 
-export function searchCafes(e, cafeSearch, locationSearch, resultsSearch, myLatLng, page) {
+export function searchCafes(e, locationSearch, page) {
   return async (dispatch) => {
     e.preventDefault();
     if (locationSearch === '') {
-      dispatch(makeFetchCafesThunk(cafeSearch, resultsSearch, myLatLng));
+      dispatch(makeFetchCafesThunk());
     } else {
-      dispatch(makeFetchCafesThunk(cafeSearch, resultsSearch, locationSearch));
+      dispatch(makeFetchCafesThunk());
     }
     if (page !== 'home') {
       dispatch({ type: REDIRECT, payload: true });

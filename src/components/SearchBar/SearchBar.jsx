@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 // import MediaQuery from 'react-responsive';
 import styles from './searchBarStyles';
 import {
-  SearchBarButton, SearchBarTextfields, SearchBarFilter,
+  SearchBarButton, SearchBarTextfields, SearchBarFilterButton,
 } from '..';
 
 const SearchBar = (props) => {
@@ -18,7 +18,7 @@ const SearchBar = (props) => {
       {redirect && <Redirect to="/" />}
       <SearchBarTextfields />
       <SearchBarButton page={page} />
-      <SearchBarFilter />
+      <SearchBarFilterButton />
     </form>
   );
 };

@@ -1,9 +1,12 @@
-import { SEARCH_NAME, SEARCH_LOCATION, SEARCH_RESULTS } from '../../types';
+import {
+  SEARCH_NAME, SEARCH_LOCATION, SEARCH_RADIUS, SEARCH_RESULTS,
+} from '../../types';
 
 export default function (state = {
   searchName: 'coffee',
   searchLocation: '',
   searchResults: 10,
+  searchRadius: 1000,
 }, action) {
   const { type, payload } = action;
 
@@ -22,6 +25,11 @@ export default function (state = {
     return {
       ...state,
       searchResults: payload,
+    };
+  case SEARCH_RADIUS:
+    return {
+      ...state,
+      searchRadius: payload,
     };
   default:
     return state;
