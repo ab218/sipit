@@ -39,7 +39,6 @@ export function makeFetchCafesThunk() {
         searchParams.location = location;
       }
       const cardLocation = await axios.post('/api/yelp/loc', searchParams);
-      console.log(cardLocation);
       const { latitude: lat, longitude: lng } = cardLocation.data[0].coordinates;
       await dispatch({ type: GET_POSITION, payload: { lat, lng } });
       dispatch({ type: FETCH_CAFES, payload: cardLocation.data });

@@ -6,7 +6,7 @@ export default function (state = {
   searchName: 'coffee',
   searchLocation: '',
   searchResults: 10,
-  searchRadius: 1000,
+  searchRadius: 5000,
 }, action) {
   const { type, payload } = action;
 

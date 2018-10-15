@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 // import MediaQuery from 'react-responsive';
 import styles from './searchBarStyles';
 import {
-  SearchBarButton, SearchBarTextfields, SearchBarFilterButton,
+  SearchBarButton, SearchBarFilterSlider, SearchBarTextfields, SearchBarFilterButton,
 } from '..';
 
 const SearchBar = (props) => {

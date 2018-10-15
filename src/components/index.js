@@ -17,11 +17,13 @@ import SearchBarTextfields from './SearchBarTextfields/SearchBarTextfields';
 import ShareButtons from './ShareButtons/ShareButtons';
 import SignupFields from './SignupFields/SignupFields';
 import SlickCarousel from './SlickCarousel/SlickCarousel';
+import SearchBarFilterSlider from './SearchBarFilterSlider/SearchBarFilterSlider';
 
 export {
   BusinessDetails, CafeCard, FavoriteButton, Footer,
   LoginFields, LoginSubmitButton, MapContainer, Navbar,
   RatingStar, ResultsDropdown, Reviews, SearchBar,
-  SearchBarButton, SearchBarFilter, SearchBarFilterButton, SearchBarTextfields, ShareButtons,
+  SearchBarButton, SearchBarFilter, SearchBarFilterButton,
+  SearchBarFilterSlider, SearchBarTextfields, ShareButtons,
   SignupFields, SlickCarousel,
 };

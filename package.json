@@ -16,6 +16,7 @@
   "dependencies": {
     "@material-ui/core": "^1.5.1",
     "@material-ui/icons": "^2.0.3",
+    "@material-ui/lab": "^3.0.0-alpha.20",
     "autobind-decorator": "^2.1.0",
     "axios": "^0.18.0",
     "babel-core": "^6.26.0",
@@ -47,6 +48,7 @@
     "react-redux": "^5.0.7",
     "react-responsive": "^5.0.0",
     "react-router-dom": "^4.3.1",
+    "react-select": "^2.1.0",
     "react-share": "^2.3.1",
     "react-slick": "^0.23.1",
     "react-star-rating-component": "^1.4.1",
