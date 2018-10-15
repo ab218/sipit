@@ -17,9 +17,7 @@ class Home extends Component {
   componentDidMount = () => {
     const { loadPosition, getFavorites, cookies } = this.props;
     loadPosition();
-    if (cookies.get('user') !== undefined) {
-      getFavorites(cookies.get('user').id);
-    }
+    return cookies.get('user') && getFavorites(cookies.get('user').id);
   }
 
   componentDidUpdate = () => {

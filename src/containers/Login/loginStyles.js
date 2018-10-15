@@ -1,19 +1,16 @@
 const styles = () => ({
   container: {
-    display: 'grid',
-    flexWrap: 'wrap',
-    width: '0.3em',
+    display: 'flex',
+    width: '100%',
     margin: '0 auto',
+    maxWidth: '300px',
   },
   formBox: {
     padding: '3em',
     textAlign: 'center',
     backgroundColor: '#FFFF',
     borderRadius: '15%',
-    marginTop: '30px',
-    marginBottom: '30px',
-    top: '70px',
-    bottom: '70px',
+    margin: '30px 0',
   },
   title: {
     color: '#5d4427',
