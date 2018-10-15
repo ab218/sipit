@@ -36,7 +36,7 @@ const CafeCard = ({ cafe, classes, i }) => (
       <CardContent>
         <span>
           <RatingStar starRating={cafe.rating} />
-          <p>{`(${cafe.review_count} reviews)`}</p>
+          <p className={classes.reviewCnt}>{`(${cafe.review_count} reviews)`}</p>
         </span>
       </CardContent>
       <CardActions disableActionSpacing>

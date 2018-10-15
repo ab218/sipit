@@ -7,13 +7,14 @@ const styles = () => ({
     maxWidth: '25em',
     minWidth: '25em',
     maxHeight: 450,
-    paddingRight: 20,
-    paddingLeft: 20,
+    //    paddingRight: 20,
+    //    paddingLeft: 20,
     marginBottom: 20,
   },
   cafeTitle: {
     color: 'black',
-    fontSize: '22px',
+    fontSize: '18px',
+    fontWeight: 'bold',
   },
   spacer: {
     display: 'grid',
@@ -27,6 +28,7 @@ const styles = () => ({
   },
   actions: {
     display: 'inline-flex',
+    justifyContent: 'center',
   },
   buttons: {
     position: 'relative',
@@ -35,7 +37,11 @@ const styles = () => ({
   avatar: {
     backgroundColor: '#FC4A1A',
   },
-
+  reviewCnt: {
+    fontFamily: 'Quicksand',
+    color: '#FC4A1A',
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;
