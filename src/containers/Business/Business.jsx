@@ -9,10 +9,13 @@ import styles from './businessStyles';
 class Business extends Component {
   componentDidMount() {
     const {
-      getBusinessData, getReviews, match,
+      getBusinessData, getReviews, match, businessData,
     } = this.props;
-    getBusinessData(match.params.id);
-    getReviews(match.params.id);
+    // only fetch if it's a different cafe
+    if (businessData.id !== match.params.id) {
+      getBusinessData(match.params.id);
+      getReviews(match.params.id);
+    }
   }
 
   render() {
@@ -37,6 +40,7 @@ class Business extends Component {
 }
 
 const mapStateToProps = state => ({
+  businessData: state.fetchBusinessData.businessData,
   businessDataLoading: state.fetchBusinessData.businessDataLoading,
   reviewsDataLoading: state.fetchBusinessData.reviewsDataLoading,
   redirect: state.redirect.redirect,
