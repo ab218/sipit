@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import Snackbar from '@material-ui/core/Snackbar';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
-import { Navbar, CafeCard, MapContainer } from '../../components';
+import { CafeCard, MapContainer } from '../../components';
 import { loadPosition, makeFetchCafesThunk, getFavorites } from '../../redux/actions';
 import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../redux/types';
 import styles from './homeStyles';
@@ -16,15 +16,19 @@ class Home extends Component {
 
   componentDidMount = () => {
     const {
-      redirectFalse,
       loadPosition, getFavorites, cookies,
     } = this.props;
-    // after redirecting back to home, set back to false.
-    redirectFalse();
     loadPosition();
     if (cookies.get('user') !== undefined) {
       getFavorites(cookies.get('user').id);
     }
+  }
+
+  componentDidUpdate = () => {
+    const { redirectFalse } = this.props;
+    // this makes sure redirect gets set to false on home page on rerender
+    // (in the case of searching)
+    redirectFalse();
   }
 
   render() {
@@ -35,11 +39,7 @@ class Home extends Component {
     const { brewing, mainTheme, pushDown } = styles;
     return (
       <div style={mainTheme}>
-        <div style={pushDown}>
-          <Navbar
-            page="home"
-          />
-        </div>
+        <div style={pushDown} />
         {cafesList && <MapContainer />}
         {fetchCafesLoading
           ? <h1 style={brewing}>Brewing results...</h1>

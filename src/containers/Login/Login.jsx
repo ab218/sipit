@@ -3,7 +3,7 @@ import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
 import { withCookies, Cookies } from 'react-cookie';
-import { Navbar, LoginSubmitButton, LoginFields } from '../../components';
+import { LoginSubmitButton, LoginFields } from '../../components';
 import styles from './loginStyles';
 
 const mainTheme = {
@@ -35,9 +35,6 @@ class Login extends Component {
     const { email, password } = this.state;
     return (
       <div style={mainTheme}>
-        <Navbar
-          page="login"
-        />
         <div className={classes.container}>
           <div className={classes.formBox}>
             <h2 className={classes.title}>Sip-it</h2>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Navbar, BusinessDetails, Reviews } from '../../components';
+import { Redirect } from 'react-router-dom';
+import { BusinessDetails, Reviews } from '../../components';
 import { getBusinessData, getReviews } from '../../redux/actions';
-import { FETCH_CAFES } from '../../redux/types';
 import styles from './businessStyles';
 
 class Business extends Component {
@@ -16,13 +16,11 @@ class Business extends Component {
   }
 
   render() {
-    const { businessDataLoading, reviewsDataLoading } = this.props;
+    const { businessDataLoading, reviewsDataLoading, redirect } = this.props;
     const { mainTheme, loading } = styles;
     return (
       <div>
-        <Navbar
-          page="business"
-        />
+        {redirect && <Redirect to="/" />}
         <div style={mainTheme}>
           {businessDataLoading
             ? <h1 style={loading}>Brewing results ...</h1>
@@ -41,6 +39,7 @@ class Business extends Component {
 const mapStateToProps = state => ({
   businessDataLoading: state.fetchBusinessData.businessDataLoading,
   reviewsDataLoading: state.fetchBusinessData.reviewsDataLoading,
+  redirect: state.redirect.redirect,
 });
 
 const mapDispatchToProps = dispatch => ({

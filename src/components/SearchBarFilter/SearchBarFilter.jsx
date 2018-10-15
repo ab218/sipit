@@ -10,7 +10,7 @@ import { ResultsDropdown, SearchBarFilterSlider } from '..';
 import styles from './searchBarFilterStyles';
 
 class SearchBarFilterDialog extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     document.addEventListener('keydown', this.closeOnEsc.bind(this));
   }
 

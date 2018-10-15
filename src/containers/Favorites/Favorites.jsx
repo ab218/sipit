@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MediaQuery from 'react-responsive';
 import { getFavorites } from '../../redux/actions';
 import styles from './favoritesStyles';
-import { Navbar } from '../../components';
 
 function GetFavoritesComp({ favorites, cols }) {
   const { gridList, icon } = styles;
@@ -57,9 +56,6 @@ class Favorites extends Component {
     const { favorites } = this.props;
     return (
       <div style={mainTheme}>
-        <Navbar
-          page="favorites"
-        />
         {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
         <MediaQuery minWidth={1000}>
           <GetFavoritesComp

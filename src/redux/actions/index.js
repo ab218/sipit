@@ -93,13 +93,11 @@ export function getReviews(params) {
   };
 }
 
-export function searchCafes(e, page) {
+export function searchCafes(e) {
   return async (dispatch) => {
     e.preventDefault();
     dispatch(makeFetchCafesThunk());
-    if (page !== 'home') {
-      dispatch({ type: REDIRECT, payload: true });
-    }
+    dispatch({ type: REDIRECT, payload: true });
   };
 }
 
