@@ -1,7 +1,7 @@
 const styles = {
   mainTheme: {
     backgroundColor: '#C1A88B',
-    paddingBottom: '5em',
+    padding: '1em 0 5em',
   },
   wrapper: {
     backgroundColor: '#FFFF',

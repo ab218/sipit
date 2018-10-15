@@ -10,19 +10,9 @@ class NavbarComponent extends Component {
     cookies: instanceOf(Cookies).isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      logoutRedirect: false,
-    };
-  }
-
   logout = () => {
     const { cookies } = this.props;
     cookies.remove('user');
-    this.setState({
-      logoutRedirect: true,
-    });
   }
 
   render() {
@@ -31,12 +21,7 @@ class NavbarComponent extends Component {
       memberControl, logInBtn, signUpBtn, container1, container2, fontTitles, fontContents,
     } = styles;
 
-    const { logoutRedirect } = this.state;
     const { cookies, page } = this.props;
-
-    if (logoutRedirect) {
-      return <Redirect to="/login" />;
-    }
     return (
       <div className="navBar" style={navBar}>
         <Link style={{ color: '#FFFF' }} to="/">

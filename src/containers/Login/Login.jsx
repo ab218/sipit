@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { withCookies, Cookies } from 'react-cookie';
 import { LoginSubmitButton, LoginFields } from '../../components';
@@ -31,10 +33,11 @@ class Login extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, redirect } = this.props;
     const { email, password } = this.state;
     return (
       <div style={mainTheme}>
+        {redirect && <Redirect to="/" />}
         <div className={classes.container}>
           <div className={classes.formBox}>
             <h2 className={classes.title}>Sip-it</h2>
@@ -54,7 +57,12 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  redirect: state.redirect.redirect,
+});
+
 export default compose(
   withStyles(styles),
   withCookies,
+  connect(mapStateToProps, null),
 )(Login);

@@ -3,6 +3,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
 import PropTypes, { instanceOf } from 'prop-types';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { SignupFields } from '../../components';
 import styles from './signupStyles';
 import SignupSubmitButton from '../../components/SignupSubmitButton/SignupSubmitButton';
@@ -38,6 +39,7 @@ class Signup extends Component {
       const {
         email, password, confPassword, first_name, last_name, loginRedirect,
       } = this.state;
+      const { redirect } = this.props;
 
       if (loginRedirect) {
         return (
@@ -51,6 +53,7 @@ class Signup extends Component {
 
       return (
         <div style={mainTheme}>
+          {redirect && <Redirect to="/" />}
           <div style={wrapper}>
             <h2 style={title}>Sip-it</h2>
             <SignupFields
@@ -72,6 +75,12 @@ class Signup extends Component {
       );
     }
 }
+
+const mapStateToProps = state => ({
+  redirect: state.redirect.redirect,
+});
+
 export default compose(
   withCookies,
+  connect(mapStateToProps, null),
 )(Signup);

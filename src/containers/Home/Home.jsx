@@ -15,9 +15,7 @@ class Home extends Component {
   };
 
   componentDidMount = () => {
-    const {
-      loadPosition, getFavorites, cookies,
-    } = this.props;
+    const { loadPosition, getFavorites, cookies } = this.props;
     loadPosition();
     if (cookies.get('user') !== undefined) {
       getFavorites(cookies.get('user').id);
@@ -25,10 +23,10 @@ class Home extends Component {
   }
 
   componentDidUpdate = () => {
-    const { redirectFalse } = this.props;
+    const { redirect, redirectFalse } = this.props;
     // this makes sure redirect gets set to false on home page on rerender
     // (in the case of searching)
-    redirectFalse();
+    return redirect && redirectFalse();
   }
 
   render() {
@@ -61,6 +59,7 @@ const mapStateToProps = state => ({
   fetchCafesLoading: state.fetchCafes.cafesLoading,
   notificationIsOpen: state.notifications.show,
   latLng: state.getPosition.myLatLng,
+  redirect: state.redirect.redirect,
 });
 
 const dispatchAction = (dispatch, actionMaker) => (...args) => {

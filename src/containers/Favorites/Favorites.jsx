@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { connect } from 'react-redux';
@@ -53,9 +53,10 @@ class Favorites extends Component {
 
   render() {
     const { mainTheme, noFavorites } = styles;
-    const { favorites } = this.props;
+    const { favorites, redirect } = this.props;
     return (
       <div style={mainTheme}>
+        {redirect && <Redirect to="/" />}
         {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
         <MediaQuery minWidth={1000}>
           <GetFavoritesComp
@@ -88,6 +89,7 @@ class Favorites extends Component {
 
 const mapStateToProps = state => ({
   favorites: state.fetchFavorites.favorites,
+  redirect: state.redirect.redirect,
 });
 
 const mapDispatchToProps = dispatch => ({
