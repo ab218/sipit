@@ -11,7 +11,7 @@ class Business extends Component {
     const {
       getBusinessData, getReviews, match, businessData,
     } = this.props;
-    // only fetch if it's a different cafe
+    // only fetch if it's different from the previously selected cafe
     if (businessData.id !== match.params.id) {
       getBusinessData(match.params.id);
       getReviews(match.params.id);

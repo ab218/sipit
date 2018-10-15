@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import Snackbar from '@material-ui/core/Snackbar';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { CafeCard, MapContainer } from '../../components';
 import { loadPosition, makeFetchCafesThunk, getFavorites } from '../../redux/actions';
-import { REDIRECT, NOTIFICATION_SHOW, NOTIFICATION_HIDE } from '../../redux/types';
+import { REDIRECT } from '../../redux/types';
 import styles from './homeStyles';
 
 class Home extends Component {
@@ -30,10 +29,7 @@ class Home extends Component {
   }
 
   render() {
-    const {
-      cafesList, fetchCafesLoading,
-      notificationIsOpen, notificationHide,
-    } = this.props;
+    const { cafesList, fetchCafesLoading } = this.props;
     const { brewing, mainTheme, pushDown } = styles;
     return (
       <div style={mainTheme}>
@@ -43,12 +39,6 @@ class Home extends Component {
           ? <h1 style={brewing}>Brewing results...</h1>
           : <CafeCard />
         }
-        <Snackbar
-          open={notificationIsOpen}
-          onClose={notificationHide}
-          message={<p>Login successful</p>}
-          autoHideDuration={2000}
-        />
       </div>
     );
   }
@@ -57,7 +47,6 @@ class Home extends Component {
 const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
   fetchCafesLoading: state.fetchCafes.cafesLoading,
-  notificationIsOpen: state.notifications.show,
   latLng: state.getPosition.myLatLng,
   redirect: state.redirect.redirect,
 });
@@ -73,14 +62,6 @@ const mapDispatchToProps = dispatch => ({
 
   redirectFalse: () => dispatch({
     type: REDIRECT,
-    payload: false,
-  }),
-  notificationShow: () => dispatch({
-    type: NOTIFICATION_SHOW,
-    payload: true,
-  }),
-  notificationHide: () => dispatch({
-    type: NOTIFICATION_HIDE,
     payload: false,
   }),
 });
