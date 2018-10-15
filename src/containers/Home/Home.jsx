@@ -59,11 +59,7 @@ const mapDispatchToProps = dispatch => ({
   loadPosition: dispatchAction(dispatch, loadPosition),
   makeFetchCafes: dispatchAction(dispatch, makeFetchCafesThunk),
   getFavorites: dispatchAction(dispatch, getFavorites),
-
-  redirectFalse: () => dispatch({
-    type: REDIRECT,
-    payload: false,
-  }),
+  redirectFalse: () => dispatch({ type: REDIRECT, payload: false }),
 });
 
 export default compose(

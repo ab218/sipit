@@ -10,6 +10,7 @@ const MapContainer = (props) => {
     myLatLng, recenter, google, cafesList,
   } = props;
   const { divStyle, main } = styles;
+  // note added asd pleas fail ugh
   return (
     <div style={divStyle}>
       <Map
@@ -17,7 +18,8 @@ const MapContainer = (props) => {
         zoom={12}
         style={main}
         initialCenter={{
-          lat: myLatLng.lat, lng: myLatLng.lng,
+          lat: recenter.lat || myLatLng.lat,
+          lng: recenter.lng || myLatLng.lng,
         }}
         center={{
           lat: recenter.lat || myLatLng.lat,
