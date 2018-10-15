@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
   ADD_ERROR, FETCH_BUSINESS_DATA, FETCH_BUSINESS_DATA_LOADING,
   FETCH_CAFES, FETCH_CAFES_LOADING, FETCH_FAVORITES,
-  FETCH_REVIEWS_DATA, FETCH_REVIEWS_DATA_LOADING, GET_POSITION, REDIRECT,
+  FETCH_REVIEWS_DATA, FETCH_REVIEWS_DATA_LOADING, GET_POSITION,
+  REDIRECT, RECENTER_MAP,
 } from '../types';
 
 export function getFavorites(userId) {
@@ -40,7 +41,7 @@ export function makeFetchCafesThunk() {
       }
       const cardLocation = await axios.post('/api/yelp/loc', searchParams);
       const { latitude: lat, longitude: lng } = cardLocation.data[0].coordinates;
-      await dispatch({ type: GET_POSITION, payload: { lat, lng } });
+      await dispatch({ type: RECENTER_MAP, payload: { lat, lng } });
       dispatch({ type: FETCH_CAFES, payload: cardLocation.data });
       dispatch({ type: FETCH_CAFES_LOADING, payload: false });
     } catch (err) {

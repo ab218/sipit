@@ -49,23 +49,5 @@ class SearchBarFilterDialog extends React.Component {
   }
 }
 
-<<<<<<< HEAD
 
 export default withStyles(styles)(SearchBarFilterDialog);
-=======
-const mapStateToProps = state => ({
-  searchRadius: state.searchFields.searchRadius,
-});
-
-const mapDispatchToProps = dispatch => ({
-  setRadius: results => dispatch({
-    type: SEARCH_RADIUS,
-    payload: results,
-  }),
-});
-
-export default compose(
-  withStyles(styles),
-  connect(mapStateToProps, mapDispatchToProps),
-)(SearchBarFilterDialog);
->>>>>>> 328db31fe5884d52521135746c3836d5fb497896

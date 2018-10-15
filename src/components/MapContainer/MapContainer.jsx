@@ -6,7 +6,9 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import styles from './mapContainerStyles';
 
 const MapContainer = (props) => {
-  const { myLatLng: { lat, lng }, google, cafesList } = props;
+  const {
+    myLatLng, recenter, google, cafesList,
+  } = props;
   const { divStyle, main } = styles;
   return (
     <div style={divStyle}>
@@ -15,10 +17,11 @@ const MapContainer = (props) => {
         zoom={12}
         style={main}
         initialCenter={{
-          lat, lng,
+          lat: myLatLng.lat, lng: myLatLng.lng,
         }}
         center={{
-          lat, lng,
+          lat: recenter.lat || myLatLng.lat,
+          lng: recenter.lng || myLatLng.lng,
         }}
       >
         {cafesList.map((marker, i) => (
@@ -40,6 +43,7 @@ const MapContainer = (props) => {
 const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
   myLatLng: state.getPosition.myLatLng,
+  recenter: state.recenterMap.myLatLng,
 });
 
 export default compose(
