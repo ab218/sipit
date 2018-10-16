@@ -28,12 +28,15 @@ export function makeFetchCafesThunk() {
     const {
       searchFields: {
         searchLocation: location, searchName: term, searchResults: limit, searchRadius: radius,
+        searchOpenNow: open_now,
       },
       getPosition: { myLatLng: latLng },
     } = getState();
     try {
       dispatch({ type: FETCH_CAFES_LOADING, payload: true });
-      const searchParams = { term, limit, radius };
+      const searchParams = {
+        term, limit, radius, open_now,
+      };
       if (!location || location === ' ') {
         searchParams.latLng = latLng;
       } else {
