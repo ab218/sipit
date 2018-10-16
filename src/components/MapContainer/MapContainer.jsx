@@ -10,7 +10,7 @@ const MapContainer = (props) => {
     myLatLng, recenter, google, cafesList,
   } = props;
   const { divStyle, main } = styles;
-  // note added asd pleas fail ugh
+  // note added
   return (
     <div style={divStyle}>
       <Map
