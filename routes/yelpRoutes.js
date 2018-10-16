@@ -12,8 +12,12 @@ const yelpApi = axios.create({
 
 router.post('/loc', async (req, res) => {
   try {
-    const { limit, term, radius } = req.body;
-    const params = { limit, term, radius };
+    const {
+      limit, term, radius, open_now,
+    } = req.body;
+    const params = {
+      limit, term, radius, open_now,
+    };
     console.log(req.body);
     if (req.body.location) {
       params.location = req.body.location;

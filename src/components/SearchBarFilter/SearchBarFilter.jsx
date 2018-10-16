@@ -6,7 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Dialog from '@material-ui/core/Dialog';
-import { ResultsDropdown, SearchBarFilterSlider } from '..';
+import { ResultsDropdown, SearchBarFilterSlider, SearchBarFilterCheckbox } from '..';
 import styles from './searchBarFilterStyles';
 
 class SearchBarFilterDialog extends React.Component {
@@ -39,6 +39,7 @@ class SearchBarFilterDialog extends React.Component {
         <DialogContent>
           <SearchBarFilterSlider />
           <ResultsDropdown />
+          <SearchBarFilterCheckbox />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">Cancel</Button>

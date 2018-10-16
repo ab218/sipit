@@ -19,8 +19,6 @@ const styles = () => ({
   spacer: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(25em, 1fr));',
-    paddingLeft: 20,
-    paddingRight: 20,
   },
   media: {
     height: 0,
