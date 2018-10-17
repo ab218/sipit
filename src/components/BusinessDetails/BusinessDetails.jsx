@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { SlickCarousel } from '..';
 import styles from './businessDetailsStyles';
 
+// const getDay = () => new Date().getDay() - 1;
+
 function HoursComp({ isOpenNow, endHours }) {
   const { open, close } = styles;
   if (isOpenNow) {
