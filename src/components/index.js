@@ -19,6 +19,7 @@ import SignupFields from './SignupFields/SignupFields';
 import SlickCarousel from './SlickCarousel/SlickCarousel';
 import SearchBarFilterSlider from './SearchBarFilterSlider/SearchBarFilterSlider';
 import SearchBarFilterCheckbox from './SearchBarFilterCheckbox/SearchBarFilterCheckbox';
+import SearchByMenu from './SearchByMenu/SearchByMenu';
 
 export {
   BusinessDetails, CafeCard, FavoriteButton, Footer,
@@ -26,5 +27,5 @@ export {
   RatingStar, ResultsDropdown, Reviews, SearchBar,
   SearchBarButton, SearchBarFilter, SearchBarFilterButton,
   SearchBarFilterCheckbox, SearchBarFilterSlider, SearchBarTextfields,
-  ShareButtons, SignupFields, SlickCarousel,
+  SearchByMenu, ShareButtons, SignupFields, SlickCarousel,
 };

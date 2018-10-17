@@ -1,5 +1,6 @@
 import {
-  SEARCH_NAME, SEARCH_LOCATION, SEARCH_RADIUS, SEARCH_RESULTS, SEARCH_OPEN_NOW,
+  SEARCH_NAME, SEARCH_LOCATION, SEARCH_RADIUS,
+  SEARCH_RESULTS, SEARCH_OPEN_NOW, SEARCH_SORT_BY,
 } from '../../types';
 
 export default function (state = {
@@ -8,6 +9,7 @@ export default function (state = {
   searchResults: 10,
   searchRadius: 5000,
   searchOpenNow: false,
+  searchSortBy: 'best_match',
 }, action) {
   const { type, payload } = action;
 
@@ -36,6 +38,11 @@ export default function (state = {
     return {
       ...state,
       searchOpenNow: payload,
+    };
+  case SEARCH_SORT_BY:
+    return {
+      ...state,
+      searchSortBy: payload,
     };
   default:
     return state;
