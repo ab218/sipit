@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import { SEARCH_RESULTS } from '../../redux/types';
 import styles from './resultsDropdownStyles';
 
@@ -20,22 +21,25 @@ class ResultsDropdown extends Component {
     const { open } = this.state;
     return (
       <FormControl className={formControl}>
-        <Select
-          open={open}
-          onClose={() => this.setState({ open: false })}
-          onOpen={() => this.setState({ open: true })}
-          onChange={e => setResults(e.target.value)}
-          value={resultsSearch}
-          input={(
-            <Input
-              disableUnderline
-            />
-          )}
-        >
-          <MenuItem value={10}>10</MenuItem>
-          <MenuItem value={20}>20</MenuItem>
-          <MenuItem value={30}>30</MenuItem>
-        </Select>
+        <span>
+          <Select
+            open={open}
+            onClose={() => this.setState({ open: false })}
+            onOpen={() => this.setState({ open: true })}
+            onChange={e => setResults(e.target.value)}
+            value={resultsSearch}
+            input={(
+              <Input
+                disableUnderline
+              />
+            )}
+          >
+            <MenuItem value={10}>10</MenuItem>
+            <MenuItem value={20}>20</MenuItem>
+            <MenuItem value={30}>30</MenuItem>
+          </Select>
+        # of Results
+        </span>
       </FormControl>
     );
   }

@@ -63,6 +63,11 @@ export function loadPosition() {
       await dispatch(makeFetchCafesThunk());
     } catch (err) {
       console.log('failed to get position.', err);
+      if (err.code <= 3) {
+        await dispatch({ type: GET_POSITION, payload: { lat: 49.27, lng: -123.12 } });
+        await dispatch(makeFetchCafesThunk());
+        console.log('loading default position');
+      }
       dispatch({ type: ADD_ERROR, error: err });
     }
   };
