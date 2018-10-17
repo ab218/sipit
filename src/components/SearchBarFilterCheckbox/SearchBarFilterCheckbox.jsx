@@ -22,7 +22,7 @@ class SearchBarFilterCheckbox extends React.Component {
           color="primary"
         />
         {' '}
-Open Now
+Is Open Now
       </div>
     );
   }
