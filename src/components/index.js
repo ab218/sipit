@@ -1,4 +1,5 @@
 import BusinessDetails from './BusinessDetails/BusinessDetails';
+import BusinessDetailsHours from './BusinessDetailsHours/BusinessDetailsHours';
 import CafeCard from './CafeCard/CafeCard';
 import FavoriteButton from './FavoriteButton/FavoriteButton';
 import Footer from './Footer/Footer';
@@ -22,7 +23,7 @@ import SearchBarFilterCheckbox from './SearchBarFilterCheckbox/SearchBarFilterCh
 import SearchByMenu from './SearchByMenu/SearchByMenu';
 
 export {
-  BusinessDetails, CafeCard, FavoriteButton, Footer,
+  BusinessDetails, BusinessDetailsHours, CafeCard, FavoriteButton, Footer,
   LoginFields, LoginSubmitButton, MapContainer, Navbar,
   RatingStar, ResultsDropdown, Reviews, SearchBar,
   SearchBarButton, SearchBarFilter, SearchBarFilterButton,

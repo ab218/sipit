@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { SlickCarousel } from '..';
+import { SlickCarousel, BusinessDetailsHours } from '..';
 import styles from './businessDetailsStyles';
 
 // const getDay = () => new Date().getDay() - 1;
@@ -42,6 +42,7 @@ const BusinessDetails = (props) => {
             )
       }
       <br />
+      <BusinessDetailsHours hours={businessData.hours[0].open} />
     </div>
   );
 };
