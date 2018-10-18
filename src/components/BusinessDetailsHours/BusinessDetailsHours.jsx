@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+const addColon = time => time.replace(/\b(\d{1,2})(\d{2})/g, '$1:$2');
+
 const convertDay = (day) => {
   switch (day) {
   case 0:
@@ -59,8 +61,8 @@ const BusinessDetailsHours = (props) => {
               <TableCell component="th" scope="row">
                 {convertDay(row.day)}
               </TableCell>
-              <TableCell>{row.start}</TableCell>
-              <TableCell>{row.end}</TableCell>
+              <TableCell>{addColon(row.start)}</TableCell>
+              <TableCell>{addColon(row.end)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
