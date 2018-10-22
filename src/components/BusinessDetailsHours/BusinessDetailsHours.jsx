@@ -10,25 +10,26 @@ import Paper from '@material-ui/core/Paper';
 
 const addColon = time => time.replace(/\b(\d{1,2})(\d{2})/g, '$1:$2');
 
-const convertDay = (day) => {
-  switch (day) {
-  case 0:
-    return 'Monday';
-  case 1:
-    return 'Tuesday';
-  case 2:
-    return 'Wednesday';
-  case 3:
-    return 'Thursday';
-  case 4:
-    return 'Friday';
-  case 5:
-    return 'Saturday';
-  case 6:
-    return 'Sunday';
-  default:
-    return null;
-  }
+const days = {
+  0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday',
+};
+
+function getDay(day) {
+  return days[day];
+}
+
+const MapFunction = ({ hours }) => {
+  console.log(hours);
+  const arr = hours.map((row, i) => (
+    <TableRow key={i}>
+      <TableCell component="th" scope="row">
+        {getDay(row.day)}
+      </TableCell>
+      <TableCell>{addColon(row.start)}</TableCell>
+      <TableCell>{addColon(row.end)}</TableCell>
+    </TableRow>
+  ));
+  return arr;
 };
 
 const styles = theme => ({
@@ -56,15 +57,9 @@ const BusinessDetailsHours = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.hours.map((row, i) => (
-            <TableRow key={i}>
-              <TableCell component="th" scope="row">
-                {convertDay(row.day)}
-              </TableCell>
-              <TableCell>{addColon(row.start)}</TableCell>
-              <TableCell>{addColon(row.end)}</TableCell>
-            </TableRow>
-          ))}
+          <MapFunction
+            hours={props.hours}
+          />
         </TableBody>
       </Table>
     </Paper>

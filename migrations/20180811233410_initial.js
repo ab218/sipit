@@ -36,6 +36,8 @@ exports.up = function (knex, Promise) {
       table.string('body');
       table.string('url');
       table.string('image_url');
+      table.float('lat');
+      table.float('lng');
       table.integer('user_id').references('id').inTable('users').onDelete('cascade');
       table.timestamp('created_at').defaultTo(knex.fn.now());
     }),

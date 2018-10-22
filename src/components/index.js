@@ -2,6 +2,7 @@ import BusinessDetails from './BusinessDetails/BusinessDetails';
 import BusinessDetailsHours from './BusinessDetailsHours/BusinessDetailsHours';
 import CafeCard from './CafeCard/CafeCard';
 import FavoriteButton from './FavoriteButton/FavoriteButton';
+import FavoritesMapContainer from './FavoritesMapContainer/FavoritesMapContainer';
 import Footer from './Footer/Footer';
 import LoginFields from './LoginFields/LoginFields';
 import LoginSubmitButton from './LoginSubmitButton/LoginSubmitButton';
@@ -23,9 +24,9 @@ import SearchBarFilterCheckbox from './SearchBarFilterCheckbox/SearchBarFilterCh
 import SearchByMenu from './SearchByMenu/SearchByMenu';
 
 export {
-  BusinessDetails, BusinessDetailsHours, CafeCard, FavoriteButton, Footer,
-  LoginFields, LoginSubmitButton, MapContainer, Navbar,
-  RatingStar, ResultsDropdown, Reviews, SearchBar,
+  BusinessDetails, BusinessDetailsHours, CafeCard, FavoriteButton,
+  FavoritesMapContainer, Footer, LoginFields, LoginSubmitButton,
+  MapContainer, Navbar, RatingStar, ResultsDropdown, Reviews, SearchBar,
   SearchBarButton, SearchBarFilter, SearchBarFilterButton,
   SearchBarFilterCheckbox, SearchBarFilterSlider, SearchBarTextfields,
   SearchByMenu, ShareButtons, SignupFields, SlickCarousel,

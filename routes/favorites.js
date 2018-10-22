@@ -3,6 +3,16 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (knex) => {
+  router.get('/', (req, res) => {
+    knex.select('*').from('favorites')
+      .then((results) => {
+        res.json(results);
+      })
+      .catch((e) => {
+        res.status(500).send(e);
+      });
+  });
+
   router.get('/:id', (req, res) => {
     knex.select('*').from('favorites')
       .where('user_id', '=', req.params.id)
@@ -16,7 +26,7 @@ module.exports = (knex) => {
 
   router.post('/add', (req, res) => {
     const {
-      title, url, user_id, image_url,
+      title, url, user_id, image_url, coords,
     } = req.body;
     knex('favorites')
       .insert({
@@ -25,6 +35,8 @@ module.exports = (knex) => {
         url,
         user_id,
         image_url,
+        lat: coords.latitude,
+        lng: coords.longitude,
       })
       .then(() => {
         res.json({

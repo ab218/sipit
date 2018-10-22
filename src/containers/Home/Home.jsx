@@ -30,10 +30,9 @@ class Home extends Component {
 
   render() {
     const { cafesList, fetchCafesLoading } = this.props;
-    const { brewing, mainTheme, pushDown } = styles;
+    const { brewing, mainTheme } = styles;
     return (
       <div style={mainTheme}>
-        <div style={pushDown} />
         {cafesList && <MapContainer />}
         {fetchCafesLoading
           ? <h1 style={brewing}>Brewing results...</h1>

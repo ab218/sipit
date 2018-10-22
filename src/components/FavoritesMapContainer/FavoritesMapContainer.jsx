@@ -3,38 +3,38 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-import styles from './mapContainerStyles';
+import styles from './favoritesMapContainerStyles';
 
-const MapContainer = (props) => {
+const FavoritesMapContainer = (props) => {
   const {
-    myLatLng, recenter, google, cafesList,
+    google, favorites, recenterFavoritesMap, zoom,
   } = props;
   const { divStyle, main } = styles;
 
   return (
     <div style={divStyle}>
-      {cafesList
+      {favorites
       && (
         <Map
           google={google}
-          zoom={12}
+          zoom={zoom || 2}
           style={main}
           initialCenter={{
-            lat: recenter.lat || myLatLng.lat,
-            lng: recenter.lng || myLatLng.lng,
+            lat: recenterFavoritesMap.lat || favorites[0].lat,
+            lng: recenterFavoritesMap.lng || favorites[0].lng,
           }}
           center={{
-            lat: recenter.lat || myLatLng.lat,
-            lng: recenter.lng || myLatLng.lng,
+            lat: recenterFavoritesMap.lat || favorites[0].lat,
+            lng: recenterFavoritesMap.lng || favorites[0].lng,
           }}
         >
-          {cafesList.map((marker, i) => (
+          {favorites.map((marker, i) => (
             <Marker
               key={marker.id}
               name={marker.name}
               position={{
-                lat: marker.coordinates.latitude,
-                lng: marker.coordinates.longitude,
+                lat: marker.lat,
+                lng: marker.lng,
               }}
               label={(i + 1).toString()}
             />
@@ -47,9 +47,9 @@ const MapContainer = (props) => {
 };
 
 const mapStateToProps = state => ({
-  cafesList: state.fetchCafes.cafesList,
-  myLatLng: state.getPosition.myLatLng,
-  recenter: state.recenterMap.myLatLng,
+  favorites: state.fetchFavorites.favorites,
+  recenterFavoritesMap: state.recenterMap.favLatLng,
+  zoom: state.recenterMap.zoom,
 });
 
 export default compose(
@@ -57,4 +57,4 @@ export default compose(
     apiKey: process.env.GOOGLE_API_KEY,
   }),
   connect(mapStateToProps, null),
-)(MapContainer);
+)(FavoritesMapContainer);

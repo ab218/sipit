@@ -2,8 +2,9 @@ const styles = {
   mainTheme: {
     backgroundColor: 'pink',
     height: '100%',
+  },
+  flexBoxContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
     justifyContent: 'space-around',
   },
   gridList: {

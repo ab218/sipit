@@ -125,7 +125,7 @@ export function addFavorite(cafe, userId) {
   return async (dispatch) => {
     try {
       await axios.post('/api/favorites/add', {
-        title: cafe.name, url: cafe.id, image_url: cafe.image_url, user_id: userId,
+        title: cafe.name, url: cafe.id, image_url: cafe.image_url, user_id: userId, coords: cafe.coordinates,
       });
       dispatch(getFavorites(userId));
     } catch (err) {

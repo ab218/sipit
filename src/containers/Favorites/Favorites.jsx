@@ -12,17 +12,23 @@ import IconButton from '@material-ui/core/IconButton';
 import MediaQuery from 'react-responsive';
 import { getFavorites } from '../../redux/actions';
 import styles from './favoritesStyles';
+import { FavoritesMapContainer } from '../../components';
+import { RECENTER_FAVORITES_MAP } from '../../redux/types';
 
-function GetFavoritesComp({ favorites, cols }) {
+function GetFavoritesComp({ recenterFavoritesMap, favorites, cols }) {
   const { gridList, icon } = styles;
   return (
     <GridList spacing={20} cellHeight={180} cols={cols} style={gridList}>
-      {favorites.map(tile => (
+      {favorites.map((tile, i) => (
         <GridListTile key={tile.url}>
-          <img src={tile.image_url} alt={tile.title} />
+          <img
+            src={tile.image_url}
+            alt={tile.title}
+            onClick={() => recenterFavoritesMap(tile.lat, tile.lng)}
+          />
           <Link to={`/business/${tile.url}`}>
             <GridListTileBar
-              title={tile.title}
+              title={`${i + 1}. ${tile.title}`}
               subtitle={(
                 <span>
                   {`favorited: ${tile.created_at}`}
@@ -52,36 +58,43 @@ class Favorites extends Component {
   }
 
   render() {
-    const { mainTheme, noFavorites } = styles;
-    const { favorites, redirect } = this.props;
+    const { mainTheme, noFavorites, flexBoxContainer } = styles;
+    const { favorites, redirect, recenterFavoritesMap } = this.props;
     return (
       <div style={mainTheme}>
-        {redirect && <Redirect to="/" />}
-        {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
-        <MediaQuery minWidth={1000}>
-          <GetFavoritesComp
-            favorites={favorites}
-            cols={4}
-          />
-        </MediaQuery>
-        <MediaQuery minWidth={800} maxWidth={1000}>
-          <GetFavoritesComp
-            favorites={favorites}
-            cols={3}
-          />
-        </MediaQuery>
-        <MediaQuery minWidth={550} maxWidth={800}>
-          <GetFavoritesComp
-            favorites={favorites}
-            cols={2}
-          />
-        </MediaQuery>
-        <MediaQuery maxWidth={550}>
-          <GetFavoritesComp
-            favorites={favorites}
-            cols={1}
-          />
-        </MediaQuery>
+        <FavoritesMapContainer />
+        <div style={flexBoxContainer}>
+          {redirect && <Redirect to="/" />}
+          {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
+          <MediaQuery minWidth={1000}>
+            <GetFavoritesComp
+              recenterFavoritesMap={recenterFavoritesMap}
+              favorites={favorites}
+              cols={4}
+            />
+          </MediaQuery>
+          <MediaQuery minWidth={800} maxWidth={1000}>
+            <GetFavoritesComp
+              recenterFavoritesMap={recenterFavoritesMap}
+              favorites={favorites}
+              cols={3}
+            />
+          </MediaQuery>
+          <MediaQuery minWidth={550} maxWidth={800}>
+            <GetFavoritesComp
+              recenterFavoritesMap={recenterFavoritesMap}
+              favorites={favorites}
+              cols={2}
+            />
+          </MediaQuery>
+          <MediaQuery maxWidth={550}>
+            <GetFavoritesComp
+              recenterFavoritesMap={recenterFavoritesMap}
+              favorites={favorites}
+              cols={1}
+            />
+          </MediaQuery>
+        </div>
       </div>
     );
   }
@@ -90,11 +103,15 @@ class Favorites extends Component {
 const mapStateToProps = state => ({
   favorites: state.fetchFavorites.favorites,
   redirect: state.redirect.redirect,
+  cafesList: state.fetchCafes.cafesList,
 });
 
 const mapDispatchToProps = dispatch => ({
   getFavorites: (user_id) => {
     dispatch(getFavorites(user_id));
+  },
+  recenterFavoritesMap: (lat, lng) => {
+    dispatch({ type: RECENTER_FAVORITES_MAP, payload: { lat, lng } });
   },
 });
 
