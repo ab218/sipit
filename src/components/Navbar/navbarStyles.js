@@ -25,6 +25,7 @@ const styles = {
     display: 'inline',
     fontSize: 'calc(15px + 0.25vw)',
     order: '1',
+    height: '0',
   },
   logInBtn: {
     backgroundColor: '#f26622',
@@ -46,6 +47,7 @@ const styles = {
     display: 'inline-flex',
     fontSize: '20px',
     order: '1',
+    height: '0',
   },
   container2: {
     minWidth: '360px',
@@ -55,6 +57,8 @@ const styles = {
     flexWrap: 'wrap',
     order: '2',
     flexGrow: '2',
+    height: '0',
+
   },
   fontTitles: {
     fontFamily: 'Maven Pro',
