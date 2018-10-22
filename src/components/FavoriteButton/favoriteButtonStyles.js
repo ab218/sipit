@@ -1,6 +1,6 @@
 const styles = {
   button: {
-    margin: '0 2em',
+    margin: '0 6em',
   },
 };
 

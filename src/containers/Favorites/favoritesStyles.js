@@ -19,6 +19,9 @@ const styles = {
     border: '3px solid grey',
     borderRadius: '1em',
   },
+  hoverImg: {
+    opacity: '0.7',
+  },
   link: {
     width: '100%',
     color: 'white',

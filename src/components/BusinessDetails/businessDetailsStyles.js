@@ -4,6 +4,7 @@ const styles = {
     maxWidth: '500px',
     margin: 'auto',
     textAlign: 'center',
+    width: '100%',
   },
   title: {
     color: 'grey',

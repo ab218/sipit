@@ -19,7 +19,6 @@ function getDay(day) {
 }
 
 const MapHours = ({ hours }) => {
-  console.log(hours);
   const arr = hours.map((row, i) => (
     <TableRow key={i}>
       <TableCell component="th" scope="row">
@@ -37,9 +36,9 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+    margin: '0 0 2em',
   },
   table: {
-    minWidth: 100,
   },
 });
 

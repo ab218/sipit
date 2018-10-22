@@ -22,15 +22,11 @@ const BusinessDetails = (props) => {
   const { container, title } = styles;
   return (
     <div style={container}>
-      <h3 style={title}>
-        {businessData.name}
-      </h3>
+      <h3 style={title}>{businessData.name}</h3>
       <SlickCarousel businessData={businessData} />
       <br />
-      {
-        businessData.location.display_address
-          .map(sub => <h5 style={title} key={sub}>{sub}</h5>)
-      }
+      {businessData.location.display_address
+        .map(address => <h5 style={title} key={address}>{address}</h5>)}
       <br />
       <h5 style={title}>{businessData.display_phone}</h5>
       {businessData.hours
@@ -41,7 +37,6 @@ const BusinessDetails = (props) => {
               />
             )
       }
-      <br />
       <BusinessDetailsHours hours={businessData.hours[0].open} />
     </div>
   );

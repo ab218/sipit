@@ -28,7 +28,6 @@ const CafeCard = ({ cafe, classes, i }) => (
           </Avatar>
         )}
       />
-
       <CardMedia
         className={classes.media}
         image={cafe.image_url || 'http://www.vibeshifting.com/wp-content/plugins/InstaBuilder/images/unavailable-200x145.png'}
@@ -39,9 +38,9 @@ const CafeCard = ({ cafe, classes, i }) => (
           <p className={classes.reviewCnt}>{`(${cafe.review_count} reviews)`}</p>
         </span>
       </CardContent>
-      <CardActions disableActionSpacing>
+      <CardActions disableActionSpacing style={{ display: 'flex' }}>
         <ShareButtons cafe={cafe} />
-        <FavoriteButton cafe={cafe} />
+        <FavoriteButton cafe={cafe} style={{ alignSelf: 'flex-end' }} />
       </CardActions>
     </Card>
   </div>
