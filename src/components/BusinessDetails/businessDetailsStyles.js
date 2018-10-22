@@ -1,10 +1,9 @@
 
 const styles = {
   container: {
-    maxWidth: '500px',
+    maxWidth: '350px',
     margin: 'auto',
     textAlign: 'center',
-    width: '100%',
   },
   title: {
     color: 'grey',

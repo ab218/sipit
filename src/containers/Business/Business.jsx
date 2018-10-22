@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { BusinessDetails, Reviews } from '../../components';
+import { BusinessDetails, ReviewsYelp } from '../../components';
 import { getBusinessData, getReviews } from '../../redux/actions';
 import styles from './businessStyles';
 
@@ -31,7 +31,7 @@ class Business extends Component {
           }
           {reviewsDataLoading
             ? <h1 style={loading}>Brewing reviews ...</h1>
-            : <Reviews />
+            : <ReviewsYelp />
           }
         </div>
       </div>
