@@ -18,7 +18,7 @@ function getDay(day) {
   return days[day];
 }
 
-const MapFunction = ({ hours }) => {
+const MapHours = ({ hours }) => {
   console.log(hours);
   const arr = hours.map((row, i) => (
     <TableRow key={i}>
@@ -44,7 +44,7 @@ const styles = theme => ({
 });
 
 const BusinessDetailsHours = (props) => {
-  const { classes } = props;
+  const { classes, hours } = props;
 
   return (
     <Paper className={classes.root}>
@@ -57,8 +57,8 @@ const BusinessDetailsHours = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          <MapFunction
-            hours={props.hours}
+          <MapHours
+            hours={hours}
           />
         </TableBody>
       </Table>

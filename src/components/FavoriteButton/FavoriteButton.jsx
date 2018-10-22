@@ -28,7 +28,7 @@ const FavoriteButton = (props) => {
                 && (isFavorite(cafe)
                   ? (
                     <Tooltip title="Remove from favorites" placement="top">
-                      <IconButton style={button} onClick={() => removeFavorite(cafe.id, cookies.get('user').id)} aria-label="Add to favorites">
+                      <IconButton style={button} onClick={() => removeFavorite(cafe.id, cookies.get('user').id)} aria-label="Remove from favorites">
                         <FavoriteIcon color="error" />
                       </IconButton>
                     </Tooltip>

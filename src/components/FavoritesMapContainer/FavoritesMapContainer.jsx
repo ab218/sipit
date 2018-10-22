@@ -12,37 +12,38 @@ const FavoritesMapContainer = (props) => {
   const { divStyle, main } = styles;
 
   return (
-    <div style={divStyle}>
-      {favorites
+    <React.Fragment>
+      {favorites.length
       && (
-        <Map
-          google={google}
-          zoom={zoom || 2}
-          style={main}
-          initialCenter={{
-            lat: recenterFavoritesMap.lat || favorites[0].lat,
-            lng: recenterFavoritesMap.lng || favorites[0].lng,
-          }}
-          center={{
-            lat: recenterFavoritesMap.lat || favorites[0].lat,
-            lng: recenterFavoritesMap.lng || favorites[0].lng,
-          }}
-        >
-          {favorites.map((marker, i) => (
-            <Marker
-              key={marker.id}
-              name={marker.name}
-              position={{
-                lat: marker.lat,
-                lng: marker.lng,
-              }}
-              label={(i + 1).toString()}
-            />
-          ))}
-        </Map>
-      )
-      }
-    </div>
+        <div style={divStyle}>
+          <Map
+            google={google}
+            zoom={zoom || 2}
+            style={main}
+            initialCenter={{
+              lat: recenterFavoritesMap.lat || favorites[0].lat,
+              lng: recenterFavoritesMap.lng || favorites[0].lng,
+            }}
+            center={{
+              lat: recenterFavoritesMap.lat || favorites[0].lat,
+              lng: recenterFavoritesMap.lng || favorites[0].lng,
+            }}
+          >
+            {favorites.map((marker, i) => (
+              <Marker
+                key={marker.id}
+                name={marker.name}
+                position={{
+                  lat: marker.lat,
+                  lng: marker.lng,
+                }}
+                label={(i + 1).toString()}
+              />
+            ))}
+          </Map>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 

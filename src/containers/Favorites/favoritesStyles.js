@@ -15,7 +15,16 @@ const styles = {
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
+  img: {
+    border: '3px solid grey',
+    borderRadius: '1em',
+  },
+  link: {
+    width: '100%',
+    color: 'white',
+  },
   noFavorites: {
+    width: '100%',
     color: 'white',
   },
 };
