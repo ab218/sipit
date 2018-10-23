@@ -11,31 +11,38 @@ const Reviews = (props) => {
     reviewContent, reviewUsername, reviewPostedTime, speechBubble,
   } = styles;
   return (
-    <div style={reviewWrapper}>
-      <div style={title}><h2>Yelp Reviews</h2></div>
-      {
-        reviewsData.reviews.map(review => (
-          <div style={reviewMain} key={review.id}>
-            <div style={reviewTitle}>
-              <img style={imgStyle} alt={review.user.image_url} src={review.user.image_url} />
-              <p style={reviewUsername}>{review.user.name}</p>
-              <RatingStar starRating={review.rating} />
-            </div>
-            <div style={speechBubble} />
-            <div style={reviewContent}>
-              {review.text}
+    <React.Fragment>
+      {reviewsData
+          && (
+            <div style={reviewWrapper}>
+              <div style={title}><h2>Reviews</h2></div>
+              {reviewsData.map(review => (
+                <div style={reviewMain} key={review.id}>
+                  <div style={reviewTitle}>
+                    {review.first_name}
+                    &nbsp;
+                    {review.last_name}
+                    <RatingStar starRating={review.coffee_rating} />
+                  </div>
+                  <div style={speechBubble} />
+                  <div style={reviewContent}>
+                    <br />
+                    <br />
+                    {review.body}
+                    <br />
+                    <br />
+                    <p style={reviewPostedTime}>
+                      {`posted: ${review.created_at}`}
+                    </p>
+                  </div>
+                  <br />
+                </div>
+              ))}
               <br />
-              <br />
-              <p style={reviewPostedTime}>
-                {`posted: ${review.time_created}`}
-              </p>
             </div>
-            <br />
-          </div>
-        ))
+          )
       }
-      <br />
-    </div>
+    </React.Fragment>
   );
 };
 

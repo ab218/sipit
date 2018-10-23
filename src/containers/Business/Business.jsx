@@ -2,24 +2,27 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { BusinessDetails, ReviewsYelp } from '../../components';
-import { getBusinessData, getReviews } from '../../redux/actions';
+import { BusinessDetails, ReviewsYelp, Reviews } from '../../components';
+import { getBusinessData, getYelpReviews, getReviews } from '../../redux/actions';
 import styles from './businessStyles';
 
 class Business extends Component {
   componentDidMount() {
     const {
-      getBusinessData, getReviews, match, businessData,
+      getBusinessData, getReviews, getYelpReviews, match, businessData,
     } = this.props;
     // only fetch if it's different from the previously selected cafe
     if (businessData.id !== match.params.id) {
       getBusinessData(match.params.id);
       getReviews(match.params.id);
+      getYelpReviews(match.params.id);
     }
   }
 
   render() {
-    const { businessDataLoading, reviewsDataLoading, redirect } = this.props;
+    const {
+      businessDataLoading, reviewsDataLoading, yelpReviewsDataLoading, redirect,
+    } = this.props;
     const { mainTheme, loading } = styles;
     return (
       <div>
@@ -29,7 +32,8 @@ class Business extends Component {
             ? <h1 style={loading}>Brewing results ...</h1>
             : <BusinessDetails />
           }
-          {reviewsDataLoading
+          <Reviews />
+          {yelpReviewsDataLoading
             ? <h1 style={loading}>Brewing reviews ...</h1>
             : <ReviewsYelp />
           }
@@ -42,6 +46,7 @@ class Business extends Component {
 const mapStateToProps = state => ({
   businessData: state.fetchBusinessData.businessData,
   businessDataLoading: state.fetchBusinessData.businessDataLoading,
+  yelpReviewsDataLoading: state.fetchBusinessData.yelpReviewsDataLoading,
   reviewsDataLoading: state.fetchBusinessData.reviewsDataLoading,
   redirect: state.redirect.redirect,
 });
@@ -52,6 +57,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getReviews: (params) => {
     dispatch(getReviews(params));
+  },
+  getYelpReviews: (params) => {
+    dispatch(getYelpReviews(params));
   },
 });
 

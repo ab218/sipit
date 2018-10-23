@@ -5,7 +5,7 @@ import { RatingStar } from '..';
 import styles from './reviewsYelpStyles';
 
 const ReviewsYelp = (props) => {
-  const { reviewsData } = props;
+  const { yelpReviewsData } = props;
   const {
     reviewWrapper, title, reviewMain, imgStyle, reviewTitle,
     reviewContent, reviewUsername, reviewPostedTime, speechBubble,
@@ -14,7 +14,7 @@ const ReviewsYelp = (props) => {
     <div style={reviewWrapper}>
       <div style={title}><h2>Yelp Reviews</h2></div>
       {
-        reviewsData.reviews.map(review => (
+        yelpReviewsData.reviews.map(review => (
           <div style={reviewMain} key={review.id}>
             <div style={reviewTitle}>
               <img style={imgStyle} alt={review.user.image_url} src={review.user.image_url} />
@@ -40,7 +40,7 @@ const ReviewsYelp = (props) => {
 };
 
 const mapStateToProps = state => ({
-  reviewsData: state.fetchBusinessData.reviewsData,
+  yelpReviewsData: state.fetchBusinessData.yelpReviewsData,
 });
 
 export default compose(

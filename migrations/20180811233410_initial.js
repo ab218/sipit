@@ -27,6 +27,8 @@ exports.up = function (knex, Promise) {
       table.string('body');
       table.string('coffee_rating');
       table.string('food_rating');
+      table.string('cafe_id');
+      table.integer('user_id').references('id').inTable('users').onDelete('cascade');
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.fn.now());
     }),

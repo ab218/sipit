@@ -2,8 +2,9 @@ import axios from 'axios';
 import {
   ADD_ERROR, FETCH_BUSINESS_DATA, FETCH_BUSINESS_DATA_LOADING,
   FETCH_CAFES, FETCH_CAFES_LOADING, FETCH_FAVORITES,
-  FETCH_REVIEWS_DATA, FETCH_REVIEWS_DATA_LOADING, GET_POSITION,
-  REDIRECT, RECENTER_MAP,
+  FETCH_REVIEWS_DATA, FETCH_REVIEWS_DATA_LOADING,
+  FETCH_YELP_REVIEWS_DATA, FETCH_YELP_REVIEWS_DATA_LOADING,
+  GET_POSITION, REDIRECT, RECENTER_MAP,
 } from '../types';
 
 export function getFavorites(userId) {
@@ -11,6 +12,21 @@ export function getFavorites(userId) {
     try {
       const favorites = await axios.get(`/api/favorites/${userId}`);
       dispatch({ type: FETCH_FAVORITES, payload: favorites.data });
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: ADD_ERROR, error: err });
+    }
+  };
+}
+
+export function getReviews(cafeId) {
+  return async (dispatch) => {
+    try {
+      console.log('were here');
+      dispatch({ type: FETCH_REVIEWS_DATA_LOADING, payload: true });
+      const reviews = await axios.get(`/api/reviews/${cafeId}`);
+      dispatch({ type: FETCH_REVIEWS_DATA, payload: reviews.data });
+      dispatch({ type: FETCH_REVIEWS_DATA_LOADING, payload: false });
     } catch (err) {
       console.log(err);
       dispatch({ type: ADD_ERROR, error: err });
@@ -87,13 +103,13 @@ export function getBusinessData(params) {
   };
 }
 
-export function getReviews(params) {
+export function getYelpReviews(params) {
   return async (dispatch) => {
     try {
-      dispatch({ type: FETCH_REVIEWS_DATA_LOADING, payload: true });
-      const reviewsData = await axios.get(`/api/yelp/${params}/reviews`);
-      dispatch({ type: FETCH_REVIEWS_DATA, payload: reviewsData.data });
-      dispatch({ type: FETCH_REVIEWS_DATA_LOADING, payload: false });
+      dispatch({ type: FETCH_YELP_REVIEWS_DATA_LOADING, payload: true });
+      const yelpReviewsData = await axios.get(`/api/yelp/${params}/reviews`);
+      dispatch({ type: FETCH_YELP_REVIEWS_DATA, payload: yelpReviewsData.data });
+      dispatch({ type: FETCH_YELP_REVIEWS_DATA_LOADING, payload: false });
     } catch (err) {
       console.log(err);
       dispatch({ type: ADD_ERROR, error: err });
