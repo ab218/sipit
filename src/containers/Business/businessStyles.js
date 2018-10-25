@@ -5,9 +5,6 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
   },
-  loading: {
-    color: 'grey',
-  },
 };
 
 export default styles;

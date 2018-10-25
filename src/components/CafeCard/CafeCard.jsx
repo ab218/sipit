@@ -54,16 +54,17 @@ const CafeCardList = (props) => {
       ));
   }
 
-  const { classes } = props;
+  const { classes, fetchCafesLoading } = props;
   return (
     <div className={classes.spacer}>
-      {getCafes()}
+      {fetchCafesLoading ? <h1 className={classes.brewing}>Brewing results...</h1> : getCafes()}
     </div>
   );
 };
 
 const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
+  fetchCafesLoading: state.fetchCafes.cafesLoading,
 });
 
 export default compose(

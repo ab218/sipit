@@ -20,23 +20,15 @@ class Business extends Component {
   }
 
   render() {
-    const {
-      businessDataLoading, reviewsDataLoading, yelpReviewsDataLoading, redirect,
-    } = this.props;
-    const { mainTheme, loading } = styles;
+    const { redirect } = this.props;
+    const { mainTheme } = styles;
     return (
       <div>
         {redirect && <Redirect to="/" />}
         <div style={mainTheme}>
-          {businessDataLoading
-            ? <h1 style={loading}>Brewing results ...</h1>
-            : <BusinessDetails />
-          }
+          <BusinessDetails />
           <Reviews />
-          {yelpReviewsDataLoading
-            ? <h1 style={loading}>Brewing reviews ...</h1>
-            : <ReviewsYelp />
-          }
+          <ReviewsYelp />
         </div>
       </div>
     );
@@ -45,8 +37,6 @@ class Business extends Component {
 
 const mapStateToProps = state => ({
   businessData: state.fetchBusinessData.businessData,
-  businessDataLoading: state.fetchBusinessData.businessDataLoading,
-  yelpReviewsDataLoading: state.fetchBusinessData.yelpReviewsDataLoading,
   reviewsDataLoading: state.fetchBusinessData.reviewsDataLoading,
   redirect: state.redirect.redirect,
 });

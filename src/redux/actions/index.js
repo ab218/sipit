@@ -22,7 +22,6 @@ export function getFavorites(userId) {
 export function getReviews(cafeId) {
   return async (dispatch) => {
     try {
-      console.log('were here');
       dispatch({ type: FETCH_REVIEWS_DATA_LOADING, payload: true });
       const reviews = await axios.get(`/api/reviews/${cafeId}`);
       dispatch({ type: FETCH_REVIEWS_DATA, payload: reviews.data });
@@ -141,7 +140,11 @@ export function addFavorite(cafe, userId) {
   return async (dispatch) => {
     try {
       await axios.post('/api/favorites/add', {
-        title: cafe.name, url: cafe.id, image_url: cafe.image_url, user_id: userId, coords: cafe.coordinates,
+        title: cafe.name,
+        url: cafe.id,
+        image_url: cafe.image_url,
+        user_id: userId,
+        coords: cafe.coordinates,
       });
       dispatch(getFavorites(userId));
     } catch (err) {

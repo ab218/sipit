@@ -5,11 +5,16 @@ import { RatingStar } from '..';
 import styles from './reviewsYelpStyles';
 
 const ReviewsYelp = (props) => {
-  const { yelpReviewsData } = props;
+  const { yelpReviewsData, yelpReviewsDataLoading } = props;
   const {
-    reviewWrapper, title, reviewMain, imgStyle, reviewTitle,
+    reviewWrapper, title, reviewMain, imgStyle, reviewTitle, loading,
     reviewContent, reviewUsername, reviewPostedTime, speechBubble,
   } = styles;
+
+  if (yelpReviewsDataLoading) {
+    return <h1 style={loading}>Brewing reviews ...</h1>;
+  }
+
   return (
     <div style={reviewWrapper}>
       <div style={title}><h2>Yelp Reviews</h2></div>
@@ -41,6 +46,7 @@ const ReviewsYelp = (props) => {
 
 const mapStateToProps = state => ({
   yelpReviewsData: state.fetchBusinessData.yelpReviewsData,
+  yelpReviewsDataLoading: state.fetchBusinessData.yelpReviewsDataLoading,
 });
 
 export default compose(

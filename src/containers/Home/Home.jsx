@@ -29,15 +29,11 @@ class Home extends Component {
   }
 
   render() {
-    const { cafesList, fetchCafesLoading } = this.props;
-    const { brewing, mainTheme } = styles;
+    const { mainTheme } = styles;
     return (
       <div style={mainTheme}>
-        {cafesList && <MapContainer />}
-        {fetchCafesLoading
-          ? <h1 style={brewing}>Brewing results...</h1>
-          : <CafeCard />
-        }
+        <MapContainer />
+        <CafeCard />
       </div>
     );
   }
@@ -45,8 +41,6 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   cafesList: state.fetchCafes.cafesList,
-  fetchCafesLoading: state.fetchCafes.cafesLoading,
-  latLng: state.getPosition.myLatLng,
   redirect: state.redirect.redirect,
 });
 

@@ -9,6 +9,9 @@ const styles = {
     color: 'grey',
     fontWeight: 'bold',
   },
+  loading: {
+    color: 'grey',
+  },
   open: {
     color: 'lightgreen',
   },

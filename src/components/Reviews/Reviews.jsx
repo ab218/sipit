@@ -16,13 +16,13 @@ const Reviews = (props) => {
           && (
             <div style={reviewWrapper}>
               <div style={title}><h2>Reviews</h2></div>
-              {reviewsData.map(review => (
-                <div style={reviewMain} key={review.id}>
+              {reviewsData.map((review, i) => (
+                <div style={reviewMain} key={i}>
                   <div style={reviewTitle}>
                     {review.first_name}
                     &nbsp;
                     {review.last_name}
-                    <RatingStar starRating={review.coffee_rating} />
+                    <RatingStar starRating={parseInt(review.coffee_rating)} />
                   </div>
                   <div style={speechBubble} />
                   <div style={reviewContent}>
@@ -40,8 +40,7 @@ const Reviews = (props) => {
               ))}
               <br />
             </div>
-          )
-      }
+          )}
     </React.Fragment>
   );
 };

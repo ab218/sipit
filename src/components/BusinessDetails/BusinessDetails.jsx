@@ -18,8 +18,13 @@ function HoursComp({ isOpenNow, endHours }) {
 }
 
 const BusinessDetails = (props) => {
-  const { businessData } = props;
-  const { container, title } = styles;
+  const { businessData, businessDataLoading } = props;
+  const { container, title, loading } = styles;
+
+  if (businessDataLoading) {
+    return <h1 style={loading}>Brewing results ...</h1>;
+  }
+
   return (
     <div style={container}>
       <h3 style={title}>{businessData.name}</h3>
@@ -44,6 +49,7 @@ const BusinessDetails = (props) => {
 
 const mapStateToProps = state => ({
   businessData: state.fetchBusinessData.businessData,
+  businessDataLoading: state.fetchBusinessData.businessDataLoading,
 });
 
 export default compose(

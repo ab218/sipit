@@ -2,7 +2,9 @@ const styles = {
   reviewWrapper: {
     maxWidth: '50em', margin: 'auto',
   },
-
+  loading: {
+    color: 'grey',
+  },
   title: {
     backgroundColor: '#FC4A1A',
     paddingTop: '0.1em',

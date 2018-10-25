@@ -20,6 +20,9 @@ const styles = () => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(25em, 1fr));',
   },
+  brewing: {
+    color: 'white',
+  },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
