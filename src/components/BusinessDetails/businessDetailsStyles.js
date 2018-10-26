@@ -9,6 +9,13 @@ const styles = {
     color: 'grey',
     fontWeight: 'bold',
   },
+  spacer: {
+    paddingBottom: '2em',
+  },
+  address: {
+    color: 'grey',
+    fontWeight: 'bold',
+  },
   loading: {
     color: 'grey',
   },

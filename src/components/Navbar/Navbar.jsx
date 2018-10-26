@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
+import { withCookies } from 'react-cookie';
 import { SearchBar } from '..';
 import styles from './navbarStyles';
 
 const Favorites = ({ cookies }) => (
-  <div className="container1" style={styles.container1}>
+  <div style={styles.container1}>
     {cookies.get('user')
   && <Link to="/favorites"><div style={{ ...styles.navItem, ...styles.fontTitles }}>Favorites</div></Link>
     }
@@ -14,7 +13,7 @@ const Favorites = ({ cookies }) => (
 );
 
 const MemberControl = ({ cookies, logout }) => (
-  <div className="memberControl" style={styles.memberControl}>
+  <div style={styles.memberControl}>
     {cookies.get('user')
       ? <button type="submit" onClick={logout} style={{ ...styles.signUpBtn, ...styles.fontContents }}>Log out</button>
       : (
@@ -29,8 +28,8 @@ const MemberControl = ({ cookies, logout }) => (
 
 const Logo = () => (
   <Link style={{ color: '#FFFF' }} to="/">
-    <div className="navHead" style={{ ...styles.navHead, ...styles.fontTitles }}>
-      <div className="navBrand">
+    <div style={{ ...styles.navHead, ...styles.fontTitles }}>
+      <div>
         <i className="fas fa-coffee" />
         {' '}
         Sip-It
@@ -39,23 +38,17 @@ const Logo = () => (
   </Link>
 );
 
-class NavbarComponent extends Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired,
-  };
+const Navbar = (props) => {
+  const { navBar } = styles;
+  const { cookies } = props;
+  return (
+    <div style={navBar}>
+      <Logo />
+      <Favorites cookies={cookies} />
+      <MemberControl cookies={cookies} logout={() => cookies.remove('user')} />
+      <SearchBar />
+    </div>
+  );
+};
 
-  render() {
-    const { navBar } = styles;
-    const { cookies, page } = this.props;
-    return (
-      <div className="navBar" style={navBar}>
-        <Logo />
-        <Favorites cookies={cookies} />
-        <MemberControl cookies={cookies} logout={() => cookies.remove('user')} />
-        <SearchBar page={page} />
-      </div>
-    );
-  }
-}
-
-export default withCookies(NavbarComponent);
+export default withCookies(Navbar);
