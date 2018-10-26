@@ -4,43 +4,41 @@ import { connect } from 'react-redux';
 import { RatingStar } from '..';
 import styles from './reviewStyles';
 
+const GetReviews = ({ reviewsData }) => (
+  reviewsData && reviewsData.map((review, i) => (
+    <div style={styles.reviewMain} key={i}>
+      <div style={styles.reviewTitle}>
+        {review.first_name}
+        &nbsp;
+        {review.last_name}
+        <RatingStar starRating={parseInt(review.coffee_rating, 10) /* radix */} />
+      </div>
+      <div style={styles.speechBubble} />
+      <div style={styles.reviewContent}>
+        <br />
+        <br />
+        {review.body}
+        <br />
+        <br />
+        <p style={styles.reviewPostedTime}>
+          {`posted: ${review.created_at}`}
+        </p>
+      </div>
+      <br />
+    </div>
+  ))
+);
+
 const Reviews = (props) => {
   const { reviewsData } = props;
-  const {
-    reviewWrapper, title, reviewMain, reviewTitle,
-    reviewContent, reviewPostedTime, speechBubble,
-  } = styles;
+  const { reviewWrapper, title } = styles;
   return (
     <React.Fragment>
-      {reviewsData
-          && (
-            <div style={reviewWrapper}>
-              <div style={title}><h2>Reviews</h2></div>
-              {reviewsData.map((review, i) => (
-                <div style={reviewMain} key={i}>
-                  <div style={reviewTitle}>
-                    {review.first_name}
-                    &nbsp;
-                    {review.last_name}
-                    <RatingStar starRating={parseInt(review.coffee_rating, 10) /* radix */} />
-                  </div>
-                  <div style={speechBubble} />
-                  <div style={reviewContent}>
-                    <br />
-                    <br />
-                    {review.body}
-                    <br />
-                    <br />
-                    <p style={reviewPostedTime}>
-                      {`posted: ${review.created_at}`}
-                    </p>
-                  </div>
-                  <br />
-                </div>
-              ))}
-              <br />
-            </div>
-          )}
+      <div style={reviewWrapper}>
+        <div style={title}><h2>Reviews</h2></div>
+        <GetReviews reviewsData={reviewsData} />
+        <br />
+      </div>
     </React.Fragment>
   );
 };

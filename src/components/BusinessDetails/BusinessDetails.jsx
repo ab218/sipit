@@ -18,23 +18,20 @@ const DisplayAddress = ({ businessData }) => (
 const BusinessDetails = (props) => {
   const { businessData, businessDataLoading } = props;
   const { container, title, loading } = styles;
-
-  if (businessDataLoading) {
-    return <h1 style={loading}>Brewing results ...</h1>;
-  }
-
-  return (
-    <div style={container}>
-      <h3 style={title}>{businessData.name}</h3>
-      <SlickCarousel businessData={businessData} />
-      <br />
-      <DisplayAddress businessData={businessData} />
-      <br />
-      <h5 style={title}>{businessData.display_phone}</h5>
-      <HoursComp hours={businessData.hours[0]} />
-      <BusinessDetailsHours hours={businessData.hours[0].open} />
-    </div>
-  );
+  return businessDataLoading
+    ? <h1 style={loading}>Brewing results ...</h1>
+    : (
+      <div style={container}>
+        <h3 style={title}>{businessData.name}</h3>
+        <SlickCarousel businessData={businessData} />
+        <br />
+        <DisplayAddress businessData={businessData} />
+        <br />
+        <h5 style={title}>{businessData.display_phone}</h5>
+        <HoursComp hours={businessData.hours[0]} />
+        <BusinessDetailsHours hours={businessData.hours[0].open} />
+      </div>
+    );
 };
 
 const mapStateToProps = state => ({
