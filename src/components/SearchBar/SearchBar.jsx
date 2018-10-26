@@ -6,13 +6,15 @@ import {
 } from '..';
 
 const SearchBar = () => {
-  const { searchBarWrapper } = styles;
+  const { searchBarWrapper, container2 } = styles;
   return (
-    <form style={searchBarWrapper}>
-      <SearchBarTextfields />
-      <SearchBarButton />
-      <SearchBarFilterButton />
-    </form>
+    <div className="container2" style={container2}>
+      <form style={searchBarWrapper}>
+        <SearchBarTextfields />
+        <SearchBarButton />
+        <SearchBarFilterButton />
+      </form>
+    </div>
   );
 };
 

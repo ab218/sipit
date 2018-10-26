@@ -7,8 +7,8 @@ import styles from './reviewStyles';
 const Reviews = (props) => {
   const { reviewsData } = props;
   const {
-    reviewWrapper, title, reviewMain, imgStyle, reviewTitle,
-    reviewContent, reviewUsername, reviewPostedTime, speechBubble,
+    reviewWrapper, title, reviewMain, reviewTitle,
+    reviewContent, reviewPostedTime, speechBubble,
   } = styles;
   return (
     <React.Fragment>
@@ -22,7 +22,7 @@ const Reviews = (props) => {
                     {review.first_name}
                     &nbsp;
                     {review.last_name}
-                    <RatingStar starRating={parseInt(review.coffee_rating)} />
+                    <RatingStar starRating={parseInt(review.coffee_rating, 10) /* radix */} />
                   </div>
                   <div style={speechBubble} />
                   <div style={reviewContent}>

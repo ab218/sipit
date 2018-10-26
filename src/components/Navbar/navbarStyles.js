@@ -49,17 +49,6 @@ const styles = {
     order: '1',
     height: '0',
   },
-  container2: {
-    minWidth: '360px',
-    justifyContent: 'center',
-    display: 'flex',
-    width: '100%',
-    flexWrap: 'wrap',
-    order: '2',
-    flexGrow: '2',
-    height: '0',
-
-  },
   fontTitles: {
     fontFamily: 'Maven Pro',
     fontWeight: 'bold',

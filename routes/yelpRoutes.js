@@ -18,7 +18,7 @@ router.post('/loc', async (req, res) => {
     const params = {
       limit, term, radius, open_now, sort_by,
     };
-    console.log(req.body);
+    console.log('search query: ', req.body);
     if (req.body.location) {
       params.location = req.body.location;
     } else {
