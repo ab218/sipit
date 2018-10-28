@@ -30,18 +30,23 @@ const BusinessDetails = (props) => {
       <h3 style={title}>{businessData.name}</h3>
       <SlickCarousel businessData={businessData} />
       <br />
-      {businessData.location.display_address
-        .map(address => <h5 style={title} key={address}>{address}</h5>)}
-      <br />
-      <h5 style={title}>{businessData.display_phone}</h5>
-      {businessData.hours
+      <div className="detail">
+        {
+          businessData.location.display_address
+            .map(sub => <h5 style={title} key={sub}>{sub}</h5>)
+        }
+        <br />
+        <h5 style={title}>{businessData.display_phone}</h5>
+        {businessData.hours
             && (
               <HoursComp
                 isOpenNow={businessData.hours[0].is_open_now}
                 endHours={businessData.hours[0].open[0].end}
               />
             )
-      }
+        }
+      </div>
+      <br />
       <BusinessDetailsHours hours={businessData.hours[0].open} />
     </div>
   );
