@@ -13,9 +13,7 @@ const Stars = (props) => {
         emptyStarColor="#ffb400"
         value={starRating}
         renderStarIcon={(index, value) => (
-          <span>
-            <i className={index <= value ? 'fas fa-star' : 'far fa-star'} />
-          </span>
+          <span><i className={index <= value ? 'fas fa-star' : 'far fa-star'} /></span>
         )}
         renderStarIconHalf={() => (
           <span>

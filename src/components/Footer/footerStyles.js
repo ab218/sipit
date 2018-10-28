@@ -1,6 +1,6 @@
 const styles = {
   appName: {
-    fontFamily: 'Exo',
+    fontFamily: 'Maven Pro',
     fontWeight: 'bold',
   },
   footer: {
@@ -14,7 +14,7 @@ const styles = {
     paddingTop: '15px',
     borderBottom: '1px solid #FFFAF0',
     letterSpacing: '2px',
-    font: 'Karla',
+    font: 'Pacifico',
   },
   listBox: {
     marginTop: '20px',

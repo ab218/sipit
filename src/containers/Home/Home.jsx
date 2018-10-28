@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { CafeCard, MapContainer } from '../../components';
-import { loadPosition, makeFetchCafesThunk, getFavorites } from '../../redux/actions';
+import { loadPosition, getFavorites } from '../../redux/actions';
 import { REDIRECT } from '../../redux/types';
 import styles from './homeStyles';
 
@@ -50,7 +50,6 @@ const dispatchAction = (dispatch, actionMaker) => (...args) => {
 
 const mapDispatchToProps = dispatch => ({
   loadPosition: dispatchAction(dispatch, loadPosition),
-  makeFetchCafes: dispatchAction(dispatch, makeFetchCafesThunk),
   getFavorites: dispatchAction(dispatch, getFavorites),
   redirectFalse: () => dispatch({ type: REDIRECT, payload: false }),
 });

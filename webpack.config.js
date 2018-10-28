@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const CompressionPlugin = require('compression-webpack-plugin');
 const path = require('path');
 require('dotenv').config();
 
@@ -70,6 +71,7 @@ module.exports = {
       // $: 'jquery',
       _: 'lodash',
     }),
+    new CompressionPlugin({ algorithm: 'gzip' }),
     new webpack.DefinePlugin({
       'process.env.GOOGLE_API_KEY': JSON.stringify(process.env.GOOGLE_API_KEY),
     }),
