@@ -6,13 +6,20 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
-import { RatingStar } from '..';
+import { EditableRatingStar } from '..';
 import styles from './reviewsFormStyles';
 
 class ReviewsForm extends React.Component {
   state = {
     open: false,
+    title: '',
+    body: '',
+    rating: 1,
   };
+
+  onStarClick = (nextValue, prevValue, name) => {
+    this.setState({ rating: nextValue });
+  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -22,13 +29,22 @@ class ReviewsForm extends React.Component {
     this.setState({ open: false });
   };
 
+  handleChange = (e, name) => {
+    this.setState({
+      [name]: e.target.value,
+    });
+  }
+
   render() {
+    const {
+      rating, title, body, open,
+    } = this.state;
     const { classes } = this.props;
     return (
       <div className={classes.container}>
         <Button className={classes.btn} onClick={this.handleClickOpen}>Write a review</Button>
         <Dialog
-          open={this.state.open}
+          open={open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
@@ -37,21 +53,29 @@ class ReviewsForm extends React.Component {
             <TextField
               autoFocus
               margin="dense"
-              id="name"
+              name="title"
+              id="title"
+              value={title}
               label="Title"
               type="text"
+              onChange={e => this.handleChange(e, 'title')}
               fullWidth
             />
             <TextField
-              autoFocus
               margin="dense"
-              id="name"
+              name="body"
+              id="body"
+              value={body}
               label="Write your review!"
-              multiline="true"
+              multiline
               type="textbox"
+              onChange={e => this.handleChange(e, 'body')}
               fullWidth
             />
-            <RatingStar editing />
+            <EditableRatingStar
+              onStarClick={this.onStarClick}
+              rating={rating}
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

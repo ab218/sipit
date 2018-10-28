@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import styles from './searchBarTextfieldStyles';
+import styles from './searchBarStyles';
 import { SEARCH_NAME, SEARCH_LOCATION } from '../../redux/types';
 
 

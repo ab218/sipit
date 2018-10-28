@@ -1,4 +1,13 @@
 const styles = {
+  input: {
+    borderColor: '5px solid #f26622',
+    borderRadius: '8px',
+    margin: '0 0.5em',
+    color: 'black',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    width: 120,
+  },
   searchBarWrapper: {
     textAlign: 'center',
     alignSelf: 'center',
@@ -10,6 +19,9 @@ const styles = {
     minWidth: '350px',
     maxWidth: '80%',
   },
+  searchIcon: {
+    color: '#FFFF',
+  },
   container2: {
     minWidth: '360px',
     justifyContent: 'center',
@@ -19,21 +31,12 @@ const styles = {
     order: '2',
     flexGrow: '2',
     height: '0',
-
   },
-
-  // customFilterBtn: {
-  //   border: '0',
-  //   outline: '0',
-  //   backgroundColor: 'transparent',
-  //   verticalAlign: 'middle',
-  //   paddingLeft: '3px',
-  //   marginBottom: '40px',
-  // },
-
-  // filterWrapper: {
-  //   display: 'flex',
-  //   backgroundColor: '#5d4427',
-  // },
+  sliderDiv: {
+    width: 300,
+  },
+  slider: {
+    padding: '22px 0px',
+  },
 };
 export default styles;

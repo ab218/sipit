@@ -34,6 +34,7 @@ const Reviews = (props) => {
   const { reviewWrapper, title } = styles;
   return (
     <React.Fragment>
+      <ReviewsForm />
       <div style={reviewWrapper}>
         <div style={title}><h2>Reviews</h2></div>
         <GetReviews reviewsData={reviewsData} />

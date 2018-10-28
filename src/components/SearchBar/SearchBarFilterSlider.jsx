@@ -6,7 +6,7 @@ import Slider from '@material-ui/lab/Slider';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { SEARCH_RADIUS } from '../../redux/types';
-import styles from './searchBarFilterSliderStyles';
+import styles from './searchBarStyles';
 
 function distConverter(dist) {
   if (dist < 1000) {
@@ -24,7 +24,7 @@ class SearchBarFilterSlider extends React.Component {
   render() {
     const { classes, searchRadius } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={classes.sliderDiv}>
         <Typography id="label">
 Set Radius:
           {' '}

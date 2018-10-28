@@ -1,6 +1,7 @@
 import BusinessDetails from './BusinessDetails/BusinessDetails';
-import BusinessDetailsHours from './BusinessDetailsHours/BusinessDetailsHours';
+import BusinessDetailsHours from './BusinessDetails/BusinessDetailsHours';
 import CafeCard from './CafeCard/CafeCard';
+import EditableRatingStar from './RatingStar/EditableRatingStar';
 import FavoriteButton from './FavoriteButton/FavoriteButton';
 import FavoritesMapContainer from './FavoritesMapContainer/FavoritesMapContainer';
 import Footer from './Footer/Footer';
@@ -14,20 +15,20 @@ import Reviews from './Reviews/Reviews';
 import ReviewsForm from './ReviewsForm/ReviewsForm';
 import ReviewsYelp from './ReviewsYelp/ReviewsYelp';
 import SearchBar from './SearchBar/SearchBar';
-import SearchBarButton from './SearchBarButton/SearchBarButton';
-import SearchBarFilter from './SearchBarFilter/SearchBarFilter';
-import SearchBarFilterButton from './SearchBarFilterButton/SearchBarFilterButton';
-import SearchBarTextfields from './SearchBarTextfields/SearchBarTextfields';
-import ShareButtons from './ShareButtons/ShareButtons';
+import SearchBarButton from './SearchBar/SearchBarButton';
+import SearchBarFilter from './SearchBar/SearchBarFilter';
+import SearchBarFilterButton from './SearchBar/SearchBarFilterButton';
+import SearchBarTextfields from './SearchBar/SearchBarTextfields';
+import ShareButtons from './CafeCard/ShareButtons';
 import SignupFields from './SignupFields/SignupFields';
 import SlickCarousel from './SlickCarousel/SlickCarousel';
-import SearchBarFilterSlider from './SearchBarFilterSlider/SearchBarFilterSlider';
-import SearchBarFilterCheckbox from './SearchBarFilterCheckbox/SearchBarFilterCheckbox';
-import SearchByMenu from './SearchByMenu/SearchByMenu';
+import SearchBarFilterSlider from './SearchBar/SearchBarFilterSlider';
+import SearchBarFilterCheckbox from './SearchBar/SearchBarFilterCheckbox';
+import SearchByMenu from './SearchBar/SearchByMenu';
 
 export {
-  BusinessDetails, BusinessDetailsHours, CafeCard, FavoriteButton,
-  FavoritesMapContainer, Footer, LoginFields, LoginSubmitButton,
+  BusinessDetails, BusinessDetailsHours, CafeCard, EditableRatingStar,
+  FavoriteButton, FavoritesMapContainer, Footer, LoginFields, LoginSubmitButton,
   MapContainer, Navbar, RatingStar, ResultsDropdown, Reviews, ReviewsForm,
   ReviewsYelp, SearchBar, SearchBarButton, SearchBarFilter,
   SearchBarFilterButton, SearchBarFilterCheckbox, SearchBarFilterSlider,

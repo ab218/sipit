@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
-import styles from './searchBarButtonStyles';
+import styles from './searchBarStyles';
 import { searchCafes } from '../../redux/actions';
 
 class SearchBarButton extends Component {
