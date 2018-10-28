@@ -10,7 +10,17 @@ const styles = {
     minWidth: '350px',
     maxWidth: '80%',
   },
+  container2: {
+    minWidth: '360px',
+    justifyContent: 'center',
+    display: 'flex',
+    width: '100%',
+    flexWrap: 'wrap',
+    order: '2',
+    flexGrow: '2',
+    height: '0',
 
+  },
 
   // customFilterBtn: {
   //   border: '0',

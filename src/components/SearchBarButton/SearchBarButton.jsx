@@ -8,13 +8,13 @@ import { searchCafes } from '../../redux/actions';
 class SearchBarButton extends Component {
   render() {
     const { searchIcon } = styles;
-    const { page, searchCafes } = this.props;
+    const { searchCafes } = this.props;
 
     return (
       <IconButton
         className="fas fa-search"
         aria-label="Search"
-        onClick={e => searchCafes(e, page)}
+        onClick={e => searchCafes(e)}
         style={searchIcon}
       />
     );
@@ -26,8 +26,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  searchCafes: (e, page) => {
-    dispatch(searchCafes(e, page));
+  searchCafes: (e) => {
+    dispatch(searchCafes(e));
   },
 });
 

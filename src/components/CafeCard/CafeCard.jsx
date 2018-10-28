@@ -45,6 +45,7 @@ const CafeCard = ({ cafe, classes, i }) => (
     </Card>
   </div>
 );
+
 const CafeCardList = (props) => {
   function getCafes() {
     const { classes, cafesList } = props;
@@ -53,7 +54,6 @@ const CafeCardList = (props) => {
         <CafeCard i={i} cafe={cafe} key={cafe.id} classes={classes} />
       ));
   }
-
   const { classes, fetchCafesLoading } = props;
   return (
     <div className={classes.spacer}>

@@ -61,7 +61,6 @@ class SignupSubmitButton extends Component {
       return (
         <Redirect to={{
           pathname: '/',
-          state: 'snackbar',
         }}
         />
       );

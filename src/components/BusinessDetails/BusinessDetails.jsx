@@ -4,52 +4,34 @@ import { connect } from 'react-redux';
 import { SlickCarousel, BusinessDetailsHours } from '..';
 import styles from './businessDetailsStyles';
 
-// const getDay = () => new Date().getDay() - 1;
+const HoursComp = ({ hours }) => (
+  hours.is_open_now
+    ? <h5 style={styles.open}>{`OPEN NOW (closes at: ${hours.open[0].end})`}</h5>
+    : <h5 style={styles.close}>CLOSED NOW</h5>
+);
 
-function HoursComp({ isOpenNow, endHours }) {
-  const { open, close } = styles;
-  if (isOpenNow) {
-    return (
-      <h5 style={open}>
-        {`OPEN NOW (closes at: ${endHours})`}
-      </h5>);
-  }
-  return <h5 style={close}>CLOSED NOW</h5>;
-}
+const DisplayAddress = ({ businessData }) => (
+  businessData.location.display_address
+    .map(address => <h5 style={styles.address} key={address}>{address}</h5>)
+);
 
 const BusinessDetails = (props) => {
   const { businessData, businessDataLoading } = props;
   const { container, title, loading } = styles;
-
-  if (businessDataLoading) {
-    return <h1 style={loading}>Brewing results ...</h1>;
-  }
-
-  return (
-    <div style={container}>
-      <h3 style={title}>{businessData.name}</h3>
-      <SlickCarousel businessData={businessData} />
-      <br />
-      <div className="detail">
-        {
-          businessData.location.display_address
-            .map(sub => <h5 style={title} key={sub}>{sub}</h5>)
-        }
+  return businessDataLoading
+    ? <h1 style={loading}>Brewing results ...</h1>
+    : (
+      <div style={container}>
+        <h3 style={title}>{businessData.name}</h3>
+        <SlickCarousel businessData={businessData} />
+        <br />
+        <DisplayAddress businessData={businessData} />
         <br />
         <h5 style={title}>{businessData.display_phone}</h5>
-        {businessData.hours
-            && (
-              <HoursComp
-                isOpenNow={businessData.hours[0].is_open_now}
-                endHours={businessData.hours[0].open[0].end}
-              />
-            )
-        }
+        <HoursComp hours={businessData.hours[0]} />
+        <BusinessDetailsHours hours={businessData.hours[0].open} />
       </div>
-      <br />
-      <BusinessDetailsHours hours={businessData.hours[0].open} />
-    </div>
-  );
+    );
 };
 
 const mapStateToProps = state => ({

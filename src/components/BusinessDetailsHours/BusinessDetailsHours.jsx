@@ -31,6 +31,16 @@ const MapHours = ({ hours }) => {
   return arr;
 };
 
+const HoursTableHead = () => (
+  <TableHead>
+    <TableRow>
+      <TableCell />
+      <TableCell>Open at</TableCell>
+      <TableCell>Closes at</TableCell>
+    </TableRow>
+  </TableHead>
+);
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -44,21 +54,12 @@ const styles = theme => ({
 
 const BusinessDetailsHours = (props) => {
   const { classes, hours } = props;
-
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Open at</TableCell>
-            <TableCell>Closes at</TableCell>
-          </TableRow>
-        </TableHead>
+        <HoursTableHead />
         <TableBody>
-          <MapHours
-            hours={hours}
-          />
+          <MapHours hours={hours} />
         </TableBody>
       </Table>
     </Paper>

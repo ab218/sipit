@@ -6,15 +6,7 @@ import Slider from '@material-ui/lab/Slider';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { SEARCH_RADIUS } from '../../redux/types';
-
-const styles = {
-  root: {
-    width: 300,
-  },
-  slider: {
-    padding: '22px 0px',
-  },
-};
+import styles from './searchBarFilterSliderStyles';
 
 function distConverter(dist) {
   if (dist < 1000) {
