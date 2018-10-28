@@ -11,6 +11,7 @@ import Navbar from './Navbar/Navbar';
 import RatingStar from './RatingStar/RatingStar';
 import ResultsDropdown from './ResultsDropdown/ResultsDropdown';
 import Reviews from './Reviews/Reviews';
+import ReviewsForm from './ReviewsForm/ReviewsForm';
 import ReviewsYelp from './ReviewsYelp/ReviewsYelp';
 import SearchBar from './SearchBar/SearchBar';
 import SearchBarButton from './SearchBarButton/SearchBarButton';
@@ -27,7 +28,7 @@ import SearchByMenu from './SearchByMenu/SearchByMenu';
 export {
   BusinessDetails, BusinessDetailsHours, CafeCard, FavoriteButton,
   FavoritesMapContainer, Footer, LoginFields, LoginSubmitButton,
-  MapContainer, Navbar, RatingStar, ResultsDropdown, Reviews,
+  MapContainer, Navbar, RatingStar, ResultsDropdown, Reviews, ReviewsForm,
   ReviewsYelp, SearchBar, SearchBarButton, SearchBarFilter,
   SearchBarFilterButton, SearchBarFilterCheckbox, SearchBarFilterSlider,
   SearchBarTextfields, SearchByMenu, ShareButtons, SignupFields, SlickCarousel,

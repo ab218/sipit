@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { RatingStar } from '..';
+import { RatingStar, ReviewsForm } from '..';
 import styles from './reviewStyles';
 
 const Reviews = (props) => {
@@ -12,6 +12,7 @@ const Reviews = (props) => {
   } = styles;
   return (
     <React.Fragment>
+      <ReviewsForm />
       {reviewsData
           && (
             <div style={reviewWrapper}>
