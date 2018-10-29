@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { compose, bindActionCreators } from 'redux';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -121,6 +121,11 @@ const mapStateToProps = state => ({
   redirect: state.redirect.redirect,
   cafesList: state.fetchCafes.cafesList,
 });
+
+//  this.props.actions.getFavorites(user_id)
+// function mapDispatchToProps(dispatch){
+//   return { actions: bindActionCreators({
+//     getFavorites, recenterFavoritesMap, removeFavorite}, dispatch )}}
 
 const mapDispatchToProps = dispatch => ({
   getFavorites: (user_id) => {

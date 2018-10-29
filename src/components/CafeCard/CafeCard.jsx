@@ -46,15 +46,12 @@ const CafeCard = ({ cafe, classes, i }) => (
   </div>
 );
 
-const CafeCardList = (props) => {
+const CafeCardList = ({ classes, cafesList, fetchCafesLoading }) => {
   function getCafes() {
-    const { classes, cafesList } = props;
     return cafesList
-      .map((cafe, i) => (
-        <CafeCard i={i} cafe={cafe} key={cafe.id} classes={classes} />
-      ));
+      .map((cafe, i) => <CafeCard i={i} cafe={cafe} key={cafe.id} classes={classes} />);
   }
-  const { classes, fetchCafesLoading } = props;
+
   return (
     <div className={classes.spacer}>
       {fetchCafesLoading ? <h1 className={classes.brewing}>Brewing results...</h1> : getCafes()}

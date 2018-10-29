@@ -26,18 +26,14 @@ const GetReviews = ({ yelpReviewsData }) => (
   ))
 );
 
-const ReviewsYelp = (props) => {
-  const { yelpReviewsData, yelpReviewsDataLoading } = props;
-  const { reviewWrapper, title, loading } = styles;
-  return yelpReviewsDataLoading
-    ? <h1 style={loading}>Brewing reviews ...</h1>
-    : (
-      <div style={reviewWrapper}>
-        <div style={title}><h2>Yelp Reviews</h2></div>
-        <GetReviews yelpReviewsData={yelpReviewsData} />
-      </div>
-    );
-};
+const ReviewsYelp = ({ yelpReviewsData, yelpReviewsDataLoading }) => (yelpReviewsDataLoading
+  ? <h1 style={styles.loading}>Brewing reviews ...</h1>
+  : (
+    <div style={styles.reviewWrapper}>
+      <div style={styles.title}><h2>Yelp Reviews</h2></div>
+      <GetReviews yelpReviewsData={yelpReviewsData} />
+    </div>
+  ));
 
 
 const mapStateToProps = state => ({

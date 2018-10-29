@@ -15,8 +15,7 @@ const DisplayAddress = ({ businessData }) => (
     .map(address => <h5 style={styles.address} key={address}>{address}</h5>)
 );
 
-const BusinessDetails = (props) => {
-  const { businessData, businessDataLoading } = props;
+const BusinessDetails = ({ businessData, businessDataLoading }) => {
   const { container, title, loading } = styles;
   return businessDataLoading
     ? <h1 style={loading}>Brewing results ...</h1>

@@ -3,14 +3,13 @@ import Slider from 'react-slick';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './slickCarouselStyles';
 
-const SimpleSlider = (props) => {
+const SimpleSlider = ({ businessData, classes }) => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     adaptiveHeight: true,
   };
-  const { businessData, classes } = props;
   return (
     <Slider
       {...settings}

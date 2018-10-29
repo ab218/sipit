@@ -8,9 +8,8 @@ import styles from './searchBarStyles';
 import { SEARCH_NAME, SEARCH_LOCATION } from '../../redux/types';
 
 
-const SearchBarTextfields = (props) => {
+const SearchBarTextfields = ({ setName, setLocation }) => {
   function handleInputChange(e) {
-    const { setName, setLocation } = props;
     const { value, name } = e.target;
     if (name === 'cafeSearch') {
       setName(value);
@@ -19,8 +18,6 @@ const SearchBarTextfields = (props) => {
       setLocation(value);
     }
   }
-
-  const { input } = styles;
   return (
     <React.Fragment>
       <TextField
@@ -30,7 +27,7 @@ const SearchBarTextfields = (props) => {
         margin="normal"
         onChange={handleInputChange}
         inputProps={{
-          style: input,
+          style: styles.input,
         }}
         InputProps={{
           disableUnderline: true,
@@ -43,7 +40,7 @@ const SearchBarTextfields = (props) => {
         placeholder="Location"
         onChange={handleInputChange}
         inputProps={{
-          style: input,
+          style: styles.input,
         }}
         InputProps={{
           disableUnderline: true,

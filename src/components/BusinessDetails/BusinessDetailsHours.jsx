@@ -52,18 +52,15 @@ const styles = theme => ({
   },
 });
 
-const BusinessDetailsHours = (props) => {
-  const { classes, hours } = props;
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <HoursTableHead />
-        <TableBody>
-          <MapHours hours={hours} />
-        </TableBody>
-      </Table>
-    </Paper>
-  );
-};
+const BusinessDetailsHours = ({ classes, hours }) => (
+  <Paper className={classes.root}>
+    <Table className={classes.table}>
+      <HoursTableHead />
+      <TableBody>
+        <MapHours hours={hours} />
+      </TableBody>
+    </Table>
+  </Paper>
+);
 
 export default withStyles(styles)(BusinessDetailsHours);

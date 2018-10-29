@@ -29,20 +29,16 @@ const GetReviews = ({ reviewsData }) => (
   ))
 );
 
-const Reviews = (props) => {
-  const { reviewsData } = props;
-  const { reviewWrapper, title } = styles;
-  return (
-    <React.Fragment>
-      <ReviewsForm />
-      <div style={reviewWrapper}>
-        <div style={title}><h2>Reviews</h2></div>
-        <GetReviews reviewsData={reviewsData} />
-        <br />
-      </div>
-    </React.Fragment>
-  );
-};
+const Reviews = ({ reviewsData }) => (
+  <React.Fragment>
+    <ReviewsForm />
+    <div style={styles.reviewWrapper}>
+      <div style={styles.title}><h2>Reviews</h2></div>
+      <GetReviews reviewsData={reviewsData} />
+      <br />
+    </div>
+  </React.Fragment>
+);
 
 const mapStateToProps = state => ({
   reviewsData: state.fetchBusinessData.reviewsData,

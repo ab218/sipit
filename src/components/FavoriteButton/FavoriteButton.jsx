@@ -8,9 +8,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 import styles from './favoriteButtonStyles';
 import { addFavorite, removeFavorite } from '../../redux/actions';
 
-const FavoriteButton = (props) => {
+const FavoriteButton = ({
+  favorites, cafe, cookies, removeFavorite, addFavorite,
+}) => {
+  const { button } = styles;
+
   function isFavorite(cafe) {
-    const { favorites } = props;
     const foundFav = favorites.find(favorite => favorite.url === cafe.id);
     if (foundFav) {
       return true;
@@ -18,10 +21,6 @@ const FavoriteButton = (props) => {
     return false;
   }
 
-  const {
-    cafe, cookies, removeFavorite, addFavorite,
-  } = props;
-  const { button } = styles;
   return (
     <React.Fragment>
       {cookies.get('user') !== undefined

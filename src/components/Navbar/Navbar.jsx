@@ -38,17 +38,13 @@ const Logo = () => (
   </Link>
 );
 
-const Navbar = (props) => {
-  const { navBar } = styles;
-  const { cookies } = props;
-  return (
-    <div style={navBar}>
-      <Logo />
-      <Favorites cookies={cookies} />
-      <MemberControl cookies={cookies} logout={() => cookies.remove('user')} />
-      <SearchBar />
-    </div>
-  );
-};
+const Navbar = ({ cookies }) => (
+  <div style={styles.navBar}>
+    <Logo />
+    <Favorites cookies={cookies} />
+    <MemberControl cookies={cookies} logout={() => cookies.remove('user')} />
+    <SearchBar />
+  </div>
+);
 
 export default withCookies(Navbar);

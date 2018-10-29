@@ -5,10 +5,9 @@ import { connect } from 'react-redux';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import styles from './favoritesMapContainerStyles';
 
-const FavoritesMapContainer = (props) => {
-  const {
-    google, favorites, recenterFavoritesMap, zoom,
-  } = props;
+const FavoritesMapContainer = ({
+  google, favorites, recenterFavoritesMap, zoom,
+}) => {
   const { divStyle, main } = styles;
 
   return (
