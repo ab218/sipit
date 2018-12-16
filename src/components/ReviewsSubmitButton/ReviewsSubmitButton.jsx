@@ -13,22 +13,22 @@ class ReviewsSubmitButton extends React.Component {
     cookies: instanceOf(Cookies).isRequired,
   };
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     const {
       body,
       cookies,
+      getReviews,
       handleClose,
       postReview,
       rating,
-      reviewsData,
+      businessData,
       title,
     } = this.props;
-    console.log(reviewsData);
     postReview(
       title,
       body,
       rating,
-      reviewsData[0].cafe_id,
+      businessData.id,
       cookies.get('user').id,
     );
     handleClose();
@@ -46,7 +46,7 @@ class ReviewsSubmitButton extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  reviewsData: state.fetchBusinessData.reviewsData,
+  businessData: state.fetchBusinessData.businessData,
 });
 
 const mapDispatchToProps = dispatch => ({

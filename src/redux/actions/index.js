@@ -165,7 +165,7 @@ export function postReview(title, body, rating, cafe_id, user_id) {
         cafe_id,
         user_id,
       });
-      console.log('sent');
+      dispatch(getReviews(cafe_id));
     } catch (e) {
       console.log(e);
       dispatch({ type: ADD_ERROR, error: e });
