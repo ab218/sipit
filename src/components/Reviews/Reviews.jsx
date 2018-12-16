@@ -8,9 +8,7 @@ const GetReviews = ({ reviewsData }) => (
   reviewsData && reviewsData.map((review, i) => (
     <div style={styles.reviewMain} key={i}>
       <div style={styles.reviewTitle}>
-        {review.first_name}
-        &nbsp;
-        {review.last_name}
+        {review.title}
         <RatingStar starRating={parseInt(review.coffee_rating, 10) /* radix */} />
       </div>
       <div style={styles.speechBubble} />
@@ -22,6 +20,8 @@ const GetReviews = ({ reviewsData }) => (
         <br />
         <p style={styles.reviewPostedTime}>
           {`posted: ${review.created_at}`}
+          <br />
+          {`by ${review.first_name} ${review.last_name}`}
         </p>
       </div>
       <br />
