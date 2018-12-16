@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
-import { EditableRatingStar } from '..';
+import { EditableRatingStar, ReviewsSubmitButton } from '..';
 import styles from './reviewsFormStyles';
 
 class ReviewsForm extends React.Component {
@@ -37,7 +37,10 @@ class ReviewsForm extends React.Component {
 
   render() {
     const {
-      rating, title, body, open,
+      rating,
+      title,
+      body,
+      open,
     } = this.state;
     const { classes } = this.props;
     return (
@@ -81,9 +84,12 @@ class ReviewsForm extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
-              Submit
-            </Button>
+            <ReviewsSubmitButton
+              handleClose={this.handleClose}
+              rating={rating}
+              title={title}
+              body={body}
+            />
           </DialogActions>
         </Dialog>
       </div>

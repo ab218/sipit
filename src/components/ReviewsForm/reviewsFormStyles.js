@@ -7,8 +7,8 @@ const styles = {
   btn: {
     backgroundColor: '#6196d2',
     color: 'white',
-    fontFamily: 'inherit' 
-},
+    fontFamily: 'inherit',
+  },
 };
 
 export default styles;

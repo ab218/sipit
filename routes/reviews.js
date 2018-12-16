@@ -14,6 +14,27 @@ module.exports = (knex) => {
       });
   });
 
+  router.post('/add', (req, res) => {
+    console.log('in add');
+    const {
+      title, body, coffee_rating, cafe_id, user_id,
+    } = req.body;
+    console.log(req.body);
+    knex('reviews')
+      .insert({
+        title,
+        body,
+        coffee_rating,
+        cafe_id,
+        user_id,
+      })
+      .then(() => {
+        res.json({
+          message: 'review added',
+        });
+      });
+  });
+
   router.get('/:id', (req, res) => {
     knex('reviews')
       .join('users', 'reviews.user_id', '=', 'users.id')

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { CardActions } from '@material-ui/core';
 import {
   ADD_ERROR, FETCH_BUSINESS_DATA, FETCH_BUSINESS_DATA_LOADING,
   FETCH_CAFES, FETCH_CAFES_LOADING, FETCH_FAVORITES,
@@ -150,6 +151,24 @@ export function addFavorite(cafe, userId) {
     } catch (err) {
       console.log(err);
       dispatch({ type: ADD_ERROR, error: err });
+    }
+  };
+}
+
+export function postReview(title, body, rating, cafe_id, user_id) {
+  return async (dispatch) => {
+    try {
+      await axios.post('/api/reviews/add', {
+        title,
+        body,
+        rating,
+        cafe_id,
+        user_id,
+      });
+      console.log('sent');
+    } catch (e) {
+      console.log(e);
+      dispatch({ type: ADD_ERROR, error: e });
     }
   };
 }

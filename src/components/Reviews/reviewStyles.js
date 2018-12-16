@@ -13,7 +13,11 @@ const styles = {
     color: '#FFFF',
   },
 
-  reviewMain: { display: 'inline-flex', flexDirection: 'column', width: '100%' },
+  reviewMain: {
+    display: 'inline-flex',
+    flexDirection: 'column',
+    width: '100%',
+  },
 
   reviewTitle: {
     width: '100%',
