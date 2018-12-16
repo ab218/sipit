@@ -17,7 +17,6 @@ class ReviewsSubmitButton extends React.Component {
     const {
       body,
       cookies,
-      getReviews,
       handleClose,
       postReview,
       rating,
@@ -50,8 +49,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postReview: (body, rating, title, cafe_id, user_id) => {
-    dispatch(postReview(body, rating, title, cafe_id, user_id));
+  postReview: (title, body, coffee_rating, cafe_id, user_id) => {
+    dispatch(postReview(title, body, coffee_rating, cafe_id, user_id));
   },
 });
 

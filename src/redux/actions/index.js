@@ -155,13 +155,13 @@ export function addFavorite(cafe, userId) {
   };
 }
 
-export function postReview(title, body, rating, cafe_id, user_id) {
+export function postReview(title, body, coffee_rating, cafe_id, user_id) {
   return async (dispatch) => {
     try {
       await axios.post('/api/reviews/add', {
         title,
         body,
-        rating,
+        coffee_rating,
         cafe_id,
         user_id,
       });
