@@ -67,10 +67,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.ProvidePlugin({
-      // $: 'jquery',
-      _: 'lodash',
-    }),
     new CompressionPlugin({ algorithm: 'gzip' }),
     new webpack.DefinePlugin({
       'process.env.GOOGLE_API_KEY': JSON.stringify(process.env.GOOGLE_API_KEY),

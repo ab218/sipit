@@ -1,15 +1,23 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { withStyles } from '@material-ui/core/styles';
+import PropTypes, { instanceOf } from 'prop-types';
+import TextField from '@material-ui/core/TextField';
 import { EditableRatingStar, ReviewsSubmitButton } from '..';
+import { compose } from 'redux';
+import { Link } from 'react-router-dom';
+import { withCookies, Cookies } from 'react-cookie';
+import { withStyles } from '@material-ui/core/styles';
 import styles from './reviewsFormStyles';
 
 class ReviewsForm extends React.Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired,
+  };
+
   state = {
     open: false,
     title: '',
@@ -17,7 +25,7 @@ class ReviewsForm extends React.Component {
     rating: 1,
   };
 
-  onStarClick = (nextValue, prevValue, name) => {
+  onStarClick = (nextValue) => {
     this.setState({ rating: nextValue });
   }
 
@@ -42,10 +50,13 @@ class ReviewsForm extends React.Component {
       body,
       open,
     } = this.state;
-    const { classes } = this.props;
+    const { classes, cookies } = this.props;
     return (
       <div className={classes.container}>
-        <Button className={classes.btn} onClick={this.handleClickOpen}>Write a review</Button>
+        {cookies.get('user') === undefined
+          ? <Button className={classes.btn} component={Link} to="/login">Write a review</Button>
+          : <Button className={classes.btn} onClick={this.handleClickOpen}>Write a review</Button>
+        }
         <Dialog
           open={open}
           onClose={this.handleClose}
@@ -97,4 +108,7 @@ class ReviewsForm extends React.Component {
   }
 }
 
-export default withStyles(styles)(ReviewsForm);
+export default compose(
+  withStyles(styles),
+  withCookies,
+)(ReviewsForm);

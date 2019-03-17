@@ -23,13 +23,17 @@ class ReviewsSubmitButton extends React.Component {
       businessData,
       title,
     } = this.props;
-    postReview(
-      title,
-      body,
-      rating,
-      businessData.id,
-      cookies.get('user').id,
-    );
+    if (cookies.get('user')) {
+      postReview(
+        title,
+        body,
+        rating,
+        businessData.id,
+        cookies.get('user').id,
+      );
+    } else {
+      alert('You must log in to submit reviews');
+    }
     handleClose();
   }
 

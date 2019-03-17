@@ -9,7 +9,6 @@ import CardActions from '@material-ui/core/CardActions';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { withCookies } from 'react-cookie';
 import { RatingStar, FavoriteButton, ShareButtons } from '..';
 import styles from './cafeCardStyles';
 
@@ -66,6 +65,5 @@ const mapStateToProps = state => ({
 
 export default compose(
   withStyles(styles),
-  withCookies,
   connect(mapStateToProps, null),
 )(CafeCardList);
