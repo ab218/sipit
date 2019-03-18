@@ -28,7 +28,7 @@ const styles = {
   },
   noFavorites: {
     width: '100%',
-    color: 'white',
+    color: '#1b3c35',
   },
 };
 

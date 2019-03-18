@@ -60,7 +60,9 @@ class Favorites extends Component {
 
   componentDidMount() {
     const { getFavorites, cookies } = this.props;
-    getFavorites(cookies.get('user').id);
+    if (cookies.get('user')) {
+      getFavorites(cookies.get('user').id);
+    }
   }
 
   render() {
@@ -74,43 +76,49 @@ class Favorites extends Component {
           <FavoritesMapContainer />
           <div style={flexBoxContainer}>
             {redirect && <Redirect to="/" />}
-            {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
-            <MediaQuery minWidth={1000}>
-              <GetFavoritesComp
-                recenterFavoritesMap={recenterFavoritesMap}
-                removeFavorite={removeFavorite}
-                cookieId={cookies.get('user').id}
-                favorites={favorites}
-                cols={4}
-              />
-            </MediaQuery>
-            <MediaQuery minWidth={800} maxWidth={1000}>
-              <GetFavoritesComp
-                recenterFavoritesMap={recenterFavoritesMap}
-                removeFavorite={removeFavorite}
-                cookieId={cookies.get('user').id}
-                favorites={favorites}
-                cols={3}
-              />
-            </MediaQuery>
-            <MediaQuery minWidth={550} maxWidth={800}>
-              <GetFavoritesComp
-                recenterFavoritesMap={recenterFavoritesMap}
-                removeFavorite={removeFavorite}
-                cookieId={cookies.get('user').id}
-                favorites={favorites}
-                cols={2}
-              />
-            </MediaQuery>
-            <MediaQuery maxWidth={550}>
-              <GetFavoritesComp
-                recenterFavoritesMap={recenterFavoritesMap}
-                removeFavorite={removeFavorite}
-                cookieId={cookies.get('user').id}
-                favorites={favorites}
-                cols={1}
-              />
-            </MediaQuery>
+            {favorites.length === 0
+              ? <h1 style={noFavorites}>No favorites saved.</h1>
+              : (
+                <React.Fragment>
+                  <MediaQuery minWidth={1000}>
+                    <GetFavoritesComp
+                      recenterFavoritesMap={recenterFavoritesMap}
+                      removeFavorite={removeFavorite}
+                      cookieId={cookies.get('user').id}
+                      favorites={favorites}
+                      cols={4}
+                    />
+                  </MediaQuery>
+                  <MediaQuery minWidth={800} maxWidth={1000}>
+                    <GetFavoritesComp
+                      recenterFavoritesMap={recenterFavoritesMap}
+                      removeFavorite={removeFavorite}
+                      cookieId={cookies.get('user').id}
+                      favorites={favorites}
+                      cols={3}
+                    />
+                  </MediaQuery>
+                  <MediaQuery minWidth={550} maxWidth={800}>
+                    <GetFavoritesComp
+                      recenterFavoritesMap={recenterFavoritesMap}
+                      removeFavorite={removeFavorite}
+                      cookieId={cookies.get('user').id}
+                      favorites={favorites}
+                      cols={2}
+                    />
+                  </MediaQuery>
+                  <MediaQuery maxWidth={550}>
+                    <GetFavoritesComp
+                      recenterFavoritesMap={recenterFavoritesMap}
+                      removeFavorite={removeFavorite}
+                      cookieId={cookies.get('user').id}
+                      favorites={favorites}
+                      cols={1}
+                    />
+                  </MediaQuery>
+                </React.Fragment>
+              )
+            }
           </div>
         </div>
       );
