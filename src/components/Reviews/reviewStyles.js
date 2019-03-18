@@ -1,6 +1,7 @@
 const styles = {
   reviewWrapper: {
-    maxWidth: '50em', margin: 'auto',
+    maxWidth: '50em',
+    margin: 'auto 2em',
   },
 
   title: {
@@ -21,7 +22,6 @@ const styles = {
 
   reviewTitle: {
     width: '100%',
-    justifyContent: 'space-between',
     color: 'black',
     fontWeight: 'bold',
     display: 'inline-flex',
@@ -29,7 +29,7 @@ const styles = {
 
   reviewContent: {
     position: 'relative',
-    backgroundColor: '#f2f1ef',
+    backgroundColor: 'white',
     color: 'black',
     borderRadius: '.5em',
     padding: '1.5em',

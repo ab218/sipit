@@ -9,6 +9,7 @@ const SimpleSlider = ({ businessData, classes }) => {
     infinite: true,
     speed: 500,
     adaptiveHeight: true,
+    arrows: false,
   };
   return (
     <Slider

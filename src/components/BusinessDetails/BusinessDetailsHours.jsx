@@ -35,8 +35,8 @@ const HoursTableHead = () => (
   <TableHead>
     <TableRow>
       <TableCell />
-      <TableCell>Open at</TableCell>
-      <TableCell>Closes at</TableCell>
+      <TableCell>Open</TableCell>
+      <TableCell>Close</TableCell>
     </TableRow>
   </TableHead>
 );
@@ -46,7 +46,6 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
-    margin: '0 0 2em',
   },
   table: {
   },

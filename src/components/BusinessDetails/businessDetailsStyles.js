@@ -1,8 +1,9 @@
 
 const styles = {
   container: {
-    maxWidth: '350px',
-    margin: 'auto',
+    backgroundColor: 'white',
+    maxWidth: '320px',
+    margin: '0',
     textAlign: 'center',
   },
   title: {

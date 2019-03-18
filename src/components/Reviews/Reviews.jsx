@@ -31,8 +31,8 @@ const GetReviews = ({ reviewsData }) => (
 
 const Reviews = ({ reviewsData }) => (
   <React.Fragment>
-    <ReviewsForm />
     <div style={styles.reviewWrapper}>
+      <ReviewsForm />
       <div style={styles.title}><h2>Reviews</h2></div>
       <GetReviews reviewsData={reviewsData} />
       <br />

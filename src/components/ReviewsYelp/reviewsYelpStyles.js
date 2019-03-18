@@ -1,6 +1,7 @@
 const styles = {
   reviewWrapper: {
-    maxWidth: '50em', margin: 'auto',
+    maxWidth: '50em',
+    margin: '2em auto',
   },
   loading: {
     color: 'grey',
@@ -15,7 +16,11 @@ const styles = {
     color: '#FFFF',
   },
 
-  reviewMain: { display: 'inline-flex', flexDirection: 'column', width: '100%' },
+  reviewMain: {
+    display: 'inline-flex',
+    flexDirection: 'column',
+    width: '100%',
+  },
 
   reviewTitle: {
     width: '100%',
@@ -27,7 +32,7 @@ const styles = {
 
   reviewContent: {
     position: 'relative',
-    backgroundColor: '#f2f1ef',
+    backgroundColor: 'white',
     color: 'black',
     borderRadius: '.5em',
     padding: '1.5em',
