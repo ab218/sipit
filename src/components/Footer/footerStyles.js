@@ -4,7 +4,7 @@ const styles = {
     fontWeight: 'bold',
   },
   footer: {
-    backgroundColor: '#f26622',
+    backgroundColor: '#1b3c35',
     color: '#6c7a89',
     paddingBottom: '1.25rem',
   },

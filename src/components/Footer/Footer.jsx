@@ -3,7 +3,7 @@ import styles from './footerStyles';
 
 const FooterComponent = () => {
   const {
-    footer, footerTitle, appName, tagline, listBox, listItem,
+    footer, footerTitle, appName, tagline,
   } = styles;
   return (
     <div style={footer}>
@@ -16,12 +16,6 @@ const FooterComponent = () => {
             <p style={tagline}>Find your best coffee.</p>
           </span>
         </div>
-        <ul style={listBox}>
-          <li style={listItem}>Home</li>
-          <li style={listItem}>Search</li>
-          <li style={listItem}>My Page</li>
-          <li style={listItem}>About Us</li>
-        </ul>
       </section>
     </div>
   );

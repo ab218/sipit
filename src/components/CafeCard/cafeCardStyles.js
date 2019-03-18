@@ -3,13 +3,9 @@ const styles = () => ({
   card: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-end',
-    maxWidth: '25em',
-    minWidth: '25em',
+    width: '300px',
     maxHeight: 450,
-    //    paddingRight: 20,
-    //    paddingLeft: 20,
-    marginBottom: 20,
+    margin: '1em',
   },
   cafeTitle: {
     color: 'black',
@@ -17,11 +13,13 @@ const styles = () => ({
     fontWeight: 'bold',
   },
   spacer: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(25em, 1fr));',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+
   },
   brewing: {
-    color: 'white',
+    color: '#1b3c35',
   },
   media: {
     height: 0,

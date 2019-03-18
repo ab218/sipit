@@ -2,24 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withCookies } from 'react-cookie';
 import { SearchBar } from '..';
-import styles from './navbarStyles';
+import './navbarStyles.css';
 
 const Favorites = ({ cookies }) => (
-  <div style={styles.container1}>
+  <div className="container1">
     {cookies.get('user')
-  && <Link to="/favorites"><div style={{ ...styles.navItem, ...styles.fontTitles }}>Favorites</div></Link>
+  && <Link to="/favorites"><div className="navItem fontTitles">Favorites</div></Link>
     }
   </div>
 );
 
 const MemberControl = ({ cookies, logout }) => (
-  <div style={styles.memberControl}>
+  <div className="memberControl">
     {cookies.get('user')
-      ? <button type="submit" onClick={logout} style={{ ...styles.signUpBtn, ...styles.fontContents }}>Log out</button>
+      ? <button type="submit" onClick={logout} className="signUpBtn" fontContents>Log out</button>
       : (
         <React.Fragment>
-          <Link to="/login"><span style={{ ...styles.logInBtn, ...styles.fontContents }}>Log In</span></Link>
-          <Link to="/signup"><span style={{ ...styles.signUpBtn, ...styles.fontContents }}>Sign Up</span></Link>
+          <Link to="/login"><span className="logInBtn fontContents">Log In</span></Link>
+          <Link to="/signup"><span className="signUpBtn fontContents">Sign Up</span></Link>
         </React.Fragment>
       )
     }
@@ -28,7 +28,7 @@ const MemberControl = ({ cookies, logout }) => (
 
 const Logo = () => (
   <Link style={{ color: '#FFFF' }} to="/">
-    <div style={{ ...styles.navHead, ...styles.fontTitles }}>
+    <div className="logo fontTitles">
       <div>
         <i className="fas fa-coffee" />
         {' '}
@@ -39,7 +39,7 @@ const Logo = () => (
 );
 
 const Navbar = ({ cookies }) => (
-  <div style={styles.navBar}>
+  <div className="navBar">
     <Logo />
     <Favorites cookies={cookies} />
     <MemberControl cookies={cookies} logout={() => cookies.remove('user')} />

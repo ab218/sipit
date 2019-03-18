@@ -1,0 +1,43 @@
+.input {
+  align-self: center;
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  font-size: 14px;
+  height: 30px;
+  width: 100px;
+  flex-grow: 2;
+  margin: 0 0.25em;
+  text-align: center;
+}
+
+.searchBarWrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0 0.5em;
+  border-radius: 30px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+    .searchBarWrapper {
+        width: 60%;
+      }
+  }
+
+.searchIcon {
+  color: #FFFF;
+}
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+.sliderDiv {
+  width: 300;
+}
+.slider {
+  padding: 22px 0px;
+}

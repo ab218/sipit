@@ -1,10 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import TextField from '@material-ui/core/TextField';
-import styles from './searchBarStyles';
+import './searchBarStyles.css';
 import { SEARCH_NAME, SEARCH_LOCATION } from '../../redux/types';
 
 
@@ -20,32 +17,20 @@ const SearchBarTextfields = ({ setName, setLocation }) => {
   }
   return (
     <React.Fragment>
-      <TextField
+      <input
+        className="input"
         id="cafeSearch"
         name="cafeSearch"
         placeholder="Search Term"
         margin="normal"
         onChange={handleInputChange}
-        inputProps={{
-          style: styles.input,
-        }}
-        InputProps={{
-          disableUnderline: true,
-        }}
-        style={{ width: 100 }}
       />
-      <TextField
+      <input
+        className="input"
         id="locationSearch"
         name="locationSearch"
         placeholder="Location"
         onChange={handleInputChange}
-        inputProps={{
-          style: styles.input,
-        }}
-        InputProps={{
-          disableUnderline: true,
-        }}
-        style={{ width: 120 }}
       />
     </React.Fragment>
   );
@@ -63,6 +48,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
-  withStyles(styles),
   connect(null, mapDispatchToProps),
 )(SearchBarTextfields);

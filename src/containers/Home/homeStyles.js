@@ -1,6 +1,6 @@
 const styles = {
   mainTheme: {
-    backgroundColor: '#C1A88B',
+    backgroundColor: 'rgb(240, 240, 235)',
   },
 };
 

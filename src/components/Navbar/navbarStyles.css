@@ -1,0 +1,55 @@
+
+.container1 {
+  display: inline-flex;
+  font-size: 20px;
+  order: 1;
+  height: 0;
+}
+.fontContents {
+  font-family: 'Quicksand';
+}
+.fontTitles {
+  font-family: 'Maven Pro';
+  font-weight: bold;
+  font-size: calc(20px + 0.25vw);
+}
+.logInBtn {
+  background-color: #f26622;
+  border: 2px solid #FFFF;
+  border-radius: 15px;
+  color: #FFFF;
+  margin: 0 10px 20px 10px;
+  padding: 5px 10px 5px 10px;
+}
+.logo {
+  font-size: 1.1em;
+  position: absolute;
+  margin: 10px 0 0 20px;
+  float: left;
+}
+.memberControl {
+  position: absolute;
+  display: inline;
+  font-size: 14px;
+  right: 0;
+}
+.navBar {
+  background-color: #1b3c35;
+  color: #FFFF;
+  font-size: 30px;
+  padding-top: 20px;
+  z-index: 9;
+  width: 100%;
+  height: 5em;
+}
+.navItem {
+  color: #FFFF;
+}
+.signUpBtn {
+  background-color: #6196d2;
+  border: 2px solid #FFFF;
+  border-radius: 15px;
+  color: #FFFF;
+  margin: 0 0.1em 2em;
+  padding: 5px;
+}
