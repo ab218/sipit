@@ -27,8 +27,15 @@ const BusinessDetails = ({ businessData, businessDataLoading }) => {
         <DisplayAddress businessData={businessData} />
         <br />
         <h5 style={title}>{businessData.display_phone}</h5>
-        <HoursComp hours={businessData.hours[0]} />
-        <BusinessDetailsHours hours={businessData.hours[0].open} />
+        {businessData.hours
+          ? (
+            <React.Fragment>
+              <HoursComp hours={businessData.hours[0]} />
+              <BusinessDetailsHours hours={businessData.hours[0].open} />
+            </React.Fragment>
+          )
+          : null
+        }
       </div>
     );
 };
