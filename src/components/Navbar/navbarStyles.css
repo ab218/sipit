@@ -9,7 +9,6 @@
   font-family: 'Quicksand';
 }
 .fontTitles {
-  font-size: 2em;
   display: flex;
   font-family: 'Maven Pro';
   font-weight: bold;
@@ -44,7 +43,11 @@
   height: 5em;
 }
 .navItem {
-  color: #FFFF;
+  color: darkred;
+  margin-left: 5px;
+}
+.navItem:hover {
+  color:red;
 }
 .signUpBtn {
   background-color: #6196d2;

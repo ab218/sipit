@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withCookies } from 'react-cookie';
 import { SearchBar } from '..';
+import Tooltip from '@material-ui/core/Tooltip';
 import './navbarStyles.css';
 
 const Favorites = ({ cookies }) => (
   <div className="container1">
     {cookies.get('user')
   && (
-    <Link to="/favorites">
-      <div className="navItem fontTitles" />
-      <i className="fas fa-heart" />
-    </Link>
+    <Tooltip title="Favorites" placement="top">
+      <Link to="/favorites">
+        <i className="fas fa-heart navItem fontTitles" />
+      </Link>
+    </Tooltip>
   )
     }
   </div>
@@ -20,7 +22,7 @@ const Favorites = ({ cookies }) => (
 const MemberControl = ({ cookies, logout }) => (
   <div className="memberControl">
     {cookies.get('user')
-      ? <button type="submit" onClick={logout} className="signUpBtn" fontContents>Log out</button>
+      ? <button type="submit" onClick={logout} className="signUpBtn fontContents">Log out</button>
       : (
         <React.Fragment>
           <Link to="/login"><span className="logInBtn fontContents">Log In</span></Link>
@@ -32,16 +34,14 @@ const MemberControl = ({ cookies, logout }) => (
 );
 
 const Logo = ({ cookies }) => (
-  <Link style={{ color: '#FFFF' }} to="/">
-    <div className="logo fontTitles">
-      <div>
-        <i className="fas fa-coffee" />
-        {' '}
+  <div className="logo fontTitles">
+    <Link style={{ color: '#FFFF' }} to="/">
+      <i className="fas fa-coffee" />
+      {' '}
         Sip-It
-      </div>
-      <Favorites cookies={cookies} />
-    </div>
-  </Link>
+    </Link>
+    <Favorites cookies={cookies} />
+  </div>
 );
 
 const Navbar = ({ cookies }) => (
