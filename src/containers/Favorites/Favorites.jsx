@@ -115,7 +115,7 @@ class Favorites extends Component {
         </div>
       );
     }
-    return null;
+    return <Redirect to="/" />;
   }
 }
 
