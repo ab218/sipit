@@ -1,6 +1,6 @@
 const styles = {
   mainTheme: {
-    backgroundColor: 'pink',
+    backgroundColor: 'rgb(240, 240, 235)',
     height: '100%',
   },
   flexBoxContainer: {

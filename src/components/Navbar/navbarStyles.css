@@ -1,7 +1,7 @@
 
 .container1 {
-  display: inline-flex;
-  font-size: 20px;
+  text-align: center;
+  margin-left: 8px;
   order: 1;
   height: 0;
 }
@@ -9,9 +9,10 @@
   font-family: 'Quicksand';
 }
 .fontTitles {
+  font-size: 2em;
+  display: flex;
   font-family: 'Maven Pro';
   font-weight: bold;
-  font-size: calc(20px + 0.25vw);
 }
 .logInBtn {
   background-color: #f26622;

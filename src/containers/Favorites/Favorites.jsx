@@ -68,51 +68,54 @@ class Favorites extends Component {
     const {
       cookies, favorites, redirect, recenterFavoritesMap, removeFavorite,
     } = this.props;
-    return (
-      <div style={mainTheme}>
-        <FavoritesMapContainer />
-        <div style={flexBoxContainer}>
-          {redirect && <Redirect to="/" />}
-          {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
-          <MediaQuery minWidth={1000}>
-            <GetFavoritesComp
-              recenterFavoritesMap={recenterFavoritesMap}
-              removeFavorite={removeFavorite}
-              cookieId={cookies.get('user').id}
-              favorites={favorites}
-              cols={4}
-            />
-          </MediaQuery>
-          <MediaQuery minWidth={800} maxWidth={1000}>
-            <GetFavoritesComp
-              recenterFavoritesMap={recenterFavoritesMap}
-              removeFavorite={removeFavorite}
-              cookieId={cookies.get('user').id}
-              favorites={favorites}
-              cols={3}
-            />
-          </MediaQuery>
-          <MediaQuery minWidth={550} maxWidth={800}>
-            <GetFavoritesComp
-              recenterFavoritesMap={recenterFavoritesMap}
-              removeFavorite={removeFavorite}
-              cookieId={cookies.get('user').id}
-              favorites={favorites}
-              cols={2}
-            />
-          </MediaQuery>
-          <MediaQuery maxWidth={550}>
-            <GetFavoritesComp
-              recenterFavoritesMap={recenterFavoritesMap}
-              removeFavorite={removeFavorite}
-              cookieId={cookies.get('user').id}
-              favorites={favorites}
-              cols={1}
-            />
-          </MediaQuery>
+    if (cookies.get('user')) {
+      return (
+        <div style={mainTheme}>
+          <FavoritesMapContainer />
+          <div style={flexBoxContainer}>
+            {redirect && <Redirect to="/" />}
+            {favorites.length === 0 && <h1 style={noFavorites}>No favorites saved.</h1>}
+            <MediaQuery minWidth={1000}>
+              <GetFavoritesComp
+                recenterFavoritesMap={recenterFavoritesMap}
+                removeFavorite={removeFavorite}
+                cookieId={cookies.get('user').id}
+                favorites={favorites}
+                cols={4}
+              />
+            </MediaQuery>
+            <MediaQuery minWidth={800} maxWidth={1000}>
+              <GetFavoritesComp
+                recenterFavoritesMap={recenterFavoritesMap}
+                removeFavorite={removeFavorite}
+                cookieId={cookies.get('user').id}
+                favorites={favorites}
+                cols={3}
+              />
+            </MediaQuery>
+            <MediaQuery minWidth={550} maxWidth={800}>
+              <GetFavoritesComp
+                recenterFavoritesMap={recenterFavoritesMap}
+                removeFavorite={removeFavorite}
+                cookieId={cookies.get('user').id}
+                favorites={favorites}
+                cols={2}
+              />
+            </MediaQuery>
+            <MediaQuery maxWidth={550}>
+              <GetFavoritesComp
+                recenterFavoritesMap={recenterFavoritesMap}
+                removeFavorite={removeFavorite}
+                cookieId={cookies.get('user').id}
+                favorites={favorites}
+                cols={1}
+              />
+            </MediaQuery>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return null;
   }
 }
 

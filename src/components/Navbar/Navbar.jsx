@@ -7,7 +7,12 @@ import './navbarStyles.css';
 const Favorites = ({ cookies }) => (
   <div className="container1">
     {cookies.get('user')
-  && <Link to="/favorites"><div className="navItem fontTitles">Favorites</div></Link>
+  && (
+    <Link to="/favorites">
+      <div className="navItem fontTitles" />
+      <i className="fas fa-heart" />
+    </Link>
+  )
     }
   </div>
 );
@@ -26,7 +31,7 @@ const MemberControl = ({ cookies, logout }) => (
   </div>
 );
 
-const Logo = () => (
+const Logo = ({ cookies }) => (
   <Link style={{ color: '#FFFF' }} to="/">
     <div className="logo fontTitles">
       <div>
@@ -34,14 +39,14 @@ const Logo = () => (
         {' '}
         Sip-It
       </div>
+      <Favorites cookies={cookies} />
     </div>
   </Link>
 );
 
 const Navbar = ({ cookies }) => (
   <div className="navBar">
-    <Logo />
-    <Favorites cookies={cookies} />
+    <Logo cookies={cookies} />
     <MemberControl cookies={cookies} logout={() => cookies.remove('user')} />
     <SearchBar />
   </div>
