@@ -1,6 +1,6 @@
-## Summary
+## Sip-It
 
-Sip-It is a web app for finding nearby cafes. It was built by Aaron Black and Hyunjung Oh with React and Express and takes advantage of Yelp and Google API. Enjoy!
+Web app for finding, viewing, saving, and reviewing nearby cafes. It uses Yelp and Google Maps API.
 
 ![alt tag](https://github.com/ab218/sipit/blob/master/src/Images/sip-it.gif)
 
@@ -22,6 +22,11 @@ Sip-It is a web app for finding nearby cafes. It was built by Aaron Black and Hy
 - Postgres
 
 ---
+
+### Created By:
+
+- Aaron Black
+- Hyunjung Oh
 
 Thanks to:
 
