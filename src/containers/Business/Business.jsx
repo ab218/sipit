@@ -27,8 +27,10 @@ class Business extends Component {
         {redirect && <Redirect to="/" />}
         <div style={mainTheme}>
           <BusinessDetails />
-          <Reviews />
-          <ReviewsYelp />
+          <div>
+            <ReviewsYelp />
+            <Reviews />
+          </div>
         </div>
       </div>
     );

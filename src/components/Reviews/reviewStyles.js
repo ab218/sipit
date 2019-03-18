@@ -25,6 +25,7 @@ const styles = {
     color: 'black',
     fontWeight: 'bold',
     display: 'inline-flex',
+    justifyContent: 'space-between',
   },
 
   reviewContent: {

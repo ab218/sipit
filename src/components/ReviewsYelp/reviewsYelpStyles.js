@@ -1,6 +1,6 @@
 const styles = {
   reviewWrapper: {
-    maxWidth: '50em',
+    maxWidth: '550px',
     margin: '2em auto',
   },
   loading: {

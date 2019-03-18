@@ -1,12 +1,15 @@
 
 const styles = {
   container: {
-    backgroundColor: 'white',
     maxWidth: '320px',
     margin: '0',
     textAlign: 'center',
   },
+  subContainer: {
+    backgroundColor: 'white',
+  },
   title: {
+    backgroundColor: 'rgb(240, 240, 235)',
     color: 'grey',
     fontWeight: 'bold',
   },

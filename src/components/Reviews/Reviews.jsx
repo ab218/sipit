@@ -33,9 +33,14 @@ const Reviews = ({ reviewsData }) => (
   <React.Fragment>
     <div style={styles.reviewWrapper}>
       <ReviewsForm />
-      <div style={styles.title}><h2>Reviews</h2></div>
-      <GetReviews reviewsData={reviewsData} />
-      <br />
+      {reviewsData.length
+    && (
+      <React.Fragment>
+        <div style={styles.title}><h2>Reviews</h2></div>
+        <GetReviews reviewsData={reviewsData} />
+        <br />
+      </React.Fragment>
+    )}
     </div>
   </React.Fragment>
 );

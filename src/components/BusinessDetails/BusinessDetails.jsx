@@ -16,26 +16,29 @@ const DisplayAddress = ({ businessData }) => (
 );
 
 const BusinessDetails = ({ businessData, businessDataLoading }) => {
-  const { container, title, loading } = styles;
+  const {
+    container, loading, subContainer, title,
+  } = styles;
   return businessDataLoading
     ? <h1 style={loading}>Brewing results ...</h1>
     : (
       <div style={container}>
-        <h3 style={title}>{businessData.name}</h3>
-        <SlickCarousel businessData={businessData} />
-        <br />
-        <DisplayAddress businessData={businessData} />
-        <br />
-        <h5 style={title}>{businessData.display_phone}</h5>
-        {businessData.hours
-          ? (
+        <div style={subContainer}>
+          <h3 style={title}>{businessData.name}</h3>
+          <SlickCarousel businessData={businessData} />
+          <br />
+          <DisplayAddress businessData={businessData} />
+          <br />
+          <h5>{businessData.display_phone}</h5>
+          {businessData.hours
+          && (
             <React.Fragment>
               <HoursComp hours={businessData.hours[0]} />
               <BusinessDetailsHours hours={businessData.hours[0].open} />
             </React.Fragment>
           )
-          : null
-        }
+          }
+        </div>
       </div>
     );
 };
